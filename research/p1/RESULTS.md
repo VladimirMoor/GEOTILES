@@ -7,7 +7,7 @@ First pass, 2026-10-07. The class covers every convex polyhedron with all edges 
 | Step | Script | Result |
 |---|---|---|
 | 1. Combinatorial types | `enumerate_types.py` (plantri `-pc3 -d`) | 1 + 2 + 7 + 34 + 257 = **301** types (OEIS A000944) |
-| 2. Equilateral convex realizations | `realize.py` | **36** types are realizable: 16 rigid types (17 solids) and 20 continuous families |
+| 2. Equilateral convex realizations | `realize.py` | **35** types are realizable: 16 rigid types (17 solids) and 19 continuous families |
 | 3. Rigid solids | `analyze.py` | **none tile** |
 | 4. Families: Dehn invariant | analysis below | **11** families are excluded entirely |
 | 5. Families with zero Dehn invariant | `identities.py`, `search_tiling.py`, `tilecheck.py` | **5** families where every member tiles; prisms are partly open |
@@ -21,7 +21,11 @@ Solutions come from Levenberg–Marquardt runs with 2000 starts per type. Each s
 - every face plane is supporting, with all other vertices at least 1e-6 below it;
 - every face is a strictly convex polygon in the cyclic order of the combinatorial type.
 
-**Caveat.** This is a numerical search, not a proof that the list is complete. An independent rerun with 6000 starts and a new seed is in progress.
+**Non-degeneracy.** A type counts only if some solution has every dihedral angle at least 0.5° away from 0° and 180°. Genuine types have a margin of at least 4.4°. Two types, F7-011 and F8-227, produced only near-boundary artifacts with margins below 0.001° (two faces practically coplanar). After Newton refinement these artifacts are not strictly convex, so both types are excluded.
+
+**Independent rerun.** A second run with 6000 starts per type and a different seed found exactly the same 35 types, the same 17 rigid solids with identical angles (each hit 47–2916 times), and the same flexibility dimensions.
+
+**Caveat.** This is still a numerical search, not a proof that the list is complete.
 
 ## Results
 
@@ -66,7 +70,6 @@ Here R = rhombus, T = equilateral triangle, and a digit is an n-gon. These famil
 | F8-255 | 3 | **generalized elongated gyrobifastigium**: rhombic parallelepiped + two triangular prisms whose triangles merge with its faces into pentagons | every member: lattice a, b, c + apex₁ − apex₂ + point reflection |
 | F7-031 | 4 | equilateral pentagonal prisms | **open**; tiles if the cross-section ⊥ the lateral edge tiles the plane |
 | F8-192 | 5 | equilateral hexagonal prisms | **open**; same sufficient condition |
-| F7-011 | — | only near-degenerate numerical solutions | to be checked |
 
 The families marked "every member" are backed by explicit tilings checked numerically. Volume ratio V(tile)/V(fundamental domain) = 1, and Monte Carlo coverage passed for 20 random members of F8-203, 18 of F8-255 and 40 of F8-249 in the browser, plus 30 more in Python. For every tile-able family, every edge class is covered by an identity of the angle filter that holds over the whole family.
 
@@ -74,8 +77,7 @@ The families marked "every member" are backed by explicit tilings checked numeri
 
 ## Open items
 
-1. Completeness of step 2: the 6000-start rerun, then possibly certified methods (homotopy continuation or interval arithmetic).
+1. Completeness of step 2: confirmed by an independent 6000-start rerun; a certified method (homotopy continuation or interval arithmetic) is still needed for a proof.
 2. A rigorous structural identification of each family, replacing the numerical one.
 3. Pentagonal and hexagonal prisms: which members tile. Is the sufficient condition also necessary?
-4. F7-011.
-5. Check the literature for the three "generalized" families.
+4. Check the literature for the three "generalized" families.

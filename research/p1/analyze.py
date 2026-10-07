@@ -8,6 +8,7 @@ import pathlib
 from collections import Counter
 
 ROOT = pathlib.Path(__file__).resolve().parent
+MARGIN = 0.5  # градусы
 
 
 def distinct(angles, tol=1e-5):
@@ -62,6 +63,12 @@ def main(src="realizations.json"):
     for tid, rec in R.items():
         sols = rec["solutions"]
         if not sols:
+            continue
+        # невырожденность: хотя бы у одного члена все двугранные углы отстоят от 0° и 180° больше чем на 0.5°
+        # (у настоящих типов запас ≥ 4.4°, у артефактов на границе слияния граней — < 0.001°)
+        margin = max(min(min(s["dihedrals"]), 180 - max(s["dihedrals"])) for s in sols)
+        if margin <= MARGIN:
+            print(f"{tid}: only degenerate solutions (margin {margin:.4f}°), skipped")
             continue
         t = types[tid]
         flex = Counter(s["flex"] for s in sols)

@@ -44,7 +44,7 @@
     <li><span class="chip ok">done</span> Class fixed: every equilateral convex polyhedron with ≤ 8 faces, any tiling (not only isohedral)</li>
     <li><span class="chip ok">done</span> 301 combinatorial types (plantri); numerical search for equilateral convex realizations</li>
     <li><span class="chip ok">done</span> Rigid solids and 11 families excluded; 5 families tile in full</li>
-    <li><span class="chip warn">in progress</span> Independent rerun of the search (6000 starts per type)</li>
+    <li><span class="chip ok">done</span> Independent rerun of the search (6000 starts per type, new seed): the same 35 types</li>
     <li><span class="chip dim">next</span> Pentagonal and hexagonal prisms; certified completeness; literature check for the new families</li>
   </ul>
 
@@ -53,13 +53,13 @@
   <table>
     <tr><th>Stage</th><th>Outcome</th></tr>
     <tr><td>Combinatorial types with 4–8 faces</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
-    <tr><td>Types with an equilateral convex realization</td><td>36: 16 rigid types (17 solids) and 20 continuous families</td></tr>
+    <tr><td>Types with an equilateral convex realization</td><td>35: 16 rigid types (17 solids) and 19 continuous families</td></tr>
     <tr><td>Rigid solids</td><td><b>None tile.</b> 15 fail the dihedral angle filter. The truncated tetrahedron and the octahedron + tetrahedron are excluded by a counting argument: they cut into unit tetrahedra and octahedra, and any such tiling needs N<sub>tet</sub> = 2 N<sub>oct</sub>.</td></tr>
     <tr><td>Families with nonzero Dehn invariant</td><td><b>11 families, none of whose members tile.</b> For an equilateral solid the Dehn invariant is 1 ⊗ Σθ, so it vanishes only if the sum of dihedral angles is a rational multiple of π (Lagarias–Moews 1995).</td></tr>
     <tr><td>Families where every member tiles</td><td>triangular prisms, rhombic parallelepipeds, and three 3-parameter families: the <a href="catalog.html#gen-gyro">generalized gyrobifastigium</a>, the <a href="catalog.html#gen-elongated">generalized elongated gyrobifastigium</a> and <a href="catalog.html#rhombus-triangle">rhombus ⊕ triangle</a></td></tr>
     <tr><td>Open</td><td>Pentagonal and hexagonal prisms. Such a prism tiles if its cross-section perpendicular to the lateral edges tiles the plane; whether the converse holds is open.</td></tr>
   </table>
-  <p class="small muted">Caveat: realizations were found numerically (multi-start Levenberg–Marquardt with strict convexity checks), so the list is very likely but not yet provably complete.</p>
+  <p class="small muted">Caveat: realizations were found numerically (multi-start Levenberg–Marquardt with strict convexity checks), so the list is very likely but not yet provably complete. An independent rerun with three times as many starts found exactly the same 35 types.</p>
 
   <h2>Log</h2>
   <div class="timeline">
@@ -99,7 +99,7 @@
     <li><span class="chip ok">готово</span> Класс выбран: все равносторонние выпуклые многогранники с ≤ 8 гранями, любые разбиения (не только изоэдральные)</li>
     <li><span class="chip ok">готово</span> 301 комбинаторный тип (plantri); численный поиск равносторонних выпуклых реализаций</li>
     <li><span class="chip ok">готово</span> Жёсткие тела и 11 семейств исключены; 5 семейств замощают целиком</li>
-    <li><span class="chip warn">в работе</span> Независимый повторный прогон поиска (6000 стартов на тип)</li>
+    <li><span class="chip ok">готово</span> Независимый повторный прогон поиска (6000 стартов на тип, новое зерно): те же 35 типов</li>
     <li><span class="chip dim">далее</span> Пятиугольные и шестиугольные призмы; строгое доказательство полноты; проверка новых семейств по литературе</li>
   </ul>
 
@@ -108,13 +108,13 @@
   <table>
     <tr><th>Этап</th><th>Итог</th></tr>
     <tr><td>Комбинаторные типы с 4–8 гранями</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
-    <tr><td>Типы с равносторонней выпуклой реализацией</td><td>36: 16 жёстких типов (17 тел) и 20 непрерывных семейств</td></tr>
+    <tr><td>Типы с равносторонней выпуклой реализацией</td><td>35: 16 жёстких типов (17 тел) и 19 непрерывных семейств</td></tr>
     <tr><td>Жёсткие тела</td><td><b>Ни одно не замощает.</b> 15 отсеивает фильтр двугранных углов. Усечённый тетраэдр и «октаэдр + тетраэдр» исключены подсчётом: они режутся на единичные тетраэдры и октаэдры, а в любом таком разбиении N<sub>тет</sub> = 2 N<sub>окт</sub>.</td></tr>
     <tr><td>Семейства с ненулевым инвариантом Дена</td><td><b>11 семейств, ни один член которых не замощает.</b> У равностороннего тела инвариант Дена равен 1 ⊗ Σθ, поэтому он обнуляется, только если сумма двугранных углов — рациональное кратное π (Lagarias–Moews 1995).</td></tr>
     <tr><td>Семейства, где замощает каждый член</td><td>треугольные призмы, ромбические параллелепипеды и три 3-параметрических семейства: <a href="catalog.html#gen-gyro">обобщённый гиробифастигиум</a>, <a href="catalog.html#gen-elongated">обобщённый удлинённый гиробифастигиум</a> и <a href="catalog.html#rhombus-triangle">ромб ⊕ треугольник</a></td></tr>
     <tr><td>Открыто</td><td>Пятиугольные и шестиугольные призмы. Такая призма замощает пространство, если её сечение, перпендикулярное боковому ребру, замощает плоскость; верно ли обратное — открытый вопрос.</td></tr>
   </table>
-  <p class="small muted">Оговорка: реализации найдены численно (многократный запуск Левенберга–Марквардта со строгой проверкой выпуклости), поэтому список почти наверняка полон, но строго это пока не доказано.</p>
+  <p class="small muted">Оговорка: реализации найдены численно (многократный запуск Левенберга–Марквардта со строгой проверкой выпуклости), поэтому список почти наверняка полон, но строго это пока не доказано. Независимый прогон с втрое большим числом стартов нашёл ровно те же 35 типов.</p>
 
   <h2>Журнал</h2>
   <div class="timeline">
@@ -154,7 +154,7 @@
     <li><span class="chip ok">hecho</span> Clase fijada: todos los poliedros convexos equiláteros con ≤ 8 caras y cualquier teselación (no solo isoédrica)</li>
     <li><span class="chip ok">hecho</span> 301 tipos combinatorios (plantri); búsqueda numérica de realizaciones convexas equiláteras</li>
     <li><span class="chip ok">hecho</span> Sólidos rígidos y 11 familias descartados; 5 familias teselan por completo</li>
-    <li><span class="chip warn">en curso</span> Repetición independiente de la búsqueda (6000 arranques por tipo)</li>
+    <li><span class="chip ok">hecho</span> Repetición independiente de la búsqueda (6000 arranques por tipo, nueva semilla): los mismos 35 tipos</li>
     <li><span class="chip dim">siguiente</span> Prismas pentagonales y hexagonales; prueba rigurosa de completitud; revisión bibliográfica de las nuevas familias</li>
   </ul>
 
@@ -163,13 +163,13 @@
   <table>
     <tr><th>Etapa</th><th>Resultado</th></tr>
     <tr><td>Tipos combinatorios con 4–8 caras</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
-    <tr><td>Tipos con realización convexa equilátera</td><td>36: 16 tipos rígidos (17 sólidos) y 20 familias continuas</td></tr>
+    <tr><td>Tipos con realización convexa equilátera</td><td>35: 16 tipos rígidos (17 sólidos) y 19 familias continuas</td></tr>
     <tr><td>Sólidos rígidos</td><td><b>Ninguno tesela.</b> 15 no pasan el filtro de ángulos diedros. El tetraedro truncado y el octaedro + tetraedro se descartan por conteo: se descomponen en tetraedros y octaedros unitarios, y toda teselación de ese tipo exige N<sub>tet</sub> = 2 N<sub>oct</sub>.</td></tr>
     <tr><td>Familias con invariante de Dehn no nulo</td><td><b>11 familias, ninguno de cuyos miembros tesela.</b> Para un sólido equilátero el invariante de Dehn es 1 ⊗ Σθ, así que solo se anula si la suma de los ángulos diedros es un múltiplo racional de π (Lagarias–Moews 1995).</td></tr>
     <tr><td>Familias en las que tesela todo miembro</td><td>prismas triangulares, paralelepípedos rómbicos y tres familias de 3 parámetros: el <a href="catalog.html#gen-gyro">girobifastigio generalizado</a>, el <a href="catalog.html#gen-elongated">girobifastigio alargado generalizado</a> y <a href="catalog.html#rhombus-triangle">rombo ⊕ triángulo</a></td></tr>
     <tr><td>Abierto</td><td>Prismas pentagonales y hexagonales. Un prisma así tesela si su sección perpendicular a las aristas laterales tesela el plano; si el recíproco es cierto es una pregunta abierta.</td></tr>
   </table>
-  <p class="small muted">Advertencia: las realizaciones se hallaron numéricamente (Levenberg–Marquardt con múltiples arranques y verificación estricta de convexidad), así que la lista es casi con certeza completa, pero aún no está demostrado.</p>
+  <p class="small muted">Advertencia: las realizaciones se hallaron numéricamente (Levenberg–Marquardt con múltiples arranques y verificación estricta de convexidad), así que la lista es casi con certeza completa, pero aún no está demostrado. Una repetición independiente con el triple de arranques encontró exactamente los mismos 35 tipos.</p>
 
   <h2>Diario</h2>
   <div class="timeline">
