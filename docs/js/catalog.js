@@ -29,9 +29,19 @@ function specFor(e, poly, inf) {
 function build() {
   queued = false;
   const e = entry;
-  const poly = e.zonohedron ? zonohedron(e.zonohedron(state.params)) : convexHull(e.solid(state.params));
-  const inf = analyze(poly);
-  const spec = specFor(e, poly, inf);
+  let poly, inf;
+  try {
+    poly = e.zonohedron ? zonohedron(e.zonohedron(state.params)) : convexHull(e.solid(state.params));
+    inf = analyze(poly);
+  } catch (err) {
+    viewer.clear();
+    current = null;
+    $('#details').innerHTML = `<div class="verdict bad">${t(err.message)}</div>`;
+    return;
+  }
+  // параметры вне семейства: оболочка уже не та (невыпуклое объединение) — разбиение не показываем
+  const outside = e.expect && (!inf.equilateral || !e.expect.faces.includes(inf.nF));
+  const spec = outside ? null : specFor(e, poly, inf);
   const mode = spec ? state.mode : 'solid';
   const R = state.radius * inf.circumradius;
 
@@ -57,7 +67,7 @@ function build() {
 
   const sub = e.status === 'no' ? t('st.notile') : t(mode === 'tiling' ? 'st.fragment' : 'st.solid');
   stageTitle.innerHTML = `<h2>${L(e.name)}</h2><div class="sub">${sub}</div>`;
-  $('#details').innerHTML = `${propsHTML(inf)}${filterHTML(inf)}${mode === 'tiling' ? tilingHTML(gen, inf, cov) : ''}`;
+  $('#details').innerHTML = `${outside ? `<div class="verdict bad" style="margin-bottom:12px">${t('warn.outside')}</div>` : ''}${propsHTML(inf)}${filterHTML(inf)}${mode === 'tiling' ? tilingHTML(gen, inf, cov) : ''}`;
 }
 
 function renderParams(e) {

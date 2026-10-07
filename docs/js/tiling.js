@@ -53,8 +53,11 @@ export function generateTiles(info, spec, R, maxTiles = 1500) {
   } else {
     const [a, b, c] = spec.lattice;
     covolume = Math.abs(det3(a, b, c)) / spec.motifs.length;
-    const N = Math.min(10, Math.ceil(R / Math.min(v.len(a), v.len(b), v.len(c))) + 2);
-    for (let i = -N; i <= N; i++) for (let j = -N; j <= N; j++) for (let k = -N; k <= N; k++) {
+    // диапазон по каждой оси: координаты точек шара радиуса R в базисе решётки (+ запас на сдвиг мотивов)
+    const span = R + Math.max(...spec.motifs.map((m) => new THREE.Vector3().setFromMatrixPosition(m).length())) + 1;
+    const [r0, r1, r2] = [v.cross(b, c), v.cross(c, a), v.cross(a, b)].map((r) => v.len(r) / Math.abs(det3(a, b, c)));
+    const [Ni, Nj, Nk] = [r0, r1, r2].map((r) => Math.min(14, Math.ceil(span * r) + 1));
+    for (let i = -Ni; i <= Ni; i++) for (let j = -Nj; j <= Nj; j++) for (let k = -Nk; k <= Nk; k++) {
       const t = v.add(v.add(v.mul(a, i), v.mul(b, j)), v.mul(c, k));
       spec.motifs.forEach((m, mi) => {
         const M = new THREE.Matrix4().makeTranslation(...t).multiply(m);

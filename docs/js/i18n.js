@@ -125,6 +125,12 @@ const DICT = {
   'st.equi': { en: 'equilateral', ru: 'равносторонний', es: 'equilátero' },
   'st.nonequi': { en: 'not equilateral', ru: 'не равносторонний', es: 'no equilátero' },
 
+  'warn.outside': {
+    en: 'For these parameters the union of the pieces is not convex: the convex hull is a different, non-equilateral solid. Move the sliders back into the family.',
+    ru: 'При этих параметрах объединение частей невыпукло: выпуклая оболочка — другое, неравностороннее тело. Верните ползунки в пределы семейства.',
+    es: 'Con estos parámetros la unión de las piezas no es convexa: la envolvente convexa es otro sólido, no equilátero. Vuelve a llevar los controles dentro de la familia.',
+  },
+
   // свойства
   'p.params': { en: 'Parameters', ru: 'Параметры', es: 'Parámetros' },
   'p.comb': { en: 'Combinatorics', ru: 'Комбинаторика', es: 'Combinatoria' },
@@ -197,5 +203,6 @@ const DICT = {
   'err.points4': { en: 'At least 4 points are needed', ru: 'Нужно хотя бы 4 точки', es: 'Se necesitan al menos 4 puntos' },
   'err.coplanar': { en: 'The points are coplanar', ru: 'Точки лежат в одной плоскости', es: 'Los puntos son coplanares' },
   'err.gens8': { en: 'At most 8 generators', ru: 'Не больше 8 образующих', es: 'Como máximo 8 generadores' },
+  'err.degenerate': { en: 'The solid is degenerate: some faces are almost coplanar', ru: 'Тело вырождено: некоторые грани почти лежат в одной плоскости', es: 'El sólido es degenerado: algunas caras son casi coplanares' },
   'err.parse': { en: 'Each line must contain three numbers', ru: 'Каждая строка должна содержать три числа', es: 'Cada línea debe contener tres números' },
 };

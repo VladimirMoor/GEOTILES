@@ -41,14 +41,29 @@
   <ul class="steps">
     <li><span class="chip ok">done</span> Literature review</li>
     <li><span class="chip ok">done</span> Open repository, website and 3D tools</li>
-    <li><span class="chip warn">discussing</span> Fix the class to enumerate. Proposal: every equilateral polyhedron with ≤ 8 faces, any tiling, not only isohedral.</li>
-    <li><span class="chip dim">next</span> Enumerate combinatorial types (plantri), solve for equilateral realizations</li>
-    <li><span class="chip dim">next</span> Apply the dihedral filter, then build tilings or prove none exist</li>
-    <li><span class="chip dim">next</span> Cross-check against Goldberg’s catalogs</li>
+    <li><span class="chip ok">done</span> Class fixed: every equilateral convex polyhedron with ≤ 8 faces, any tiling (not only isohedral)</li>
+    <li><span class="chip ok">done</span> 301 combinatorial types (plantri); numerical search for equilateral convex realizations</li>
+    <li><span class="chip ok">done</span> Rigid solids and 11 families excluded; 5 families tile in full</li>
+    <li><span class="chip warn">in progress</span> Independent rerun of the search (6000 starts per type)</li>
+    <li><span class="chip dim">next</span> Pentagonal and hexagonal prisms; certified completeness; literature check for the new families</li>
   </ul>
+
+  <h2>Results of the first pass</h2>
+  <p>Code and data are in <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/p1">research/p1</a>. The full write-up is in <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/RESULTS.md">RESULTS.md</a>.</p>
+  <table>
+    <tr><th>Stage</th><th>Outcome</th></tr>
+    <tr><td>Combinatorial types with 4–8 faces</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
+    <tr><td>Types with an equilateral convex realization</td><td>36: 16 rigid types (17 solids) and 20 continuous families</td></tr>
+    <tr><td>Rigid solids</td><td><b>None tile.</b> 15 fail the dihedral angle filter. The truncated tetrahedron and the octahedron + tetrahedron are excluded by a counting argument: they cut into unit tetrahedra and octahedra, and any such tiling needs N<sub>tet</sub> = 2 N<sub>oct</sub>.</td></tr>
+    <tr><td>Families with nonzero Dehn invariant</td><td><b>11 families, none of whose members tile.</b> For an equilateral solid the Dehn invariant is 1 ⊗ Σθ, so it vanishes only if the sum of dihedral angles is a rational multiple of π (Lagarias–Moews 1995).</td></tr>
+    <tr><td>Families where every member tiles</td><td>triangular prisms, rhombic parallelepipeds, and three 3-parameter families: the <a href="catalog.html#gen-gyro">generalized gyrobifastigium</a>, the <a href="catalog.html#gen-elongated">generalized elongated gyrobifastigium</a> and <a href="catalog.html#rhombus-triangle">rhombus ⊕ triangle</a></td></tr>
+    <tr><td>Open</td><td>Pentagonal and hexagonal prisms. Such a prism tiles if its cross-section perpendicular to the lateral edges tiles the plane; whether the converse holds is open.</td></tr>
+  </table>
+  <p class="small muted">Caveat: realizations were found numerically (multi-start Levenberg–Marquardt with strict convexity checks), so the list is very likely but not yet provably complete.</p>
 
   <h2>Log</h2>
   <div class="timeline">
+    <div class="entry"><time>2026-10-07</time><h3>First pass of the enumeration</h3><p>All 301 types with ≤ 8 faces were processed. No rigid equilateral solid tiles. Eleven families are excluded by the Dehn invariant. Five families tile in full, three of them new to the catalog. Pentagonal and hexagonal prisms remain open.</p></div>
     <div class="entry"><time>2026-10-07</time><h3>Project started</h3><p>Literature review done, no prior classification found. The repository and this site are live, with a catalog of 15 solids (11 space-fillers, 4 non-tilers), a zonohedron builder with McMullen’s criterion, and a polyhedron analyzer.</p></div>
   </div>
 </article>
@@ -81,14 +96,29 @@
   <ul class="steps">
     <li><span class="chip ok">готово</span> Обзор литературы</li>
     <li><span class="chip ok">готово</span> Открытый репозиторий, сайт и 3D-инструменты</li>
-    <li><span class="chip warn">обсуждаем</span> Выбрать класс для перебора. Предложение: все равносторонние многогранники с ≤ 8 гранями, любые разбиения, не только изоэдральные.</li>
-    <li><span class="chip dim">далее</span> Перебрать комбинаторные типы (plantri), найти равносторонние реализации</li>
-    <li><span class="chip dim">далее</span> Применить фильтр углов, затем построить разбиения или доказать, что их нет</li>
-    <li><span class="chip dim">далее</span> Сверить с каталогами Голдберга</li>
+    <li><span class="chip ok">готово</span> Класс выбран: все равносторонние выпуклые многогранники с ≤ 8 гранями, любые разбиения (не только изоэдральные)</li>
+    <li><span class="chip ok">готово</span> 301 комбинаторный тип (plantri); численный поиск равносторонних выпуклых реализаций</li>
+    <li><span class="chip ok">готово</span> Жёсткие тела и 11 семейств исключены; 5 семейств замощают целиком</li>
+    <li><span class="chip warn">в работе</span> Независимый повторный прогон поиска (6000 стартов на тип)</li>
+    <li><span class="chip dim">далее</span> Пятиугольные и шестиугольные призмы; строгое доказательство полноты; проверка новых семейств по литературе</li>
   </ul>
+
+  <h2>Результаты первого прохода</h2>
+  <p>Код и данные лежат в <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/p1">research/p1</a>, подробности — в <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/RESULTS.md">RESULTS.md</a>.</p>
+  <table>
+    <tr><th>Этап</th><th>Итог</th></tr>
+    <tr><td>Комбинаторные типы с 4–8 гранями</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
+    <tr><td>Типы с равносторонней выпуклой реализацией</td><td>36: 16 жёстких типов (17 тел) и 20 непрерывных семейств</td></tr>
+    <tr><td>Жёсткие тела</td><td><b>Ни одно не замощает.</b> 15 отсеивает фильтр двугранных углов. Усечённый тетраэдр и «октаэдр + тетраэдр» исключены подсчётом: они режутся на единичные тетраэдры и октаэдры, а в любом таком разбиении N<sub>тет</sub> = 2 N<sub>окт</sub>.</td></tr>
+    <tr><td>Семейства с ненулевым инвариантом Дена</td><td><b>11 семейств, ни один член которых не замощает.</b> У равностороннего тела инвариант Дена равен 1 ⊗ Σθ, поэтому он обнуляется, только если сумма двугранных углов — рациональное кратное π (Lagarias–Moews 1995).</td></tr>
+    <tr><td>Семейства, где замощает каждый член</td><td>треугольные призмы, ромбические параллелепипеды и три 3-параметрических семейства: <a href="catalog.html#gen-gyro">обобщённый гиробифастигиум</a>, <a href="catalog.html#gen-elongated">обобщённый удлинённый гиробифастигиум</a> и <a href="catalog.html#rhombus-triangle">ромб ⊕ треугольник</a></td></tr>
+    <tr><td>Открыто</td><td>Пятиугольные и шестиугольные призмы. Такая призма замощает пространство, если её сечение, перпендикулярное боковому ребру, замощает плоскость; верно ли обратное — открытый вопрос.</td></tr>
+  </table>
+  <p class="small muted">Оговорка: реализации найдены численно (многократный запуск Левенберга–Марквардта со строгой проверкой выпуклости), поэтому список почти наверняка полон, но строго это пока не доказано.</p>
 
   <h2>Журнал</h2>
   <div class="timeline">
+    <div class="entry"><time>2026-10-07</time><h3>Первый проход перебора</h3><p>Обработаны все 301 тип с ≤ 8 гранями. Ни одно жёсткое равностороннее тело не замощает. Одиннадцать семейств исключены инвариантом Дена. Пять семейств замощают целиком, три из них впервые попали в каталог. Пятиугольные и шестиугольные призмы остаются открытыми.</p></div>
     <div class="entry"><time>2026-10-07</time><h3>Старт проекта</h3><p>Обзор литературы готов, предшествующей классификации не найдено. Запущены репозиторий и этот сайт: каталог из 15 тел (11 замощающих, 4 незамощающих), конструктор зоноэдров с критерием МакМаллена и анализатор многогранников.</p></div>
   </div>
 </article>
@@ -121,14 +151,29 @@
   <ul class="steps">
     <li><span class="chip ok">hecho</span> Revisión bibliográfica</li>
     <li><span class="chip ok">hecho</span> Repositorio abierto, sitio web y herramientas 3D</li>
-    <li><span class="chip warn">en discusión</span> Fijar la clase a enumerar. Propuesta: todos los poliedros equiláteros con ≤ 8 caras y cualquier teselación, no solo isoédrica.</li>
-    <li><span class="chip dim">siguiente</span> Enumerar los tipos combinatorios (plantri) y resolver sus realizaciones equiláteras</li>
-    <li><span class="chip dim">siguiente</span> Aplicar el filtro de ángulos y luego construir teselaciones o probar que no existen</li>
-    <li><span class="chip dim">siguiente</span> Contrastar con los catálogos de Goldberg</li>
+    <li><span class="chip ok">hecho</span> Clase fijada: todos los poliedros convexos equiláteros con ≤ 8 caras y cualquier teselación (no solo isoédrica)</li>
+    <li><span class="chip ok">hecho</span> 301 tipos combinatorios (plantri); búsqueda numérica de realizaciones convexas equiláteras</li>
+    <li><span class="chip ok">hecho</span> Sólidos rígidos y 11 familias descartados; 5 familias teselan por completo</li>
+    <li><span class="chip warn">en curso</span> Repetición independiente de la búsqueda (6000 arranques por tipo)</li>
+    <li><span class="chip dim">siguiente</span> Prismas pentagonales y hexagonales; prueba rigurosa de completitud; revisión bibliográfica de las nuevas familias</li>
   </ul>
+
+  <h2>Resultados de la primera pasada</h2>
+  <p>El código y los datos están en <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/p1">research/p1</a>; el informe completo, en <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/RESULTS.md">RESULTS.md</a>.</p>
+  <table>
+    <tr><th>Etapa</th><th>Resultado</th></tr>
+    <tr><td>Tipos combinatorios con 4–8 caras</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
+    <tr><td>Tipos con realización convexa equilátera</td><td>36: 16 tipos rígidos (17 sólidos) y 20 familias continuas</td></tr>
+    <tr><td>Sólidos rígidos</td><td><b>Ninguno tesela.</b> 15 no pasan el filtro de ángulos diedros. El tetraedro truncado y el octaedro + tetraedro se descartan por conteo: se descomponen en tetraedros y octaedros unitarios, y toda teselación de ese tipo exige N<sub>tet</sub> = 2 N<sub>oct</sub>.</td></tr>
+    <tr><td>Familias con invariante de Dehn no nulo</td><td><b>11 familias, ninguno de cuyos miembros tesela.</b> Para un sólido equilátero el invariante de Dehn es 1 ⊗ Σθ, así que solo se anula si la suma de los ángulos diedros es un múltiplo racional de π (Lagarias–Moews 1995).</td></tr>
+    <tr><td>Familias en las que tesela todo miembro</td><td>prismas triangulares, paralelepípedos rómbicos y tres familias de 3 parámetros: el <a href="catalog.html#gen-gyro">girobifastigio generalizado</a>, el <a href="catalog.html#gen-elongated">girobifastigio alargado generalizado</a> y <a href="catalog.html#rhombus-triangle">rombo ⊕ triángulo</a></td></tr>
+    <tr><td>Abierto</td><td>Prismas pentagonales y hexagonales. Un prisma así tesela si su sección perpendicular a las aristas laterales tesela el plano; si el recíproco es cierto es una pregunta abierta.</td></tr>
+  </table>
+  <p class="small muted">Advertencia: las realizaciones se hallaron numéricamente (Levenberg–Marquardt con múltiples arranques y verificación estricta de convexidad), así que la lista es casi con certeza completa, pero aún no está demostrado.</p>
 
   <h2>Diario</h2>
   <div class="timeline">
+    <div class="entry"><time>2026-10-07</time><h3>Primera pasada de la enumeración</h3><p>Se procesaron los 301 tipos con ≤ 8 caras. Ningún sólido equilátero rígido tesela. Once familias quedan descartadas por el invariante de Dehn. Cinco familias teselan por completo, tres de ellas nuevas en el catálogo. Los prismas pentagonales y hexagonales siguen abiertos.</p></div>
     <div class="entry"><time>2026-10-07</time><h3>Inicio del proyecto</h3><p>Revisión bibliográfica completada; no se encontró una clasificación previa. El repositorio y este sitio ya están en línea, con un catálogo de 15 sólidos (11 que llenan el espacio y 4 que no), un constructor de zonoedros con el criterio de McMullen y un analizador de poliedros.</p></div>
   </div>
 </article>

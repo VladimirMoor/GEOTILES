@@ -4,3 +4,7 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 .claude/
+tools/
+research/p1/data/test*.json
+research/p1/__pycache__/
+research/p1/data/realizations*.json

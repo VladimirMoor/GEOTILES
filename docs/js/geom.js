@@ -47,14 +47,27 @@ export function convexHull(input) {
     }
     if ((pos && neg) || (!pos && !neg)) continue;
     if (pos) { nr = v.mul(nr, -1); d = -d; }
-    if (!planes.some((q) => v.dot(q.n, nr) > 1 - 1e-9 && Math.abs(q.d - d) < tol * 10)) planes.push({ n: nr, d });
+    // грань определяется множеством вершин в её плоскости: почти копланарные плоскости дают одно множество
+    const on = [];
+    pts.forEach((p, q) => { if (Math.abs(v.dot(nr, p) - d) < tol * 10) on.push(q); });
+    const key = on.join(',');
+    if (!planes.some((q) => q.key === key)) planes.push({ n: nr, d, on, key });
   }
-  if (planes.length < 4) throw new Error('err.coplanar');
+  // плоскость, чьё множество вершин строго содержится в другом, — та же грань, взятая по неполной тройке
+  const maximal = planes.filter((p) => !planes.some((q) => q !== p && q.on.length > p.on.length && p.on.every((i) => q.on.includes(i))));
+  if (maximal.length < 4) throw new Error('err.coplanar');
 
   const faces = [];
-  for (const { n: nr, d } of planes) {
-    const onPlane = [];
-    pts.forEach((p, i) => { if (Math.abs(v.dot(nr, p) - d) < tol * 10) onPlane.push(i); });
+  for (const { n: nr0, on: onPlane } of maximal) {
+    // нормаль усредняем по всем парам точек грани (устойчивее, чем по одной тройке)
+    const c0 = v.avg(onPlane.map((i) => pts[i]));
+    let acc = [0, 0, 0];
+    for (let t = 0; t < onPlane.length; t++) for (let s = t + 1; s < onPlane.length; s++) {
+      const cr = v.cross(v.sub(pts[onPlane[t]], c0), v.sub(pts[onPlane[s]], c0));
+      acc = v.add(acc, v.dot(cr, nr0) >= 0 ? cr : v.mul(cr, -1));
+    }
+    const nr = v.len(acc) > 0 ? v.unit(acc) : nr0;
+    const d = v.dot(nr, c0);
     // плоская выпуклая оболочка точек грани: отбрасывает точки внутри грани и на рёбрах
     const c = v.avg(onPlane.map((i) => pts[i]));
     const u = v.unit(v.sub(pts[onPlane[0]], c));
@@ -114,6 +127,8 @@ export function analyze(poly) {
     if (!edgeMap.has(key)) edgeMap.set(key, { a: Math.min(a, b), b: Math.max(a, b), faces: [] });
     edgeMap.get(key).faces.push(fi);
   }));
+  // у ребра выпуклого многогранника ровно две грани; иначе тело вырождено (почти копланарные грани)
+  if ([...edgeMap.values()].some((e) => e.faces.length !== 2)) throw new Error('err.degenerate');
   const edges = [...edgeMap.values()].map((e) => {
     const [f1, f2] = e.faces;
     const cos = Math.max(-1, Math.min(1, v.dot(N[f1], N[f2])));

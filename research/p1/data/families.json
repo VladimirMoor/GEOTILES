@@ -1,0 +1,623 @@
+{
+ "F5-001": {
+  "dims": [
+   2
+  ],
+  "members": 1230,
+  "faces": "RRRTT",
+  "vertexDegrees": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 9,
+  "supplementaryPairs": 3,
+  "zones": [
+   3,
+   2,
+   2,
+   2
+  ]
+ },
+ "F6-002": {
+  "dims": [
+   1
+  ],
+  "members": 77,
+  "faces": "5RRTTT",
+  "vertexDegrees": [
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   70.5288
+  ],
+  "nConstEdges": 4,
+  "nEdges": 11,
+  "supplementaryPairs": 0,
+  "zones": [
+   3,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1
+  ]
+ },
+ "F6-007": {
+  "dims": [
+   3
+  ],
+  "members": 954,
+  "faces": "RRRRRR",
+  "vertexDegrees": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 12,
+  "supplementaryPairs": 12,
+  "zones": [
+   4,
+   4,
+   4
+  ]
+ },
+ "F7-009": {
+  "dims": [
+   2
+  ],
+  "members": 26,
+  "faces": "RRRTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   70.5288
+  ],
+  "nConstEdges": 3,
+  "nEdges": 12,
+  "supplementaryPairs": 0,
+  "zones": [
+   3,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1
+  ]
+ },
+ "F7-011": {
+  "dims": [
+   1,
+   3
+  ],
+  "members": 0,
+  "degenerate": true,
+  "minAngle": 0.000400839225648042
+ },
+ "F7-016": {
+  "dims": [
+   1
+  ],
+  "members": 74,
+  "faces": "6RRTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   54.7356,
+   109.4712
+  ],
+  "nConstEdges": 6,
+  "nEdges": 13,
+  "supplementaryPairs": 0,
+  "zones": [
+   3,
+   2,
+   2,
+   2,
+   2,
+   1,
+   1
+  ]
+ },
+ "F7-029": {
+  "dims": [
+   2
+  ],
+  "members": 84,
+  "faces": "5RRRTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 13,
+  "supplementaryPairs": 5,
+  "zones": [
+   3,
+   2,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "F7-031": {
+  "dims": [
+   4
+  ],
+  "members": 697,
+  "faces": "55RRRRR",
+  "vertexDegrees": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 15,
+  "supplementaryPairs": 5,
+  "zones": [
+   5,
+   2,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "F8-057": {
+  "dims": [
+   1
+  ],
+  "members": 21,
+  "faces": "5RRTTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   70.5288,
+   141.0576
+  ],
+  "nConstEdges": 7,
+  "nEdges": 14,
+  "supplementaryPairs": 0,
+  "zones": [
+   3,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-178": {
+  "dims": [
+   1
+  ],
+  "members": 60,
+  "faces": "7RRTTTTT",
+  "vertexDegrees": [
+   5,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   37.3774,
+   138.1897
+  ],
+  "nConstEdges": 8,
+  "nEdges": 15,
+  "supplementaryPairs": 0,
+  "zones": [
+   3,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-192": {
+  "dims": [
+   5
+  ],
+  "members": 544,
+  "faces": "66RRRRRR",
+  "vertexDegrees": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 18,
+  "supplementaryPairs": 6,
+  "zones": [
+   6,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "F8-203": {
+  "dims": [
+   3
+  ],
+  "members": 55,
+  "faces": "RRRRTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 14,
+  "supplementaryPairs": 4,
+  "zones": [
+   3,
+   3,
+   2,
+   2,
+   2,
+   2
+  ]
+ },
+ "F8-204": {
+  "dims": [
+   1
+  ],
+  "members": 757,
+  "faces": "6RRRTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   70.5288
+  ],
+  "nConstEdges": 3,
+  "nEdges": 15,
+  "supplementaryPairs": 9,
+  "zones": [
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-206": {
+  "dims": [
+   1
+  ],
+  "members": 766,
+  "faces": "RRTTTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   4,
+   4,
+   3,
+   3
+  ],
+  "constAngles": [
+   109.4712
+  ],
+  "nConstEdges": 4,
+  "nEdges": 13,
+  "supplementaryPairs": 4,
+  "zones": [
+   3,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-235": {
+  "dims": [
+   1
+  ],
+  "members": 59,
+  "faces": "5RRRRTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   54.7356,
+   109.4712,
+   125.2644
+  ],
+  "nConstEdges": 7,
+  "nEdges": 15,
+  "supplementaryPairs": 6,
+  "zones": [
+   4,
+   4,
+   3,
+   1,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-244": {
+  "dims": [
+   1
+  ],
+  "members": 10,
+  "faces": "556RRRTT",
+  "vertexDegrees": [
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   70.5288
+  ],
+  "nConstEdges": 3,
+  "nEdges": 17,
+  "supplementaryPairs": 8,
+  "zones": [
+   4,
+   4,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-249": {
+  "dims": [
+   3
+  ],
+  "members": 100,
+  "faces": "6RRRRRTT",
+  "vertexDegrees": [
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 16,
+  "supplementaryPairs": 5,
+  "zones": [
+   4,
+   4,
+   3,
+   3,
+   2
+  ]
+ },
+ "F8-250": {
+  "dims": [
+   1
+  ],
+  "members": 26,
+  "faces": "5RRRRTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   54.7356,
+   109.4712,
+   125.2644
+  ],
+  "nConstEdges": 7,
+  "nEdges": 15,
+  "supplementaryPairs": 4,
+  "zones": [
+   4,
+   3,
+   3,
+   2,
+   1,
+   1,
+   1
+  ]
+ },
+ "F8-252": {
+  "dims": [
+   2
+  ],
+  "members": 201,
+  "faces": "RRRRTTTT",
+  "vertexDegrees": [
+   4,
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [
+   70.5288
+  ],
+  "nConstEdges": 2,
+  "nEdges": 14,
+  "supplementaryPairs": 0,
+  "zones": [
+   4,
+   2,
+   2,
+   2,
+   2,
+   1,
+   1
+  ]
+ },
+ "F8-255": {
+  "dims": [
+   3
+  ],
+  "members": 60,
+  "faces": "5555RRRR",
+  "vertexDegrees": [
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "constAngles": [],
+  "nConstEdges": 0,
+  "nEdges": 18,
+  "supplementaryPairs": 8,
+  "zones": [
+   4,
+   3,
+   3,
+   2,
+   2,
+   2,
+   2
+  ]
+ }
+}

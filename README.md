@@ -26,6 +26,8 @@ docs/            static site (deployed as is, no build step)
   js/i18n.js     translations
   js/catalog-data.js  catalog entries
   vendor/three/  three.js r170 (MIT)
+research/p1/     problem 1 pipeline: enumerate_types → realize → analyze → families/identities → search_tiling
+  RESULTS.md     first-pass results for equilateral polyhedra with ≤ 8 faces
 scripts/serve.py local no-cache dev server
 problem1_literature.md  literature review for problem 1 (RU)
 ```
@@ -37,6 +39,17 @@ python3 scripts/serve.py 8766
 ```
 
 Then open http://localhost:8766.
+
+## Reproduce the research pipeline
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install numpy scipy mpmath
+mkdir -p tools && curl -L https://users.cecs.anu.edu.au/~bdm/plantri/plantri55.tar.gz | tar xz -C tools && make -C tools/plantri55 plantri
+cd research/p1
+../../.venv/bin/python enumerate_types.py
+../../.venv/bin/python realize.py --starts 2000
+../../.venv/bin/python analyze.py
+```
 
 ## Deploy
 
