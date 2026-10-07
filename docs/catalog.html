@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog · GEOTILES</title>
+<meta name="description" content="Catalog of equilateral convex polyhedra that fill space: 3D viewer, tilings, dihedral angle checks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<main class="app">
+  <aside class="side" id="side"></aside>
+  <div class="stage" id="stage">
+    <div class="stage-title" id="stage-title"></div>
+    <div class="toolbar">
+      <div class="seg"><button data-mode="solid" data-i18n="tb.solid"></button><button data-mode="tiling" data-i18n="tb.tiling"></button></div>
+      <div class="seg tiling-only"><button data-color="mixed" class="on" data-i18n="tb.mixed"></button><button data-color="orbit" data-i18n="tb.orbit"></button></div>
+      <label class="ctl tiling-only"><span data-i18n="tb.explode"></span> <input id="explode" type="range" min="0" max="0.8" step="0.01" value="0.12"></label>
+      <label class="ctl tiling-only"><span data-i18n="tb.cut"></span> <input id="cut" type="range" min="0" max="1" step="0.01" value="1"></label>
+      <label class="ctl tiling-only"><span data-i18n="tb.size"></span> <input id="radius" type="range" min="1.2" max="5" step="0.1" value="2.6"></label>
+      <label class="ctl"><input id="spin" type="checkbox" checked> <span data-i18n="tb.spin"></span></label>
+    </div>
+  </div>
+  <aside class="info"><div id="about"></div><div id="details"></div></aside>
+</main>
+<script type="module" src="js/catalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEOTILES</title>
+<meta name="description" content="Open research on tilings: equilateral polyhedra that fill space. Catalog, 3D tools and a research log.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-stage" id="hero"></div>
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="eyebrow" data-i18n="home.eyebrow"></div>
+      <h1 data-i18n="home.h1"></h1>
+      <p data-i18n="home.lead"></p>
+      <div class="btns">
+        <a class="btn primary" href="catalog.html" data-i18n="home.cta.catalog"></a>
+        <a class="btn" href="lab.html" data-i18n="home.cta.lab"></a>
+        <a class="btn" href="research.html" data-i18n="home.cta.research"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="home.tools.eyebrow"></div>
+    <h2 data-i18n="home.tools.h"></h2>
+    <div class="grid" style="margin-top:20px">
+      <a class="card" href="catalog.html"><h3 data-i18n="home.card.catalog.h"></h3><p data-i18n="home.card.catalog.p"></p></a>
+      <a class="card" href="lab.html"><h3 data-i18n="home.card.zono.h"></h3><p data-i18n="home.card.zono.p"></p></a>
+      <a class="card" href="lab.html"><h3 data-i18n="home.card.hull.h"></h3><p data-i18n="home.card.hull.p"></p></a>
+      <a class="card" href="research.html"><h3 data-i18n="home.card.log.h"></h3><p data-i18n="home.card.log.p"></p></a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="home.problems.eyebrow"></div>
+    <h2 data-i18n="home.problems.h"></h2>
+    <p class="muted" style="max-width:720px" data-i18n="home.problems.p"></p>
+    <div class="problems" id="problems" style="margin-top:20px"></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module" src="js/home.js"></script>
+</body>
+</html>

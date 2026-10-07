@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · GEOTILES</title>
+<meta name="description" content="Research log: equilateral convex polyhedra that tile space. Literature, plan and results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<section><div class="wrap doc">
+
+<!-- ======================= ENGLISH ======================= -->
+<article data-lang="en">
+  <div class="eyebrow">problem 01 · <span class="chip info">in progress</span></div>
+  <h1>Equilateral convex polyhedra that tile space</h1>
+  <p class="muted">Which convex polyhedra with all edges of equal length have congruent copies that fill three-dimensional space without gaps or overlaps? The planar version is solved: Hirschhorn and Hunt classified equilateral convex pentagons that tile the plane in 1985, and Klaassen gave a short proof of the full polygon classification in 2025.</p>
+
+  <h2>Literature (searched 7 October 2026)</h2>
+  <p><b>We found no classification of equilateral space-filling polyhedra.</b> Klaassen’s 2025 paper treats only the plane. A 2026 paper notes that no general classification of space-filling polyhedra exists, not even for tetrahedra.</p>
+  <table>
+    <tr><th>Class</th><th>Known result</th><th>Source</th></tr>
+    <tr><td>Regular-faced</td><td>Exactly 5 fill space: cube, triangular prism, hexagonal prism, truncated octahedron, gyrobifastigium (J26)</td><td>Johnson 1966</td></tr>
+    <tr><td>Parallelohedra</td><td>All 5 Fedorov types have equilateral versions (zonohedra with unit generators)</td><td>Fedorov 1885; Bilinski 1960</td></tr>
+    <tr><td>Prisms</td><td>A prism with rhombic sides over a plane-tiling equilateral polygon fills space; those bases are classified</td><td>Hirschhorn–Hunt 1985; Klaassen 2025</td></tr>
+    <tr><td>Goldberg’s catalogs</td><td>Space-fillers with 5–10 faces (lists of known examples, completeness not proved)</td><td>Goldberg 1972–1982</td></tr>
+    <tr><td>Isohedral simple tilings</td><td>Enumerated combinatorially for tiles with ≤ 16 faces; none with fewer than 14 faces</td><td>Delgado-Friedrichs, O’Keeffe 2005</td></tr>
+  </table>
+
+  <h2>Observations</h2>
+  <ul>
+    <li>A 3-polytope with <i>e</i> edges has a realization space of dimension <i>e</i> − 1 up to similarity, and being equilateral imposes <i>e</i> − 1 equations. So most combinatorial types have finitely many equilateral realizations. Flexible exceptions include rhombic faces and prisms.</li>
+    <li><b>Dihedral angle filter.</b> Around an edge of the tiling, the tiles’ dihedral angles sum to 360°, or to 180° when the edge lies inside a neighbor’s face. This necessary condition is checked automatically in the <a href="catalog.html">catalog</a> and the <a href="lab.html">lab</a>.</li>
+    <li><b>Small cases.</b> With 4 faces, only the regular tetrahedron is equilateral, and it does not tile. With 5 faces, J1 does not tile, while every equilateral triangular prism does.</li>
+  </ul>
+
+  <h2>Plan</h2>
+  <ul class="steps">
+    <li><span class="chip ok">done</span> Literature review</li>
+    <li><span class="chip ok">done</span> Open repository, website and 3D tools</li>
+    <li><span class="chip warn">discussing</span> Fix the class to enumerate. Proposal: every equilateral polyhedron with ≤ 8 faces, any tiling, not only isohedral.</li>
+    <li><span class="chip dim">next</span> Enumerate combinatorial types (plantri), solve for equilateral realizations</li>
+    <li><span class="chip dim">next</span> Apply the dihedral filter, then build tilings or prove none exist</li>
+    <li><span class="chip dim">next</span> Cross-check against Goldberg’s catalogs</li>
+  </ul>
+
+  <h2>Log</h2>
+  <div class="timeline">
+    <div class="entry"><time>2026-10-07</time><h3>Project started</h3><p>Literature review done, no prior classification found. The repository and this site are live, with a catalog of 15 solids (11 space-fillers, 4 non-tilers), a zonohedron builder with McMullen’s criterion, and a polyhedron analyzer.</p></div>
+  </div>
+</article>
+
+<!-- ======================= РУССКИЙ ======================= -->
+<article data-lang="ru" hidden>
+  <div class="eyebrow">задача 01 · <span class="chip info">в работе</span></div>
+  <h1>Равносторонние выпуклые многогранники, замощающие пространство</h1>
+  <p class="muted">Какие выпуклые многогранники, у которых все рёбра равны, заполняют трёхмерное пространство своими конгруэнтными копиями без щелей и наложений? Плоский вариант решён: равносторонние выпуклые пятиугольники, замощающие плоскость, классифицировали Хиршхорн и Хант в 1985 году, а короткое доказательство полной классификации многоугольников дал Клаассен в 2025-м.</p>
+
+  <h2>Литература (поиск 7 октября 2026)</h2>
+  <p><b>Классификации равносторонних многогранников, заполняющих пространство, мы не нашли.</b> Статья Клаассена 2025 года посвящена только плоскости. В статье 2026 года отмечено, что общей классификации многогранников, заполняющих пространство, нет даже для тетраэдров.</p>
+  <table>
+    <tr><th>Класс</th><th>Что известно</th><th>Источник</th></tr>
+    <tr><td>Правильногранные</td><td>Пространство заполняют ровно 5: куб, треугольная призма, шестиугольная призма, усечённый октаэдр, гиробифастигиум (J26)</td><td>Johnson 1966</td></tr>
+    <tr><td>Параллелоэдры</td><td>У всех 5 типов Фёдорова есть равносторонние варианты (зоноэдры с единичными образующими)</td><td>Фёдоров 1885; Билинский 1960</td></tr>
+    <tr><td>Призмы</td><td>Призма с ромбическими боковыми гранями над равносторонним многоугольником, замощающим плоскость, заполняет пространство; такие основания классифицированы</td><td>Hirschhorn–Hunt 1985; Klaassen 2025</td></tr>
+    <tr><td>Каталоги Голдберга</td><td>Многогранники с 5–10 гранями, заполняющие пространство (списки известных примеров, полнота не доказана)</td><td>Goldberg 1972–1982</td></tr>
+    <tr><td>Изоэдральные простые разбиения</td><td>Комбинаторно перечислены для плиток с ≤ 16 гранями; плиток меньше чем с 14 гранями нет</td><td>Delgado-Friedrichs, O’Keeffe 2005</td></tr>
+  </table>
+
+  <h2>Наблюдения</h2>
+  <ul>
+    <li>У 3-многогранника с <i>e</i> рёбрами пространство реализаций по модулю подобия имеет размерность <i>e</i> − 1, а равносторонность даёт <i>e</i> − 1 уравнений. Поэтому у большинства комбинаторных типов равносторонних реализаций конечное число. Гибкие исключения — ромбические грани и призмы.</li>
+    <li><b>Фильтр двугранных углов.</b> Вокруг ребра разбиения двугранные углы плиток дают 360°, или 180°, если ребро лежит внутри грани соседа. Это необходимое условие проверяется автоматически в <a href="catalog.html">каталоге</a> и <a href="lab.html">лаборатории</a>.</li>
+    <li><b>Малые случаи.</b> Среди многогранников с 4 гранями равносторонний только правильный тетраэдр, и он не замощает. С 5 гранями: J1 не замощает, а все равносторонние треугольные призмы замощают.</li>
+  </ul>
+
+  <h2>План</h2>
+  <ul class="steps">
+    <li><span class="chip ok">готово</span> Обзор литературы</li>
+    <li><span class="chip ok">готово</span> Открытый репозиторий, сайт и 3D-инструменты</li>
+    <li><span class="chip warn">обсуждаем</span> Выбрать класс для перебора. Предложение: все равносторонние многогранники с ≤ 8 гранями, любые разбиения, не только изоэдральные.</li>
+    <li><span class="chip dim">далее</span> Перебрать комбинаторные типы (plantri), найти равносторонние реализации</li>
+    <li><span class="chip dim">далее</span> Применить фильтр углов, затем построить разбиения или доказать, что их нет</li>
+    <li><span class="chip dim">далее</span> Сверить с каталогами Голдберга</li>
+  </ul>
+
+  <h2>Журнал</h2>
+  <div class="timeline">
+    <div class="entry"><time>2026-10-07</time><h3>Старт проекта</h3><p>Обзор литературы готов, предшествующей классификации не найдено. Запущены репозиторий и этот сайт: каталог из 15 тел (11 замощающих, 4 незамощающих), конструктор зоноэдров с критерием МакМаллена и анализатор многогранников.</p></div>
+  </div>
+</article>
+
+<!-- ======================= ESPAÑOL ======================= -->
+<article data-lang="es" hidden>
+  <div class="eyebrow">problema 01 · <span class="chip info">en curso</span></div>
+  <h1>Poliedros convexos equiláteros que teselan el espacio</h1>
+  <p class="muted">¿Qué poliedros convexos con todas las aristas iguales llenan el espacio tridimensional con copias congruentes, sin huecos ni solapamientos? La versión plana está resuelta: Hirschhorn y Hunt clasificaron en 1985 los pentágonos convexos equiláteros que teselan el plano, y Klaassen dio en 2025 una prueba breve de la clasificación completa de polígonos.</p>
+
+  <h2>Bibliografía (búsqueda del 7 de octubre de 2026)</h2>
+  <p><b>No encontramos ninguna clasificación de poliedros equiláteros que llenen el espacio.</b> El artículo de Klaassen de 2025 trata solo el plano. Un artículo de 2026 señala que no existe una clasificación general de los poliedros que llenan el espacio, ni siquiera para los tetraedros.</p>
+  <table>
+    <tr><th>Clase</th><th>Resultado conocido</th><th>Fuente</th></tr>
+    <tr><td>De caras regulares</td><td>Exactamente 5 llenan el espacio: cubo, prisma triangular, prisma hexagonal, octaedro truncado, girobifastigio (J26)</td><td>Johnson 1966</td></tr>
+    <tr><td>Paraleloedros</td><td>Los 5 tipos de Fiódorov tienen versiones equiláteras (zonoedros con generadores unitarios)</td><td>Fiódorov 1885; Bilinski 1960</td></tr>
+    <tr><td>Prismas</td><td>Un prisma con caras laterales rómbicas sobre un polígono equilátero que tesela el plano llena el espacio; esas bases están clasificadas</td><td>Hirschhorn–Hunt 1985; Klaassen 2025</td></tr>
+    <tr><td>Catálogos de Goldberg</td><td>Poliedros de 5 a 10 caras que llenan el espacio (listas de ejemplos conocidos, sin prueba de completitud)</td><td>Goldberg 1972–1982</td></tr>
+    <tr><td>Teselaciones isoédricas simples</td><td>Enumeradas combinatoriamente para teselas de ≤ 16 caras; no hay ninguna con menos de 14 caras</td><td>Delgado-Friedrichs, O’Keeffe 2005</td></tr>
+  </table>
+
+  <h2>Observaciones</h2>
+  <ul>
+    <li>Un 3-politopo con <i>e</i> aristas tiene un espacio de realizaciones de dimensión <i>e</i> − 1 salvo semejanza, y ser equilátero impone <i>e</i> − 1 ecuaciones. Por eso la mayoría de los tipos combinatorios tienen un número finito de realizaciones equiláteras. Hay excepciones flexibles, como las caras rómbicas y los prismas.</li>
+    <li><b>Filtro de ángulos diedros.</b> Alrededor de una arista de la teselación, los ángulos diedros de las teselas suman 360°, o 180° si la arista está dentro de una cara vecina. Esta condición necesaria se comprueba automáticamente en el <a href="catalog.html">catálogo</a> y el <a href="lab.html">laboratorio</a>.</li>
+    <li><b>Casos pequeños.</b> Con 4 caras, el único equilátero es el tetraedro regular, y no tesela. Con 5 caras, J1 no tesela, mientras que todo prisma triangular equilátero sí.</li>
+  </ul>
+
+  <h2>Plan</h2>
+  <ul class="steps">
+    <li><span class="chip ok">hecho</span> Revisión bibliográfica</li>
+    <li><span class="chip ok">hecho</span> Repositorio abierto, sitio web y herramientas 3D</li>
+    <li><span class="chip warn">en discusión</span> Fijar la clase a enumerar. Propuesta: todos los poliedros equiláteros con ≤ 8 caras y cualquier teselación, no solo isoédrica.</li>
+    <li><span class="chip dim">siguiente</span> Enumerar los tipos combinatorios (plantri) y resolver sus realizaciones equiláteras</li>
+    <li><span class="chip dim">siguiente</span> Aplicar el filtro de ángulos y luego construir teselaciones o probar que no existen</li>
+    <li><span class="chip dim">siguiente</span> Contrastar con los catálogos de Goldberg</li>
+  </ul>
+
+  <h2>Diario</h2>
+  <div class="timeline">
+    <div class="entry"><time>2026-10-07</time><h3>Inicio del proyecto</h3><p>Revisión bibliográfica completada; no se encontró una clasificación previa. El repositorio y este sitio ya están en línea, con un catálogo de 15 sólidos (11 que llenan el espacio y 4 que no), un constructor de zonoedros con el criterio de McMullen y un analizador de poliedros.</p></div>
+  </div>
+</article>
+
+<h2 id="refs">References · Литература · Referencias</h2>
+<ul class="small">
+  <li>B. Klaassen, Old problem revisited: Which equilateral convex polygons tile the plane? 2025. <a href="https://arxiv.org/abs/2506.18473">arXiv:2506.18473</a></li>
+  <li>Softening locally polyhedral tilings, 2026. <a href="https://arxiv.org/abs/2604.18545">arXiv:2604.18545</a></li>
+  <li>M. Goldberg, On the space-filling hexahedra, Geom. Dedicata 6 (1977). <a href="https://link.springer.com/article/10.1007/BF00181585">link</a></li>
+  <li>M. Goldberg, On the space-filling heptahedra, Geom. Dedicata 7 (1978). <a href="https://link.springer.com/article/10.1007/BF00181630">link</a></li>
+  <li>M. Goldberg, On the space-filling octahedra, Geom. Dedicata 10 (1981). <a href="https://link.springer.com/article/10.1007/BF01447431">link</a></li>
+  <li>M. Goldberg, On the space-filling enneahedra, Geom. Dedicata 12 (1982). <a href="https://link.springer.com/article/10.1007/BF00147314">link</a></li>
+  <li>O. Delgado-Friedrichs, M. O’Keeffe, Isohedral simple tilings: binodal and by tiles with ≤16 faces, Acta Cryst. A (2005). <a href="https://researchportalplus.anu.edu.au/en/publications/isohedral-simple-tilings-binodal-and-by-tiles-with-16-faces/">link</a></li>
+  <li>S. Schein, J. M. Gayed, Fourth class of convex equilateral polyhedron with polyhedral symmetry, PNAS (2014). <a href="https://www.pnas.org/doi/10.1073/pnas.1310939111">link</a></li>
+  <li>P. McMullen, Space tiling zonotopes, Mathematika 22 (1975).</li>
+  <li><a href="https://en.wikipedia.org/wiki/Space-filling_polyhedron">Space-filling polyhedron</a>, <a href="https://en.wikipedia.org/wiki/Gyrobifastigium">Gyrobifastigium</a>, <a href="https://en.wikipedia.org/wiki/Bilinski_dodecahedron">Bilinski dodecahedron</a>, <a href="https://mathworld.wolfram.com/GabledRhombohedron.html">Gabled rhombohedron</a></li>
+</ul>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">import { setupPage } from './js/ui.js'; setupPage('research');</script>
+</body>
+</html>

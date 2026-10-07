@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab · GEOTILES</title>
+<meta name="description" content="Zonohedron builder with McMullen's criterion and a convex polyhedron analyzer with a dihedral angle filter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<main class="lab">
+  <aside class="side">
+    <div class="tabs seg">
+      <button data-tool="zono" class="on" data-i18n="lab.zono"></button>
+      <button data-tool="hull" data-i18n="lab.hull"></button>
+    </div>
+
+    <div data-panel="zono">
+      <p class="small muted" data-i18n="lab.zono.help"></p>
+      <div class="presets" id="zono-presets"></div>
+      <textarea id="zono-input" spellcheck="false"></textarea>
+      <label class="ctl small" style="margin-top:8px"><input type="checkbox" id="zono-norm" checked> <span data-i18n="lab.norm"></span></label>
+      <div class="btns" style="margin-top:12px">
+        <button class="btn primary" id="zono-go" data-i18n="lab.build"></button>
+        <button class="btn" id="zono-rand" data-i18n="lab.rand"></button>
+      </div>
+    </div>
+
+    <div data-panel="hull" hidden>
+      <p class="small muted" data-i18n="lab.hull.help"></p>
+      <div class="presets" id="hull-presets"></div>
+      <textarea id="hull-input" spellcheck="false"></textarea>
+      <div class="btns" style="margin-top:12px"><button class="btn primary" id="hull-go" data-i18n="lab.build"></button></div>
+    </div>
+    <p class="err" id="err"></p>
+  </aside>
+
+  <div class="stage" id="stage">
+    <div class="stage-title" id="stage-title"></div>
+    <div class="toolbar">
+      <div class="seg"><button data-mode="solid" class="on" data-i18n="tb.solid"></button><button data-mode="tiling" data-i18n="tb.tiling"></button></div>
+      <label class="ctl tiling-only"><span data-i18n="tb.explode"></span> <input id="explode" type="range" min="0" max="0.8" step="0.01" value="0.12"></label>
+      <label class="ctl tiling-only"><span data-i18n="tb.cut"></span> <input id="cut" type="range" min="0" max="1" step="0.01" value="1"></label>
+      <label class="ctl"><input id="spin" type="checkbox" checked> <span data-i18n="tb.spin"></span></label>
+    </div>
+  </div>
+  <aside class="info" id="info"></aside>
+</main>
+<script type="module" src="js/lab.js"></script>
+</body>
+</html>
