@@ -8,3 +8,7 @@ tools/
 research/p1/data/test*.json
 research/p1/__pycache__/
 research/p1/data/realizations*.json
+research/p1/data/ms/
+research/p1/data/sing/
+research/p1/data/*.sing
+research/p1/data/msolve_*

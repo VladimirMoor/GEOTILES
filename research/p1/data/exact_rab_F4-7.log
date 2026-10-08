@@ -1,0 +1,44 @@
+F4-001: 11 vars, 11 eqs, 0.05s  zero-dim
+F5-001: 23 vars, 29 eqs, 0.02s  positive-dim
+F5-002: 17 vars, 19 eqs, 0.09s  zero-dim
+F6-001: 39 vars, 43 eqs, 0.02s  empty
+F6-002: 31 vars, 35 eqs, 0.06s  positive-dim
+F6-003: 23 vars, 27 eqs, 0.01s  empty
+F6-004: 17 vars, 17 eqs, 0.12s  zero-dim
+F6-005: 25 vars, 25 eqs, 2.12s  zero-dim
+F6-006: 29 vars, 37 eqs, 0.01s  empty
+F6-007: 35 vars, 47 eqs, 0.04s  positive-dim
+F7-001: 52 vars, 56 eqs, 28.92s  positive-dim
+F7-002: 47 vars, 49 eqs, TIMEOUT>120s
+F7-003: 37 vars, 43 eqs, 0.02s  empty
+F7-004: 45 vars, 51 eqs, 0.02s  empty
+F7-005: 35 vars, 45 eqs, 0.01s  empty
+F7-006: 42 vars, 50 eqs, 77.68s  positive-dim
+F7-007: 37 vars, 43 eqs, 0.03s  positive-dim
+F7-008: 29 vars, 35 eqs, 0.28s  zero-dim
+F7-009: 29 vars, 35 eqs, 0.18s  positive-dim
+F7-010: 49 vars, 55 eqs, 0.03s  empty
+F7-011: 44 vars, 48 eqs, 0.02s  empty
+F7-012: 37 vars, 43 eqs, 0.01s  empty
+F7-013: 29 vars, 35 eqs, 0.01s  empty
+F7-014: 23 vars, 25 eqs, 0.21s  zero-dim
+F7-015: 29 vars, 35 eqs, 0.01s  empty
+F7-016: 36 vars, 40 eqs, 6.47s  positive-dim
+F7-017: 31 vars, 33 eqs, 3.87s  zero-dim
+F7-018: 23 vars, 25 eqs, 0.01s  empty
+F7-019: 36 vars, 40 eqs, 0.35s  positive-dim
+F7-020: 30 vars, 30 eqs, 0.14s  empty
+F7-021: 39 vars, 41 eqs, 112.83s  zero-dim
+F7-022: 39 vars, 41 eqs, 25.42s  zero-dim
+F7-023: 31 vars, 33 eqs, 0.04s  empty
+F7-024: 45 vars, 51 eqs, 0.07s  empty
+F7-025: 44 vars, 48 eqs, 0.02s  empty
+F7-026: 37 vars, 43 eqs, 0.01s  empty
+F7-027: 54 vars, 54 eqs, TIMEOUT>120s
+F7-028: 47 vars, 49 eqs, TIMEOUT>120s
+F7-029: 37 vars, 43 eqs, 6.44s  positive-dim
+F7-030: 29 vars, 35 eqs, 0.30s  zero-dim
+F7-031: 51 vars, 61 eqs, TIMEOUT>120s
+F7-032: 53 vars, 59 eqs, 0.20s  empty
+F7-033: 43 vars, 53 eqs, 0.01s  empty
+F7-034: 35 vars, 45 eqs, 0.01s  empty

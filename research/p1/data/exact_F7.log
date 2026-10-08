@@ -1,0 +1,34 @@
+F7-001: 32 vars, 36 eqs, TIMEOUT>60s
+F7-002: 29 vars, 31 eqs, 35.87s  positive-dim
+F7-003: 20 vars, 26 eqs, 0.01s  positive-dim
+F7-004: 26 vars, 32 eqs, 0.03s  positive-dim
+F7-005: 17 vars, 27 eqs, 0.02s  zero-dim
+F7-006: 23 vars, 31 eqs, 0.01s  positive-dim
+F7-007: 20 vars, 26 eqs, 0.01s  positive-dim
+F7-008: 14 vars, 20 eqs, 0.03s  zero-dim
+F7-009: 14 vars, 20 eqs, 0.01s  positive-dim
+F7-010: 29 vars, 35 eqs, 1.01s  positive-dim
+F7-011: 26 vars, 30 eqs, 0.70s  positive-dim
+F7-012: 20 vars, 26 eqs, 0.01s  positive-dim
+F7-013: 14 vars, 20 eqs, 0.01s  empty
+F7-014: 11 vars, 13 eqs, 0.03s  zero-dim
+F7-015: 14 vars, 20 eqs, 0.03s  zero-dim
+F7-016: 20 vars, 24 eqs, 0.04s  positive-dim
+F7-017: 17 vars, 19 eqs, 0.37s  zero-dim
+F7-018: 11 vars, 13 eqs, 0.05s  zero-dim
+F7-019: 20 vars, 24 eqs, 0.04s  positive-dim
+F7-020: 17 vars, 17 eqs, 0.07s  positive-dim
+F7-021: 23 vars, 25 eqs, 0.78s  positive-dim
+F7-022: 23 vars, 25 eqs, 0.42s  positive-dim
+F7-023: 17 vars, 19 eqs, 0.02s  positive-dim
+F7-024: 26 vars, 32 eqs, 0.08s  positive-dim
+F7-025: 26 vars, 30 eqs, 0.26s  positive-dim
+F7-026: 20 vars, 26 eqs, 0.01s  positive-dim
+F7-027: 35 vars, 35 eqs, TIMEOUT>60s
+F7-028: 29 vars, 31 eqs, TIMEOUT>60s
+F7-029: 20 vars, 26 eqs, 0.01s  positive-dim
+F7-030: 14 vars, 20 eqs, 0.03s  zero-dim
+F7-031: 29 vars, 39 eqs, 0.12s  positive-dim
+F7-032: 32 vars, 38 eqs, 6.17s  positive-dim
+F7-033: 23 vars, 33 eqs, 0.01s  empty
+F7-034: 17 vars, 27 eqs, 0.01s  positive-dim

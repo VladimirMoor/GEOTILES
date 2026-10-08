@@ -1,0 +1,41 @@
+F8-003: 53 vars, 57 eqs, 0.34s  empty
+F8-004: 58 vars, 64 eqs, 0.33s  empty
+F8-001: 62 vars, 68 eqs, 0.54s  empty
+F8-002: 57 vars, 61 eqs, 1.87s  empty
+F8-008: 42 vars, 48 eqs, 0.60s  positive-dim
+F8-009: 50 vars, 56 eqs, 0.02s  empty
+F8-010: 43 vars, 51 eqs, 0.02s  empty
+F8-011: 45 vars, 49 eqs, 0.03s  empty
+F8-012: 35 vars, 43 eqs, 0.01s  empty
+F8-013: 37 vars, 41 eqs, 2.79s  zero-dim
+F8-006: 53 vars, 57 eqs, TIMEOUT>300s
+F8-005: 57 vars, 61 eqs, TIMEOUT>300s
+F8-007: 52 vars, 54 eqs, TIMEOUT>300s
+F8-016: 51 vars, 59 eqs, 1.78s  empty
+F8-017: 43 vars, 51 eqs, 2.00s  empty
+F8-015: 55 vars, 63 eqs, 1.99s  empty
+F8-014: 57 vars, 61 eqs, TIMEOUT>300s
+F8-018: 50 vars, 56 eqs, 0.70s  empty
+F8-020: 50 vars, 56 eqs, 0.62s  empty
+F8-019: 55 vars, 63 eqs, 0.60s  empty
+F8-021: 43 vars, 51 eqs, 0.40s  empty
+F8-022: 48 vars, 58 eqs, 0.05s  empty
+F8-024: 43 vars, 51 eqs, 0.04s  empty
+F8-025: 35 vars, 43 eqs, 1.00s  positive-dim
+F8-028: 35 vars, 43 eqs, 0.12s  empty
+F8-026: 45 vars, 49 eqs, 15.06s  positive-dim
+F8-030: 43 vars, 51 eqs, 0.06s  empty
+F8-031: 50 vars, 56 eqs, 0.09s  empty
+F8-032: 45 vars, 49 eqs, 4.10s  empty
+F8-033: 35 vars, 43 eqs, 0.30s  empty
+F8-034: 43 vars, 51 eqs, 0.70s  empty
+F8-029: 50 vars, 56 eqs, 46.50s  positive-dim
+F8-036: 37 vars, 41 eqs, 43.64s  zero-dim
+F8-023: 50 vars, 56 eqs, 169.70s  positive-dim
+F8-035: 45 vars, 49 eqs, 167.50s  zero-dim
+F8-027: 45 vars, 49 eqs, 288.35s  zero-dim
+F8-037: 57 vars, 61 eqs, TIMEOUT>300s
+F8-041: 37 vars, 41 eqs, 0.98s  positive-dim
+F8-042: 37 vars, 41 eqs, 8.12s  zero-dim
+F8-043: 29 vars, 33 eqs, 0.04s  positive-dim
+F8-044: 50 vars, 56 eqs, 0.02s  empty
