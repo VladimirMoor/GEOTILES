@@ -91,7 +91,37 @@ If no relation exists at p₀ at all, call e a *witness*. Then:
 
 **Special positions can tile.** The generalized elongated gyrobifastigium (F8-255) is tri ⊕ tri ⊕ seg with both triangle planes containing the segment, and it tiles.
 
-**Still open.** A proof for *every* chamber (we sampled about 240), and a proof that the zone identities are the only identities.
+### Theorem (converse for Σ dim ∈ {5, 6}, all chambers)
+
+**Statement.** Take Minkowski sums of unit segments and unit equilateral triangles in general position, of the types:
+- tri⊕tri⊕seg, tri⊕3 segs, 5 segs (Σ dim = 5);
+- tri⊕tri⊕tri, tri⊕tri⊕2 segs, tri⊕4 segs, 6 segs (Σ dim = 6).
+
+For each type and **each** chamber of its configuration space, the members that tile ℝ³ form a set of measure zero.
+
+**Proof.**
+
+1. **Angles as differences of arguments.** An edge in the zone of direction d, lying between the faces d ⊕ a and d ⊕ b, has dihedral angle θ = π − ∠_d(a, b). Here ∠_d(a, b) is the oriented angle between the projections of a and b to d^⊥. So every angle is a difference of the *argument functions* A_d(x) = ∠_d(x₀, x), where x runs over the lines "seen" from d: the edges of the other summands, plus the plane of d's own triangle.
+
+2. **Independence lemma (exact, `independence.py`).** The functions A_d(x) are linearly independent modulo constants on the space of rotations of the summands. This is proved exactly over ℚ:
+   - the triangle conv(e₁, e₂, e₃) (scale does not affect angles) and rational Cayley rotations make every gradient of atan2 rational, up to a constant factor per function;
+   - the stacked gradients at a few rational points have full rank;
+   - checked types and ranks: tri+tri 18/18, tri+seg+seg 12/12, tri+tri+seg 29/29, tri+seg³ 21/21, seg⁵ 15/15, tri³ 54/54, tri²+seg² 42/42, tri+seg⁴ 32/32, seg⁶ 24/24.
+
+   Consequently, every identity Σ kᵢθᵢ ≡ const is a **circulation** in the formula graphs of the zones. The vertices of the graph of zone d are the lines met along the zone, and its arcs are the distinct consecutive pairs. A non-negative integer circulation splits into directed cycles, each of value Σ(π − φ) ≥ π. So an edge passes the dihedral filter *identically* if and only if it lies on a directed cycle of value ≤ 2π. This criterion agrees with a direct high-precision search for identities on 56/56 members (`zone_graphs.py`).
+
+3. **Combinatorial lemma: every chamber has a witness edge.**
+   - **(A) At least two triangles and one more summand.** By the chamber classification, T_i ⊕ T_j has 8 or 9 faces, so the normal "tripods" of T_i and T_j cross 4 or 5 times. Some edge e of T_i is therefore crossed twice by T_j. The third summand crosses the semicircle of e at least once: a segment's great circle meets it exactly once; a triangle's tripod has lunes of angle < π, so the semicircle must cross it. The zone of e is then a single simple cycle with ≥ 4 arcs and Σφ = π, so its value is ≥ 3π, and all its edges are witnesses.
+   - **(B) One triangle and S ∈ {3, 4} segments.** Every abstract cyclic arrangement on the zone circle of a segment was checked exhaustively (`case_b.py`): 3 single triangle points plus S−1 antipodal segment pairs; 20 and 56 arrangements respectively, a superset of the realizable ones. Each has a witness arc. The check also holds for S = 5.
+   - **(C) Only segments, n ≥ 5.** The zone sequence is antipodally symmetric, so the formula graph is one cycle of length n−1 with Σφ = π. Its value is (n−2)π ≥ 3π, and every edge is a witness.
+
+4. **Measure zero.** Fix a witness edge e. For every integer relation k with k_e ≥ 1 and target T ∈ {π, 2π}, the function Σ kᵢθᵢ − T is analytic and, by step 2, not identically zero on the connected chamber. Its zero set therefore has measure zero, and so does the countable union over all k. Every member outside this union fails the filter and does not tile. ∎
+
+**Complements.** The 23 explicit members certified with interval arithmetic do not tile, and neither does a neighbourhood of each. Special (non-general) positions can tile: F8-255 (tri⊕tri⊕seg) and degenerate 5-segment sums.
+
+**Still open.**
+- Σ dim ≥ 7 in general: the independence lemma is certified only up to 6 summands' worth of types.
+- "Almost every" cannot be strengthened to "every" by this method.
 
 ## Open
 

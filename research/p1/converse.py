@@ -101,9 +101,10 @@ def angles(kind, params, faces_ordered):
     return keys, th
 
 
-def analyse(kind, rng, npts=6):
+def analyse(kind, rng, npts=6, p0=None):
     nparams = 4 * (len(kind.split("+")) - 1)
-    p0 = [mp.mpf(float(x)) for x in rng.normal(size=nparams)]
+    if p0 is None:
+        p0 = [mp.mpf(float(x)) for x in rng.normal(size=nparams)]
     vk, fk, faces = labels_and_faces(member(kind, p0))
     keys, th0 = angles(kind, p0, faces)
     # классы рёбер с тождественно равными углами: сравним значения в нескольких точках
