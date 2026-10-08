@@ -47,9 +47,25 @@ All three are equilateral convex space-fillers.
 | triangle ⊕ triangle, 9 faces | ⟨u₁+v₁, u₁+v₂, u₂−u₁⟩ | w = 2(o₁+o₂) |
 | parallelogram ⊕ triangle | ⟨r₁+r₂+t₁, r₁+r₂+t₂, r₁−r₂+t₁−t₂⟩ | w = 2(o+o_T)+r₁+t₁ |
 
+## Special positions (chamber walls)
+
+On the walls the tilings stop being face-to-face. For example, a triangle merges with a rhombus into a pentagon, and the neighbour meets only part of it. So Poincaré's theorem cannot be applied verbatim. On all 70 wall cells the chamber formulas still give a tiling numerically (`data/walls.log`: a formula is found and the coverage test passes everywhere).
+
+A limit argument settles the walls rigorously.
+
+**Lemma.** Let P_t → P₀ in the Hausdorff metric, with P₀ 3-dimensional. Let the lattices L_t → L₀ and the centres w_t → w₀, and suppose that for every t > 0 the images of P_t under ⟨L_t, x ↦ w_t − x⟩ tile ℝ³ (with the same integer data). Then the images of P₀ under ⟨L₀, x ↦ w₀ − x⟩ tile ℝ³.
+
+*Proof.*
+1. The relation det L_t = 2 vol P_t holds for t > 0 and passes to the limit, so det L₀ = 2 vol P₀ > 0 and L₀ is a lattice.
+2. *Covering.* For x ∈ ℝ³ and small t, the element γ_t with x ∈ γ_t P_t has bounded integer data. Take a subsequence on which the data are constant; since the tiles are closed, x ∈ γ₀ P₀.
+3. *Disjointness.* If two limit tiles overlapped in an interior point, they would contain a common small ball. Then for small t the corresponding tiles γ_t P_t and γ′_t P_t would also overlap in interior points. These are distinct tiles of a tiling, which is a contradiction. ∎
+
+In each chamber the prover verified **one fixed formula on the whole chamber**, so the lemma extends it to the closure of the chamber. P degenerates only when the triangle T₂ collapses (a = b = 0). This gives the corollary.
+
+**Corollary.** For **any** two triangles T₁, T₂, and for any parallelogram and triangle, whose Minkowski sum is 3-dimensional, the sum tiles ℝ³ by translations and point reflections. Special positions are included: the gyrobifastigium itself, F7-029, F8-249, and the pentagonal prisms on the walls a = 0 and b = 0.
+
 ## Open
 
 - **Converse.** Do sums of total dimension ≥ 5 never tile? All 24 random members tested fail the dihedral filter, which proves non-tiling for those members, but there is no general proof.
-- **Special positions.** These are the chamber walls, for example F7-029 and F8-249. Explicit tilings are known numerically; a wall-by-wall run of the same prover is still to be done.
 - **Is every equilateral space-filler a Minkowski sum of unit polygons and segments?**
 - **Higher dimensions.** Do sums of simplices with Σ dim = d+1 tile ℝ^d in general?

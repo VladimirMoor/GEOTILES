@@ -65,6 +65,78 @@ def chambers(kind):
     return out
 
 
+def chamber_cells(kind):
+    """Камеры в виде клеток: {'verts': [...], 'rays': [...], 'sample': (a,b,c), 'name': ...}."""
+    out = []
+    for ch in chambers(kind):
+        (r1, r2), (lo, hi) = ch["rays"], ch["c"]
+        verts = [(0, 0, v) for v in (lo, hi) if v is not None]
+        rays = [(r1[0], r1[1], 0), (r2[0], r2[1], 0)] + ([(0, 0, -1)] if lo is None else []) + ([(0, 0, 1)] if hi is None else [])
+        out.append({"name": f"chamber {ch['rays']} c∈{ch['c']}", "verts": verts, "rays": rays, "sample": ch["sample"]})
+    return out
+
+
+def wall_cells(kind):
+    """Стенки камер (коразмерность 1 и 2). Пересечение a=0, b=0 исключено: треугольник вырождается."""
+    F = Fraction
+    out = []
+    c_ints = [(None, 0), (0, 1), (1, None)]
+
+    def cint(lo, hi):
+        verts = [v for v in (lo, hi) if v is not None]
+        rays = ([-1] if lo is None else []) + ([1] if hi is None else [])
+        mid = F(-1, 2) if lo is None else F(3, 2) if hi is None else F(2, 5)
+        return verts, rays, mid
+
+    # плоскость a = 0, b = 0 (и a+b = 0 для двух треугольников): параметр t вдоль направления, c — интервал
+    lines = [("a=0", (0, 1)), ("b=0", (1, 0))] + ([("a+b=0", (1, -1))] if kind == "tri+tri" else [])
+    for nm, d in lines:
+        for sg in (1, -1):
+            for lo, hi in c_ints:
+                vs, rs, mid = cint(lo, hi)
+                out.append({"name": f"wall {nm}, dir {sg}, c∈{(lo, hi)}",
+                            "verts": [(0, 0, v) for v in vs],
+                            "rays": [(sg * d[0], sg * d[1], 0)] + [(0, 0, r) for r in rs],
+                            "sample": (F(sg * d[0] * 7, 10), F(sg * d[1] * 7, 10), mid)})
+            for cv in (0, 1):  # пересечение с c = 0 / c = 1
+                out.append({"name": f"line {nm} ∩ c={cv}, dir {sg}", "verts": [(0, 0, cv)],
+                            "rays": [(sg * d[0], sg * d[1], 0)],
+                            "sample": (F(sg * d[0] * 7, 10), F(sg * d[1] * 7, 10), F(cv))})
+    # плоскости c = 0 и c = 1: сектор в (a, b)
+    for ch in chambers(kind):
+        if ch["c"] != (0, 1):
+            continue
+        (r1, r2) = ch["rays"]
+        for cv in (0, 1):
+            sa, sb, _ = ch["sample"]
+            out.append({"name": f"wall c={cv}, sector {ch['rays']}", "verts": [(0, 0, cv)],
+                        "rays": [(r1[0], r1[1], 0), (r2[0], r2[1], 0)], "sample": (sa, sb, F(cv))})
+    return out
+
+
+def sign_on_cell(f, cell):
+    """Знак аффинной формы f(a,b,c) на клетке: '+' (≥0 на замыкании и >0 в пробной точке), '-', '0', '?'."""
+    f = sp.expand(f)
+    if f == 0:
+        return "0"
+    poly = sp.Poly(f, a, b, c)
+    if poly.total_degree() > 1:
+        return "?nonlinear"
+    f0 = poly.coeff_monomial(1)
+    lin = (poly.coeff_monomial(a), poly.coeff_monomial(b), poly.coeff_monomial(c))
+    vals = [f0 + sum(l * x for l, x in zip(lin, v)) for v in cell["verts"]]
+    rays = [sum(l * x for l, x in zip(lin, r)) for r in cell["rays"]]
+    sm = cell["sample"]
+    at = f.subs({a: sm[0], b: sm[1], c: sm[2]})
+    if at == 0 and all(x == 0 for x in vals) and all(r == 0 for r in rays):
+        return "0"  # тождественный ноль на клетке
+    if all(x >= 0 for x in vals) and all(r >= 0 for r in rays) and at > 0:
+        return "+"
+    if all(x <= 0 for x in vals) and all(r <= 0 for r in rays) and at < 0:
+        return "-"
+    return "?"
+
+
 def sign_on_chamber(f, ch):
     """f — аффинная форма от a,b,c. Возвращает '+' (≥0 на замыкании, >0 в пробной точке), '-', '0' или '?'."""
     f = sp.expand(f)
@@ -169,7 +241,9 @@ class G:
 
 
 def prove_chamber(kind, ch):
+    """ch — клетка из chamber_cells/wall_cells."""
     s = ch["sample"]
+    sign_on_chamber = sign_on_cell  # noqa: F841 — все проверки знаков идут по образующим клетки
     sym, vlab, faces, T = build_P(kind, s)
     # разбиение в пробной точке
     choice = None
@@ -192,7 +266,7 @@ def prove_chamber(kind, ch):
         normals[tuple(F)] = (n, p0)
         for lab in vlab:
             h = (n.T * (sym[lab] - p0))[0]
-            sg = sign_on_chamber(h, ch)
+            sg = sign_on_cell(h, ch)
             if lab in F and sg != "0":
                 return {"ok": False, "why": f"face {F}: vertex {lab} not on plane identically"}
             if lab not in F and sg != "-":
@@ -228,7 +302,7 @@ def prove_chamber(kind, ch):
         mp = {}
         for q in Gf:
             p = next(x for x in F if np.allclose(num(g(sym[q]), s), pts_num[x], atol=1e-9))
-            if any(sp.expand(e) != 0 for e in (g(sym[q]) - sym[p])):
+            if any(sign_on_cell(e, ch) != "0" for e in (g(sym[q]) - sym[p])):
                 return {"ok": False, "why": f"pairing of {F} not an identity"}
             mp[q] = p
         n, p0 = normals[tuple(F)]
@@ -236,7 +310,7 @@ def prove_chamber(kind, ch):
             if lab in mp:
                 continue
             h = (n.T * (g(sym[lab]) - p0))[0]
-            if sign_on_chamber(h, ch) != "+":
+            if sign_on_cell(h, ch) != "+":
                 return {"ok": False, "why": f"neighbor across {F} not strictly outside"}
         pairing[tuple(F)] = (g, tuple(Gf), mp)
     # (ii') согласованность спариваний: спаривание грани G — ровно обратный элемент
@@ -278,17 +352,20 @@ def prove_chamber(kind, ch):
             "formula": "A" if kind == "tri+tri" and choice[1] != 2 * Z and False else "ok"}
 
 
-def main(kind):
+def main(kind, walls=False):
+    cells = wall_cells(kind) if walls else chamber_cells(kind)
     results = []
-    for ch in chambers(kind):
+    for ch in cells:
         r = prove_chamber(kind, ch)
         results.append(r)
-        print(kind, ch["rays"], ch["c"], r, flush=True)
+        print(kind, ch["name"], r, flush=True)
     ok = sum(r["ok"] for r in results)
-    print(f"\n{kind}: {ok}/{len(results)} chambers proved")
+    print(f"\n{kind}: {ok}/{len(results)} {'wall cells' if walls else 'chambers'} proved")
     return ok == len(results)
 
 
 if __name__ == "__main__":
-    for k in (sys.argv[1:] or ["tri+tri", "par+tri"]):
-        main(k)
+    args = sys.argv[1:]
+    walls = "--walls" in args
+    for k in ([x for x in args if not x.startswith("--")] or ["tri+tri", "par+tri"]):
+        main(k, walls=walls)

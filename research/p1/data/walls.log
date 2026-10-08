@@ -1,0 +1,74 @@
+tri+tri wall a=0, dir 1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(1, 1), (1, 0), (1, 2)]'}
+tri+tri wall a=0, dir 1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(1, 1), (1, 0), (1, 2)]'}
+tri+tri wall a=0, dir 1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(1, 1), (1, 0), (1, 2)]'}
+tri+tri line a=0 ∩ c=0, dir 1 {'ok': False, 'why': 'no face pairing for [(1, 1), (1, 0), (1, 2)]'}
+tri+tri line a=0 ∩ c=1, dir 1 {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall a=0, dir -1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(1, 2), (1, 0), (1, 1)]'}
+tri+tri wall a=0, dir -1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(1, 2), (1, 0), (1, 1)]'}
+tri+tri wall a=0, dir -1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(1, 2), (1, 0), (1, 1)]'}
+tri+tri line a=0 ∩ c=0, dir -1 {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri line a=0 ∩ c=1, dir -1 {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall b=0, dir 1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(2, 2), (2, 0), (2, 1)]'}
+tri+tri wall b=0, dir 1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(2, 2), (2, 0), (2, 1)]'}
+tri+tri wall b=0, dir 1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(2, 2), (2, 0), (2, 1)]'}
+tri+tri line b=0 ∩ c=0, dir 1 {'ok': False, 'why': 'no face pairing for [(2, 1), (2, 0), (2, 2)]'}
+tri+tri line b=0 ∩ c=1, dir 1 {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall b=0, dir -1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(2, 1), (2, 0), (2, 2)]'}
+tri+tri wall b=0, dir -1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(2, 1), (2, 0), (2, 2)]'}
+tri+tri wall b=0, dir -1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(2, 1), (2, 0), (2, 2)]'}
+tri+tri line b=0 ∩ c=0, dir -1 {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri line b=0 ∩ c=1, dir -1 {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall a+b=0, dir 1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (0, 2)]'}
+tri+tri wall a+b=0, dir 1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (0, 2)]'}
+tri+tri wall a+b=0, dir 1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (0, 2)]'}
+tri+tri line a+b=0 ∩ c=0, dir 1 {'ok': False, 'why': 'no face pairing for [(0, 2), (0, 0), (0, 1)]'}
+tri+tri line a+b=0 ∩ c=1, dir 1 {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall a+b=0, dir -1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (0, 2)]'}
+tri+tri wall a+b=0, dir -1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (0, 2)]'}
+tri+tri wall a+b=0, dir -1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (0, 2)]'}
+tri+tri line a+b=0 ∩ c=0, dir -1 {'ok': False, 'why': 'no face pairing for [(0, 2), (0, 0), (0, 1)]'}
+tri+tri line a+b=0 ∩ c=1, dir -1 {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall c=0, sector ((1, 0), (1, -1)) {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri wall c=1, sector ((1, 0), (1, -1)) {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall c=0, sector ((1, -1), (0, -1)) {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri wall c=1, sector ((1, -1), (0, -1)) {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall c=0, sector ((0, -1), (-1, 0)) {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri wall c=1, sector ((0, -1), (-1, 0)) {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall c=0, sector ((-1, 0), (-1, 1)) {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri wall c=1, sector ((-1, 0), (-1, 1)) {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall c=0, sector ((-1, 1), (0, 1)) {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri wall c=1, sector ((-1, 1), (0, 1)) {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+tri+tri wall c=0, sector ((0, 1), (1, 0)) {'ok': False, 'why': 'no face pairing for [(2, 1), (0, 1), (1, 1)]'}
+tri+tri wall c=1, sector ((0, 1), (1, 0)) {'ok': False, 'why': 'no face pairing for [(2, 0), (0, 0), (1, 0)]'}
+
+tri+tri: 0/42 wall cells proved
+par+tri wall a=0, dir 1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(2, 1), (1, 1), (1, 0), (1, 2), (2, 2)]'}
+par+tri wall a=0, dir 1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(3, 1), (0, 1), (0, 0), (3, 0), (3, 2)]'}
+par+tri wall a=0, dir 1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(0, 2), (0, 1), (0, 0), (3, 0), (3, 2)]'}
+par+tri line a=0 ∩ c=0, dir 1 {'ok': False, 'why': 'no face pairing for [(3, 2), (0, 0), (1, 0), (2, 2)]'}
+par+tri line a=0 ∩ c=1, dir 1 {'ok': False, 'why': 'no face pairing for [(3, 2), (0, 1), (1, 1), (2, 2)]'}
+par+tri wall a=0, dir -1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(3, 0), (3, 1), (0, 1), (0, 2), (3, 2)]'}
+par+tri wall a=0, dir -1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 2), (0, 0), (3, 0), (3, 1)]'}
+par+tri wall a=0, dir -1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(3, 2), (0, 2), (0, 0), (3, 0), (3, 1)]'}
+par+tri line a=0 ∩ c=0, dir -1 {'ok': False, 'why': 'no face pairing for [(3, 0), (0, 2), (1, 2), (2, 0)]'}
+par+tri line a=0 ∩ c=1, dir -1 {'ok': False, 'why': 'no face pairing for [(3, 0), (0, 0), (1, 0), (2, 0)]'}
+par+tri wall b=0, dir 1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(1, 2), (0, 2), (0, 0), (0, 1), (1, 1)]'}
+par+tri wall b=0, dir 1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(1, 2), (1, 0), (0, 0), (0, 1), (1, 1)]'}
+par+tri wall b=0, dir 1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(1, 2), (1, 0), (0, 0), (0, 1), (0, 2)]'}
+par+tri line b=0 ∩ c=0, dir 1 {'ok': False, 'why': 'no face pairing for [(1, 2), (0, 0), (0, 1), (1, 1)]'}
+par+tri line b=0 ∩ c=1, dir 1 {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 0), (1, 0), (1, 2)]'}
+par+tri wall b=0, dir -1, c∈(None, 0) {'ok': False, 'why': 'no face pairing for [(1, 0), (1, 1), (0, 1), (0, 2), (1, 2)]'}
+par+tri wall b=0, dir -1, c∈(0, 1) {'ok': False, 'why': 'no face pairing for [(0, 1), (0, 2), (0, 0), (1, 0), (1, 1)]'}
+par+tri wall b=0, dir -1, c∈(1, None) {'ok': False, 'why': 'no face pairing for [(1, 1), (1, 0), (0, 0), (0, 2), (1, 2)]'}
+par+tri line b=0 ∩ c=0, dir -1 {'ok': False, 'why': 'no face pairing for [(3, 2), (0, 2), (1, 0), (2, 0)]'}
+par+tri line b=0 ∩ c=1, dir -1 {'ok': False, 'why': 'no face pairing for [(1, 1), (1, 0), (0, 0), (0, 2)]'}
+par+tri wall c=0, sector ((1, 0), (0, -1)) {'ok': False, 'why': 'no face pairing for [(2, 0), (3, 0), (0, 0), (0, 2), (1, 2), (2, 2)]'}
+par+tri wall c=1, sector ((1, 0), (0, -1)) {'ok': False, 'why': 'no face pairing for [(3, 0), (0, 0), (1, 0), (2, 0)]'}
+par+tri wall c=0, sector ((0, -1), (-1, 0)) {'ok': False, 'why': 'no face pairing for [(3, 0), (3, 2), (0, 2), (1, 2), (1, 0), (2, 0)]'}
+par+tri wall c=1, sector ((0, -1), (-1, 0)) {'ok': False, 'why': 'no face pairing for [(3, 0), (0, 0), (1, 0), (2, 0)]'}
+par+tri wall c=0, sector ((-1, 0), (0, 1)) {'ok': False, 'why': 'no face pairing for [(3, 1), (0, 1), (1, 1), (2, 1)]'}
+par+tri wall c=1, sector ((-1, 0), (0, 1)) {'ok': False, 'why': 'no face pairing for [(3, 2), (0, 2), (0, 1), (1, 1), (2, 1), (2, 2)]'}
+par+tri wall c=0, sector ((0, 1), (1, 0)) {'ok': False, 'why': 'no face pairing for [(2, 2), (3, 2), (3, 0), (0, 0), (1, 0), (1, 2)]'}
+par+tri wall c=1, sector ((0, 1), (1, 0)) {'ok': False, 'why': 'no face pairing for [(2, 2), (3, 2), (3, 1), (0, 1), (1, 1), (1, 2)]'}
+
+par+tri: 0/28 wall cells proved
