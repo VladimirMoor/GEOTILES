@@ -1,0 +1,374 @@
+{
+ "tri+tri": [
+  {
+   "faces": 8,
+   "vertices": 8,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 8,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 8,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 8,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 8,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 8,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  }
+ ],
+ "rhomb+tri": [
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  }
+ ],
+ "seg+seg+tri": [
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  },
+  {
+   "faces": 10,
+   "vertices": 11,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "point-reflection",
+   "coverage": 4000
+  }
+ ],
+ "hex+seg": [
+  {
+   "faces": 8,
+   "vertices": 12,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 12,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 12,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  },
+  {
+   "faces": 8,
+   "vertices": 12,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  }
+ ],
+ "pent+seg": [
+  {
+   "faces": 7,
+   "vertices": 10,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 7,
+   "vertices": 10,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 7,
+   "vertices": 10,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 7,
+   "vertices": 10,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  }
+ ],
+ "tri+hex": [
+  {
+   "faces": 13,
+   "vertices": 16,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 13,
+   "vertices": 16,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 13,
+   "vertices": 16,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 13,
+   "vertices": 16,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  }
+ ],
+ "tri+tri+seg": [
+  {
+   "faces": 14,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 15,
+   "vertices": 15,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 15,
+   "vertices": 15,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 14,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  }
+ ],
+ "pent+tri": [
+  {
+   "faces": 12,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 12,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 11,
+   "vertices": 13,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 11,
+   "vertices": 13,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  }
+ ],
+ "rhomb+rhomb": [
+  {
+   "faces": 12,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  },
+  {
+   "faces": 12,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  },
+  {
+   "faces": 12,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  },
+  {
+   "faces": 12,
+   "vertices": 14,
+   "equilateral": true,
+   "tiles": true,
+   "mode": "translations",
+   "coverage": 4000
+  }
+ ],
+ "rhomb+tri+seg": [
+  {
+   "faces": 17,
+   "vertices": 18,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 17,
+   "vertices": 18,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 17,
+   "vertices": 18,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  },
+  {
+   "faces": 17,
+   "vertices": 18,
+   "equilateral": true,
+   "tiles": false,
+   "mode": null,
+   "coverage": null
+  }
+ ]
+}

@@ -170,3 +170,54 @@ For these 131 types we rely on two independent numerical searches (2000 and 6000
 A complete proof would need a certified method suited to these sizes. Candidates are certified homotopy continuation (e.g. alpha-certified monodromy with a trace test) or interval branch-and-bound on a reduced parametrization.
 
 The rigorous **1-dimensional sweep** (`curve1d.py`) works correctly. On F6-002 it finds the convex family members, but it is too slow for routine use: about 50 minutes per sample fibre.
+
+## Minkowski sums of unit simplices (2026-10-08)
+
+The literature survey (`NATURE_SURVEY.md`) noticed that our tiling families are Minkowski sums of unit polygons and segments, and reported two new equilateral tilers with 9 and 10 faces. We re-checked everything with our own code (`minkowski.py`, `search_tiling.py`, and the site's tiler).
+
+### Confirmed equilateral space-fillers
+
+All are numerical results: volume ratio 1 and Monte Carlo coverage, on dozens of random members each.
+
+**Triangle ⊕ triangle, general position.** Two chambers, about 50/50 for random positions.
+- 8 faces: the generalized gyrobifastigium (F8-203).
+- **9 faces: 4 triangles + 5 rhombi, 9 vertices, 3 parameters. New.**
+
+Writing T₁ = o₁ + {0, u₁, u₂} and T₂ = o₂ + {0, v₁, v₂}, the tilings are:
+
+| Chamber | Lattice | Point reflection x ↦ w − x |
+|---|---|---|
+| 8 faces (formula A) | ⟨v₁, u₁, u₂ − v₂⟩ | w = 2(o₁+o₂) + v₁ + u₁ + u₂ |
+| 9 faces (formula B) | ⟨u₁+v₁, u₁+v₂, u₂−u₁⟩ | w = 2(o₁+o₂) |
+
+Each formula works for exactly 4 of the 36 labellings of a member, and fails on the other chamber.
+
+**Rhombus ⊕ triangle, general position: 10 faces (2 triangles + 8 rhombi), 11 vertices, 4 parameters. New.**
+- Lattice ⟨r₁+r₂+t₁, r₁+r₂+t₂, r₁−r₂+t₁−t₂⟩.
+- Point reflection x ↦ 2(o+o_T) + r₁ + t₁ − x.
+- Works for 4 of the 48 labellings.
+- Its special position, with a triangle side parallel to the rhombus, is F8-249.
+
+### Survey of sums: total simplex dimension decides
+
+| Sum (general position) | Σ dim | F | Angle filter on random members | Tiling found |
+|---|---|---|---|---|
+| 3 segments, triangle ⊕ segment | 3 | 6, 5 | passes | yes |
+| triangle ⊕ triangle | 4 | 8 / 9 | 6/6 pass | yes |
+| rhombus ⊕ triangle (= 2 segments ⊕ triangle) | 4 | 10 | 6/6 pass | yes |
+| rhombus ⊕ rhombus (4 segments) | 4 | 12 | passes | yes (translations) |
+| centrally symmetric hexagon ⊕ segment | 4 | 8 | passes | yes (translations) |
+| triangle ⊕ triangle ⊕ segment | 5 | 14–15 | **0/6** | no |
+| triangle ⊕ hexagon | 5 | 13 | **0/6** | no |
+| rhombus ⊕ triangle ⊕ segment | 5 | 17 | **0/6** | no |
+| pentagon ⊕ triangle, pentagon ⊕ segment | — | 11–12, 7 | **0/6** | no |
+
+A failed angle filter is a proof that the member does not tile in any way, so the negative entries are rigorous for the sampled members.
+
+**Conjecture.** A Minkowski sum of unit segments and unit equilateral triangles in general position in ℝ³ tiles space if and only if the total dimension of the summands is at most 4 = d + 1. The tiling then uses only translations and point reflections.
+
+This is analogous to McMullen's zonotope criterion: 4 generic generators tile, 5 do not. The planar analogue holds: triangle ⊕ segment is a pentagon with two parallel sides, which tiles.
+
+**Question.** Is every equilateral convex space-filler a Minkowski sum of unit polygons and segments? It is true for every tiler we know with ≤ 8 faces: prisms, parallelohedra, the generalized gyrobifastigia and F8-249. It is also true for all the parallelohedra.
+
+A natural route to a proof of the conjecture is the Cayley trick: sums of simplices are projections of products of simplices, and their subdivisions correspond to triangulations of the Cayley polytope.

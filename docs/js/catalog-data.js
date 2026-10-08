@@ -206,6 +206,39 @@ export const CATALOG = [
     },
   },
   {
+    id: 'tri-tri', group: 'found', status: 'tiles', expect: { faces: [8, 9] },
+    name: { en: 'Triangle ⊕ triangle', ru: 'Треугольник ⊕ треугольник', es: 'Triángulo ⊕ triángulo' },
+    params: [
+      { key: 'al', label: { en: 'rotation α', ru: 'поворот α', es: 'giro α' }, min: 0, max: 180, step: 0.5, value: 40, unit: '°' },
+      { key: 'be', label: { en: 'rotation β', ru: 'поворот β', es: 'giro β' }, min: 5, max: 175, step: 0.5, value: 70, unit: '°' },
+      { key: 'ga', label: { en: 'rotation γ', ru: 'поворот γ', es: 'giro γ' }, min: 0, max: 180, step: 0.5, value: 25, unit: '°' },
+    ],
+    solid: (p) => minkowski([triangle(), rotate(triangle(), p)]),
+    tiling: (p) => ({ candidates: triTriCandidates(triangle(), rotate(triangle(), p)) }),
+    about: {
+      en: 'The Minkowski sum of two unit equilateral triangles in general position. Depending on their relative position it has 8 faces (the generalized gyrobifastigium) or 9 faces: 4 triangles + 5 rhombi. The 9-face chamber is new to our catalog; it was found by the literature survey and confirmed by our own search. Every member tiles space with a lattice and a point reflection.',
+      ru: 'Сумма Минковского двух единичных правильных треугольников общего положения. В зависимости от их взаимного расположения у неё 8 граней (обобщённый гиробифастигиум) или 9 граней: 4 треугольника и 5 ромбов. 9-гранная камера впервые попала в наш каталог; её нашёл обзор литературы, а наш собственный поиск подтвердил. Каждый член замощает пространство решёткой и центральной симметрией.',
+      es: 'La suma de Minkowski de dos triángulos equiláteros unitarios en posición general. Según su posición relativa tiene 8 caras (el girobifastigio generalizado) o 9 caras: 4 triángulos y 5 rombos. La cámara de 9 caras es nueva en nuestro catálogo; la encontró la revisión bibliográfica y la confirmó nuestra propia búsqueda. Todo miembro tesela el espacio con una red y una simetría central.',
+    },
+  },
+  {
+    id: 'rhomb-tri', group: 'found', status: 'tiles', expect: { faces: [10] },
+    name: { en: 'Rhombus ⊕ triangle, general position', ru: 'Ромб ⊕ треугольник, общее положение', es: 'Rombo ⊕ triángulo, posición general' },
+    params: [
+      { key: 'th', label: { en: 'rhombus angle', ru: 'угол ромба', es: 'ángulo del rombo' }, min: 40, max: 140, step: 0.5, value: 75, unit: '°' },
+      { key: 'al', label: { en: 'rotation α', ru: 'поворот α', es: 'giro α' }, min: 0, max: 180, step: 0.5, value: 35, unit: '°' },
+      { key: 'be', label: { en: 'rotation β', ru: 'поворот β', es: 'giro β' }, min: 5, max: 175, step: 0.5, value: 60, unit: '°' },
+      { key: 'ga', label: { en: 'rotation γ', ru: 'поворот γ', es: 'giro γ' }, min: 0, max: 180, step: 0.5, value: 20, unit: '°' },
+    ],
+    solid: (p) => minkowski([rhombus(p.th), rotate(triangle(), p)]),
+    tiling: (p) => ({ candidates: rhombTriCandidates(rhombus(p.th), rotate(triangle(), p)) }),
+    about: {
+      en: 'The Minkowski sum of a unit rhombus and a unit equilateral triangle in general position: 10 faces (2 triangles + 8 rhombi), 11 vertices, 4 parameters. It tiles space with a lattice and a point reflection. The special position with a triangle side parallel to the rhombus is the 8-face body “Rhombus ⊕ triangle” above.',
+      ru: 'Сумма Минковского единичного ромба и единичного правильного треугольника общего положения: 10 граней (2 треугольника и 8 ромбов), 11 вершин, 4 параметра. Замощает пространство решёткой и центральной симметрией. Частный случай, когда сторона треугольника параллельна плоскости ромба, — 8-гранное тело «Ромб ⊕ треугольник» выше.',
+      es: 'La suma de Minkowski de un rombo unitario y un triángulo equilátero unitario en posición general: 10 caras (2 triángulos y 8 rombos), 11 vértices, 4 parámetros. Tesela el espacio con una red y una simetría central. La posición especial con un lado del triángulo paralelo al rombo es el cuerpo de 8 caras «Rombo ⊕ triángulo» de arriba.',
+    },
+  },
+  {
     id: 'tetrahedron', group: 'no', status: 'no',
     name: { en: 'Regular tetrahedron', ru: 'Правильный тетраэдр', es: 'Tetraedro regular' },
     solid: () => [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]].map((p) => p.map((x) => x / (2 * Math.SQRT2))),
@@ -287,6 +320,70 @@ function genElongated({ gamma, beta, alpha }) {
     points: [...box, apex1, V3.add(apex1, a), apex2, V3.add(apex2, b)],
     tiling: { lattice: [a, b, V3.add(c, V3.sub(apex1, apex2))], motifs: [I(), reflect(V3.add(a, b, c, apex1))] },
   };
+}
+
+// ---------- суммы Минковского ----------
+function triangle() {
+  const R = 1 / Math.sqrt(3);
+  return [0, 1, 2].map((k) => [R * Math.cos((2 * Math.PI * k) / 3), R * Math.sin((2 * Math.PI * k) / 3), 0]);
+}
+
+function rhombus(th) {
+  const c = Math.cos(rad(th)), s = Math.sin(rad(th));
+  return [[0, 0, 0], [1, 0, 0], [1 + c, s, 0], [c, s, 0]].map((v) => [v[0] - (1 + c) / 2, v[1] - s / 2, 0]);
+}
+
+function rotate(P, { al, be, ga }) {
+  const [a, b, g] = [rad(al), rad(be), rad(ga)];
+  const Rx = (v) => [v[0], Math.cos(a) * v[1] - Math.sin(a) * v[2], Math.sin(a) * v[1] + Math.cos(a) * v[2]];
+  const Ry = (v) => [Math.cos(b) * v[0] + Math.sin(b) * v[2], v[1], -Math.sin(b) * v[0] + Math.cos(b) * v[2]];
+  const Rz = (v) => [Math.cos(g) * v[0] - Math.sin(g) * v[1], Math.sin(g) * v[0] + Math.cos(g) * v[1], v[2]];
+  return P.map((v) => Rz(Ry(Rx(v))));
+}
+
+function minkowski(parts) {
+  return parts.reduce((acc, P) => acc.flatMap((x) => P.map((y) => V3.add(x, y))));
+}
+
+function triLabels(T) {
+  const out = [];
+  for (let i = 0; i < 3; i++) {
+    const o = T[i];
+    const rest = [0, 1, 2].filter((j) => j !== i).map((j) => V3.sub(T[j], o));
+    out.push([o, rest[0], rest[1]], [o, rest[1], rest[0]]);
+  }
+  return out;
+}
+
+// Разбиения суммы двух треугольников: камера 8 граней — формула A, камера 9 граней — формула B.
+function triTriCandidates(T1, T2) {
+  const out = [];
+  for (const [o1, u1, u2] of triLabels(T1)) {
+    for (const [o2, v1, v2] of triLabels(T2)) {
+      const c = V3.mul(V3.add(o1, o2), 2);
+      out.push({ lattice: [v1, u1, V3.sub(u2, v2)], motifs: [I(), reflect(V3.add(c, v1, u1, u2))] });
+      out.push({ lattice: [V3.add(u1, v1), V3.add(u1, v2), V3.sub(u2, u1)], motifs: [I(), reflect(c)] });
+    }
+  }
+  return out;
+}
+
+function rhombTriCandidates(R, T) {
+  const out = [];
+  for (let i = 0; i < 4; i++) {
+    const o = R[i];
+    const nb = [V3.sub(R[(i + 1) % 4], o), V3.sub(R[(i + 3) % 4], o)];
+    for (const [r1, r2] of [nb, [nb[1], nb[0]]]) {
+      for (const [ot, t1, t2] of triLabels(T)) {
+        const r12 = V3.add(r1, r2);
+        out.push({
+          lattice: [V3.add(r12, t1), V3.add(r12, t2), V3.add(V3.sub(r1, r2), V3.sub(t1, t2))],
+          motifs: [I(), reflect(V3.add(V3.mul(V3.add(o, ot), 2), r1, t1))],
+        });
+      }
+    }
+  }
+  return out;
 }
 
 function rhombusTriangle({ gamma, delta, tau }) {

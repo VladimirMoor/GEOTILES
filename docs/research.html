@@ -61,6 +61,9 @@
   </table>
   <p class="small muted">Caveat: realizations were found numerically (multi-start Levenberg–Marquardt with strict convexity checks), so the list is very likely but not yet provably complete. An independent rerun with three times as many starts found exactly the same 35 types.</p>
 
+  <h2>Minkowski sums: a pattern</h2>
+  <p>Every tiling family we found is a Minkowski sum of unit segments and triangles. Pursuing this gave two new equilateral space-fillers beyond the 8-face class: <a href="catalog.html#tri-tri">triangle ⊕ triangle</a> with 9 faces and <a href="catalog.html#rhomb-tri">rhombus ⊕ triangle</a> with 10 faces.</p>
+  <p><b>Conjecture.</b> A Minkowski sum of unit segments and triangles in general position tiles space if and only if the total dimension of the summands is at most 4. All tested sums of dimension 4 tile. All tested sums of dimension 5 fail the dihedral angle filter, which proves those members cannot tile.</p>
   <h2>Rigorous verification</h2>
   <p>The enumeration is being turned into a proof with exact computer algebra. The polynomial system is solved over ℚ with Gröbner bases (msolve, Singular), real solutions are isolated rigorously, and convexity and the angle filter are decided with interval arithmetic.</p>
   <ul>
@@ -123,6 +126,9 @@
   </table>
   <p class="small muted">Оговорка: реализации найдены численно (многократный запуск Левенберга–Марквардта со строгой проверкой выпуклости), поэтому список почти наверняка полон, но строго это пока не доказано. Независимый прогон с втрое большим числом стартов нашёл ровно те же 35 типов.</p>
 
+  <h2>Суммы Минковского: закономерность</h2>
+  <p>Каждое найденное замощающее семейство — сумма Минковского единичных отрезков и треугольников. Проверка этой закономерности дала два новых равносторонних тела, заполняющих пространство, уже за пределами класса до 8 граней: <a href="catalog.html#tri-tri">треугольник ⊕ треугольник</a> с 9 гранями и <a href="catalog.html#rhomb-tri">ромб ⊕ треугольник</a> с 10 гранями.</p>
+  <p><b>Гипотеза.</b> Сумма Минковского единичных отрезков и треугольников общего положения замощает пространство тогда и только тогда, когда суммарная размерность слагаемых не больше 4. Все проверенные суммы размерности 4 замощают. Все проверенные суммы размерности 5 не проходят фильтр двугранных углов, а значит, эти члены заведомо не замощают.</p>
   <h2>Строгая проверка</h2>
   <p>Перебор превращается в доказательство с помощью точной компьютерной алгебры. Полиномиальная система решается над ℚ базисами Грёбнера (msolve, Singular), вещественные решения изолируются строго, а выпуклость и фильтр углов проверяются интервальной арифметикой.</p>
   <ul>
@@ -185,6 +191,9 @@
   </table>
   <p class="small muted">Advertencia: las realizaciones se hallaron numéricamente (Levenberg–Marquardt con múltiples arranques y verificación estricta de convexidad), así que la lista es casi con certeza completa, pero aún no está demostrado. Una repetición independiente con el triple de arranques encontró exactamente los mismos 35 tipos.</p>
 
+  <h2>Sumas de Minkowski: un patrón</h2>
+  <p>Toda familia teselante que encontramos es una suma de Minkowski de segmentos y triángulos unitarios. Siguiendo este patrón obtuvimos dos nuevos poliedros equiláteros que llenan el espacio, ya fuera de la clase de hasta 8 caras: <a href="catalog.html#tri-tri">triángulo ⊕ triángulo</a> con 9 caras y <a href="catalog.html#rhomb-tri">rombo ⊕ triángulo</a> con 10 caras.</p>
+  <p><b>Conjetura.</b> Una suma de Minkowski de segmentos y triángulos unitarios en posición general tesela el espacio si y solo si la dimensión total de los sumandos es como máximo 4. Todas las sumas de dimensión 4 probadas teselan. Todas las de dimensión 5 probadas fallan el filtro de ángulos diedros, lo que demuestra que esos miembros no pueden teselar.</p>
   <h2>Verificación rigurosa</h2>
   <p>La enumeración se está convirtiendo en una demostración con álgebra computacional exacta. El sistema polinómico se resuelve sobre ℚ con bases de Gröbner (msolve, Singular), las soluciones reales se aíslan rigurosamente, y la convexidad y el filtro de ángulos se deciden con aritmética de intervalos.</p>
   <ul>

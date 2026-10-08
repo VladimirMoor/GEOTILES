@@ -23,6 +23,19 @@ function specFor(e, poly, inf) {
   const s = e.tiling?.(state.params);
   if (!s) return null;
   if (s === 'parallelohedron') return parallelohedronSpec(poly, inf);
+  if (s.candidates) {
+    // несколько формул и разметок: берём первую с правильным объёмом и полным покрытием
+    const R = 2.2 * inf.circumradius;
+    for (const c of s.candidates) {
+      const [a, b, d] = c.lattice;
+      const det = Math.abs(a[0] * (b[1] * d[2] - b[2] * d[1]) - a[1] * (b[0] * d[2] - b[2] * d[0]) + a[2] * (b[0] * d[1] - b[1] * d[0]));
+      if (Math.abs(det / c.motifs.length - inf.volume) > 1e-7 * inf.volume) continue;
+      const spec = { kind: 'crystal', ...c };
+      const cov = checkCoverage(poly, inf, generateTiles(inf, spec, R, 600), R, 250);
+      if (cov && cov.ok === cov.samples) return spec;
+    }
+    return null;
+  }
   return { kind: 'crystal', ...s };
 }
 
