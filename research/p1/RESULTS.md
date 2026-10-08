@@ -81,3 +81,43 @@ The families marked "every member" are backed by explicit tilings checked numeri
 2. A rigorous structural identification of each family, replacing the numerical one.
 3. Pentagonal and hexagonal prisms: which members tile. Is the sufficient condition also necessary?
 4. Check the literature for the three "generalized" families.
+
+## Prisms (second pass, 2026-10-08)
+
+**Context.** Whether the base of a right prism that tiles space must itself tile the plane is an open problem. W. Kuperberg posed it at the 1993 Smith College tiling session; it appears in Senechal's problem list and on [Eppstein's page](https://ics.uci.edu/~eppstein/junkyard/tiling-problems.tex). Settling equilateral prisms completely would settle special cases of this question.
+
+Kuperberg's second question from the same session asks for the convex polyhedra that tile with translates of themselves and of their point reflection. All five of our tile-able families tile in exactly this way.
+
+### Right equilateral pentagonal prisms (`prisms.py`)
+
+The dihedral angles are the pentagon angles γᵢ and 90°. The filter requires, for each i, Σ aⱼγⱼ ∈ {360°, 270°, 180°, 90°} with aᵢ ≥ 1.
+
+| Stratum | Dim | Base tiles the plane? | Prism tiles space? |
+|---|---|---|---|
+| two angles sum to 180° | 1 | yes (Klaassen 2025: any two angles) | **yes** (stack layers) |
+| two **non-adjacent** angles sum to 270° | 1 | no | **open** (passes the filter) |
+| two adjacent angles sum to 270° | — | not realizable by an equilateral convex pentagon | — |
+| isolated points (relations with Σaⱼ ≤ 7) | 0 | only P7 tiles; P7 was rediscovered automatically | P7: yes; **5 others open** |
+
+The five isolated open pentagons have angles (degrees, in cyclic order A–E):
+- (141.332, 77.337, 126.847, 106.307, 88.178)
+- (91.580, 73.982, 176.841, 44.210, 153.387)
+- (50.436, 166.805, 79.129, 92.324, 151.307)
+- (34.418, 177.061, 76.745, 79.684, 172.092)
+- (36.000, 173.010, 78.990, 78.990, 173.010)
+
+The point search is complete only for relations with Σaⱼ ≤ 7.
+
+### Hexagonal prisms: a simplification
+
+**Lemma (numerical, to be proved).** An equilateral convex hexagon with alternating angle sum A + C + E = 360° is centrally symmetric. In 300 random samples, opposite angles were equal to 1e-6.
+
+So the codimension-1 filter strata of right equilateral hexagonal prisms are:
+- adjacent triples summing to 360°, which tile the plane (Klaassen);
+- alternating triples, which give centrally symmetric hexagons. These are parallelohedra and tile for every slant.
+
+Any residual is therefore at most 1-dimensional. Computing it is still to do.
+
+### Oblique prisms
+
+The lateral dihedral angles are the angles of the cross-section Q perpendicular to the lateral edge. Q is an affine image of the base, and Q is no longer equilateral, so Klaassen's criterion does not apply. Consider the filter stratum "two non-adjacent angles of Q sum to 180°". There Q passes the planar angle condition but in general fails the side-length condition of type 2. This stratum is 3-dimensional, so the open part of oblique prisms is large.
