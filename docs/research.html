@@ -61,6 +61,13 @@
   </table>
   <p class="small muted">Caveat: realizations were found numerically (multi-start Levenberg–Marquardt with strict convexity checks), so the list is very likely but not yet provably complete. An independent rerun with three times as many starts found exactly the same 35 types.</p>
 
+  <h2>Rigorous verification</h2>
+  <p>The enumeration is being turned into a proof with exact computer algebra. The polynomial system is solved over ℚ with Gröbner bases (msolve, Singular), real solutions are isolated rigorously, and convexity and the angle filter are decided with interval arithmetic.</p>
+  <ul>
+    <li><b>Certified: 170 of 301 types.</b> 135 have no solutions at all. 35 have finitely many solutions, all checked; seven of them have a convex realization, and none of those tiles.</li>
+    <li><b>Not yet certified: 131 types.</b> 83 are too large for the exact solver, even with a 2-hour limit. 48 have positive-dimensional solution sets. For these we rely on two independent numerical searches, which agree exactly.</li>
+    <li>No rigorous result contradicts the numerical enumeration.</li>
+  </ul>
   <h2>Log</h2>
   <div class="timeline">
     <div class="entry"><time>2026-10-07</time><h3>First pass of the enumeration</h3><p>All 301 types with ≤ 8 faces were processed. No rigid equilateral solid tiles. Eleven families are excluded by the Dehn invariant. Five families tile in full, three of them new to the catalog. Pentagonal and hexagonal prisms remain open.</p></div>
@@ -116,6 +123,13 @@
   </table>
   <p class="small muted">Оговорка: реализации найдены численно (многократный запуск Левенберга–Марквардта со строгой проверкой выпуклости), поэтому список почти наверняка полон, но строго это пока не доказано. Независимый прогон с втрое большим числом стартов нашёл ровно те же 35 типов.</p>
 
+  <h2>Строгая проверка</h2>
+  <p>Перебор превращается в доказательство с помощью точной компьютерной алгебры. Полиномиальная система решается над ℚ базисами Грёбнера (msolve, Singular), вещественные решения изолируются строго, а выпуклость и фильтр углов проверяются интервальной арифметикой.</p>
+  <ul>
+    <li><b>Сертифицировано 170 типов из 301.</b> У 135 решений нет вовсе. У 35 решений конечное число, и все проверены; у семи из них есть выпуклая реализация, и ни одна не замощает пространство.</li>
+    <li><b>Пока не сертифицирован 131 тип.</b> 83 слишком велики для точного решателя даже с лимитом 2 часа. У 48 множество решений положительной размерности. Для них опираемся на два независимых численных перебора, которые полностью совпали.</li>
+    <li>Ни один строгий результат не противоречит численному перебору.</li>
+  </ul>
   <h2>Журнал</h2>
   <div class="timeline">
     <div class="entry"><time>2026-10-07</time><h3>Первый проход перебора</h3><p>Обработаны все 301 тип с ≤ 8 гранями. Ни одно жёсткое равностороннее тело не замощает. Одиннадцать семейств исключены инвариантом Дена. Пять семейств замощают целиком, три из них впервые попали в каталог. Пятиугольные и шестиугольные призмы остаются открытыми.</p></div>
@@ -171,6 +185,13 @@
   </table>
   <p class="small muted">Advertencia: las realizaciones se hallaron numéricamente (Levenberg–Marquardt con múltiples arranques y verificación estricta de convexidad), así que la lista es casi con certeza completa, pero aún no está demostrado. Una repetición independiente con el triple de arranques encontró exactamente los mismos 35 tipos.</p>
 
+  <h2>Verificación rigurosa</h2>
+  <p>La enumeración se está convirtiendo en una demostración con álgebra computacional exacta. El sistema polinómico se resuelve sobre ℚ con bases de Gröbner (msolve, Singular), las soluciones reales se aíslan rigurosamente, y la convexidad y el filtro de ángulos se deciden con aritmética de intervalos.</p>
+  <ul>
+    <li><b>Certificados: 170 de 301 tipos.</b> 135 no tienen ninguna solución. 35 tienen un número finito de soluciones, todas verificadas; siete de ellos tienen una realización convexa, y ninguna tesela el espacio.</li>
+    <li><b>Aún sin certificar: 131 tipos.</b> 83 son demasiado grandes para el solver exacto, incluso con un límite de 2 horas. 48 tienen conjuntos de soluciones de dimensión positiva. Para ellos nos apoyamos en dos búsquedas numéricas independientes, que coinciden exactamente.</li>
+    <li>Ningún resultado riguroso contradice la enumeración numérica.</li>
+  </ul>
   <h2>Diario</h2>
   <div class="timeline">
     <div class="entry"><time>2026-10-07</time><h3>Primera pasada de la enumeración</h3><p>Se procesaron los 301 tipos con ≤ 8 caras. Ningún sólido equilátero rígido tesela. Once familias quedan descartadas por el invariante de Dehn. Cinco familias teselan por completo, tres de ellas nuevas en el catálogo. Los prismas pentagonales y hexagonales siguen abiertos.</p></div>

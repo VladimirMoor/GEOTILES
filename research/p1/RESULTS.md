@@ -146,3 +146,27 @@ Every solution read back from msolve is also checked against the equations in 26
 | Gröbner basis not finished in 300 s | 83 | rerunning with a 2 h limit (14 of these are numerically realizable) |
 
 So far **170 of the 301 types are settled rigorously**, and no rigorous result contradicts the numerical enumeration.
+
+### Final status of the rigorous pass (2026-10-08)
+
+Machine-readable lists are in `data/rigor_status.json`.
+
+**Certified (170 of 301 types).**
+- 135 types have no complex solution at all, so they have no convex realization.
+- 35 types have finitely many solutions, all certified. Seven of them have exactly one convex realization, and none of those seven tiles space.
+
+**Not certified (131 types).**
+- 48 have positive-dimensional components. 14 of these are the known families.
+- 83 types: msolve did not finish within 300 s, and not even within 2 h for the first ones tried.
+
+For these 131 types we rely on two independent numerical searches (2000 and 6000 starts, different seeds), which agree exactly. 103 of them have no numerical realization. The remaining 28 are the numerically realizable rigid solids and families, which are analysed as described above.
+
+**Approaches tried for the hard types that did not work:**
+- saturation in Singular: too slow;
+- local "patch" subsystems: no contradiction is local;
+- an edge-class (zone) formulation: it does not reduce the size, because the hard types have few rhombi;
+- longer msolve runs: still unfinished after 2 h.
+
+A complete proof would need a certified method suited to these sizes. Candidates are certified homotopy continuation (e.g. alpha-certified monodromy with a trace test) or interval branch-and-bound on a reduced parametrization.
+
+The rigorous **1-dimensional sweep** (`curve1d.py`) works correctly. On F6-002 it finds the convex family members, but it is too slow for routine use: about 50 minutes per sample fibre.
