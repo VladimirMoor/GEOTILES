@@ -1,0 +1,102 @@
+{
+ "F5-001": {
+  "status": "no empty patch"
+ },
+ "F6-003": {
+  "status": "empty",
+  "patch": [
+   0,
+   4,
+   2,
+   3,
+   5
+  ],
+  "faces": [
+   [
+    0,
+    1,
+    5,
+    4
+   ],
+   [
+    1,
+    2,
+    3,
+    5
+   ],
+   [
+    0,
+    3,
+    2
+   ],
+   [
+    0,
+    4,
+    3
+   ],
+   [
+    3,
+    4,
+    5
+   ]
+  ]
+ },
+ "F7-030": {
+  "status": "no empty patch"
+ },
+ "F6-002": {
+  "status": "no empty patch"
+ },
+ "F6-001": {
+  "status": "empty",
+  "patch": [
+   0,
+   4,
+   1,
+   2
+  ],
+  "faces": [
+   [
+    0,
+    1,
+    4,
+    7,
+    3
+   ],
+   [
+    2,
+    6,
+    7,
+    4,
+    5
+   ],
+   [
+    0,
+    2,
+    5,
+    1
+   ],
+   [
+    0,
+    3,
+    6,
+    2
+   ]
+  ]
+ },
+ "F7-021": {
+  "status": "no empty patch"
+ },
+ "F7-028": {
+  "status": "no empty patch"
+ },
+ "F8-007": {
+  "status": "no empty patch"
+ },
+ "F8-006": {
+  "status": "no empty patch"
+ },
+ "F8-005": {
+  "status": "no empty patch"
+ }
+}

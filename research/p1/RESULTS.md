@@ -121,3 +121,28 @@ Any residual is therefore at most 1-dimensional. Computing it is still to do.
 ### Oblique prisms
 
 The lateral dihedral angles are the angles of the cross-section Q perpendicular to the lateral edge. Q is an affine image of the base, and Q is no longer equilateral, so Klaassen's criterion does not apply. Consider the filter stratum "two non-adjacent angles of Q sum to 180°". There Q passes the planar angle condition but in general fails the side-length condition of type 2. This stratum is 3-dimensional, so the open part of oblique prisms is large.
+
+## Rigorous verification (in progress, 2026-10-08)
+
+**Exact model.** The system is posed over ℚ (`exact.py`):
+- unit edges;
+- rhombi as parallelograms (linear equations);
+- face planes through unit normals, |n|² = 1;
+- Rabinowitsch variables for non-degenerate faces and for non-coplanar adjacent faces.
+
+msolve computes Gröbner bases and isolates every real solution with rational intervals. Strict convexity and the dihedral filter are then decided with interval arithmetic (`rigid_exact.py`).
+
+Each certified claim is a proof, modulo the correctness of msolve. Two pitfalls were found and fixed:
+- msolve may permute variables, so the order is read from its `-P 1` output;
+- its parser mishandles unexpanded expressions such as `-(-35)`, so every polynomial is expanded first.
+
+Every solution read back from msolve is also checked against the equations in 260-bit arithmetic.
+
+| Outcome over ℂ | Types | Status |
+|---|---|---|
+| no solutions at all | 135 | **proved: no convex realization** |
+| finitely many solutions | 35 | **certified.** 28 have no convex real solution. 7 have exactly one convex realization: tetrahedron, J1, J12, J2, F7-021, F7-030, octahedron. Six of these fail the filter with interval proof; F7-030 passes it and is excluded by the tetrahedron–octahedron counting lemma |
+| positive-dimensional | 48 | 14 are the known families. The other 34 are being decided by `curve1d.py`, a rigorous sweep of 1-dimensional components |
+| Gröbner basis not finished in 300 s | 83 | rerunning with a 2 h limit (14 of these are numerically realizable) |
+
+So far **170 of the 301 types are settled rigorously**, and no rigorous result contradicts the numerical enumeration.

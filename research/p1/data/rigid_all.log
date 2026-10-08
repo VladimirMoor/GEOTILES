@@ -1,0 +1,35 @@
+F4-001 {"realSolutions": 4, "convexRealizations": 1, "filter": [{"angles": [70.528779], "failingAngles": ["70.528779"], "K": 5}]}
+F5-002 {"realSolutions": 4, "convexRealizations": 1, "filter": [{"angles": [54.73561, 109.471221], "failingAngles": ["109.47122", "54.73561"], "K": 6}]}
+F6-004 {"realSolutions": 4, "convexRealizations": 1, "filter": [{"angles": [70.528779, 141.057559], "failingAngles": ["70.528779", "141.05756"], "K": 5}]}
+F6-005 {"realSolutions": 16, "convexRealizations": 1, "filter": [{"angles": [37.377368, 138.189685], "failingAngles": ["138.18969", "37.377368"], "K": 9}]}
+F7-008 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F7-014 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F7-017 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F7-021 {"realSolutions": 80, "convexRealizations": 1, "filter": [{"angles": [56.251011, 61.874494, 70.528779, 141.057559, 160.528779], "failingAngles": ["70.528779", "141.05756", "160.52878"], "K": 6}]}
+F7-022 {"realSolutions": 80, "convexRealizations": 0, "filter": []}
+F7-030 {"realSolutions": 4, "convexRealizations": 1, "filter": [{"angles": [70.528779, 109.471221], "failingAngles": [], "K": 5}]}
+F8-013 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-036 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-035 {"realSolutions": 80, "convexRealizations": 0, "filter": []}
+F8-027 {"realSolutions": 80, "convexRealizations": 0, "filter": []}
+F8-042 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-055 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-059 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-061 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-062 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-050 {"realSolutions": 80, "convexRealizations": 0, "filter": []}
+F8-091 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-117 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-139 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-144 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-152 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-150 {"realSolutions": 80, "convexRealizations": 0, "filter": []}
+F8-158 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-176 {"realSolutions": 40, "convexRealizations": 0, "filter": []}
+F8-181 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-169 {"realSolutions": 16, "convexRealizations": 0, "filter": []}
+F8-182 {"realSolutions": 32, "convexRealizations": 0, "filter": []}
+F8-190 {"realSolutions": 8, "convexRealizations": 0, "filter": []}
+F8-198 {"realSolutions": 4, "convexRealizations": 0, "filter": []}
+F8-207 {"realSolutions": 4, "convexRealizations": 1, "filter": [{"angles": [109.471221], "failingAngles": ["109.47122"], "K": 3}]}
+F8-239 {"realSolutions": 4, "convexRealizations": 0, "filter": []}

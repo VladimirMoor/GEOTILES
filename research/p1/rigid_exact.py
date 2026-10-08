@@ -20,6 +20,8 @@ from fractions import Fraction
 import mpmath as mp
 import sympy as sp
 
+sys.set_int_max_str_digits(0)  # в выводе msolve встречаются числа на десятки тысяч цифр
+
 ROOT = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 from exact import build  # noqa: E402
@@ -27,21 +29,85 @@ from realize import edges_of  # noqa: E402
 
 iv = mp.iv
 iv.prec = 200
+mp.mp.prec = 260  # глобально; переводы чисел ниже всё равно идут через интервалы с внешним округлением
+
+
+def rat_iv(lo, hi):
+    """Строгий интервал, содержащий [lo, hi] (Fraction): деление в интервальной арифметике."""
+    a = iv.mpf(lo.numerator) / iv.mpf(lo.denominator)
+    b = iv.mpf(hi.numerator) / iv.mpf(hi.denominator)
+    return iv.mpf([a.a, b.b])
 
 
 def sing_name(v):
     return v.replace("_", "")
 
 
+def load_msolve(text):
+    """Вывод msolve как структура Python: дроби → Fraction."""
+    t = text.strip().rstrip(":")
+    t = re.sub(r"(-?\d+)\s*/\s*(\d+)\^(\d+)", r"F(\1,\2**\3)", t)
+    t = re.sub(r"(-?\d+)\s*/\s*(\d+)", r"F(\1,\2)", t)
+    return eval(t, {"F": Fraction})
+
+
+def msolve_points(variables, eqs, tag, precision=256, timeout=3600, seed=7):
+    """Все вещественные решения нульмерной системы (msolve) в порядке variables.
+
+    Уравнения раскрываются sympy (парсер msolve ошибается на выражениях вида «-(-35)»).
+    Запуск с -P 1: вывод [0, [char, n, deg, [имена], ...], [1, [решения]]], решения идут в порядке
+    перечисленных имён (msolve может переставлять переменные). После разбора — проверка невязок."""
+    import sympy as sp
+    syms = sp.symbols(variables)
+    loc = dict(zip(variables, syms))
+    clean = []
+    for e in eqs:
+        p = sp.expand(sp.sympify(e.replace("^", "**"), locals=loc))
+        if p != 0:
+            clean.append(str(p).replace("**", "^"))
+    (ROOT / "data" / "ms").mkdir(exist_ok=True)
+    inp = ROOT / "data" / "ms" / f"{tag}.pts.in"
+    out = ROOT / "data" / "ms" / f"{tag}.pts.out"
+    inp.write_text(",".join(variables) + "\n0\n" + ",\n".join(clean) + "\n")
+    subprocess.run(["msolve", "-f", str(inp), "-o", str(out), "-p", str(precision), "-t", "8", "-P", "1"],
+                   check=True, capture_output=True, timeout=timeout)
+    text = out.read_text()
+    if text.strip().startswith("[-1]"):
+        return []
+    d = load_msolve(text)
+    if d[0] != 0:
+        raise ValueError("not zero-dimensional")
+    listed = [v for v in d[1][3] if v in variables]
+    if sorted(listed) != sorted(variables):
+        raise RuntimeError("msolve variable list does not match input")
+    raw = d[2][1] if len(d) > 2 else []
+    pos = {v: i for i, v in enumerate(listed)}
+    sols = [[(Fraction(sol[pos[v]][0]), Fraction(sol[pos[v]][1])) for v in variables] for sol in raw]
+    check_residuals(variables, clean, sols)
+    return sols
+
+
+def check_residuals(variables, eqs, sols, tol=mp.mpf(10) ** -25):
+    """Невязки в 260-битной арифметике; каждый многочлен нормирован на максимальный |коэффициент|."""
+    import sympy as sp
+    syms = [sp.Symbol(n) for n in variables]
+    loc = dict(zip(variables, syms))
+    fs = []
+    for e in eqs:
+        P = sp.Poly(sp.sympify(e.replace("^", "**"), locals=loc), *syms)
+        c = max(abs(x) for x in P.coeffs())
+        fs.append(sp.lambdify(syms, P.as_expr() / c, modules="mpmath"))
+    for sol in sols:
+        mid = [mp.mpf(lo.numerator) / lo.denominator / 2 + mp.mpf(hi.numerator) / hi.denominator / 2 for lo, hi in sol]
+        scale = max(1, max(abs(m) for m in mid))
+        res = max(abs(f(*mid)) for f in fs)
+        if res > tol * scale ** 6:
+            raise RuntimeError(f"msolve output misaligned or inaccurate: residual {mp.nstr(res, 5)}")
+
+
 def msolve_real(tid, variables, eqs, precision=256, timeout=3600):
     """Все вещественные решения системы с переменными Рабиновича (exact.build(rabinowitsch=True))."""
-    (ROOT / "data" / "ms").mkdir(exist_ok=True)
-    inp = ROOT / "data" / "ms" / f"{tid}.rigid.in"
-    out = ROOT / "data" / "ms" / f"{tid}.rigid.out"
-    inp.write_text(",".join(variables) + "\n0\n" + ",\n".join(eqs) + "\n")
-    subprocess.run(["msolve", "-f", str(inp), "-o", str(out), "-p", str(precision), "-t", "8"], check=True,
-                   capture_output=True, timeout=timeout)
-    return parse_msolve(out.read_text(), len(variables))
+    return msolve_points(variables, eqs, f"{tid}.rigid", precision, timeout)
 
 
 def frac(tok):
@@ -49,6 +115,9 @@ def frac(tok):
     m = re.fullmatch(r"(-?\d+)\s*/\s*2\^(\d+)", tok)
     if m:
         return Fraction(int(m.group(1)), 2 ** int(m.group(2)))
+    m = re.fullmatch(r"(-?\d+)\s*/\s*(\d+)", tok)
+    if m:
+        return Fraction(int(m.group(1)), int(m.group(2)))
     return Fraction(tok)
 
 
@@ -58,7 +127,7 @@ def parse_msolve(text, nvars):
         return []
     if not text.startswith("[0"):
         raise ValueError("not zero-dimensional: " + text[:40])
-    nums = re.findall(r"-?\d+\s*/\s*2\^\d+|-?\d+", text[text.index("[[["):] if "[[[" in text else "")
+    nums = re.findall(r"-?\d+\s*/\s*2\^\d+|-?\d+\s*/\s*\d+|-?\d+", text[text.index("[[["):] if "[[[" in text else "")
     vals = [frac(n) for n in nums]
     per = 2 * nvars
     sols = []
@@ -70,8 +139,7 @@ def parse_msolve(text, nvars):
 
 def vertex_intervals(t, variables, sol):
     a, b, c = t["faces"][0][:3]
-    vals = {v: iv.mpf([float(lo) if False else mp.mpf(lo.numerator) / lo.denominator, mp.mpf(hi.numerator) / hi.denominator])
-            for v, (lo, hi) in zip(variables, sol)}
+    vals = {v: rat_iv(lo, hi) for v, (lo, hi) in zip(variables, sol)}
     X = []
     for v in range(t["nV"]):
         row = []

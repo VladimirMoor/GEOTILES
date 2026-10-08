@@ -96,6 +96,18 @@ def build(t, r=R_VEC, rabinowitsch=False):
             variables.append(f"e{ei}")
             eqs.append(f"e{ei}*{det}-1")
     if rabinowitsch == "full":
+        # любые три последовательные вершины грани не коллинеарны (угол грани ≠ 0°, 180°)
+        for f, face in enumerate(faces):
+            if len(face) < 4:
+                continue
+            k = len(face)
+            for i in range(1, k):
+                p0, p1, p2 = face[i], face[(i + 1) % k], face[(i + 2) % k]
+                u = [f"({X(p1, j)}-{X(p0, j)})" for j in range(3)]
+                w = [f"({X(p2, j)}-{X(p0, j)})" for j in range(3)]
+                cr = [f"({u[1]}*{w[2]}-{u[2]}*{w[1]})", f"({u[2]}*{w[0]}-{u[0]}*{w[2]})", f"({u[0]}*{w[1]}-{u[1]}*{w[0]})"]
+                variables.append(f"c{f}_{i}")
+                eqs.append(f"c{f}_{i}*({cr[0]}^2+{cr[1]}^2+{cr[2]}^2)-1")
         # строгая выпуклость: никакая вершина не лежит в плоскости чужой грани
         for f, face in enumerate(faces):
             p0, p1, p2 = face[0], face[1], face[2]
