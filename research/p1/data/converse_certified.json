@@ -1,0 +1,162 @@
+{
+ "tri+tri+seg": [
+  {
+   "status": "does not tile (certified)",
+   "faces": 15,
+   "failingAngleClasses": 14,
+   "K": 5
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 14,
+   "failingAngleClasses": 10,
+   "K": 6
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 15,
+   "failingAngleClasses": 22,
+   "K": 3
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 13,
+   "failingAngleClasses": 10,
+   "K": 5
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 12,
+   "failingAngleClasses": 8,
+   "K": 5
+  }
+ ],
+ "tri+seg+seg+seg": [
+  {
+   "status": "does not tile (certified)",
+   "faces": 17,
+   "failingAngleClasses": 19,
+   "K": 9
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 17,
+   "failingAngleClasses": 19,
+   "K": 6
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 14,
+   "failingAngleClasses": 4,
+   "K": 8
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 17,
+   "failingAngleClasses": 15,
+   "K": 9
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 17,
+   "failingAngleClasses": 18,
+   "K": 6
+  }
+ ],
+ "seg+seg+seg+seg+seg": [
+  {
+   "status": "does not tile (certified)",
+   "faces": 20,
+   "failingAngleClasses": 4,
+   "K": 4
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 20,
+   "failingAngleClasses": 20,
+   "K": 6
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 20,
+   "failingAngleClasses": 17,
+   "K": 9
+  },
+  {
+   "status": "filter not excluded",
+   "faces": 12,
+   "failingAngleClasses": 0,
+   "K": 4
+  },
+  {
+   "status": "filter not excluded",
+   "faces": 12,
+   "failingAngleClasses": 0,
+   "K": 6
+  }
+ ],
+ "tri+tri+tri": [
+  {
+   "status": "does not tile (certified)",
+   "faces": 19,
+   "failingAngleClasses": 22,
+   "K": 6
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 21,
+   "failingAngleClasses": 33,
+   "K": 4
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 21,
+   "failingAngleClasses": 26,
+   "K": 8
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 19,
+   "failingAngleClasses": 30,
+   "K": 7
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 18,
+   "failingAngleClasses": 20,
+   "K": 5
+  }
+ ],
+ "tri+tri+seg+seg": [
+  {
+   "status": "does not tile (certified)",
+   "faces": 21,
+   "failingAngleClasses": 35,
+   "K": 8
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 23,
+   "failingAngleClasses": 37,
+   "K": 5
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 20,
+   "failingAngleClasses": 29,
+   "K": 5
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 22,
+   "failingAngleClasses": 27,
+   "K": 4
+  },
+  {
+   "status": "does not tile (certified)",
+   "faces": 23,
+   "failingAngleClasses": 35,
+   "K": 5
+  }
+ ]
+}

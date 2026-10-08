@@ -244,21 +244,27 @@ def certify_filter(angles):
             groups.append(a)
     lo_min = min(mp.mpf(g.a) for g in groups)
     K = int(mp.floor(360 / lo_min))
-    failing = []
-    for i, gi in enumerate(groups):
-        ok = False
-        for total in range(1, K + 1):
-            for combo in itertools.combinations_with_replacement(range(len(groups)), total):
-                if i not in combo:
-                    continue
-                s = sum((groups[j] for j in combo), iv.mpf(0))
-                if (s.a <= 360 <= s.b) or (s.a <= 180 <= s.b):
-                    ok = True
-                    break
-            if ok:
-                break
-        if not ok:
-            failing.append(gi)
+    los = [mp.mpf(g.a) for g in groups]
+    his = [mp.mpf(g.b) for g in groups]
+    n = len(groups)
+
+    def reachable(i):
+        """Есть ли мультимножество с ≥1 копией groups[i], интервал суммы которого содержит 180 или 360.
+        Поиск в глубину по индексам j ≥ 0 с отсечением по нижней границе (> 360 — дальше бессмысленно)."""
+        def dfs(j, lo, hi):
+            if lo > 360:
+                return False
+            if (lo <= 180 <= hi) or (lo <= 360 <= hi):
+                return True
+            if j == n:
+                return False
+            # берём ещё одну копию j (оставаясь на j) или переходим к j+1
+            return dfs(j, lo + los[j], hi + his[j]) or dfs(j + 1, lo, hi)
+        return dfs(0, los[i], his[i])
+
+    import sys as _s
+    _s.setrecursionlimit(100000)
+    failing = [groups[i] for i in range(n) if not reachable(i)]
     return failing, groups, K
 
 

@@ -64,8 +64,37 @@ In each chamber the prover verified **one fixed formula on the whole chamber**, 
 
 **Corollary.** For **any** two triangles T₁, T₂, and for any parallelogram and triangle, whose Minkowski sum is 3-dimensional, the sum tiles ℝ³ by translations and point reflections. Special positions are included: the gyrobifastigium itself, F7-029, F8-249, and the pentagonal prisms on the walls a = 0 and b = 0.
 
+## The converse: total dimension ≥ 5 (2026-10-08)
+
+**Claim.** For segments and triangles in general position with Σ dim ≥ 5, almost every sum does not tile ℝ³.
+
+The claim "no member ever tiles" is probably false in this strict form: special members can satisfy angle relations by accident.
+
+**Method** (`converse.py`). Fix a member p₀ and an edge class e. Find all non-negative integer relations Σ kᵢθᵢ(p₀) ∈ {π, 2π} with kₑ ≥ 1. The search is complete, because Σk ≤ 2π/θ_min. Keep those that are identities on the chamber, meaning the gradient Σ kᵢ∇θᵢ also vanishes; this is computed in 60-digit arithmetic.
+
+If no relation exists at p₀ at all, call e a *witness*. Then:
+1. p₀ fails the dihedral filter, so it does not tile.
+2. The failure is an open condition, so the same holds on a neighbourhood of p₀.
+3. Every relation that would let e pass is a non-trivial analytic equation, so the members of the chamber that pass the filter form a set of measure zero.
+
+**Results.** 300 random members, about 240 distinct combinatorial types (chambers).
+
+| Σ dim | Types | Witnesses per member | Members without a witness |
+|---|---|---|---|
+| 4 | tri⊕tri, tri⊕seg⊕seg, 4 segments | 0 (every edge covered by identities) | 90 / 90 |
+| 5 | tri⊕tri⊕seg, tri⊕3 segs, 5 segs | 14–22 | **0 / 90** |
+| 6 | tri⊕tri⊕tri, tri⊕tri⊕2 segs, tri⊕4 segs, 6 segs | 23–47 | **0 / 120** |
+
+**Rigorous examples** (`converse_certify.py`). We used rational (Cayley) rotations and interval arithmetic for √3 and all angles. **23 of 25** sampled sums with Σ dim ∈ {5, 6} are *proved* not to tile, together with an open neighbourhood of each. The other 2 samples are 5-segment sums whose rational rotations happened to make generators parallel (12 faces instead of 20). Such a sum is a 4-generator zonotope and does tile, which shows that the general-position assumption is essential.
+
+**Structure behind it.** Numerically, the only identities among the dihedral angles are the zone identities Σ_{zone} θ = (m − 1)π, where m is the number of edges of the zone. Zones with m ≥ 4 edges contribute no filter relation (π or 2π), so their edges become witnesses.
+
+**Special positions can tile.** The generalized elongated gyrobifastigium (F8-255) is tri ⊕ tri ⊕ seg with both triangle planes containing the segment, and it tiles.
+
+**Still open.** A proof for *every* chamber (we sampled about 240), and a proof that the zone identities are the only identities.
+
 ## Open
 
-- **Converse.** Do sums of total dimension ≥ 5 never tile? All 24 random members tested fail the dihedral filter, which proves non-tiling for those members, but there is no general proof.
+- **Converse for all chambers.** See the section above: almost every member fails in every sampled chamber, but there is no complete proof.
 - **Is every equilateral space-filler a Minkowski sum of unit polygons and segments?**
 - **Higher dimensions.** Do sums of simplices with Σ dim = d+1 tile ℝ^d in general?
