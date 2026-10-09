@@ -93,3 +93,23 @@ In particular, every tiling by one of the 38 tetrahedra is non-face-to-face in a
 1. **Fault-plane analysis.** In a non-face-to-face tiling, the faces lying in a fault plane Π form two different planar tilings of the same region S, one from each side. Along every interior edge of each planar tiling there is a π-combination containing the two adjacent tiles' angles, and interior vertices satisfy planar angle conditions. Develop this into a finite search.
 2. **Constructive side.** Search for non-face-to-face tilings, for example dissections of rods or slabs whose cross-section tiles the plane. Since faults are forced along bad edges, the bad edges would have to lie on the sliding planes.
 3. **Exact certification** of the length classes in sympy, as minimal polynomials, for a publication-grade write-up.
+
+## Fault-plane analysis (2026-10-09, second pass)
+
+**Planar conditions** (`faults.py`). Assume a tiling that is not face-to-face, and let Π be a fault plane. The faces lying in Π give two different planar tilings 𝒫₊ and 𝒫₋ of the same region S, one from each side. Two necessary conditions follow:
+
+- **(E)** Along an interior edge of 𝒫₊ with adjacent triangle edges g and g′, the tiles above form a half-star of total π. Hence π − α_g − α_{g′} must be a non-negative integer combination of dihedral angles.
+- **(V)** At an interior vertex, the face angles sum to 2π. At a T-junction (the vertex lies on another triangle's edge) they sum to π on one side.
+
+**Result: these local conditions do not exclude anything.** All 38 open tetrahedra have both full and T-junction planar vertex stars. Example: six copies of one face around a point, which is the standard triangle tiling of the plane.
+
+**Structural lemmas:**
+- **Bad edges always lie in fault planes.** At every point of every copy of a bad edge (no metric 2π-star, no metric π-half-star), the cycle of tiles splits into metric chains separated by mismatched half-planes, or there is a face-interior event. Each mismatched half-plane lies in a fault region of its plane.
+- **Bad edges sit on cluster edges.** Suppose a tiling comes from a convex cluster Q of copies glued face-to-face inside, and Q itself tiles. Then interior edges of Q need full metric stars, and edges lying in faces of Q need metric half-stars. So **every copy of a bad edge lies on an edge of Q**, and Q's dihedral angle there is the sum of a metric chain through that edge. The admissible chain sums are listed by `chains.py`. They are very restricted: for #17, #19, #25 a bad edge's chain is just the tile itself.
+
+**Constructive search** (`clusters.py`, `poincare_q.py`, `run_clusters.py`).
+- **Method.** We enumerate all clusters of k ≤ 7 copies glued face-to-face (mirror copies allowed), up to congruence, and keep the convex ones. For each convex cluster we run the Poincaré theorem with whole polygonal faces paired by isometries: translations, rotations, reflections and point reflections.
+- **Validation.** For #1 and #3 there are 31 and 28 convex clusters, and many of them tile.
+- **The 38 open tetrahedra.** They have only 0–24 convex clusters, a count that hardly grows with k, and **none of these clusters tiles**. Logs: `data_clusters5.log`, `data_clusters7.log`.
+
+**Status.** The 38 open tetrahedra are still undecided. Any tiling would have to be non-face-to-face, with faults along every copy of every bad edge. It also could not come from a convex cluster of at most 7 copies tiling isohedrally.
