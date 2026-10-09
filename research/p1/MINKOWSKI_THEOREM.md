@@ -119,9 +119,50 @@ For each type and **each** chamber of its configuration space, the members that 
 
 **Complements.** The 23 explicit members certified with interval arithmetic do not tile, and neither does a neighbourhood of each. Special (non-general) positions can tile: F8-255 (tri⊕tri⊕seg) and degenerate 5-segment sums.
 
-**Still open.**
-- Σ dim ≥ 7 in general: the independence lemma is certified only up to 6 summands' worth of types.
-- "Almost every" cannot be strengthened to "every" by this method.
+### Theorem (converse in general: every Σ dim ≥ 5, all chambers), 2026-10-09
+
+**Statement.** Take a Minkowski sum of unit segments and unit equilateral triangles in general position with total dimension Σ dim ≥ 5. In every chamber, the members that tile ℝ³ form a set of measure zero.
+
+**Independence lemma, general proof by monodromy.** Write a relation as Σ c′_{d,x}·az_d(x) ≡ const. Here az_d(x) is the azimuth of line x about the zone direction d, and Σ_x c′_{d,x} = 0 for each zone, so the relation does not depend on frames.
+
+1. The differential of the relation is single-valued and analytic. The singular loci are {x = ±d}, which have codimension 2 in the configuration space SO(3)^{k−1}, so their complement is connected. Hence the relation continues analytically to all of it.
+2. Along any loop the relation keeps its value, while each term changes by 2π·(winding)·(coefficient). So for every loop, Σ coefficient × winding = 0.
+3. Take an edge direction x of summand j and a direction d of another summand. Rotate summand j so that x traces a small positive loop, first around d and then around −d. The other directions of j stay generic.
+   - (W1) The azimuth of a moving point about a fixed pole d winds **+1 around d and −1 around −d**.
+   - (W2) The angle at a moving vertex x towards a fixed line d winds **+1 around d and +1 around −d**. Near x = −d, the direction to d is the negative of the direction to −d.
+   - No other term winds. (The frame at x is cancelled by the zero sums.)
+4. This gives c′_{d,x} + c′_{x,d} = 0 and −c′_{d,x} + c′_{x,d} = 0, so both coefficients vanish.
+5. All cross-summand coefficients therefore vanish. The remaining own-plane coefficients vanish by the zero sums. ∎
+
+Both windings were confirmed numerically (`independence.py` and the winding test). The exact rank computations over ℚ for nine types are consistent with the lemma.
+
+**Consequence.** Every identity among the dihedral angles is a circulation in the zone formula graphs. An edge passes the filter identically if and only if it lies on a directed cycle of value Σ(π − φ) ≤ 2π.
+
+**Combinatorial lemma, general proof.** For Σ dim ≥ 5, one of the following three cases holds, and each produces a witness edge.
+
+- **(A) At least two triangles and at least three summands.**
+  - T_i ⊕ T_j has 8 or 9 faces, by the proven chamber classification, so the normal tripods of T_i and T_j cross 4 or 5 times.
+  - Hence some edge e of T_i is crossed twice by T_j.
+  - Any third summand crosses the semicircle of e at least once:
+    - a segment's great circle meets it exactly once;
+    - a triangle's tripod has lunes of angle < π, so the semicircle cannot avoid it.
+  - The zone of e is then a simple cycle with ≥ 4 arcs and Σφ = π, so its value is ≥ 3π.
+- **(B) Exactly one triangle T and S ≥ 3 segments.**
+  - Every segment's great circle meets the semicircle of an edge e of T exactly once, in distinct lines.
+  - So the zone of e is a simple cycle own → s₁ → … → s_S → own with S + 1 arcs and value S·π ≥ 3π.
+  - This was checked on 18 members: the zone has exactly S + 1 edges.
+- **(C) No triangles, n ≥ 5 segments.** The zone is antipodally symmetric, and its formula graph is one cycle of length n − 1 with value (n − 2)π ≥ 3π.
+
+For Σ dim ≤ 4 the same criterion covers every edge (one triangle with S ≤ 2 gives value S·π ≤ 2π, and so on), which agrees with the positive theorem.
+
+**Measure zero.** As before: for a witness edge, every relation k with k_e ≥ 1 is a non-trivial analytic equation on the chamber, and there are countably many of them. ∎
+
+**Summary for unit segments and triangles in general position:**
+- Σ dim ≤ 4: the sum **always tiles** (proved for every position, special positions included).
+- Σ dim ≥ 5: the sum **almost never tiles** (proved for every chamber).
+- In special positions, sums with Σ dim ≥ 5 can tile; F8-255 is an example.
+
+**Still open.** "Almost never" cannot be strengthened to "never" by this method: isolated members might satisfy angle relations by accident.
 
 ## Open
 
