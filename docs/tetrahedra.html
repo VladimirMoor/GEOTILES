@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
-  .twrap { display: grid; grid-template-columns: 220px 1fr 300px; gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin: 24px 0 8px; min-height: 460px; }
+  .twrap { display: grid; grid-template-columns: 220px minmax(0, 1fr) 320px; gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin: 24px 0 8px; min-height: 460px; }
   #tpick { padding: 14px; border-right: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
   .tbtn { font-family: var(--mono); font-size: .8rem; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
   .tbtn.ok { border-color: var(--ok); color: var(--ok); }
@@ -20,7 +20,14 @@
   #tinfo { padding: 14px 16px; border-left: 1px solid var(--line); overflow: auto; }
   #tinfo h3 { margin: 14px 0 6px; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
   #tinfo h3:first-child { margin-top: 0; font-size: 1.3rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
+  #tinfo { min-width: 0; overflow-wrap: anywhere; }
+  #tinfo .kv { grid-template-columns: auto minmax(0, 1fr); }
   #tinfo .kv dd { text-align: left; }
+  #tinfo .chip { white-space: normal; border-radius: 8px; }
+  #tinfo .status { font-weight: 600; margin: 4px 0 2px; }
+  #tinfo .status.ok { color: var(--ok); } #tinfo .status.open { color: var(--accent); }
+  #tinfo .mono { white-space: normal; }
+  #tstage { min-width: 0; overflow: hidden; }
   .wide { max-width: 1180px; }
   @media (max-width: 900px) {
     .twrap { grid-template-columns: 1fr; }

@@ -55,15 +55,14 @@ function show(no) {
   const known = r.status.startsWith('Sommerville');
   $('#tinfo').innerHTML = `
     <h3>#${r.no}</h3>
-    <dl class="kv">
-      <dt>${L(T.status)}</dt><dd><span class="chip ${known ? 'ok' : 'info'}">${known ? esc(r.status.replace(' (tiles)', '')) + ' — ' + L(T.tiles) : L(T.nof2f)}</span></dd>
-      ${known ? '' : `<dt></dt><dd class="small">${L(r.f2f_exclusion_new ? T.isnew : T.old)}</dd>`}
-      <dt>${L(T.clusters)}</dt><dd>${r.convex_clusters_le7 ?? '—'}</dd>
-    </dl>
+    <div class="small muted">${L(T.status)}</div>
+    <div class="status ${known ? 'ok' : 'open'}">${known ? esc(r.status.replace(' (tiles)', '')) + ' — ' + L(T.tiles) : L(T.nof2f)}</div>
+    ${known ? '' : `<div class="small muted">${L(r.f2f_exclusion_new ? T.isnew : T.old)}</div>`}
+    <dl class="kv small" style="margin-top:10px"><dt>${L(T.clusters)}</dt><dd>${r.convex_clusters_le7 ?? '—'}</dd></dl>
     <h3>${L(T.angles)}</h3>
     <div class="small mono">(α12, α34, α13, α24, α14, α23) = (${r.angles.join(', ')})</div>
     <h3>${L(T.edges)}</h3>
-    <dl class="kv small">${EDGES.map((e) => `<dt>${e}</dt><dd>${r.len[e]}${r.edges_without_star.includes(e) ? ` <span class="chip bad">${L(T.bad)}</span>` : ''}</dd>`).join('')}</dl>
+    <dl class="kv small">${EDGES.map((e) => `<dt>${e}</dt><dd>${r.len[e]}${r.edges_without_star.includes(e) ? `<br><span class="chip bad">${L(T.bad)}</span>` : ''}</dd>`).join('')}</dl>
     <p class="small muted">${L(T.legendBad)}</p>`;
 }
 
