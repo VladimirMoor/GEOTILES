@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space-filling tetrahedra · GEOTILES</title>
+<meta name="description" content="Problem 2: which sporadic rational tetrahedra tile space? Status of the 40 undecided cases of Chentouf and Sun.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .twrap { display: grid; grid-template-columns: 220px 1fr 300px; gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin: 24px 0 8px; min-height: 460px; }
+  #tpick { padding: 14px; border-right: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+  .tbtn { font-family: var(--mono); font-size: .8rem; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+  .tbtn.ok { border-color: var(--ok); color: var(--ok); }
+  .tbtn.new { border-color: var(--accent); }
+  .tbtn.on { background: var(--ink); color: var(--bg); }
+  #tstage { position: relative; background: var(--stage); min-height: 460px; }
+  #tstage canvas { display: block; width: 100%; height: 100%; position: absolute; inset: 0; }
+  #tinfo { padding: 14px 16px; border-left: 1px solid var(--line); overflow: auto; }
+  #tinfo h3 { margin: 14px 0 6px; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
+  #tinfo h3:first-child { margin-top: 0; font-size: 1.3rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
+  #tinfo .kv dd { text-align: left; }
+  .wide { max-width: 1180px; }
+  @media (max-width: 900px) {
+    .twrap { grid-template-columns: 1fr; }
+    #tpick { border-right: 0; border-bottom: 1px solid var(--line); }
+    #tinfo { border-left: 0; border-top: 1px solid var(--line); }
+    #tstage { min-height: 340px; }
+  }
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<section><div class="wrap doc">
+
+<!-- ======================= ENGLISH ======================= -->
+<article data-lang="en">
+  <div class="eyebrow">problem 02 · <span class="chip info">in progress</span></div>
+  <h1>New space-filling tetrahedra</h1>
+  <p class="muted">Which tetrahedra tile space with congruent copies? No classification exists. Known tilers: Sommerville’s four (1923), Hill’s and Baumgartner’s examples, and Goldberg’s three one-parameter families (1974). For tetrahedra whose dihedral angles are all rational multiples of π, Kedlaya, Kolpakov, Poonen and Rubinstein (2020) found two families and 59 sporadic cases. Chentouf and Sun (2023) showed that at most 40 of the sporadic ones tile, and left those 40 undecided. That set is our target. Any member that tiles would be a new space-filling tetrahedron.</p>
+  <h2>Results so far</h2>
+  <ul>
+    <li><b>The printed list has 42 entries, not 40.</b> Two of them are the tetrahedra the authors themselves exclude by linear programming. All 42 are checked to be genuine tetrahedra, and we reproduce their linear-programming criterion exactly.</li>
+    <li><b>Two “undecided” members are classical tilers:</b> #1 is Sommerville No. 3, and #3 is Sommerville No. 2 (the Coxeter simplex [4,3<sup>1,1</sup>]). Our Poincaré-theorem search finds explicit tilings for both. So <b>38</b> tetrahedra are genuinely open.</li>
+    <li><b>None of the 38 tiles face-to-face.</b> In a face-to-face tiling the tiles around every edge must close up with identical shared faces and total angle 2π. For each of the 38, some edge (red below) admits no such “star”. For 12 of them (#2, 5, 7, 12, 19, 20, 22, 23, 25, 27, 36, 42) this exclusion is new.</li>
+    <li><b>Faults are unavoidable.</b> In any tiling by one of the 38, every copy of a bad edge lies in a fault plane, where the faces on its two sides do not match. Convex clusters of up to 7 copies glued face-to-face never tile isohedrally.</li>
+    <li><b>Why the remaining cases are hard.</b> Take #19 and #25 as examples. They are “icosahedral”: every dihedral angle lies in {π/5, π/3, π/2, 2π/5, 2π/3, 4π/5}, every vertex figure is made of copies of the (2,3,5) Möbius triangle, and the golden ratio appears among the edge lengths. All local angle conditions can be met, so a proof of non-tiling has to be global and use the edge lengths.</li>
+  </ul>
+  <p class="small muted">Details and code: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p2/RESULTS.md">research/p2/RESULTS.md</a>.</p>
+</article>
+
+<!-- ======================= РУССКИЙ ======================= -->
+<article data-lang="ru" hidden>
+  <div class="eyebrow">задача 02 · <span class="chip info">в работе</span></div>
+  <h1>Новые тетраэдры, замощающие пространство</h1>
+  <p class="muted">Какие тетраэдры замощают пространство конгруэнтными копиями? Классификации нет. Известные замостители: четыре тетраэдра Соммервилля (1923), примеры Хилла и Баумгартнера и три однопараметрических семейства Голдберга (1974). Для тетраэдров, у которых все двугранные углы — рациональные доли π, Кедлая, Колпаков, Пунен и Рубинштейн (2020) нашли два семейства и 59 спорадических случаев. Шентуф и Сунь (2023) доказали, что замощать могут не больше 40 спорадических, и оставили эти 40 нерешёнными. Это множество — наша цель: любой его член, который замощает пространство, будет новым тетраэдром-замостителем.</p>
+  <h2>Что получено</h2>
+  <ul>
+    <li><b>В напечатанном списке 42 тетраэдра, а не 40.</b> Два из них авторы сами исключают линейным программированием. Мы проверили, что все 42 — настоящие тетраэдры, и в точности воспроизвели их критерий линейного программирования.</li>
+    <li><b>Два «нерешённых» — классические замостители:</b> #1 — это тетраэдр Соммервилля №3, #3 — Соммервилля №2 (симплекс Кокстера [4,3<sup>1,1</sup>]). Наш поиск по теореме Пуанкаре находит для обоих явные разбиения. Значит, по-настоящему открыты <b>38</b> тетраэдров.</li>
+    <li><b>Ни один из 38 не замощает «лицом к лицу».</b> В таком разбиении плитки вокруг каждого ребра должны замыкаться с совпадающими общими гранями и суммой углов 2π. У каждого из 38 есть ребро (ниже красное), для которого такой «звезды» не существует. Для 12 из них (#2, 5, 7, 12, 19, 20, 22, 23, 25, 27, 36, 42) это исключение новое.</li>
+    <li><b>Разломы неизбежны.</b> В любом разбиении одним из 38 каждая копия плохого ребра лежит в плоскости разлома, где грани по разные стороны не совпадают. Выпуклые кластеры до 7 копий, склеенных лицом к лицу, никогда не дают изоэдрального разбиения.</li>
+    <li><b>Почему оставшиеся случаи трудны.</b> Возьмём для примера #19 и #25. Они «икосаэдрические»: каждый двугранный угол лежит в {π/5, π/3, π/2, 2π/5, 2π/3, 4π/5}, каждая вершинная фигура составлена из копий треугольника Мёбиуса (2,3,5), а среди длин рёбер встречается золотое сечение. Все локальные угловые условия выполнимы, поэтому доказательство того, что тетраэдр не замощает, должно быть глобальным и опираться на длины рёбер.</li>
+  </ul>
+  <p class="small muted">Подробности и код: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p2/RESULTS.md">research/p2/RESULTS.md</a>.</p>
+</article>
+
+<!-- ======================= ESPAÑOL ======================= -->
+<article data-lang="es" hidden>
+  <div class="eyebrow">problema 02 · <span class="chip info">en curso</span></div>
+  <h1>Nuevos tetraedros que llenan el espacio</h1>
+  <p class="muted">¿Qué tetraedros teselan el espacio con copias congruentes? No existe una clasificación. Teselas conocidas: los cuatro de Sommerville (1923), los ejemplos de Hill y Baumgartner y las tres familias uniparamétricas de Goldberg (1974). Para los tetraedros cuyos ángulos diedros son todos múltiplos racionales de π, Kedlaya, Kolpakov, Poonen y Rubinstein (2020) encontraron dos familias y 59 casos esporádicos. Chentouf y Sun (2023) probaron que a lo sumo 40 de los esporádicos teselan y dejaron esos 40 sin decidir. Ese conjunto es nuestro objetivo: cualquiera de ellos que tesele sería un nuevo tetraedro que llena el espacio.</p>
+  <h2>Resultados hasta ahora</h2>
+  <ul>
+    <li><b>La lista impresa tiene 42 entradas, no 40.</b> Dos de ellas son las que los propios autores descartan por programación lineal. Comprobamos que las 42 son tetraedros auténticos y reproducimos exactamente su criterio de programación lineal.</li>
+    <li><b>Dos miembros «sin decidir» son teselas clásicas:</b> #1 es el No. 3 de Sommerville y #3 el No. 2 de Sommerville (el símplice de Coxeter [4,3<sup>1,1</sup>]). Nuestra búsqueda con el teorema de Poincaré encuentra teselaciones explícitas para ambos. Así que hay <b>38</b> tetraedros realmente abiertos.</li>
+    <li><b>Ninguno de los 38 tesela cara a cara.</b> En una teselación cara a cara las teselas alrededor de cada arista deben cerrarse con caras compartidas idénticas y ángulo total 2π. Cada uno de los 38 tiene una arista (en rojo abajo) que no admite tal «estrella». Para 12 de ellos (#2, 5, 7, 12, 19, 20, 22, 23, 25, 27, 36, 42) esta exclusión es nueva.</li>
+    <li><b>Las fallas son inevitables.</b> En cualquier teselación por uno de los 38, cada copia de una arista mala está en un plano de falla, donde las caras a ambos lados no coinciden. Los clústeres convexos de hasta 7 copias pegadas cara a cara nunca teselan de forma isoédrica.</li>
+    <li><b>Por qué los casos restantes son difíciles.</b> Tomemos como ejemplo #19 y #25. Son «icosaédricos»: todo ángulo diedro está en {π/5, π/3, π/2, 2π/5, 2π/3, 4π/5}, toda figura de vértice está formada por copias del triángulo de Möbius (2,3,5) y la razón áurea aparece entre las longitudes de las aristas. Todas las condiciones angulares locales se pueden cumplir, así que una prueba de que no teselan tiene que ser global y usar las longitudes.</li>
+  </ul>
+  <p class="small muted">Detalles y código: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p2/RESULTS.md">research/p2/RESULTS.md</a>.</p>
+</article>
+</div>
+
+<div class="wrap wide">
+  <div class="twrap">
+    <div id="tpick"></div>
+    <div id="tstage"></div>
+    <div id="tinfo"></div>
+  </div>
+</div>
+
+<div class="wrap doc">
+<h2 id="refs">References · Литература · Referencias</h2>
+<ul class="small">
+  <li>A. A. Chentouf, Y. Sun, Tetrahedra tiling problem, 2023. <a href="https://arxiv.org/abs/2312.01654">arXiv:2312.01654</a></li>
+  <li>K. S. Kedlaya, A. Kolpakov, B. Poonen, M. Rubinstein, Space vectors forming rational angles, 2020. <a href="https://arxiv.org/abs/2011.14232">arXiv:2011.14232</a></li>
+  <li>E. Bongiovanni, A. Diaz, A. Kakkar, N. Sothanaphan, The least-area tetrahedral tile of space, 2017. <a href="https://arxiv.org/abs/1709.04139">arXiv:1709.04139</a></li>
+  <li>M. Goldberg, Three infinite families of tetrahedral space-fillers, J. Combin. Theory A 16 (1974) 348–354.</li>
+  <li>D. M. Y. Sommerville, Space-filling tetrahedra in Euclidean space, Proc. Edinburgh Math. Soc. 41 (1923) 49–57.</li>
+  <li>M. Senechal, Which tetrahedra fill space? Math. Magazine 54 (1981) 227–243.</li>
+  <li>A. A. Chentouf, Y. Sun, Dehn invariant zero tetrahedra, 2023. <a href="https://arxiv.org/abs/2312.01282">arXiv:2312.01282</a></li>
+</ul>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module" src="js/tetra.js"></script>
+</body>
+</html>

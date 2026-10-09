@@ -17,7 +17,7 @@ const PROBLEMS = [
   [{ en: 'Equilateral convex polyhedra that tile space', ru: 'Равносторонние выпуклые многогранники, замощающие пространство', es: 'Poliedros convexos equiláteros que teselan el espacio' },
     { en: 'Our own question; no classification exists in the literature. First pass for ≤ 8 faces is done: all 301 combinatorial types processed, no rigid solid tiles, 11 families excluded by the Dehn invariant, 5 families tile in full. Pentagonal and hexagonal prisms remain open.', ru: 'Наш собственный вопрос; в литературе классификации нет. Первый проход для ≤ 8 граней готов: обработаны все 301 комбинаторный тип, ни одно жёсткое тело не замощает, 11 семейств исключены инвариантом Дена, 5 семейств замощают целиком. Пятиугольные и шестиугольные призмы пока открыты.', es: 'Nuestra propia pregunta; no existe clasificación en la bibliografía. La primera pasada para ≤ 8 caras está hecha: procesados los 301 tipos combinatorios, ningún sólido rígido tesela, 11 familias descartadas por el invariante de Dehn y 5 familias teselan por completo. Los prismas pentagonales y hexagonales siguen abiertos.' }, 'work', 'info'],
   [{ en: 'New space-filling tetrahedra', ru: 'Новые тетраэдры, замощающие пространство', es: 'Nuevos tetraedros que llenan el espacio' },
-    { en: 'Computer search for examples outside the Sommerville and Goldberg families.', ru: 'Компьютерный поиск примеров вне семейств Соммервилля и Голдберга.', es: 'Búsqueda por ordenador de ejemplos fuera de las familias de Sommerville y Goldberg.' }, 'open', 'dim'],
+    { en: 'Target: the 40 sporadic rational tetrahedra left undecided by Chentouf–Sun (2023). Two of them turn out to be Sommerville tilers; none of the other 38 tiles face-to-face. Non-face-to-face tilings remain open.', ru: 'Цель — 40 спорадических рациональных тетраэдров, оставленных нерешёнными у Chentouf–Sun (2023). Два из них оказались замостителями Соммервилля; ни один из остальных 38 не замощает «лицом к лицу». Разбиения не «лицом к лицу» пока открыты.', es: 'Objetivo: los 40 tetraedros racionales esporádicos que Chentouf–Sun (2023) dejaron sin decidir. Dos resultan ser teselas de Sommerville; ninguno de los otros 38 tesela cara a cara. Las teselaciones no cara a cara siguen abiertas.' }, 'work', 'info'],
   [{ en: 'A polygon with Heesch number 7', ru: 'Многоугольник с числом Хееша 7', es: 'Un polígono con número de Heesch 7' },
     { en: 'Break the record: enumerate tiles and count coronas with a SAT solver (Kaplan’s approach).', ru: 'Побить рекорд: перебор плиток и проверка числа слоёв SAT-солвером (подход Каплана).', es: 'Batir el récord: enumerar teselas y contar coronas con un solver SAT (enfoque de Kaplan).' }, 'open', 'dim'],
   [{ en: 'A space-filler with more than 38 faces', ru: 'Больше 38 граней у многогранника, замощающего пространство', es: 'Un poliedro que llena el espacio con más de 38 caras' },
@@ -34,9 +34,10 @@ const PROBLEMS = [
     { en: 'The simplest statement on the list and perhaps the hardest question.', ru: 'Самая простая формулировка и, возможно, самый трудный вопрос в списке.', es: 'El enunciado más simple de la lista y quizá la pregunta más difícil.' }, 'fund', 'dim'],
 ];
 
+const LINKS = ['research.html', 'tetrahedra.html'];
 document.getElementById('problems').innerHTML = PROBLEMS.map(([title, desc, s, c], i) => `
-  <div class="problem ${i === 0 ? 'active' : ''}"><div class="n">${String(i + 1).padStart(2, '0')}</div>
-  <div><h3>${i === 0 ? `<a href="research.html">${L(title)}</a>` : L(title)}</h3><p>${L(desc)}</p></div><span class="chip ${c}">${L(S[s])}</span></div>`).join('');
+  <div class="problem ${LINKS[i] ? 'active' : ''}"><div class="n">${String(i + 1).padStart(2, '0')}</div>
+  <div><h3>${LINKS[i] ? `<a href="${LINKS[i]}">${L(title)}</a>` : L(title)}</h3><p>${L(desc)}</p></div><span class="chip ${c}">${L(S[s])}</span></div>`).join('');
 
 // Герой: дышащий фрагмент пены Кельвина из усечённых октаэдров
 const viewer = new Viewer(document.getElementById('hero'), { autoRotate: true, interactive: false, fov: 30 });
