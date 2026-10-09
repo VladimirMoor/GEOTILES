@@ -1,0 +1,15 @@
+Total: 2139 shapes
+  0 unprocessed
+  0 with holes
+  0 inconclusive
+  2139 non-tilers
+    2119 with Hc = 0
+    18 with Hc = 1
+    2 with Hc = 2
+    2119 with Hh = 0
+    18 with Hh = 1
+    2 with Hh = 2
+  0 tile isohedrally
+  0 tile anisohedrally
+  0 tile aperiodically
+time 1s

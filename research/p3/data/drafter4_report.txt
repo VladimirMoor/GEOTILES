@@ -1,0 +1,11 @@
+Total: 9 shapes
+  0 unprocessed
+  0 with holes
+  0 inconclusive
+  4 non-tilers
+    4 with Hc = 0
+    4 with Hh = 0
+  5 tile isohedrally
+  0 tile anisohedrally
+  0 tile aperiodically
+time 0s
