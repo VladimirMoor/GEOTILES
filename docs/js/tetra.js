@@ -3,10 +3,11 @@ import * as THREE from 'three';
 import { TETRA } from './tetra-data.js';
 import { convexHull, analyze } from './geom.js';
 import { Viewer, solidObject, PALETTE } from './viewer.js';
-import { setupPage, esc } from './ui.js';
+import { setupPage, esc, problemTabs } from './ui.js';
 import { L } from './i18n.js';
 
 setupPage('research');
+problemTabs(2);
 
 const T = {
   pick: { en: 'Pick a tetrahedron', ru: 'Выберите тетраэдр', es: 'Elige un tetraedro' },

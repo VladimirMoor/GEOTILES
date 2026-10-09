@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equilateral space-fillers · GEOTILES</title>
+<meta name="description" content="Research log: equilateral convex polyhedra that tile space. Literature, plan and results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<section><div class="wrap doc">
+<nav class="ptabs" id="ptabs"></nav>
+
+<!-- ======================= ENGLISH ======================= -->
+<article data-lang="en">
+  <div class="eyebrow">problem 01 · <span class="chip info">in progress</span></div>
+  <h1>Equilateral convex polyhedra that tile space</h1>
+  <p class="muted">Which convex polyhedra with all edges of equal length have congruent copies that fill three-dimensional space without gaps or overlaps? The planar version is solved: Hirschhorn and Hunt classified equilateral convex pentagons that tile the plane in 1985, and Klaassen gave a short proof of the full polygon classification in 2025.</p>
+  <p><span class="chip info">preprint</span> <b>Minkowski sums of triangles and segments that tile space, and equilateral space-fillers</b> (October 2026). Full write-up of the Minkowski theorem, its converse and the status of the ≤ 8-face classification: <a href="paper/geotiles-minkowski-preprint.pdf">PDF</a> · <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/paper">LaTeX source</a>.</p>
+
+  <h2>Literature (searched 7 October 2026)</h2>
+  <p><b>We found no classification of equilateral space-filling polyhedra.</b> Klaassen’s 2025 paper treats only the plane. A 2026 paper notes that no general classification of space-filling polyhedra exists, not even for tetrahedra.</p>
+  <table>
+    <tr><th>Class</th><th>Known result</th><th>Source</th></tr>
+    <tr><td>Regular-faced</td><td>Exactly 5 fill space: cube, triangular prism, hexagonal prism, truncated octahedron, gyrobifastigium (J26)</td><td>Johnson 1966</td></tr>
+    <tr><td>Parallelohedra</td><td>All 5 Fedorov types have equilateral versions (zonohedra with unit generators)</td><td>Fedorov 1885; Bilinski 1960</td></tr>
+    <tr><td>Prisms</td><td>A prism with rhombic sides over a plane-tiling equilateral polygon fills space; those bases are classified</td><td>Hirschhorn–Hunt 1985; Klaassen 2025</td></tr>
+    <tr><td>Goldberg’s catalogs</td><td>Space-fillers with 5–10 faces (lists of known examples, completeness not proved)</td><td>Goldberg 1972–1982</td></tr>
+    <tr><td>Isohedral simple tilings</td><td>Enumerated combinatorially for tiles with ≤ 16 faces; none with fewer than 14 faces</td><td>Delgado-Friedrichs, O’Keeffe 2005</td></tr>
+  </table>
+
+  <h2>Observations</h2>
+  <ul>
+    <li>A 3-polytope with <i>e</i> edges has a realization space of dimension <i>e</i> − 1 up to similarity, and being equilateral imposes <i>e</i> − 1 equations. So most combinatorial types have finitely many equilateral realizations. Flexible exceptions include rhombic faces and prisms.</li>
+    <li><b>Dihedral angle filter.</b> Around an edge of the tiling, the tiles’ dihedral angles sum to 360°, or to 180° when the edge lies inside a neighbor’s face. This necessary condition is checked automatically in the <a href="catalog.html">catalog</a> and the <a href="lab.html">lab</a>.</li>
+    <li><b>Small cases.</b> With 4 faces, only the regular tetrahedron is equilateral, and it does not tile. With 5 faces, J1 does not tile, while every equilateral triangular prism does.</li>
+  </ul>
+
+  <h2>Plan</h2>
+  <ul class="steps">
+    <li><span class="chip ok">done</span> Literature review</li>
+    <li><span class="chip ok">done</span> Open repository, website and 3D tools</li>
+    <li><span class="chip ok">done</span> Class fixed: every equilateral convex polyhedron with ≤ 8 faces, any tiling (not only isohedral)</li>
+    <li><span class="chip ok">done</span> 301 combinatorial types (plantri); numerical search for equilateral convex realizations</li>
+    <li><span class="chip ok">done</span> Rigid solids and 11 families excluded; 5 families tile in full</li>
+    <li><span class="chip ok">done</span> Independent rerun of the search (6000 starts per type, new seed): the same 35 types</li>
+    <li><span class="chip dim">next</span> Pentagonal and hexagonal prisms; certified completeness; literature check for the new families</li>
+  </ul>
+
+  <h2>Results of the first pass</h2>
+  <p>Code and data are in <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/p1">research/p1</a>. The full write-up is in <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/RESULTS.md">RESULTS.md</a>.</p>
+  <table>
+    <tr><th>Stage</th><th>Outcome</th></tr>
+    <tr><td>Combinatorial types with 4–8 faces</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
+    <tr><td>Types with an equilateral convex realization</td><td>35: 16 rigid types (17 solids) and 19 continuous families</td></tr>
+    <tr><td>Rigid solids</td><td><b>None tile.</b> 15 fail the dihedral angle filter. The truncated tetrahedron and the octahedron + tetrahedron are excluded by a counting argument: they cut into unit tetrahedra and octahedra, and any such tiling needs N<sub>tet</sub> = 2 N<sub>oct</sub>.</td></tr>
+    <tr><td>Families with nonzero Dehn invariant</td><td><b>11 families, none of whose members tile.</b> For an equilateral solid the Dehn invariant is 1 ⊗ Σθ, so it vanishes only if the sum of dihedral angles is a rational multiple of π (Lagarias–Moews 1995).</td></tr>
+    <tr><td>Families where every member tiles</td><td>triangular prisms, rhombic parallelepipeds, and three 3-parameter families: the <a href="catalog.html#gen-gyro">generalized gyrobifastigium</a>, the <a href="catalog.html#gen-elongated">generalized elongated gyrobifastigium</a> and <a href="catalog.html#rhombus-triangle">rhombus ⊕ triangle</a></td></tr>
+    <tr><td>Open</td><td>Pentagonal and hexagonal prisms. Such a prism tiles if its cross-section perpendicular to the lateral edges tiles the plane; whether the converse holds is open.</td></tr>
+  </table>
+  <p class="small muted">Caveat: realizations were found numerically (multi-start Levenberg–Marquardt with strict convexity checks), so the list is very likely but not yet provably complete. An independent rerun with three times as many starts found exactly the same 35 types.</p>
+
+  <h2>Minkowski sums: a pattern</h2>
+  <p>Every tiling family we found is a Minkowski sum of unit segments and triangles. Pursuing this gave two new equilateral space-fillers beyond the 8-face class: <a href="catalog.html#tri-tri">triangle ⊕ triangle</a> with 9 faces and <a href="catalog.html#rhomb-tri">rhombus ⊕ triangle</a> with 10 faces.</p>
+  <p><b>Theorem (proved, computer-assisted with exact arithmetic).</b> A Minkowski sum of segments and triangles in general position whose total dimension is at most 4 tiles space face-to-face, by translations and point reflections. The new cases, triangle ⊕ triangle and parallelogram ⊕ triangle, are proved chamber by chamber with Poincaré’s polyhedron theorem: 30 of 30 chambers. A limit lemma extends this to every special position in which the sum is still 3-dimensional, including the gyrobifastigium, F7-029 and F8-249 (<a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/MINKOWSKI_THEOREM.md">proof</a>). <b>Converse:</b> for total dimension 5 or 6, <b>proved for every chamber and every total dimension ≥ 5</b>, with a general monodromy proof of the independence lemma: the sums that tile form a set of measure zero. The proof has two parts. An exact independence lemma over ℚ shows that the only identities among the dihedral angles are circulations in the zone graphs. A combinatorial lemma shows that some zone always has an edge outside every short cycle. All tested sums of dimension 4 tile. All tested sums of dimension 5 fail the dihedral angle filter, which proves those members cannot tile.</p>
+  <h2>Rigorous verification</h2>
+  <p>The enumeration is being turned into a proof with exact computer algebra. The polynomial system is solved over ℚ with Gröbner bases (msolve, Singular), real solutions are isolated rigorously, and convexity and the angle filter are decided with interval arithmetic.</p>
+  <ul>
+    <li><b>Certified: 170 of 301 types.</b> 135 have no solutions at all. 35 have finitely many solutions, all checked; seven of them have a convex realization, and none of those tiles.</li>
+    <li><b>Not yet certified: 131 types.</b> 83 are too large for the exact solver, even with a 2-hour limit. 48 have positive-dimensional solution sets. For these we rely on two independent numerical searches, which agree exactly.</li>
+    <li>No rigorous result contradicts the numerical enumeration.</li>
+  </ul>
+  <h2>Log</h2>
+  <div class="timeline">
+    <div class="entry"><time>2026-10-09</time><h3>Preprint</h3><p>The results are written up as a preprint: the tiling theorem for total dimension ≤ 4, the measure-zero converse for total dimension ≥ 5 and the classification status. <a href="paper/geotiles-minkowski-preprint.pdf">PDF</a>.</p></div>
+    <div class="entry"><time>2026-10-07</time><h3>First pass of the enumeration</h3><p>All 301 types with ≤ 8 faces were processed. No rigid equilateral solid tiles. Eleven families are excluded by the Dehn invariant. Five families tile in full, three of them new to the catalog. Pentagonal and hexagonal prisms remain open.</p></div>
+    <div class="entry"><time>2026-10-07</time><h3>Project started</h3><p>Literature review done, no prior classification found. The repository and this site are live, with a catalog of 15 solids (11 space-fillers, 4 non-tilers), a zonohedron builder with McMullen’s criterion, and a polyhedron analyzer.</p></div>
+  </div>
+</article>
+
+<!-- ======================= РУССКИЙ ======================= -->
+<article data-lang="ru" hidden>
+  <div class="eyebrow">задача 01 · <span class="chip info">в работе</span></div>
+  <h1>Равносторонние выпуклые многогранники, замощающие пространство</h1>
+  <p class="muted">Какие выпуклые многогранники, у которых все рёбра равны, заполняют трёхмерное пространство своими конгруэнтными копиями без щелей и наложений? Плоский вариант решён: равносторонние выпуклые пятиугольники, замощающие плоскость, классифицировали Хиршхорн и Хант в 1985 году, а короткое доказательство полной классификации многоугольников дал Клаассен в 2025-м.</p>
+  <p><span class="chip info">препринт</span> <b>Minkowski sums of triangles and segments that tile space, and equilateral space-fillers</b> (октябрь 2026, на английском). Полное изложение теоремы о суммах Минковского, обратного утверждения и статуса классификации для ≤ 8 граней: <a href="paper/geotiles-minkowski-preprint.pdf">PDF</a> · <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/paper">исходник LaTeX</a>.</p>
+
+  <h2>Литература (поиск 7 октября 2026)</h2>
+  <p><b>Классификации равносторонних многогранников, заполняющих пространство, мы не нашли.</b> Статья Клаассена 2025 года посвящена только плоскости. В статье 2026 года отмечено, что общей классификации многогранников, заполняющих пространство, нет даже для тетраэдров.</p>
+  <table>
+    <tr><th>Класс</th><th>Что известно</th><th>Источник</th></tr>
+    <tr><td>Правильногранные</td><td>Пространство заполняют ровно 5: куб, треугольная призма, шестиугольная призма, усечённый октаэдр, гиробифастигиум (J26)</td><td>Johnson 1966</td></tr>
+    <tr><td>Параллелоэдры</td><td>У всех 5 типов Фёдорова есть равносторонние варианты (зоноэдры с единичными образующими)</td><td>Фёдоров 1885; Билинский 1960</td></tr>
+    <tr><td>Призмы</td><td>Призма с ромбическими боковыми гранями над равносторонним многоугольником, замощающим плоскость, заполняет пространство; такие основания классифицированы</td><td>Hirschhorn–Hunt 1985; Klaassen 2025</td></tr>
+    <tr><td>Каталоги Голдберга</td><td>Многогранники с 5–10 гранями, заполняющие пространство (списки известных примеров, полнота не доказана)</td><td>Goldberg 1972–1982</td></tr>
+    <tr><td>Изоэдральные простые разбиения</td><td>Комбинаторно перечислены для плиток с ≤ 16 гранями; плиток меньше чем с 14 гранями нет</td><td>Delgado-Friedrichs, O’Keeffe 2005</td></tr>
+  </table>
+
+  <h2>Наблюдения</h2>
+  <ul>
+    <li>У 3-многогранника с <i>e</i> рёбрами пространство реализаций по модулю подобия имеет размерность <i>e</i> − 1, а равносторонность даёт <i>e</i> − 1 уравнений. Поэтому у большинства комбинаторных типов равносторонних реализаций конечное число. Гибкие исключения — ромбические грани и призмы.</li>
+    <li><b>Фильтр двугранных углов.</b> Вокруг ребра разбиения двугранные углы плиток дают 360°, или 180°, если ребро лежит внутри грани соседа. Это необходимое условие проверяется автоматически в <a href="catalog.html">каталоге</a> и <a href="lab.html">лаборатории</a>.</li>
+    <li><b>Малые случаи.</b> Среди многогранников с 4 гранями равносторонний только правильный тетраэдр, и он не замощает. С 5 гранями: J1 не замощает, а все равносторонние треугольные призмы замощают.</li>
+  </ul>
+
+  <h2>План</h2>
+  <ul class="steps">
+    <li><span class="chip ok">готово</span> Обзор литературы</li>
+    <li><span class="chip ok">готово</span> Открытый репозиторий, сайт и 3D-инструменты</li>
+    <li><span class="chip ok">готово</span> Класс выбран: все равносторонние выпуклые многогранники с ≤ 8 гранями, любые разбиения (не только изоэдральные)</li>
+    <li><span class="chip ok">готово</span> 301 комбинаторный тип (plantri); численный поиск равносторонних выпуклых реализаций</li>
+    <li><span class="chip ok">готово</span> Жёсткие тела и 11 семейств исключены; 5 семейств замощают целиком</li>
+    <li><span class="chip ok">готово</span> Независимый повторный прогон поиска (6000 стартов на тип, новое зерно): те же 35 типов</li>
+    <li><span class="chip dim">далее</span> Пятиугольные и шестиугольные призмы; строгое доказательство полноты; проверка новых семейств по литературе</li>
+  </ul>
+
+  <h2>Результаты первого прохода</h2>
+  <p>Код и данные лежат в <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/p1">research/p1</a>, подробности — в <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/RESULTS.md">RESULTS.md</a>.</p>
+  <table>
+    <tr><th>Этап</th><th>Итог</th></tr>
+    <tr><td>Комбинаторные типы с 4–8 гранями</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
+    <tr><td>Типы с равносторонней выпуклой реализацией</td><td>35: 16 жёстких типов (17 тел) и 19 непрерывных семейств</td></tr>
+    <tr><td>Жёсткие тела</td><td><b>Ни одно не замощает.</b> 15 отсеивает фильтр двугранных углов. Усечённый тетраэдр и «октаэдр + тетраэдр» исключены подсчётом: они режутся на единичные тетраэдры и октаэдры, а в любом таком разбиении N<sub>тет</sub> = 2 N<sub>окт</sub>.</td></tr>
+    <tr><td>Семейства с ненулевым инвариантом Дена</td><td><b>11 семейств, ни один член которых не замощает.</b> У равностороннего тела инвариант Дена равен 1 ⊗ Σθ, поэтому он обнуляется, только если сумма двугранных углов — рациональное кратное π (Lagarias–Moews 1995).</td></tr>
+    <tr><td>Семейства, где замощает каждый член</td><td>треугольные призмы, ромбические параллелепипеды и три 3-параметрических семейства: <a href="catalog.html#gen-gyro">обобщённый гиробифастигиум</a>, <a href="catalog.html#gen-elongated">обобщённый удлинённый гиробифастигиум</a> и <a href="catalog.html#rhombus-triangle">ромб ⊕ треугольник</a></td></tr>
+    <tr><td>Открыто</td><td>Пятиугольные и шестиугольные призмы. Такая призма замощает пространство, если её сечение, перпендикулярное боковому ребру, замощает плоскость; верно ли обратное — открытый вопрос.</td></tr>
+  </table>
+  <p class="small muted">Оговорка: реализации найдены численно (многократный запуск Левенберга–Марквардта со строгой проверкой выпуклости), поэтому список почти наверняка полон, но строго это пока не доказано. Независимый прогон с втрое большим числом стартов нашёл ровно те же 35 типов.</p>
+
+  <h2>Суммы Минковского: закономерность</h2>
+  <p>Каждое найденное замощающее семейство — сумма Минковского единичных отрезков и треугольников. Проверка этой закономерности дала два новых равносторонних тела, заполняющих пространство, уже за пределами класса до 8 граней: <a href="catalog.html#tri-tri">треугольник ⊕ треугольник</a> с 9 гранями и <a href="catalog.html#rhomb-tri">ромб ⊕ треугольник</a> с 10 гранями.</p>
+  <p><b>Теорема (доказана; компьютерное доказательство в точной арифметике).</b> Сумма Минковского отрезков и треугольников общего положения с суммарной размерностью не больше 4 замощает пространство грань к грани сдвигами и центральными симметриями. Новые случаи, треугольник ⊕ треугольник и параллелограмм ⊕ треугольник, доказаны по камерам с помощью теоремы Пуанкаре о многограннике: 30 камер из 30. Лемма о пределе распространяет результат на все частные положения, в которых сумма остаётся трёхмерной, включая сам гиробифастигиум, F7-029 и F8-249 (<a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/MINKOWSKI_THEOREM.md">доказательство</a>). <b>Обратное:</b> при суммарной размерности 5 или 6 <b>доказано для всех камер и любой суммарной размерности ≥ 5</b>, с общим доказательством леммы о независимости через монодромию: замощающие суммы образуют множество меры ноль. Доказательство из двух частей. Точная лемма о независимости над ℚ показывает, что единственные тождества между двугранными углами — циркуляции в графах зон. Комбинаторная лемма показывает, что в какой-нибудь зоне всегда есть ребро вне всех коротких циклов. Все проверенные суммы размерности 4 замощают. Все проверенные суммы размерности 5 не проходят фильтр двугранных углов, а значит, эти члены заведомо не замощают.</p>
+  <h2>Строгая проверка</h2>
+  <p>Перебор превращается в доказательство с помощью точной компьютерной алгебры. Полиномиальная система решается над ℚ базисами Грёбнера (msolve, Singular), вещественные решения изолируются строго, а выпуклость и фильтр углов проверяются интервальной арифметикой.</p>
+  <ul>
+    <li><b>Сертифицировано 170 типов из 301.</b> У 135 решений нет вовсе. У 35 решений конечное число, и все проверены; у семи из них есть выпуклая реализация, и ни одна не замощает пространство.</li>
+    <li><b>Пока не сертифицирован 131 тип.</b> 83 слишком велики для точного решателя даже с лимитом 2 часа. У 48 множество решений положительной размерности. Для них опираемся на два независимых численных перебора, которые полностью совпали.</li>
+    <li>Ни один строгий результат не противоречит численному перебору.</li>
+  </ul>
+  <h2>Журнал</h2>
+  <div class="timeline">
+    <div class="entry"><time>2026-10-09</time><h3>Препринт</h3><p>Результаты оформлены в препринт: теорема о замощении для суммарной размерности ≤ 4, обратное утверждение (мера нуль) для размерности ≥ 5 и статус классификации. <a href="paper/geotiles-minkowski-preprint.pdf">PDF</a>.</p></div>
+    <div class="entry"><time>2026-10-07</time><h3>Первый проход перебора</h3><p>Обработаны все 301 тип с ≤ 8 гранями. Ни одно жёсткое равностороннее тело не замощает. Одиннадцать семейств исключены инвариантом Дена. Пять семейств замощают целиком, три из них впервые попали в каталог. Пятиугольные и шестиугольные призмы остаются открытыми.</p></div>
+    <div class="entry"><time>2026-10-07</time><h3>Старт проекта</h3><p>Обзор литературы готов, предшествующей классификации не найдено. Запущены репозиторий и этот сайт: каталог из 15 тел (11 замощающих, 4 незамощающих), конструктор зоноэдров с критерием МакМаллена и анализатор многогранников.</p></div>
+  </div>
+</article>
+
+<!-- ======================= ESPAÑOL ======================= -->
+<article data-lang="es" hidden>
+  <div class="eyebrow">problema 01 · <span class="chip info">en curso</span></div>
+  <h1>Poliedros convexos equiláteros que teselan el espacio</h1>
+  <p class="muted">¿Qué poliedros convexos con todas las aristas iguales llenan el espacio tridimensional con copias congruentes, sin huecos ni solapamientos? La versión plana está resuelta: Hirschhorn y Hunt clasificaron en 1985 los pentágonos convexos equiláteros que teselan el plano, y Klaassen dio en 2025 una prueba breve de la clasificación completa de polígonos.</p>
+  <p><span class="chip info">preprint</span> <b>Minkowski sums of triangles and segments that tile space, and equilateral space-fillers</b> (octubre de 2026, en inglés). Exposición completa del teorema sobre sumas de Minkowski, su recíproco y el estado de la clasificación para ≤ 8 caras: <a href="paper/geotiles-minkowski-preprint.pdf">PDF</a> · <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/paper">fuente LaTeX</a>.</p>
+
+  <h2>Bibliografía (búsqueda del 7 de octubre de 2026)</h2>
+  <p><b>No encontramos ninguna clasificación de poliedros equiláteros que llenen el espacio.</b> El artículo de Klaassen de 2025 trata solo el plano. Un artículo de 2026 señala que no existe una clasificación general de los poliedros que llenan el espacio, ni siquiera para los tetraedros.</p>
+  <table>
+    <tr><th>Clase</th><th>Resultado conocido</th><th>Fuente</th></tr>
+    <tr><td>De caras regulares</td><td>Exactamente 5 llenan el espacio: cubo, prisma triangular, prisma hexagonal, octaedro truncado, girobifastigio (J26)</td><td>Johnson 1966</td></tr>
+    <tr><td>Paraleloedros</td><td>Los 5 tipos de Fiódorov tienen versiones equiláteras (zonoedros con generadores unitarios)</td><td>Fiódorov 1885; Bilinski 1960</td></tr>
+    <tr><td>Prismas</td><td>Un prisma con caras laterales rómbicas sobre un polígono equilátero que tesela el plano llena el espacio; esas bases están clasificadas</td><td>Hirschhorn–Hunt 1985; Klaassen 2025</td></tr>
+    <tr><td>Catálogos de Goldberg</td><td>Poliedros de 5 a 10 caras que llenan el espacio (listas de ejemplos conocidos, sin prueba de completitud)</td><td>Goldberg 1972–1982</td></tr>
+    <tr><td>Teselaciones isoédricas simples</td><td>Enumeradas combinatoriamente para teselas de ≤ 16 caras; no hay ninguna con menos de 14 caras</td><td>Delgado-Friedrichs, O’Keeffe 2005</td></tr>
+  </table>
+
+  <h2>Observaciones</h2>
+  <ul>
+    <li>Un 3-politopo con <i>e</i> aristas tiene un espacio de realizaciones de dimensión <i>e</i> − 1 salvo semejanza, y ser equilátero impone <i>e</i> − 1 ecuaciones. Por eso la mayoría de los tipos combinatorios tienen un número finito de realizaciones equiláteras. Hay excepciones flexibles, como las caras rómbicas y los prismas.</li>
+    <li><b>Filtro de ángulos diedros.</b> Alrededor de una arista de la teselación, los ángulos diedros de las teselas suman 360°, o 180° si la arista está dentro de una cara vecina. Esta condición necesaria se comprueba automáticamente en el <a href="catalog.html">catálogo</a> y el <a href="lab.html">laboratorio</a>.</li>
+    <li><b>Casos pequeños.</b> Con 4 caras, el único equilátero es el tetraedro regular, y no tesela. Con 5 caras, J1 no tesela, mientras que todo prisma triangular equilátero sí.</li>
+  </ul>
+
+  <h2>Plan</h2>
+  <ul class="steps">
+    <li><span class="chip ok">hecho</span> Revisión bibliográfica</li>
+    <li><span class="chip ok">hecho</span> Repositorio abierto, sitio web y herramientas 3D</li>
+    <li><span class="chip ok">hecho</span> Clase fijada: todos los poliedros convexos equiláteros con ≤ 8 caras y cualquier teselación (no solo isoédrica)</li>
+    <li><span class="chip ok">hecho</span> 301 tipos combinatorios (plantri); búsqueda numérica de realizaciones convexas equiláteras</li>
+    <li><span class="chip ok">hecho</span> Sólidos rígidos y 11 familias descartados; 5 familias teselan por completo</li>
+    <li><span class="chip ok">hecho</span> Repetición independiente de la búsqueda (6000 arranques por tipo, nueva semilla): los mismos 35 tipos</li>
+    <li><span class="chip dim">siguiente</span> Prismas pentagonales y hexagonales; prueba rigurosa de completitud; revisión bibliográfica de las nuevas familias</li>
+  </ul>
+
+  <h2>Resultados de la primera pasada</h2>
+  <p>El código y los datos están en <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/p1">research/p1</a>; el informe completo, en <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/RESULTS.md">RESULTS.md</a>.</p>
+  <table>
+    <tr><th>Etapa</th><th>Resultado</th></tr>
+    <tr><td>Tipos combinatorios con 4–8 caras</td><td>1 + 2 + 7 + 34 + 257 = 301</td></tr>
+    <tr><td>Tipos con realización convexa equilátera</td><td>35: 16 tipos rígidos (17 sólidos) y 19 familias continuas</td></tr>
+    <tr><td>Sólidos rígidos</td><td><b>Ninguno tesela.</b> 15 no pasan el filtro de ángulos diedros. El tetraedro truncado y el octaedro + tetraedro se descartan por conteo: se descomponen en tetraedros y octaedros unitarios, y toda teselación de ese tipo exige N<sub>tet</sub> = 2 N<sub>oct</sub>.</td></tr>
+    <tr><td>Familias con invariante de Dehn no nulo</td><td><b>11 familias, ninguno de cuyos miembros tesela.</b> Para un sólido equilátero el invariante de Dehn es 1 ⊗ Σθ, así que solo se anula si la suma de los ángulos diedros es un múltiplo racional de π (Lagarias–Moews 1995).</td></tr>
+    <tr><td>Familias en las que tesela todo miembro</td><td>prismas triangulares, paralelepípedos rómbicos y tres familias de 3 parámetros: el <a href="catalog.html#gen-gyro">girobifastigio generalizado</a>, el <a href="catalog.html#gen-elongated">girobifastigio alargado generalizado</a> y <a href="catalog.html#rhombus-triangle">rombo ⊕ triángulo</a></td></tr>
+    <tr><td>Abierto</td><td>Prismas pentagonales y hexagonales. Un prisma así tesela si su sección perpendicular a las aristas laterales tesela el plano; si el recíproco es cierto es una pregunta abierta.</td></tr>
+  </table>
+  <p class="small muted">Advertencia: las realizaciones se hallaron numéricamente (Levenberg–Marquardt con múltiples arranques y verificación estricta de convexidad), así que la lista es casi con certeza completa, pero aún no está demostrado. Una repetición independiente con el triple de arranques encontró exactamente los mismos 35 tipos.</p>
+
+  <h2>Sumas de Minkowski: un patrón</h2>
+  <p>Toda familia teselante que encontramos es una suma de Minkowski de segmentos y triángulos unitarios. Siguiendo este patrón obtuvimos dos nuevos poliedros equiláteros que llenan el espacio, ya fuera de la clase de hasta 8 caras: <a href="catalog.html#tri-tri">triángulo ⊕ triángulo</a> con 9 caras y <a href="catalog.html#rhomb-tri">rombo ⊕ triángulo</a> con 10 caras.</p>
+  <p><b>Teorema (demostrado; prueba asistida por ordenador con aritmética exacta).</b> Una suma de Minkowski de segmentos y triángulos en posición general con dimensión total como máximo 4 tesela el espacio cara con cara, mediante traslaciones y simetrías centrales. Los casos nuevos, triángulo ⊕ triángulo y paralelogramo ⊕ triángulo, se demuestran cámara por cámara con el teorema del poliedro de Poincaré: 30 de 30 cámaras. Un lema de paso al límite lo extiende a toda posición especial en la que la suma sigue siendo tridimensional, incluidos el propio girobifastigio, F7-029 y F8-249 (<a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p1/MINKOWSKI_THEOREM.md">demostración</a>). <b>Recíproco:</b> con dimensión total 5 o 6, <b>demostrado para todas las cámaras y toda dimensión total ≥ 5</b>, con una prueba general del lema de independencia por monodromía: las sumas que teselan forman un conjunto de medida cero. La prueba tiene dos partes. Un lema exacto de independencia sobre ℚ muestra que las únicas identidades entre ángulos diedros son circulaciones en los grafos de zonas. Un lema combinatorio muestra que alguna zona siempre tiene una arista fuera de todos los ciclos cortos. Todas las sumas de dimensión 4 probadas teselan. Todas las de dimensión 5 probadas fallan el filtro de ángulos diedros, lo que demuestra que esos miembros no pueden teselar.</p>
+  <h2>Verificación rigurosa</h2>
+  <p>La enumeración se está convirtiendo en una demostración con álgebra computacional exacta. El sistema polinómico se resuelve sobre ℚ con bases de Gröbner (msolve, Singular), las soluciones reales se aíslan rigurosamente, y la convexidad y el filtro de ángulos se deciden con aritmética de intervalos.</p>
+  <ul>
+    <li><b>Certificados: 170 de 301 tipos.</b> 135 no tienen ninguna solución. 35 tienen un número finito de soluciones, todas verificadas; siete de ellos tienen una realización convexa, y ninguna tesela el espacio.</li>
+    <li><b>Aún sin certificar: 131 tipos.</b> 83 son demasiado grandes para el solver exacto, incluso con un límite de 2 horas. 48 tienen conjuntos de soluciones de dimensión positiva. Para ellos nos apoyamos en dos búsquedas numéricas independientes, que coinciden exactamente.</li>
+    <li>Ningún resultado riguroso contradice la enumeración numérica.</li>
+  </ul>
+  <h2>Diario</h2>
+  <div class="timeline">
+    <div class="entry"><time>2026-10-09</time><h3>Preprint</h3><p>Los resultados se recogen en un preprint: el teorema de teselación para dimensión total ≤ 4, el recíproco de medida cero para dimensión total ≥ 5 y el estado de la clasificación. <a href="paper/geotiles-minkowski-preprint.pdf">PDF</a>.</p></div>
+    <div class="entry"><time>2026-10-07</time><h3>Primera pasada de la enumeración</h3><p>Se procesaron los 301 tipos con ≤ 8 caras. Ningún sólido equilátero rígido tesela. Once familias quedan descartadas por el invariante de Dehn. Cinco familias teselan por completo, tres de ellas nuevas en el catálogo. Los prismas pentagonales y hexagonales siguen abiertos.</p></div>
+    <div class="entry"><time>2026-10-07</time><h3>Inicio del proyecto</h3><p>Revisión bibliográfica completada; no se encontró una clasificación previa. El repositorio y este sitio ya están en línea, con un catálogo de 15 sólidos (11 que llenan el espacio y 4 que no), un constructor de zonoedros con el criterio de McMullen y un analizador de poliedros.</p></div>
+  </div>
+</article>
+
+<h2 id="refs">References · Литература · Referencias</h2>
+<ul class="small">
+  <li>B. Klaassen, Old problem revisited: Which equilateral convex polygons tile the plane? 2025. <a href="https://arxiv.org/abs/2506.18473">arXiv:2506.18473</a></li>
+  <li>Softening locally polyhedral tilings, 2026. <a href="https://arxiv.org/abs/2604.18545">arXiv:2604.18545</a></li>
+  <li>M. Goldberg, On the space-filling hexahedra, Geom. Dedicata 6 (1977). <a href="https://link.springer.com/article/10.1007/BF00181585">link</a></li>
+  <li>M. Goldberg, On the space-filling heptahedra, Geom. Dedicata 7 (1978). <a href="https://link.springer.com/article/10.1007/BF00181630">link</a></li>
+  <li>M. Goldberg, On the space-filling octahedra, Geom. Dedicata 10 (1981). <a href="https://link.springer.com/article/10.1007/BF01447431">link</a></li>
+  <li>M. Goldberg, On the space-filling enneahedra, Geom. Dedicata 12 (1982). <a href="https://link.springer.com/article/10.1007/BF00147314">link</a></li>
+  <li>O. Delgado-Friedrichs, M. O’Keeffe, Isohedral simple tilings: binodal and by tiles with ≤16 faces, Acta Cryst. A (2005). <a href="https://researchportalplus.anu.edu.au/en/publications/isohedral-simple-tilings-binodal-and-by-tiles-with-16-faces/">link</a></li>
+  <li>S. Schein, J. M. Gayed, Fourth class of convex equilateral polyhedron with polyhedral symmetry, PNAS (2014). <a href="https://www.pnas.org/doi/10.1073/pnas.1310939111">link</a></li>
+  <li>P. McMullen, Space tiling zonotopes, Mathematika 22 (1975).</li>
+  <li><a href="https://en.wikipedia.org/wiki/Space-filling_polyhedron">Space-filling polyhedron</a>, <a href="https://en.wikipedia.org/wiki/Gyrobifastigium">Gyrobifastigium</a>, <a href="https://en.wikipedia.org/wiki/Bilinski_dodecahedron">Bilinski dodecahedron</a>, <a href="https://mathworld.wolfram.com/GabledRhombohedron.html">Gabled rhombohedron</a></li>
+</ul>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">import { setupPage, problemTabs } from './js/ui.js'; setupPage('research'); problemTabs(1);</script>
+</body>
+</html>

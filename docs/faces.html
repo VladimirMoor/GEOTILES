@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>More than 38 faces · GEOTILES</title>
+<meta name="description" content="Problem 4: a convex space-filling polyhedron with more than 38 faces. Literature status.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<section><div class="wrap doc">
+<nav class="ptabs" id="ptabs"></nav>
+<article data-lang="en"><div class="eyebrow">problem 04 · <span class="chip info">in progress</span></div>
+<h1>A space-filler with more than 38 faces</h1>
+<p class="muted">How many faces can a convex polyhedron have if congruent copies of it fill space? The record is 38 (Peter Engel, 1981): the Voronoi cell of a symmetric point arrangement in the cubic group I4<sub>1</sub>32.</p>
+<h2>Literature (checked 9 October 2026)</h2>
+<ul><li><b>38 is not proven to be the maximum.</b> Wikipedia and MathWorld cite Schmitt (2016) for this, but his thesis is a numerical grid search over 145 space groups: it found nothing above 38, without a proof.</li>
+<li>Proven upper bounds: at most 92 faces for Voronoi cells of one symmetric orbit (Bochiş, Santos, Sabariego), at most 378 for any tile of a tiling with transitive symmetry (Delone, Tarasov). For general tilings by one convex tile no bound is known at all; this is problem (G) of Grünbaum and Shephard (1980).</li></ul>
+<h2>Where there is room</h2>
+<ul><li>Voronoi cells of one orbit: searched densely by Schmitt; little room left.</li>
+<li><b>Symmetric tiles that are not Voronoi cells</b> (like the gyrobifastigium) and <b>tilings by one tile that are not symmetric</b>: we know of no systematic search. This is where we will look.</li></ul>
+<p class="small muted">Details: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p4/RESULTS.md">research/p4/RESULTS.md</a>.</p></article>
+<article data-lang="ru" hidden><div class="eyebrow">задача 04 · <span class="chip info">в работе</span></div>
+<h1>Больше 38 граней у многогранника, замощающего пространство</h1>
+<p class="muted">Сколько граней может быть у выпуклого многогранника, конгруэнтные копии которого заполняют пространство? Рекорд — 38 (Петер Энгель, 1981): ячейка Вороного симметричного набора точек в кубической группе I4<sub>1</sub>32.</p>
+<h2>Литература (проверено 9 октября 2026)</h2>
+<ul><li><b>Что 38 — максимум, не доказано.</b> Википедия и MathWorld ссылаются на Шмитта (2016), но в его диссертации численный перебор по сетке в 145 пространственных группах: выше 38 не нашлось, доказательства нет.</li>
+<li>Доказанные оценки: не больше 92 граней у ячеек Вороного одной симметричной орбиты (Бокиш, Сантос, Сабарьего), не больше 378 у любой плитки разбиения с транзитивной симметрией (Делоне, Тарасов). Для произвольных разбиений одной выпуклой плиткой неизвестно никакой оценки — это задача (G) Грюнбаума и Шепарда (1980).</li></ul>
+<h2>Где есть место</h2>
+<ul><li>Ячейки Вороного одной орбиты: Шмитт перебрал плотно, места мало.</li>
+<li><b>Симметричные плитки, которые не являются ячейками Вороного</b> (как гиробифастигиум), и <b>несимметричные разбиения одной плиткой</b>: систематического поиска мы не нашли. Здесь и будем искать.</li></ul>
+<p class="small muted">Подробности: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p4/RESULTS.md">research/p4/RESULTS.md</a>.</p></article>
+<article data-lang="es" hidden><div class="eyebrow">problema 04 · <span class="chip info">en curso</span></div>
+<h1>Un poliedro que llena el espacio con más de 38 caras</h1>
+<p class="muted">¿Cuántas caras puede tener un poliedro convexo cuyas copias congruentes llenan el espacio? El récord es 38 (Peter Engel, 1981): la celda de Voronói de una disposición simétrica de puntos en el grupo cúbico I4<sub>1</sub>32.</p>
+<h2>Bibliografía (revisada el 9 de octubre de 2026)</h2>
+<ul><li><b>No está probado que 38 sea el máximo.</b> Wikipedia y MathWorld citan a Schmitt (2016), pero su tesis es una búsqueda numérica en una malla sobre 145 grupos espaciales: no encontró nada por encima de 38, sin demostración.</li>
+<li>Cotas probadas: como mucho 92 caras para celdas de Voronói de una órbita simétrica (Bochiş, Santos, Sabariego) y como mucho 378 para cualquier tesela de una teselación con simetría transitiva (Delone, Tarasov). Para teselaciones generales por una tesela convexa no se conoce ninguna cota: es el problema (G) de Grünbaum y Shephard (1980).</li></ul>
+<h2>Dónde hay margen</h2>
+<ul><li>Celdas de Voronói de una órbita: Schmitt las exploró a fondo; queda poco margen.</li>
+<li><b>Teselas simétricas que no son celdas de Voronói</b> (como el girobifastigio) y <b>teselaciones por una tesela que no son simétricas</b>: no conocemos ninguna búsqueda sistemática. Ahí buscaremos.</li></ul>
+<p class="small muted">Detalles: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p4/RESULTS.md">research/p4/RESULTS.md</a>.</p></article>
+<h2 id="refs">References · Литература · Referencias</h2><ul class="small">
+<li>P. Engel, Über Wirkungsbereichsteilungen von kubischer Symmetrie, Z. Kristallogr. 154 (1981) 199–215.</li>
+<li>M. Schmitt, On Space Groups and Dirichlet–Voronoi Stereohedra, PhD thesis, FU Berlin, 2016. <a href="https://refubium.fu-berlin.de/handle/fub188/10176">link</a></li>
+<li>D. Bochiş, F. Santos; P. Sabariego, F. Santos, On the number of facets of three-dimensional Dirichlet stereohedra I–IV (2001–2011). <a href="https://arxiv.org/abs/0708.2114">arXiv:0708.2114</a></li>
+<li>B. Grünbaum, G. C. Shephard, Tilings with congruent tiles, Bull. AMS 3 (1980).</li>
+<li><a href="https://en.wikipedia.org/wiki/Plesiohedron">Plesiohedron</a> · <a href="https://mathworld.wolfram.com/EngelPolyhedra.html">Engel polyhedra</a></li></ul>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">import { setupPage, problemTabs } from './js/ui.js'; setupPage('research'); problemTabs(4);</script>
+</body>
+</html>

@@ -83,3 +83,15 @@ export function mcmullenHTML(mc, merged) {
     <div class="verdict ${mc.ok ? 'ok' : 'bad'}">${t(mc.ok ? 'm.ok' : 'm.no')}: ${reason}.</div>
     <p class="small muted" style="margin-top:8px">${t('m.merged', { n: merged })} ${mc.ok ? '' : t('m.rot')}</p>`;
 }
+
+/** Полоска вкладок задач на страницах исследований: «Все задачи · 01 · 02 · 03 · 04». */
+export async function problemTabs(active) {
+  const el = document.getElementById('ptabs');
+  if (!el) return;
+  const { PROBLEMS, PAGES } = await import('./problems.js');
+  const { L } = await import('./i18n.js');
+  const all = { en: 'All problems', ru: 'Все задачи', es: 'Todos los problemas' };
+  if (active > 0) document.title = `${String(active).padStart(2, '0')} · ${L(PROBLEMS[active - 1][0])} · GEOTILES`;
+  el.innerHTML = `<a href="research.html" class="${active === 0 ? 'on' : ''}">${L(all)}</a>` +
+    PAGES.map((href, i) => `<a href="${href}" class="${active === i + 1 ? 'on' : ''}"><b>${String(i + 1).padStart(2, '0')}</b> ${L(PROBLEMS[i][0])}</a>`).join('');
+}

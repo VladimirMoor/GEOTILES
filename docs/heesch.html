@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heesch number 7 · GEOTILES</title>
+<meta name="description" content="Problem 3: searching for a tile with Heesch number 7. First Heesch census of polydrafters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<section><div class="wrap doc">
+<nav class="ptabs" id="ptabs"></nav>
+<article data-lang="en"><div class="eyebrow">problem 03 · <span class="chip info">in progress</span></div>
+<h1>A polygon with Heesch number 7</h1>
+<p class="muted">The Heesch number of a shape that does not tile the plane is the largest number of complete layers (coronas) of copies that can surround it. The record is <b>6</b>, held by Bašić's tile from 2021 and by tiles of Dave Smith. Nobody has found a 7.</p>
+<h2>What we did</h2>
+<ul><li>We built Craig Kaplan's SAT-based tool <code>heesch-sat</code> and checked it against the published example (free 6-hexes): it matches exactly.</li>
+<li>We ran the <b>first Heesch census of polydrafters</b> (shapes made of 30-60-90 triangles, the grid on which all known Heesch-6 tiles live): all 9.7 million free polydrafters with up to 20 cells. Every inconclusive case was re-checked one by one.</li>
+<li><b>Result: the maximum is 3</b> (one shape for each of 13, 14, 17, 19 and 20 cells). Small shapes come nowhere near the record; the known Heesch-6 tiles have about 140 cells.</li></ul>
+<h2>Next</h2><p>Targeted families built from the known Heesch-6 tiles: stretching them, inserting repeated segments, moving notches.</p>
+<table><tr><th>n</th><th>shapes</th><th>Hc=1</th><th>Hc=2</th><th>Hc=3</th></tr>
+<tr><td>≤ 12</td><td>8 917</td><td>99</td><td>8</td><td>0</td></tr>
+<tr><td>13</td><td>12 096</td><td>34</td><td>1</td><td>1</td></tr>
+<tr><td>14</td><td>29 105</td><td>127</td><td>3</td><td>1</td></tr>
+<tr><td>15</td><td>69 594</td><td>135</td><td>3</td><td>0</td></tr>
+<tr><td>16</td><td>167 715</td><td>482</td><td>7</td><td>0</td></tr>
+<tr><td>17</td><td>403 251</td><td>162</td><td>2</td><td>1</td></tr>
+<tr><td>18</td><td>972 551</td><td>516</td><td>0</td><td>0</td></tr>
+<tr><td>19</td><td>2 343 836</td><td>294</td><td>3</td><td>1</td></tr>
+<tr><td>20</td><td>5 658 732</td><td>2 183</td><td>21</td><td>1</td></tr></table><p class="small muted">Details: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p3/RESULTS.md">research/p3/RESULTS.md</a>.</p></article>
+<article data-lang="ru" hidden><div class="eyebrow">задача 03 · <span class="chip info">в работе</span></div>
+<h1>Многоугольник с числом Хееша 7</h1>
+<p class="muted">Число Хееша фигуры, которая не замощает плоскость, — наибольшее число полных слоёв (корон) её копий, которыми её можно окружить. Рекорд — <b>6</b>: плитка Башича (2021) и плитки Дэйва Смита. Семёрку никто не нашёл.</p>
+<h2>Что сделано</h2>
+<ul><li>Собрали SAT-инструмент Крейга Каплана <code>heesch-sat</code> и проверили на опубликованном примере (свободные 6-гексы): совпадает в точности.</li>
+<li>Провели <b>первую перепись чисел Хееша для полидрафтеров</b> (фигуры из треугольников 30-60-90 — на этой сетке живут все известные плитки с числом 6): все 9,7 млн свободных полидрафтеров до 20 клеток. Все неопределённые случаи перепроверены по одному.</li>
+<li><b>Итог: максимум — 3</b> (по одной фигуре для 13, 14, 17, 19 и 20 клеток). Маленькие фигуры до рекорда не дотягивают; известные плитки с числом 6 содержат около 140 клеток.</li></ul>
+<h2>Дальше</h2><p>Целевые семейства на основе известных плиток с числом 6: удлинения, вставки повторяющихся кусков, сдвиги вырезов.</p>
+<table><tr><th>n</th><th>shapes</th><th>Hc=1</th><th>Hc=2</th><th>Hc=3</th></tr>
+<tr><td>≤ 12</td><td>8 917</td><td>99</td><td>8</td><td>0</td></tr>
+<tr><td>13</td><td>12 096</td><td>34</td><td>1</td><td>1</td></tr>
+<tr><td>14</td><td>29 105</td><td>127</td><td>3</td><td>1</td></tr>
+<tr><td>15</td><td>69 594</td><td>135</td><td>3</td><td>0</td></tr>
+<tr><td>16</td><td>167 715</td><td>482</td><td>7</td><td>0</td></tr>
+<tr><td>17</td><td>403 251</td><td>162</td><td>2</td><td>1</td></tr>
+<tr><td>18</td><td>972 551</td><td>516</td><td>0</td><td>0</td></tr>
+<tr><td>19</td><td>2 343 836</td><td>294</td><td>3</td><td>1</td></tr>
+<tr><td>20</td><td>5 658 732</td><td>2 183</td><td>21</td><td>1</td></tr></table><p class="small muted">Подробности: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p3/RESULTS.md">research/p3/RESULTS.md</a>.</p></article>
+<article data-lang="es" hidden><div class="eyebrow">problema 03 · <span class="chip info">en curso</span></div>
+<h1>Un polígono con número de Heesch 7</h1>
+<p class="muted">El número de Heesch de una figura que no tesela el plano es el mayor número de capas completas (coronas) de copias que pueden rodearla. El récord es <b>6</b>: la tesela de Bašić (2021) y las de Dave Smith. Nadie ha encontrado un 7.</p>
+<h2>Lo que hicimos</h2>
+<ul><li>Compilamos la herramienta SAT de Craig Kaplan <code>heesch-sat</code> y la comprobamos con el ejemplo publicado (6-hexes libres): coincide exactamente.</li>
+<li>Hicimos el <b>primer censo de números de Heesch de polidrafters</b> (figuras de triángulos 30-60-90, la malla de todas las teselas conocidas con número 6): los 9,7 millones de polidrafters libres de hasta 20 celdas. Cada caso no concluyente se volvió a comprobar uno por uno.</li>
+<li><b>Resultado: el máximo es 3</b> (una figura para 13, 14, 17, 19 y 20 celdas). Las figuras pequeñas quedan lejos del récord; las teselas conocidas con número 6 tienen unas 140 celdas.</li></ul>
+<h2>Siguiente</h2><p>Familias dirigidas a partir de las teselas conocidas con número 6: alargarlas, insertar segmentos repetidos, mover muescas.</p>
+<table><tr><th>n</th><th>shapes</th><th>Hc=1</th><th>Hc=2</th><th>Hc=3</th></tr>
+<tr><td>≤ 12</td><td>8 917</td><td>99</td><td>8</td><td>0</td></tr>
+<tr><td>13</td><td>12 096</td><td>34</td><td>1</td><td>1</td></tr>
+<tr><td>14</td><td>29 105</td><td>127</td><td>3</td><td>1</td></tr>
+<tr><td>15</td><td>69 594</td><td>135</td><td>3</td><td>0</td></tr>
+<tr><td>16</td><td>167 715</td><td>482</td><td>7</td><td>0</td></tr>
+<tr><td>17</td><td>403 251</td><td>162</td><td>2</td><td>1</td></tr>
+<tr><td>18</td><td>972 551</td><td>516</td><td>0</td><td>0</td></tr>
+<tr><td>19</td><td>2 343 836</td><td>294</td><td>3</td><td>1</td></tr>
+<tr><td>20</td><td>5 658 732</td><td>2 183</td><td>21</td><td>1</td></tr></table><p class="small muted">Detalles: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p3/RESULTS.md">research/p3/RESULTS.md</a>.</p></article>
+<h2 id="refs">References · Литература · Referencias</h2><ul class="small">
+<li>B. Bašić, A figure with Heesch number 6, Math. Intelligencer 43 (2021) 50–53. <a href="https://doi.org/10.1007/s00283-020-10034-w">doi</a></li>
+<li>C. S. Kaplan, Heesch numbers of unmarked polyforms, Contrib. Discrete Math. 17 (2022). <a href="https://cdm.ucalgary.ca/article/view/72886">link</a>; software <a href="https://github.com/isohedral/heesch-sat">heesch-sat</a></li>
+<li>C. Mann, Heesch's tiling problem, Amer. Math. Monthly 111 (2004). <a href="https://faculty.washington.edu/cemann/Heesch.pdf">pdf</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Heesch%27s_problem">Heesch's problem</a> · <a href="https://heesch-atlas.netlify.app">Heesch Number Atlas</a></li></ul>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">import { setupPage, problemTabs } from './js/ui.js'; setupPage('research'); problemTabs(3);</script>
+</body>
+</html>
