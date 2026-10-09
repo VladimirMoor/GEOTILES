@@ -113,3 +113,32 @@ In particular, every tiling by one of the 38 tetrahedra is non-face-to-face in a
 - **The 38 open tetrahedra.** They have only 0–24 convex clusters, a count that hardly grows with k, and **none of these clusters tiles**. Logs: `data_clusters5.log`, `data_clusters7.log`.
 
 **Status.** The 38 open tetrahedra are still undecided. Any tiling would have to be non-face-to-face, with faults along every copy of every bad edge. It also could not come from a convex cluster of at most 7 copies tiling isohedrally.
+
+## Attempt at #19 and #25 (2026-10-09)
+
+#19 = (1/5, 1/5, 2/5, 1/3, 1/2, 2/3) and #25 = (1/5, 1/3, 1/3, 1/5, 1/2, 4/5). In both, the only bad edge is 23. It has a unique length and the largest dihedral angle (2π/3 and 4π/5).
+
+**Forced combinations at the bad edge 23** (exact enumeration):
+- **#19.** At every point of every copy of edge 23, the cycle is either {23, 23, 23}, or it contains a wedge at edge 24 (angle π/3). Every combination with exactly one 23 contains 24.
+- **#25.** At every point there is a wedge of angle π/5 at edge 12 or 24, whose length is φ·|23|. The possible cycles are:
+  - 23 + 6×(π/5);
+  - 23 + (π/5) + 3×(π/3);
+  - 23 + 23 + 2×(π/5);
+  - 23 + (π/5) + face.
+- **Faults.** At each point of the edge, at least one of the two faces of the tile at 23 is mismatched.
+
+**Why local methods cannot succeed here.**
+- **Edge LP.** It is feasible, and no combination is forced: every combination has minimum weight 0 (`lpcore.py`).
+- **Icosahedral structure.** Both tetrahedra are icosahedral. All dihedral angles lie in {π/5, π/3, π/2, 2π/5, 2π/3, 4π/5}, and every vertex figure is a union of 1–14 Möbius triangles (2,3,5) of the icosahedral group H₃. Vertex 4 of #19 and vertices 1 and 4 of #25 *are* the (2,3,5) triangle, which tiles the sphere by reflections.
+- **Consequence.** Spherical vertex stars always exist, and planar fault stars exist as well (see above). Every local angular condition is compatible with the H₃ mirror arrangement.
+
+**The obstruction, if there is one, is metric and global.**
+- The edge lengths involve the golden ratio:
+  - #19: |24|/|23| = φ;
+  - #25: |12|/|23| = |24|/|23| = φ.
+- The distinct lengths are numerically linearly independent over ℚ: PSLQ finds no relation with coefficients up to 10⁶.
+
+**Proposed global route (not yet carried out):**
+1. A 1-D length balance along maximal segments of lines that bound tile faces. The endpoints of such a segment are tile vertices on both sides. Because the lengths are ℚ-independent, this forces equal counts of each edge type on the two sides, apart from face-interior parts.
+2. Combine this with the forced wedges at edge 23 (for #25, a φ-length edge always accompanies a unit-length edge), aiming for a contradiction by counting.
+3. Alternatively, show that the tiles use finitely many orientations (the H₃ orbit), unless some fault plane is a full plane. Then apply translation-type (Hadwiger) invariants.
