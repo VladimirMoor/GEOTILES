@@ -143,3 +143,25 @@ Near a DV tiling, every solution is again a tiling. Neighbouring copies meet alo
 **Conclusion.**
 - In every tested case, isohedral face-to-face tilings close to a DV tiling and of the same combinatorial type are DV tilings. This agrees with the theory of regular, i.e. power-diagram, tilings: a regular isohedral tiling is DV.
 - Non-DV stereohedra therefore need different combinatorics, for example non-face-to-face tilings or non-regular face-to-face tilings. They cannot be obtained by perturbing the DV records.
+
+## Route 1b: non-regular modifications via flips (2026-10-10)
+
+`flip.py`, log in `flip_engel.log`.
+
+**Setup.**
+- The Γ-invariant dual complex of Engel's tiling is built from the exact cell. Its dual cells contain 4 or 6 sites. A dual cell must include *every* site equidistant from the vertex, not only facet neighbours.
+- Self-test: the face pairing is complete, with 0 failures.
+- The realization is parametrized by one vertex per class: 24 classes and 84 loop constraints. On the DV tiling itself the residual is 10⁻¹⁵, the cell is convex, and vol = V₀.
+
+**Experiment.** We tried every Γ-equivariant 2→3 flip that gives the cell a new neighbour, 26 in total. For each flip we look for a realization satisfying pairing and planarity in which the new triangular facet is opened to a prescribed area of 10⁻⁶ to 10⁻³.
+
+**Result.**
+- **No flip has a convex realization near Engel's tiling.**
+- The residual stays at 10⁻⁶ to 10⁻², growing with the target area. Convexity violations are about 10⁻⁴ to 10⁻¹, and vol/V₀ ≠ 1.
+- So the equations force the new facet to collapse. Every non-regular modification near this tiling is obstructed already to first order.
+
+**Caveat.** This is a numerical local search started from the degenerate configuration. It is not a proof of non-existence far from the DV tiling.
+
+**Status of route 1.**
+- Non-DV stereohedra cannot be reached from the DV records, either by deformation (exactly rigid) or by single flips (not realizable).
+- Finding them would need a global search over combinatorial types. That is open-ended, with low odds of success.
