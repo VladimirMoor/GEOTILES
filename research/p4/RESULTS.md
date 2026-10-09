@@ -121,3 +121,25 @@ So for plesiohedra the true maximum lies somewhere between 38 and 92.
 The values for IT 138, 184 and 192 were reached at c/a outside Schmitt's range.
 
 **Next step.** Look outside the DV class: stereohedra that are not Voronoi cells, and non-isohedral monohedral tilings.
+
+## Route 1: non-DV stereohedra by deforming DV tilings (2026-10-10)
+
+**Formulation.** A tile P with group Γ gives an isohedral face-to-face tiling with a fixed combinatorial type exactly when two conditions hold:
+- **(L) pairing.** Each neighbour γ maps the vertices of facet F_{γ⁻¹} onto those of F_γ. These equations are linear in the vertices.
+- **(P) planarity.** Every facet is planar.
+
+Near a DV tiling, every solution is again a tiling. Neighbouring copies meet along facets, and the angle sums around edges vary continuously and are multiples of 2π, so they stay at 2π. Both conditions are affine-invariant, so we work in fractional coordinates, and everything is exact over ℚ.
+
+**Computation** (`deform_exact.py`).
+- The exact vertices of the DV cell are computed.
+- The kernel of the Jacobian of (L)+(P) is found exactly, with the rank taken modulo two 31-bit primes.
+- The DV directions are also computed exactly, by implicit differentiation: moving the generating point x, and for non-cubic groups changing c/a. They lie in the kernel exactly, with residual 0, which validates the equations.
+
+**Results.**
+- Engel's 38-facet cell (IT 214): the kernel has dimension **3**, exactly the DV family. **There is no first-order non-DV deformation.** A floating-point version had suggested 1 or 2 extra directions; that was numerical noise caused by very short edges.
+- Schmitt's 35-facet cell (IT 98): the kernel has dimension 4, made of the moves of x plus the change of c/a. Again no non-DV direction.
+- Rigidity scan (`rigidity_scan.py`): 46 generic DV cells in 13 groups (214, 98, 122, 88, 92, 96, 80, 178, 152, 155, 212, 199, 198), with between 12 and 38 facets. **None has a non-DV first-order deformation.** A few degenerate cells at special positions were skipped.
+
+**Conclusion.**
+- In every tested case, isohedral face-to-face tilings close to a DV tiling and of the same combinatorial type are DV tilings. This agrees with the theory of regular, i.e. power-diagram, tilings: a regular isohedral tiling is DV.
+- Non-DV stereohedra therefore need different combinatorics, for example non-face-to-face tilings or non-regular face-to-face tilings. They cannot be obtained by perturbing the DV records.
