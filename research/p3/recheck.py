@@ -21,17 +21,28 @@ def shapes(path):
     return out
 
 
+MAX_RSS_KB = 2_000_000  # сторож памяти: heesch-sat на высоких уровнях может разрастаться до гигабайт
+
+
 def run_one(coords, maxlevel, timeout):
+    import time
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
         f.write("D? " + coords + "\n")
         name = f.name
-    try:
-        r = subprocess.run([SAT, "-isohedral", "-periodic", "-maxlevel", str(maxlevel), name], capture_output=True, text=True,
-                           timeout=timeout)
-        cls = [l for l in r.stdout.splitlines() if not l.startswith("D")]
-        return cls[0] if cls else "?"
-    except subprocess.TimeoutExpired:
-        return f"timeout>{timeout}s"
+    out = name + ".out"
+    with open(out, "w") as fo:
+        p = subprocess.Popen(["nice", "-n", "15", SAT, "-isohedral", "-periodic", "-maxlevel", str(maxlevel), name],
+                             stdout=fo, stderr=subprocess.DEVNULL)
+        t0 = time.time()
+        while p.poll() is None:
+            time.sleep(1)
+            r = subprocess.run(["ps", "-o", "rss=", "-p", str(p.pid)], capture_output=True, text=True)
+            if int(r.stdout.strip() or 0) > MAX_RSS_KB:
+                p.kill(); return "killed: memory > 2 GB"
+            if time.time() - t0 > timeout:
+                p.kill(); return f"timeout>{timeout}s"
+    cls = [l for l in open(out).read().splitlines() if not l.startswith("D")]
+    return cls[0] if cls else "?"
 
 
 if __name__ == "__main__":
