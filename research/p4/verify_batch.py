@@ -14,7 +14,7 @@ import numpy as np
 
 from exact import certify
 
-LOG = pathlib.Path("data/batch")
+LOG = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].isdigit() else "data/batch")
 SCHMITT = pathlib.Path("lit/schmitt.txt")
 
 
@@ -58,7 +58,7 @@ def certify_point(hm, x, c, rng, tries=6):
 if __name__ == "__main__":
     S = schmitt_max()
     rng = np.random.default_rng(0)
-    only = [int(a) for a in sys.argv[1:]]
+    only = [int(a) for a in sys.argv[1:] if a.isdigit()]
     for f in sorted(LOG.glob("g*.log")):
         n = int(f.stem[1:])
         if only and n not in only:

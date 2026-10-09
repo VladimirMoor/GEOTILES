@@ -1,0 +1,71 @@
+IT( 75) P 4            float  10  certified   7  Schmitt 7
+IT( 76) P 41           float  22  certified  22  Schmitt 24
+IT( 77) P 42           float  16  certified  16  Schmitt 16
+IT( 78) P 43           float  22  certified  22  Schmitt 24
+IT( 79) I 4            float  15  certified  13  Schmitt 14
+IT( 80) I 41           float  26  certified  26  Schmitt 26
+IT( 81) P -4           float  16  certified  16  Schmitt 16
+IT( 82) I -4           float  21  certified  21  Schmitt 23
+IT( 85) P 4/n          float  13  certified  13  Schmitt 13
+IT( 86) P 42/n         float  21  certified  21  Schmitt 20  ← above Schmitt
+IT( 88) I 41/a         float  29  certified  29  Schmitt 23  ← above Schmitt
+IT( 89) P 4 2 2        float  14  certified  13  Schmitt 13
+IT( 90) P 4 21 2       float  15  certified  15  Schmitt 15
+IT( 91) P 41 2 2       float  26  certified  18  Schmitt 26
+IT( 92) P 41 21 2      float  27  certified  27  Schmitt 29
+IT( 93) P 42 2 2       float  22  certified  22  Schmitt 22
+IT( 94) P 42 21 2      float  18  certified  18  Schmitt 22
+IT( 95) P 43 2 2       float  26  certified  21  Schmitt 26
+IT( 96) P 43 21 2      float  26  certified  26  Schmitt 29
+IT( 97) I 4 2 2        float  18  certified  18  Schmitt 18
+IT( 98) I 41 2 2       float  29  certified  29  Schmitt 35
+IT(103) P 4 c c        float  13  certified  13  Schmitt 13
+IT(104) P 4 n c        float  17  certified  15  Schmitt 15
+IT(106) P 42 b c       float  16  certified  16  Schmitt 16
+IT(110) I 41 c d       float  24  certified  24  Schmitt 22  ← above Schmitt
+IT(112) P -4 2 c       float  17  certified  17  Schmitt 17
+IT(114) P -4 21 c      float  20  certified  20  Schmitt 20
+IT(116) P -4 c 2       float  20  certified  20  Schmitt 21
+IT(117) P -4 b 2       float  16  certified  16  Schmitt 16
+IT(118) P -4 n 2       float  21  certified  21  Schmitt 24
+IT(120) I -4 c 2       float  19  certified  19  Schmitt 19
+IT(122) I -4 2 d       float  29  certified  29  Schmitt 31
+IT(126) P 4/n n c      float  15  certified  15  Schmitt 15
+IT(130) P 4/n c c      float  18  certified  17  Schmitt 17
+IT(133) P 42/n b c     float  19  certified  19  Schmitt 19
+IT(142) I 41/a c d     float  24  certified  24  Schmitt 25
+IT(143) P 3            float  11  certified   8  Schmitt 8
+IT(144) P 31           float  20  certified  20  Schmitt 20
+IT(145) P 32           float  20  certified  20  Schmitt 20
+IT(146) R 3            float  18  certified  18  Schmitt 18
+IT(147) P -3           float  16  certified  14  Schmitt 14
+IT(148) R -3           float  22  certified  22  Schmitt 26
+IT(149) P 3 1 2        float  16  certified  14  Schmitt 14
+IT(150) P 3 2 1        float  18  certified  16  Schmitt 16
+IT(151) P 31 1 2       float  21  certified  19  Schmitt 22
+IT(152) P 31 2 1       float  25  certified  25  Schmitt 25
+IT(153) P 32 1 2       float  22  certified  22  Schmitt 22
+IT(154) P 32 2 1       float  25  certified  25  Schmitt 25
+IT(155) R 3 2          float  23  certified  23  Schmitt 27
+IT(158) P 3 c 1        float  14  certified  14  Schmitt 14
+IT(159) P 3 1 c        float  18  certified  16  Schmitt 16
+IT(161) R 3 c          float  20  certified  20  Schmitt 20
+IT(163) P -3 1 c       float  18  certified  16  Schmitt 16
+IT(165) P -3 c 1       float  20  certified  18  Schmitt 18
+IT(167) R -3 c         float  22  certified  22  Schmitt 26
+IT(168) P 6            float  10  certified   7  Schmitt 8
+IT(169) P 61           float  24  certified  24  Schmitt 26
+IT(170) P 65           float  24  certified  24  Schmitt 26
+IT(171) P 62           float  24  certified  21  Schmitt 22
+IT(172) P 64           float  24  certified  21  Schmitt 22
+IT(173) P 63           float  16  certified  14  Schmitt 14
+IT(174) P -6           float  16  certified   8  Schmitt 8
+IT(177) P 6 2 2        float  16  certified  13  Schmitt 13
+IT(178) P 61 2 2       float  33  certified  33  Schmitt 34
+IT(179) P 65 2 2       float  31  certified  30  Schmitt 34
+IT(180) P 62 2 2       float  27  certified  27  Schmitt 30
+IT(181) P 64 2 2       float  27  certified  27  Schmitt 30
+IT(182) P 63 2 2       float  19  certified  19  Schmitt 19
+IT(184) P 6 c c        float  13  certified  13  Schmitt 11  ← above Schmitt
+IT(188) P -6 c 2       float  28  certified  14  Schmitt 14
+IT(190) P -6 2 c       float  32  certified  16  Schmitt 16

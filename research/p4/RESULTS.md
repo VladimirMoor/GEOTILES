@@ -81,3 +81,43 @@ So for plesiohedra the true maximum lies somewhere between 38 and 92.
 - In 56 groups our short search stayed below Schmitt. The search per group is small, and Schmitt's grid is about 10⁹ points.
 
 **Next.** Schmitt sampled c/a only in [1/2, 7/2]. The proven bound for non-cubic groups is 80. So we search the extreme metrics, c/a ∈ [0.05, 0.5] ∪ [3.5, 20], for groups without reflections.
+
+## Search 2: extreme metrics outside Schmitt's range (2026-10-10)
+
+**Setup.**
+- Schmitt sampled c/a only in [1/2, 7/2]. We searched the 71 tetragonal, trigonal and hexagonal groups whose symbol has no m (no mirror planes).
+- Ranges: c/a ∈ [0.05, 0.5], squashed lattices, and c/a ∈ [3.5, 20], elongated lattices.
+- Every best point was certified exactly.
+- Tables: `verified_low.txt`, `verified_high.txt`.
+
+**Results.**
+- **No cell with more than 38 facets.**
+- Squashed lattices: the certified maximum is **33**, for P6₁22 at c/a ≈ 0.38. Schmitt has 34 for this group inside his range.
+- The facet maxima occur at moderate flattening, c/a ≈ 0.1–0.45. Taking c/a → 0 does not increase the number of facets.
+- Elongated lattices: the certified maximum is 29, for P6₄22 and P6₂22.
+- New certified lower bound in this run: **I4₁cd (IT 110): 24**, against Schmitt's 22.
+
+**Coverage gap.** IT 142 and IT 167 at very large c/a hit the memory cap of 400 000 orbit points, so that part of the range was not searched for them.
+
+## Summary of the DV-stereohedra search
+
+**Main result.** The Dirichlet–Voronoi class, i.e. Voronoi cells of one orbit, stays at most 38 across all groups 75–230 and across extreme metrics. This is consistent with Schmitt.
+
+**New certified lower bounds for individual groups.**
+
+| IT | group | certified | Schmitt |
+|---|---|---|---|
+| 88 | I4₁/a | 29 | 23 |
+| 122 | I-42d | 33 | 31 |
+| 110 | I4₁cd | 24 | 22 |
+| 167 | R-3c | 27 | 26 |
+| 86 | P4₂/n | 21 | 20 |
+| 201 | Pn-3 | 17 | 16 |
+| 228 | Fd-3c | 17 | 16 |
+| 138 | P4₂/ncm | 17 | 14 |
+| 184 | P6cc | 13 | 11 |
+| 192 | P6/mcc | 13 | 11 |
+
+The values for IT 138, 184 and 192 were reached at c/a outside Schmitt's range.
+
+**Next step.** Look outside the DV class: stereohedra that are not Voronoi cells, and non-isohedral monohedral tilings.

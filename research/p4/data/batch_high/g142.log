@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/vladimirmuravev/Projects2026/GEOTILES/research/p4/dvfast.py", line 151, in <module>
+    best = search(hm, n_random=n, n_local=nl, steps=st, c_range=cr, log=lambda m: print(m, flush=True))
+  File "/Users/vladimirmuravev/Projects2026/GEOTILES/research/p4/dvfast.py", line 118, in search
+    pts.append((evaluate(p), p))
+                ~~~~~~~~^^^
+  File "/Users/vladimirmuravev/Projects2026/GEOTILES/research/p4/dvfast.py", line 107, in evaluate
+    E.set_c(c)
+    ~~~~~~~^^^
+  File "/Users/vladimirmuravev/Projects2026/GEOTILES/research/p4/dvfast.py", line 60, in set_c
+    raise MemoryError(f"too many orbit points: {n_shifts * len(self.G.R)}")
+MemoryError: too many orbit points: 414176

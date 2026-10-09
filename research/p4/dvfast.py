@@ -114,7 +114,7 @@ def search(hm, n_random=20000, n_local=40, steps=600, c_range=(0.3, 4.0), seed=0
     t0 = time.time()
     pts = []
     for _ in range(n_random):
-        p = np.concatenate([rng.random(3), [rng.uniform(*c_range)]])
+        p = np.concatenate([rng.random(3), [np.exp(rng.uniform(np.log(c_range[0]), np.log(c_range[1])))]])
         pts.append((evaluate(p), p))
     pts.sort(key=lambda r: (-r[0][0], r[0][1]))
     hist = {}
@@ -127,7 +127,7 @@ def search(hm, n_random=20000, n_local=40, steps=600, c_range=(0.3, 4.0), seed=0
         cur, cp = (nf, g), p.copy()
         sigma = 1e-2
         for it in range(steps):
-            q = cp + rng.normal(scale=sigma, size=4) * (np.array([1, 1, 1, 0]) if cubic else 1)
+            q = cp + rng.normal(scale=sigma, size=4) * (np.array([1, 1, 1, 0]) if cubic else np.array([1, 1, 1, cp[3]]))
             val = evaluate(q)
             if val[0] > cur[0] or (val[0] == cur[0] and val[1] < cur[1]):
                 cur, cp = val, q
@@ -147,5 +147,6 @@ if __name__ == "__main__":
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 20000
     nl = int(sys.argv[3]) if len(sys.argv) > 3 else 40
     st = int(sys.argv[4]) if len(sys.argv) > 4 else 600
-    best = search(hm, n_random=n, n_local=nl, steps=st, log=lambda m: print(m, flush=True))
+    cr = tuple(float(v) for v in sys.argv[5].split(":")) if len(sys.argv) > 5 else (0.3, 4.0)
+    best = search(hm, n_random=n, n_local=nl, steps=st, c_range=cr, log=lambda m: print(m, flush=True))
     print("BEST", hm, best[0], best[1])
