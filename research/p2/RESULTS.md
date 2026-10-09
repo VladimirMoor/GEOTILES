@@ -142,3 +142,28 @@ In particular, every tiling by one of the 38 tetrahedra is non-face-to-face in a
 1. A 1-D length balance along maximal segments of lines that bound tile faces. The endpoints of such a segment are tile vertices on both sides. Because the lengths are ℚ-independent, this forces equal counts of each edge type on the two sides, apart from face-interior parts.
 2. Combine this with the forced wedges at edge 23 (for #25, a φ-length edge always accompanies a unit-length edge), aiming for a contradiction by counting.
 3. Alternatively, show that the tiles use finitely many orientations (the H₃ orbit), unless some fault plane is a full plane. Then apply translation-type (Hadwiger) invariants.
+
+## Dissection relations and the golden box (2026-10-09)
+
+`halves.py`, `dissections.py`.
+
+**Halves.** #25, #27 and #42 have a mirror symmetry (1 ↔ 4). In each case the mirror cuts the tetrahedron into two congruent halves, and every half is **#36** = (1/5, 1/2, 1/2, 1/3, 2/5, 1/2).
+
+Each of #25, #27, #42 is therefore made of two mirror copies of #36:
+- if #36 does not tile, then none of #25, #27, #42 tiles;
+- if any of #25, #27, #42 tiles, then #36 tiles.
+
+The halves themselves are not excluded by the edge LP, by Proposition 2.3, or by edge stars.
+
+Searching all tetrahedral clusters of up to 6 copies finds no other relations inside 𝒜. The controls behave as expected: two copies of #1 make Hill(1/4), and #3 relates to #1, Sommerville No. 1 and Hill(1/4).
+
+**#36 is the corner of a golden box.**
+- The three dihedral angles at vertex 3 are π/2, so the edges 31, 32, 34 are mutually perpendicular.
+- Their lengths are in the ratio 1 : φ : φ², with φ the golden ratio.
+- All four faces lie in mirror planes of the icosahedral group H₃. The fourth normal is ½(φ, 1, φ⁻¹).
+
+**Golden box = 4 × #36 + 1 × #7.**
+- The box [0,1]×[0,φ]×[0,φ²] splits into four corner tetrahedra at alternate vertices, all congruent to #36 up to mirror image.
+- The remaining central disphenoid has angles (1/5, 1/5, 1/3, 1/3, 3/5, 3/5), which is exactly **#7**, with twice the volume of #36. Verified to 50 digits.
+- **So #36 and #7 tile space together** (two prototiles, a periodic tiling). Whether either one tiles alone is open.
+- #7 is not a union of copies of #36: its four faces are acute, while two copies of #36 always expose right triangles.
