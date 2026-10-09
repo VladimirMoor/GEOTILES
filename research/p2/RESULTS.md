@@ -167,3 +167,22 @@ Searching all tetrahedral clusters of up to 6 copies finds no other relations in
 - The remaining central disphenoid has angles (1/5, 1/5, 1/3, 1/3, 3/5, 3/5), which is exactly **#7**, with twice the volume of #36. Verified to 50 digits.
 - **So #36 and #7 tile space together** (two prototiles, a periodic tiling). Whether either one tiles alone is open.
 - #7 is not a union of copies of #36: its four faces are acute, while two copies of #36 always expose right triangles.
+
+## Non-convex clusters (2026-10-09)
+
+`nonconvex.py`; log in `data_nonconvex5.log`.
+
+**Clusters searched.** All clusters of at most 5 copies glued face-to-face, convex or not, with mirror images allowed.
+
+**Pruning by the cluster lemma.** Every bad edge of every copy must lie on an edge of the cluster Q.
+
+**Checks for each admissible cluster.**
+- The Poincaré conditions are tested over all pairings of its polygonal faces.
+- The dihedral angle of Q at an edge is computed exactly, as the sum of the dihedral angles of the copies that contain that edge.
+- Every hit is then checked numerically. We generate the images of Q in a ball and test that random points are covered exactly once.
+
+**A false positive, now fixed.** An earlier version computed reflex dihedral angles wrongly and produced a false hit for #42: one dihedral angle came out as 0, and the coverage check failed on all 400 sample points.
+
+**Results.**
+- Controls: #1 and #3 give many tilings, each with a clean coverage check.
+- **The 38 open tetrahedra: no tilings.**

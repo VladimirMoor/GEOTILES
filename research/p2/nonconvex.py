@@ -62,6 +62,7 @@ class Boundary:
     """Граничный комплекс кластера: грани-многоугольники, рёбра, двугранные углы."""
 
     def __init__(self, cl):
+        cl = [np.array(Tt) for Tt in cl]
         pts = []
 
         def vid(p):
@@ -178,18 +179,32 @@ class Boundary:
         if any(len(v) != 2 for v in self.edges.values()):
             self.ok = False
             return
+        # двугранный угол Q на ребре = сумма двугранных углов копий T, содержащих это ребро
         self.dihedral = {}
+        self._tets = [np.array(Tt) for Tt in cl]
         for e, (f1, f2) in self.edges.items():
             a, b = tuple(e)
-            n1, n2 = self.normals[f1], self.normals[f2]
-            cosv = float(np.clip(-np.dot(n1, n2), -1, 1))
-            ang = np.arccos(cosv)
-            # выпуклое или вогнутое ребро: проверяем, смотрит ли грань f2 «внутрь» относительно f1
-            mid = (self.P[a] + self.P[b]) / 2
-            c2 = self.P[[v for v in self.faces[f2] if v not in (a, b)]].mean(axis=0)
-            if np.dot(c2 - mid, n1) > 1e-9:
-                ang = 2 * np.pi - ang
-            self.dihedral[e] = Fr(float(ang / np.pi)).limit_denominator(720)
+            x = self.P[a] + 0.3819660113 * (self.P[b] - self.P[a])
+            d = (self.P[b] - self.P[a]) / np.linalg.norm(self.P[b] - self.P[a])
+            tot = 0.0
+            for Tt in self._tets:
+                for i, j in itertools.combinations(range(4), 2):
+                    u = Tt[j] - Tt[i]
+                    L = np.linalg.norm(u)
+                    if np.linalg.norm(np.cross(u / L, d)) > 1e-7:
+                        continue
+                    t = np.dot(x - Tt[i], u) / L ** 2
+                    if np.linalg.norm(x - Tt[i] - t * u) > 1e-7 or not (1e-9 < t < 1 - 1e-9):
+                        continue
+                    k, l = [m for m in range(4) if m not in (i, j)]
+                    def perp(p):
+                        w = p - Tt[i]
+                        return w - (w @ (u / L)) * (u / L)
+                    v1, v2 = perp(Tt[k]), perp(Tt[l])
+                    tot += np.arccos(np.clip(v1 @ v2 / np.linalg.norm(v1) / np.linalg.norm(v2), -1, 1))
+            self.dihedral[e] = Fr(float(tot / np.pi)).limit_denominator(720)
+            if not (0 < self.dihedral[e] < 2):
+                self.ok = False
 
 
 def bad_edges_ok(cl, V, bad):
