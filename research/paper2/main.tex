@@ -1,0 +1,283 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amssymb,amsmath,mathrsfs}
+\usepackage{booktabs,longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cA}{\mathscr{A}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\title{Remarks on the sporadic rational tetrahedra that might tile space}
+\author{Vladimir Muravev}
+\date{October 9, 2026}
+
+\begin{document}
+\begin{abstract}
+Chentouf and Sun showed that at most $40$ of the $59$ sporadic rational tetrahedra of Kedlaya, Kolpakov, Poonen and
+Rubinstein can tile $\R^3$, and they left these $40$ undecided. We make four remarks.
+\begin{enumerate}[leftmargin=1.5em]
+\item The printed list contains $42$ tuples, two of which are excluded in the body of their paper.
+\item Two members of the list are classical space-fillers, namely Sommerville's tetrahedra No.~2 and No.~3.
+\item None of the remaining $38$ tetrahedra admits a face-to-face tiling. For $12$ of them this is new.
+\item In any tiling by one of the $38$, faults are forced along every copy of certain edges, and convex clusters of at
+most $7$ copies never tile isohedrally.
+\end{enumerate}
+We also explain why purely local arguments cannot settle the icosahedral members of the list.
+\end{abstract}
+\maketitle
+
+\section{Setting}
+A tetrahedron is \emph{rational} if all of its dihedral angles are rational multiples of $\pi$. Kedlaya, Kolpakov,
+Poonen and Rubinstein~\cite{KKPR} classified such tetrahedra into two one-parameter families and $59$ sporadic
+examples. Since rational tetrahedra have Dehn invariant zero, Debrunner's theorem~\cite{Deb} gives no obstruction to
+tiling. Chentouf and Sun~\cite{CS} gave three necessary criteria:
+\begin{itemize}[leftmargin=1.5em]
+\item their Proposition~2.3, for tilings that are not face-to-face;
+\item their Proposition~2.7, for face-to-face tilings;
+\item a length-weighted linear program, their Corollary~2.13.
+\end{itemize}
+They proved that the sporadic tetrahedra that tile lie in a set $\cA$ of $40$ tetrahedra (their Theorem~1.2).
+Whether the members of $\cA$ tile was left open.
+
+We use their conventions. Vertices are labelled $1,2,3,4$, $\alpha_{ij}$ is the dihedral angle along edge $ij$, and
+angles are listed in the order $(\alpha_{12},\alpha_{34},\alpha_{13},\alpha_{24},\alpha_{14},\alpha_{23})$ as multiples
+of $\pi$. A tiling is \emph{face-to-face} (f2f) if no edge of a tile meets the relative interior of a face of another
+tile~\cite[Def.~2.2]{CS}. Tilings may use mirror images. All computations are available at~\cite{code}
+(directory \texttt{research/p2}).
+
+\section{The list}
+We number the $42$ tuples printed in~\cite[Thm.~1.2]{CS} as $\#1,\dots,\#42$ in reading order. Tuples $\#34$ and $\#35$,
+\begin{gather*}(\tfrac{3}{20},\tfrac{11}{20},\tfrac{11}{20},\tfrac14,\tfrac13,\tfrac23)\quad\text{and}\\
+(\tfrac{11}{60},\tfrac{31}{60},\tfrac{11}{20},\tfrac14,\tfrac{3}{10},\tfrac{7}{10}),\end{gather*}
+are exactly the two tetrahedra that~\cite[§3.1, eq.~(5)]{CS} excludes by the linear program. So the printed set has $42$
+elements, and the intended $\cA$ consists of the other $40$.
+
+We checked every tuple as follows:
+\begin{itemize}[leftmargin=1.5em]
+\item the Gram matrix $\bigl(-\cos\alpha\bigr)$ is singular to within $10^{-40}$ and positive semidefinite, with a positive
+kernel vector;
+\item the dihedral angles recomputed from the reconstructed vertices agree with the data to within $10^{-60}$.
+\end{itemize}
+This guards against transcription errors. Our implementation of the linear program of~\cite[Cor.~2.13]{CS} excludes precisely
+$\#34$ and $\#35$ and is feasible for the other $40$.
+
+\section{Two classical tilers in $\cA$}
+\begin{proposition}\label{prop:somm}
+Tetrahedron $\#1=(\frac14,\frac13,\frac13,\frac14,\frac12,\frac23)$ is Sommerville's No.~3. Tetrahedron
+$\#3=(\frac14,\frac12,\frac12,\frac13,\frac13,\frac12)$ is Sommerville's No.~2, that is, the Coxeter simplex
+$[4,3^{1,1}]$. Both tile $\R^3$.
+\end{proposition}
+\begin{proof}
+In the notation of Table~1 of~\cite{BDKS}, Sommerville No.~3 has angles $2\pi/n_{ij}$ with
+\[(n_{12},n_{13},n_{14},n_{23},n_{24},n_{34})=(3,6,6,8,8,4).\]
+Relabelling its vertices by $1\mapsto3$, $3\mapsto1$ gives
+$\#1$. Sommerville No.~2 has $(4,4,4,6,6,8)$, and the relabelling $1\mapsto3$, $2\mapsto4$, $3\mapsto1$, $4\mapsto2$ gives
+$\#3$. A tetrahedron is determined up to similarity by its ordered dihedral angles.
+
+Independently, we verified tilings with the Poincar\'e polyhedron theorem. For $\#3$, the reflections in all four faces
+satisfy the edge conditions: every dihedral angle is $\pi/m$, so this is the Coxeter group $[4,3^{1,1}]$. For $\#1$,
+the following pairing satisfies all edge-cycle conditions exactly:
+\begin{itemize}[leftmargin=1.5em]
+\item the faces opposite vertices $1,2,3$ are mirrors;
+\item the face opposite vertex $4$ is paired with itself by the half-turn about its axis of symmetry.
+\end{itemize}
+In all, our search finds $6$ isohedral face pairings for $\#1$ and $4$ for $\#3$.
+\end{proof}
+
+Hence at most $38$ members of $\cA$ are genuinely undecided.
+
+\section{No face-to-face tilings}
+\begin{lemma}\label{lem:complex}
+In a face-to-face tiling by tetrahedra, any two tiles meet in a common face, edge or vertex, or not at all. In
+particular, the tiles containing a point in the relative interior of an edge $E$ of a tile all have $E$ as an edge, and
+consecutive tiles around $E$ share a whole face.
+\end{lemma}
+\begin{proof}
+If two coplanar faces overlap but are not equal, the boundary of one meets the interior of the other~\cite[Lemma~2.6]{CS}.
+This is excluded, so overlapping coplanar faces coincide.
+
+Let $p$ lie in the relative interior of an edge $E$ of a tile $A$. Let $F$ be a face of $A$ containing $E$. The tile
+across $F$ near $p$ has a face overlapping $F$, hence equal to $F$, so it contains $E$ as an edge. Repeating this around
+$E$ shows that every tile containing $p$ has $E$ as an edge. The remaining cases follow in the same way.
+\end{proof}
+
+\begin{definition}
+Fix an edge length $\ell$. A \emph{wedge} is a tile together with one of its edges $ab$ of length $\ell$, placed on a fixed
+segment $PQ$ (with $a\mapsto P$, $b\mapsto Q$ or the reverse), and an ordering $(F_{\mathrm{in}},F_{\mathrm{out}})$ of its
+two faces through $ab$. The angle of the wedge is $\alpha_{ab}$.
+
+A face through $PQ$ is described by the pair $(|P\,x|,|Q\,x|)$, where $x$ is its third vertex. The \emph{star graph} of
+$\ell$ has these pairs as vertices and the wedges as arcs from $F_{\mathrm{in}}$ to $F_{\mathrm{out}}$. An \emph{edge
+star} of an edge $e$ of $T$ is a closed walk in the star graph of total angle $2\pi$ that uses a wedge of $T$ on $e$.
+\end{definition}
+
+Mirror images are taken into account automatically, because only metric data enter.
+
+\begin{proposition}\label{prop:star}
+If $T$ admits a face-to-face tiling, then every edge of $T$ has an edge star.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:complex}, the tiles around a copy of an edge $e$ form a cyclic sequence of wedges on that edge.
+Consecutive wedges share a whole face, so the face data match, and the angles sum to $2\pi$.
+\end{proof}
+
+Proposition~2.7 of~\cite{CS} is the special case of Proposition~\ref{prop:star} for tetrahedra whose edge lengths are
+pairwise distinct or parallelogram-like. In that case the star graph forces repeated reflections.
+
+\begin{theorem}\label{thm:nof2f}
+None of the $38$ tetrahedra in $\cA\setminus\{\#1,\#3\}$ admits a face-to-face tiling. For
+$\#2,5,7,12,19,20,22,23,25,27,36,42$, this does not follow from~\cite[Prop.~2.7]{CS}.
+\end{theorem}
+\begin{proof}
+For each of the $38$ tetrahedra, at least one edge has no edge star; Table~\ref{tab:A} lists these edges. Checking this
+is a finite search in a graph with at most $12$ vertices, carried out over $\Q$ for the angles. As a control, every edge
+of $\#1$ and $\#3$ has an edge star.
+
+Edge lengths are computed to $60$ digits. Distinct length classes differ by at least $0.0093$, and equal lengths agree to
+$10^{-59}$. Wrongly identifying two lengths could only add arcs to the star graph, so the non-existence statements are
+robust under this identification.
+
+For the last claim, the $12$ listed tetrahedra are exactly those in which the edge lengths are neither pairwise distinct
+nor parallelogram-like, or in which every dihedral angle divides $2\pi$. For these, Proposition~2.7 of~\cite{CS} does
+not apply.
+\end{proof}
+
+\begin{remark}
+None of these tetrahedra can be excluded by Proposition~2.3 of~\cite{CS}, because each of the $40$ has several dihedral
+$\pi$-combinations. So every potential tiling is necessarily non-face-to-face.
+\end{remark}
+
+\section{Forced faults}
+Call an edge of $T$ \emph{bad} if it has no edge star. A \emph{metric chain} is a path in the star graph through a wedge
+of $T$ on that edge; its angle is the sum of the wedge angles. For all $38$ tetrahedra, no bad edge has a metric chain of
+total angle exactly $\pi$.
+
+Take a tiling and a generic point $p$ on a copy of a bad edge. The tiles around $p$ split into maximal metric chains.
+Between two consecutive chains there is a \emph{fault half-plane}, in which the faces of the two adjacent tiles are
+different triangles. Alternatively, $p$ lies in the relative interior of a face of another tile. Hence:
+
+\begin{proposition}
+In any tiling by one of the $38$ tetrahedra, every point of every copy of a bad edge lies on a fault half-plane, or in the
+interior of a face of another tile. In particular, faults occur along a set of positive length in every tile.
+\end{proposition}
+
+\paragraph{Clusters.} A natural way to produce faults is to glue copies of $T$ face-to-face into a convex polytope $Q$
+that tiles. Neighbouring copies of $Q$ may then triangulate their common faces differently. Interior edges of $Q$ need
+edge stars, and edges inside faces of $Q$ need metric chains of angle $\pi$. Therefore every bad edge lies on an edge of
+$Q$, with $Q$'s dihedral angle there equal to a metric-chain angle.
+
+We enumerated all clusters of at most $7$ copies glued face-to-face (mirror images allowed), up to congruence. For each
+convex cluster we tested the Poincar\'e conditions over all pairings of its polygonal faces by isometries, including
+translations, half-turns, reflections and point reflections:
+\begin{itemize}[leftmargin=1.5em]
+\item for $\#1$ and $\#3$ the method finds many tiling clusters;
+\item for the other $38$ there are only $0$--$24$ convex clusters (last column of Table~\ref{tab:A}), and none tiles.
+\end{itemize}
+
+\section{Icosahedral members}
+Many members of $\cA$ are icosahedral. Take, for example, $\#19=(\frac15,\frac15,\frac25,\frac13,\frac12,\frac23)$ and
+$\#25=(\frac15,\frac13,\frac13,\frac15,\frac12,\frac45)$.
+\begin{itemize}[leftmargin=1.5em]
+\item Every dihedral angle lies in $\{\frac\pi5,\frac\pi3,\frac\pi2,\frac{2\pi}5,\frac{2\pi}3,\frac{4\pi}5\}$.
+\item Every vertex figure is a union of $1$ to $14$ copies of the Schwarz triangle $(2,3,5)$, which tiles the sphere.
+Vertex $4$ of $\#19$ and vertices $1,4$ of $\#25$ \emph{are} this triangle.
+\item The golden ratio appears among the edge lengths: $|24|/|23|=\varphi$ for both, and also $|12|/|23|=\varphi$ for
+$\#25$.
+\end{itemize}
+In both, the only bad edge is $23$, of unique length.
+
+Every local angular condition is satisfiable for these tetrahedra:
+\begin{itemize}[leftmargin=1.5em]
+\item the edge combinations around every edge;
+\item spherical vertex stars;
+\item planar vertex stars in fault planes, with the compatibility condition that $\pi-\alpha_g-\alpha_{g'}$ is a
+non-negative integer combination of dihedral angles across each interior edge;
+\item the length-weighted linear program, which has no forced combination.
+\end{itemize}
+An obstruction, if one exists, must therefore be global and metric. The distinct edge lengths are linearly independent
+over $\Q$ numerically (PSLQ finds no relation with coefficients up to $10^6$). This suggests counting edge lengths along
+lines that carry faults.
+
+\begin{table}[p]
+\small\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}rlllr@{}}
+\toprule
+\# & $(\alpha_{12},\alpha_{34},\alpha_{13},\alpha_{24},\alpha_{14},\alpha_{23})/\pi$ & edges w/o star & status & clusters \\
+\midrule
+1 & (1/4, 1/3, 1/3, 1/4, 1/2, 2/3) & -- & tiles (Sommerville No.~3) & 31 \\
+2 & (5/24, 3/8, 1/3, 1/4, 13/24, 5/8) & 12, 34, 14, 23 & no f2f (new) & 1 \\
+3 & (1/4, 1/2, 1/2, 1/3, 1/3, 1/2) & -- & tiles (Sommerville No.~2) & 28 \\
+4 & (7/24, 11/24, 13/24, 7/24, 1/3, 1/2) & 12, 34, 13, 24 & no f2f & 3 \\
+5 & (1/5, 1/5, 1/3, 1/5, 2/3, 2/3) & 14, 23 & no f2f (new) & 0 \\
+6 & (1/5, 1/5, 4/15, 4/15, 3/5, 11/15) & 13, 24, 14, 23 & no f2f & 0 \\
+7 & (1/5, 1/5, 1/3, 1/3, 3/5, 3/5) & 14, 23 & no f2f (new) & 0 \\
+8 & (1/3, 1/3, 3/5, 1/3, 2/5, 2/5) & 13, 14, 23 & no f2f & 3 \\
+9 & (4/15, 8/15, 1/3, 1/3, 7/15, 7/15) & 12, 34, 14, 23 & no f2f & 2 \\
+10 & (1/7, 3/7, 1/3, 1/3, 4/7, 4/7) & 34, 14, 23 & no f2f & 0 \\
+11 & (2/7, 2/7, 1/3, 1/3, 3/7, 5/7) & 12, 34, 14, 23 & no f2f & 1 \\
+12 & (1/5, 2/5, 1/2, 1/3, 1/3, 2/3) & 34, 23 & no f2f (new) & 4 \\
+13 & (2/15, 7/15, 1/2, 1/3, 2/5, 3/5) & 12, 34, 14, 23 & no f2f & 2 \\
+14 & (2/15, 7/15, 31/60, 19/60, 5/12, 7/12) & 12, 34, 13, 24, 14, 23 & no f2f & 1 \\
+15 & (1/5, 2/5, 7/12, 1/4, 5/12, 7/12) & 34, 13, 14, 23 & no f2f & 1 \\
+16 & (13/60, 23/60, 7/12, 1/4, 2/5, 3/5) & 12, 34, 13, 14, 23 & no f2f & 1 \\
+17 & (1/5, 3/5, 1/3, 1/3, 1/2, 1/2) & 34 & no f2f & 4 \\
+18 & (3/10, 7/10, 1/3, 1/3, 2/5, 2/5) & 12, 34, 14, 23 & no f2f & 2 \\
+19 & (1/5, 1/5, 2/5, 1/3, 1/2, 2/3) & 23 & no f2f (new) & 5 \\
+20 & (1/6, 7/30, 11/30, 11/30, 1/2, 2/3) & 34, 13, 24, 23 & no f2f (new) & 5 \\
+21 & (1/5, 1/5, 9/20, 17/60, 11/20, 37/60) & 13, 24, 14, 23 & no f2f & 0 \\
+22 & (1/5, 1/3, 1/2, 1/3, 2/5, 3/5) & 14 & no f2f (new) & 6 \\
+23 & (1/6, 11/30, 1/2, 1/3, 13/30, 17/30) & 34, 14, 23 & no f2f (new) & 6 \\
+24 & (1/6, 11/30, 29/60, 7/20, 5/12, 7/12) & 34, 13, 24, 14, 23 & no f2f & 2 \\
+25 & (1/5, 1/3, 1/3, 1/5, 1/2, 4/5) & 23 & no f2f (new) & 3 \\
+26 & (7/60, 5/12, 1/3, 1/5, 7/12, 43/60) & 12, 34, 14, 23 & no f2f & 0 \\
+27 & (1/5, 2/5, 2/5, 1/5, 1/2, 2/3) & 34, 13 & no f2f (new) & 9 \\
+28 & (1/5, 2/5, 1/3, 1/3, 1/2, 3/5) & 34, 23 & no f2f & 3 \\
+29 & (7/30, 13/30, 3/10, 3/10, 1/2, 3/5) & 12, 34, 13, 24, 23 & no f2f & 3 \\
+30 & (1/4, 7/20, 1/3, 1/3, 9/20, 13/20) & 34, 14, 23 & no f2f & 2 \\
+31 & (1/5, 1/2, 3/5, 1/5, 1/3, 2/3) & 13, 23 & no f2f & 1 \\
+32 & (1/5, 1/2, 17/30, 7/30, 3/10, 7/10) & 13, 24, 14, 23 & no f2f & 1 \\
+33 & (3/20, 11/20, 17/30, 7/30, 7/20, 13/20) & 12, 34, 13, 24, 14, 23 & no f2f & 1 \\
+36 & (1/5, 1/2, 1/2, 1/3, 2/5, 1/2) & 14 & no f2f (new) & 24 \\
+37 & (1/5, 1/2, 7/15, 11/30, 11/30, 8/15) & 13, 24, 14, 23 & no f2f & 2 \\
+38 & (4/15, 13/30, 17/30, 4/15, 2/5, 1/2) & 12, 34, 13, 24, 14 & no f2f & 3 \\
+39 & (4/15, 13/30, 3/5, 3/10, 11/30, 7/15) & 12, 34, 13, 24, 14, 23 & no f2f & 3 \\
+40 & (4/15, 17/30, 2/5, 3/10, 11/30, 8/15) & 12, 34, 13, 24, 14, 23 & no f2f & 1 \\
+41 & (3/10, 2/5, 3/5, 3/10, 1/3, 1/2) & 12, 34, 13, 24 & no f2f & 3 \\
+42 & (1/3, 2/5, 2/5, 1/3, 1/2, 2/5) & 34, 13 & no f2f (new) & 10 \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The $40$ members of $\cA$, numbered by position in the printed list of~\cite{CS} (\#34 and \#35 omitted).
+``No f2f'' means that no face-to-face tiling exists (Theorem~\ref{thm:nof2f}); ``new'' means it is not covered by
+\cite[Prop.~2.7]{CS}. ``Clusters'' is the number of convex face-to-face clusters of at most $7$ copies, up to
+congruence.}\label{tab:A}
+\end{table}
+
+\section*{Acknowledgements}
+The computations and drafting were carried out with the assistance of Claude, an AI model by Anthropic.
+
+\begin{thebibliography}{9}
+\bibitem{BDKS} E.~Bongiovanni, A.~Diaz, A.~Kakkar, N.~Sothanaphan, \emph{The least-area tetrahedral tile of space},
+arXiv:1709.04139.
+\bibitem{CS} A.~A.~Chentouf, Y.~Sun, \emph{Tetrahedra tiling problem}, arXiv:2312.01654 (2023).
+\bibitem{Deb} H.~E.~Debrunner, \emph{\"Uber Zerlegungsgleichheit von Pflasterpolyedern mit W\"urfeln}, Arch.\ Math.\
+\textbf{35} (1980), 583--587.
+\bibitem{Gol} M.~Goldberg, \emph{Three infinite families of tetrahedral space-fillers}, J.\ Combin.\ Theory Ser.\ A
+\textbf{16} (1974), 348--354.
+\bibitem{KKPR} K.~S.~Kedlaya, A.~Kolpakov, B.~Poonen, M.~Rubinstein, \emph{Space vectors forming rational angles},
+arXiv:2011.14232.
+\bibitem{Som} D.~M.~Y.~Sommerville, \emph{Space-filling tetrahedra in Euclidean space}, Proc.\ Edinburgh Math.\ Soc.\
+\textbf{41} (1923), 49--57.
+\bibitem{code} V.~Muravev, \emph{GEOTILES}, \url{https://github.com/VladimirMoor/GEOTILES}, 2026.
+\end{thebibliography}
+\end{document}
