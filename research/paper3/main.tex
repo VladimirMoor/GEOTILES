@@ -1,0 +1,180 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\title{Dirichlet stereohedra: certified lower bounds and local rigidity}
+\author{Vladimir Muravev}
+\date{October 10, 2026}
+
+\begin{document}
+\begin{abstract}
+The largest known number of facets of a convex polyhedron that tiles $\R^3$ by congruent copies is $38$, attained by
+Engel's Dirichlet stereohedra for the space group $I4_132$ (1981). We make four contributions.
+\begin{enumerate}[leftmargin=1.5em]
+\item We point out that the statement ``$38$ is the maximum for plesiohedra'', which appears in standard references,
+is not proved in the cited source. That source is a numerical grid search.
+\item We search all space groups with numbers $75$--$230$ again, including lattice metrics outside the previously
+sampled range, and certify every facet count in exact rational arithmetic. We find no Dirichlet stereohedron with
+more than $38$ facets.
+\item For ten space groups we obtain new certified lower bounds for the maximal number of facets of their Dirichlet
+stereohedra. For example, $I4_1/a$ has a Dirichlet stereohedron with $29$ facets; the best previously reported value
+was $23$.
+\item We prove, by an exact computation, that Engel's $38$-facet tile is locally rigid. Near it there is no isohedral
+tile with the same combinatorics that is not a Dirichlet cell. Single non-regular flips of the dual complex admit no
+convex realization nearby.
+\end{enumerate}
+\end{abstract}
+\maketitle
+
+\section{The problem and its status}
+Problem~(G) of Gr\"unbaum and Shephard~\cite{GS80} asks for the least upper bound on the number of facets of a convex
+polytope that tiles $\R^n$ by congruent copies. For $n\ge 3$ it is open, and it is not even known whether such a bound
+exists.
+
+For a stereohedron, that is, the tile of an isohedral tiling, Delone's theorem bounds the number of facets by
+$2^n(a+1)-2$, where $a$ is the number of aspects. In $\R^3$ this gives $390$, and Tarasov improved it to $378$. A
+\emph{Dirichlet (Voronoi) stereohedron} is the Voronoi cell of one point $x$ in its orbit $\Gamma x$ under a space group
+$\Gamma$. For these, Bochi\c{s}, Santos and Sabariego~\cite{BS01,BS06,SS08,SS11} proved bounds group by group. The
+largest of their bounds is $92$, for the quarter cubic groups.
+
+The record of $38$ facets is due to Engel~\cite{Eng81}. Schmitt~\cite{Sch16} computed the Dirichlet stereohedra of all
+$145$ tetragonal, trigonal, hexagonal and cubic space groups on fine point grids. He confirmed Engel's four
+combinatorial types with $f$-vector $(70,106,38)$ and found nothing larger. Wikipedia and MathWorld cite~\cite{Sch16}
+for the claim that $38$ is the maximum for plesiohedra. However, \S2.3 of~\cite{Sch16} describes a grid search, and its
+\S2.1 states problem~(G) as open. As far as we can tell, \textbf{the maximality of $38$ is not proved}.
+
+Two features of the grid search matter below.
+\begin{itemize}[leftmargin=1.5em]
+\item The $38$-facet chamber of $I4_132$ is covered by only $153$ of about $10^9$ grid points, so chambers smaller
+than a grid cell could be missed.
+\item For non-cubic groups the ratio $c/a$ was sampled only in $[\tfrac12,\tfrac72]$, with about $10^6$ position
+points for each value.
+\end{itemize}
+
+\section{Exact certificates}
+We work in fractional coordinates with the metric tensor $M=B^{\mathsf T}B$. This tensor is rational whenever $(c/a)^2$
+is rational, also for hexagonal lattices. The Voronoi cell of a rational point $x$ is
+\[
+D(x)=\{z:\ 2(y-x)^{\mathsf T}Mz\le y^{\mathsf T}My-x^{\mathsf T}Mx\ \ \text{for all } y\in\Gamma x\setminus\{x\}\}.
+\]
+A \emph{certificate} that $D(x)$ has at least $k$ facets consists of $k$ distinct bisector planes, each containing three
+non-collinear points of $D(x)$ that are verified exactly to be feasible. The points are vertices found in floating
+point and then recomputed exactly as intersections of three planes. It suffices to use the orbit points $y$ with
+$|y-x|<2\rho_L$, where $\rho_L$ is the covering radius of the lattice. Indeed, $D(x)$ is contained in the Voronoi cell of
+the lattice $x+L\subset\Gamma x$.
+
+The method reproduces Engel's $(70,106,38)$ at Schmitt's point $(427,761,1421)/6984$, and Schmitt's value $35$ for
+$I4_122$ at $c/a=727/500$, both exactly.
+
+\section{Search and new lower bounds}
+For each of the $156$ groups with numbers $75$--$230$ we proceeded in three stages.
+\begin{enumerate}[leftmargin=1.5em]
+\item We sampled $8\,000$ random points, with $c/a\in[0.3,4]$ for non-cubic groups.
+\item We ran $25$ local hill-climbs, which maximise the facet count and, as a tie-breaker, minimise the gap to the
+nearest non-facet bisector. This steers the search into small chambers.
+\item We certified the best points exactly.
+\end{enumerate}
+For the $71$ groups without mirror planes we also searched $c/a\in[0.05,0.5]$ and $c/a\in[3.5,20]$.
+
+Floating-point runs reported up to $58$ facets. These were artefacts: points within about $10^{-12}$ of a mirror plane,
+where nearly coincident planes were counted twice. The exact certificates at the same places give Schmitt's values. We
+report only certified numbers.
+
+\begin{proposition}
+The Dirichlet stereohedra at the rational points listed in Table~\ref{tab:cert} have at least the stated numbers of
+facets. In each of these ten groups this exceeds the maximum found in~\cite{Sch16}.
+\end{proposition}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}rlrrll@{}}
+\toprule
+IT & group & \cite{Sch16} & certified & point $x$ (fractional) & $c/a$ \\
+\midrule
+86 & $P4_2/n$ & 20 & \textbf{21} & \scriptsize $(52/961861, 121892/661793, 83579/121807)$ & \scriptsize 10891/5403 \\
+88 & $I4_1/a$ & 23 & \textbf{29} & \scriptsize $(1, 923317/1000000, 5661/250000)$ & \scriptsize 5847/9646 \\
+110 & $I4_1cd$ & 22 & \textbf{24} & \scriptsize $(67153/89224, 250857/935476, 160855/736201)$ & \scriptsize 89519/250000 \\
+122 & $I\bar42d$ & 31 & \textbf{33} & \scriptsize $(499999/999999, 143779/371659, 492461/895745)$ & \scriptsize 8925/6004 \\
+138 & $P4_2/ncm$ & 14 & \textbf{17} & \scriptsize $(454227/1000000, 954227/1000000, 758507/1000000)$ & \scriptsize 4162/9787 \\
+167 & $R\bar3c$ & 26 & \textbf{27} & \scriptsize $(460309/760898, 209157/996041, 531553/944363)$ & \scriptsize 21055/9436 \\
+184 & $P6cc$ & 11 & \textbf{13} & \scriptsize $(741399/1000000, 2653/8000, 429439/500000)$ & \scriptsize 3/10 \\
+192 & $P6/mcc$ & 11 & \textbf{13} & \scriptsize $(118179/200000, 180021/250000, 1/2)$ & \scriptsize 2501/7628 \\
+201 & $Pn\bar3$ & 16 & \textbf{17} & \scriptsize $(954723/963917, 107169/832985, 156955/308036)$ & \scriptsize 1 \\
+228 & $Fd\bar3c$ & 16 & \textbf{17} & \scriptsize $(443121/863615, 155697/999223, 713295/929221)$ & \scriptsize 1 \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{New certified lower bounds. The certificates are in \texttt{certificates.json}, and
+\texttt{verify\_certificates.py} rechecks them independently. For IT~138, 184 and 192 the value of $c/a$ lies outside the
+range $[\tfrac12,\tfrac72]$ sampled in~\cite{Sch16}.}\label{tab:cert}
+\end{table}
+
+No certified count exceeded $38$, in any group or metric range, and the maximum of $38$ was again attained only in
+$I4_132$. Squashed lattices do not help: the facet maxima occur at moderate $c/a\approx0.1$--$0.45$, and as $c/a\to0$
+the counts decrease.
+
+\section{Local rigidity of Dirichlet stereohedra}
+Fix a tile $P$ of an isohedral face-to-face tiling with group $\Gamma$, and fix its combinatorial type. The tiling
+conditions are:
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{(L)} for each neighbour $\gamma$, the map $\gamma$ takes the vertices of the facet $F_{\gamma^{-1}}$ to those of
+$F_\gamma$; these equations are linear in the vertices;
+\item \textbf{(P)} every facet is planar.
+\end{itemize}
+Every solution near a tiling is again a tiling. Neighbouring copies meet along facets, and the angle sums around edges
+are continuous multiples of $2\pi$, so they remain equal to $2\pi$. Both conditions are affine-invariant and rational in
+fractional coordinates. We compute the rank of the Jacobian of (L)+(P) exactly, modulo two $31$-bit primes, at exact
+vertex coordinates. We also compute exactly the tangent directions of the Dirichlet family: moving $x$, and changing
+$c/a$ for non-cubic groups.
+
+\begin{theorem}[computer-assisted]
+For Engel's $38$-facet tile ($I4_132$, $x=(427,761,1421)/6984$) the solution set of (L)+(P) has tangent space of
+dimension exactly $3$, spanned by the motions of $x$. Hence, to first order, every isohedral face-to-face tile near it
+with the same combinatorics is a Dirichlet stereohedron. The same holds for Schmitt's $35$-facet tile of $I4_122$, with
+dimension $4$ (motions of $x$ and the change of $c/a$), and for $46$ further generic Dirichlet stereohedra in $13$ groups
+with $12$ to $38$ facets.
+\end{theorem}
+
+Floating-point versions of this computation suggested one or two extra directions. That was an artefact of edges of
+length about $10^{-9}$.
+
+We also built the $\Gamma$-invariant dual complex of Engel's tiling from the exact cell. A dual cell must contain all
+orbit points equidistant from the vertex, not only the facet neighbours; the dual cells contain $4$ or $6$ sites. We then
+tried all $26$ equivariant $2\to3$ flips that give the cell a new neighbour. None admits a nearby realization satisfying
+(L)+(P) with the new facet opened, even to area $10^{-6}$. The residual stays between $10^{-6}$ and $10^{-2}$, and the
+resulting tiles are not convex. Non-Dirichlet stereohedra with more facets, if they exist, are therefore not obtained by
+local modification of the Dirichlet records.
+
+\section*{Code}
+All code and data are at \url{https://github.com/VladimirMoor/GEOTILES}, in the directory \texttt{research/p4}:
+\texttt{dvfast.py}, \texttt{exact.py}, \texttt{certificates.json}, \texttt{verify\_certificates.py},
+\texttt{deform\_exact.py}, \texttt{rigidity\_scan.py} and \texttt{flip.py}.
+
+\section*{Acknowledgements}
+Computations and drafting were carried out with the assistance of Claude, an AI model by Anthropic.
+
+\begin{thebibliography}{9}
+\bibitem{BS01} D.~Bochi\c{s}, F.~Santos, \emph{On the number of facets of three-dimensional Dirichlet stereohedra I:
+groups with reflections}, Discrete Comput.\ Geom.\ \textbf{25} (2001), 419--444.
+\bibitem{BS06} D.~Bochi\c{s}, F.~Santos, \emph{\ldots\ II: non-cubic groups}, arXiv:math/0204231.
+\bibitem{Eng81} P.~Engel, \emph{\"Uber Wirkungsbereichsteilungen von kubischer Symmetrie}, Z.\ Kristallogr.\ \textbf{154}
+(1981), 199--215.
+\bibitem{GS80} B.~Gr\"unbaum, G.~C.~Shephard, \emph{Tilings with congruent tiles}, Bull.\ Amer.\ Math.\ Soc.\ \textbf{3}
+(1980), 951--973.
+\bibitem{SS08} P.~Sabariego, F.~Santos, \emph{\ldots\ III: full cubic groups}, arXiv:math/0608039.
+\bibitem{SS11} P.~Sabariego, F.~Santos, \emph{\ldots\ IV: quarter cubic groups}, arXiv:0708.2114.
+\bibitem{Sch16} M.~Schmitt, \emph{On Space Groups and Dirichlet--Voronoi Stereohedra}, PhD thesis, FU Berlin, 2016.
+\end{thebibliography}
+\end{document}
