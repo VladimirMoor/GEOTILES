@@ -1,0 +1,53 @@
+I 41 2 2: 1129 entries
+  25/1129
+/Users/vladimirmuravev/Projects2026/GEOTILES/research/bio/pdb_dv.py:75: RuntimeWarning: Mean of empty slice
+  return xyz.mean(axis=0), len(xyz)
+/Users/vladimirmuravev/Projects2026/GEOTILES/.venv/lib/python3.14/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+  50/1129
+  75/1129
+  100/1129
+  125/1129
+  150/1129
+  175/1129
+  200/1129
+  225/1129
+  250/1129
+  275/1129
+  300/1129
+  325/1129
+  350/1129
+  375/1129
+  400/1129
+  425/1129
+  450/1129
+  475/1129
+  500/1129
+  525/1129
+  550/1129
+  575/1129
+  600/1129
+  625/1129
+  650/1129
+  675/1129
+  700/1129
+  725/1129
+  750/1129
+  775/1129
+  800/1129
+  825/1129
+  850/1129
+  875/1129
+  900/1129
+  925/1129
+  950/1129
+  975/1129
+  1000/1129
+  1025/1129
+  1050/1129
+  1075/1129
+  1100/1129
+  1125/1129
+facet histogram: [(14, 111), (15, 219), (16, 189), (17, 70), (18, 79), (19, 158), (20, 81), (21, 149), (22, 14), (23, 31), (24, 5), (25, 3), (26, 3), (28, 2), (29, 3)]
+top: [('7ZC0', 29), ('8S97', 29), ('8S9D', 29), ('2X2B', 28), ('5N7L', 28), ('4LMR', 26), ('7VOB', 26), ('7VOC', 26)]
+errors: 12
