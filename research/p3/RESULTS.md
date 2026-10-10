@@ -90,3 +90,27 @@ Started 2026-10-09.
 - The known Heesch-6 tiles are much larger: Bašić's tile has about 140 drafters.
 - Exhaustive search will not reach that size; the census grows by a factor of about 2.4 per cell.
 - The next step has to be targeted families built from the known H = 6 tiles.
+
+## Bašić's Heesch-6 tile in heesch-sat coordinates (2026-10-10)
+
+**Source.** Wikimedia Commons, `File:A_polygon_with_Heesch_number_6.svg`, a CorelDRAW drawing of Bašić's tile with its 6 coronas.
+- The drawing has 338 tile copies in total: the central tile and the coronas, with 6, 10, 13, 32, 52 and 55 tiles.
+- Each copy is drawn as 6 regular hexagons and 69 small triangles of shape 30-60-90, i.e. drafters.
+
+**In drafter units.**
+- One equilateral triangle of the kisrhombille is 6 drafters, and one hexagon is 36 drafters.
+- So the tile has 6·36 + 69 = **285 drafters**. This matches the description "6 hexes + 11.5 triangles", since 69 = 11.5 · 6.
+
+**Conversion** (`svg_to_drafter.py`).
+- Each hexagon is subdivided into drafters.
+- A similarity is fitted to heesch-sat's drafter grid. Its rotation comes from all edge directions, and its scale and translation from a scale scan plus ICP. The fitted SVG triangle side is 30.57 units against 7 grid units.
+- One copy (class `fil1`) aligns with maximum centroid error 0.13 cell, and all 285 cells are distinct.
+- The central copy does not align: it has 3 malformed triangles in the SVG, one with angles 26.6°/90°/63.4°.
+- Result: `tiles/basic6.txt`, in heesch-sat format.
+
+**Running heesch-sat** (`guarded_sat.py`, with a memory watchdog polled every 0.5 s).
+- Even at `-maxlevel 2`, with or without `-isohedral`, memory passes **4.4 GB within 4 s**, before any corona is solved.
+- The cost is in the set-up. All placements of a neighbouring copy are enumerated: 12 orientations × translations × 285 cells, about 10⁶ placements.
+- A first unguarded attempt was killed by the OS at more than 2 GB after 85 s.
+
+**Conclusion.** Reproducing H = 6 for Bašić's tile with heesch-sat needs a machine with substantially more RAM, probably 32–64 GB, or a memory-lean reimplementation of the neighbour-placement step. That rules it out on this 16 GB laptop. Bakker reports similar resource limits (CryptoMiniSat clause ceilings) for tiles of this size.
