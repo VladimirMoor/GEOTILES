@@ -27,6 +27,8 @@ export const GROUPS = [
     note: { en: 'Voronoi cells of symmetric point sets with the most faces; not equilateral. Facet counts certified in exact arithmetic', ru: 'Ячейки Вороного симметричных наборов точек с наибольшим числом граней; не равносторонние. Число граней подтверждено точной арифметикой', es: 'Celdas de Voronói de conjuntos simétricos de puntos con más caras; no equiláteras. Número de caras certificado con aritmética exacta' } },
   { id: 'proteins', title: { en: 'Protein crystals', ru: 'Белковые кристаллы', es: 'Cristales de proteínas' },
     note: { en: 'Voronoi cells of protein molecules in real crystals from the PDB; face counts certified exactly', ru: 'Ячейки Вороного белковых молекул в реальных кристаллах из PDB; число граней подтверждено точно', es: 'Celdas de Voronói de moléculas de proteína en cristales reales del PDB; número de caras certificado exactamente' } },
+  { id: 'crystals', title: { en: 'Crystals from COD', ru: 'Кристаллы из COD', es: 'Cristales de COD' },
+    note: { en: 'Voronoi cells of atom orbits in real crystals from the Crystallography Open Database; face counts certified exactly', ru: 'Ячейки Вороного орбит атомов в реальных кристаллах из Crystallography Open Database; число граней подтверждено точно', es: 'Celdas de Voronói de órbitas de átomos en cristales reales de la Crystallography Open Database; número de caras certificado exactamente' } },
   { id: 'no', title: { en: 'Do not tile', ru: 'Не замощают', es: 'No teselan' },
     note: { en: 'For comparison: ruled out by the dihedral angle filter', ru: 'Для сравнения: исключены фильтром двугранных углов', es: 'Para comparar: descartados por el filtro de ángulos diedros' } },
 ];
@@ -347,6 +349,15 @@ export const CATALOG = [
       en: 'The Voronoi cell of the molecule in PDB 1JKY, in the cubic group I4₁32: the same group as Engel’s 38-hedron. Among 146 protein crystals in this group no cell has more than 20 faces; nature stays far from the record here.',
       ru: 'Ячейка Вороного молекулы из PDB 1JKY в кубической группе I4₁32 — той же, что у 38-гранника Энгеля. Среди 146 белковых кристаллов этой группы ни у одной ячейки нет больше 20 граней: здесь природа далека от рекорда.',
       es: 'La celda de Voronói de la molécula de PDB 1JKY, en el grupo cúbico I4₁32: el mismo que el 38-edro de Engel. Entre 146 cristales de proteínas de este grupo ninguna celda tiene más de 20 caras; aquí la naturaleza queda lejos del récord.',
+    },
+  },
+  {
+    id: 'cod7223002', group: 'crystals', status: 'tiles', ...stereo('cod7223002'),
+    name: { en: 'Crystal COD 7223002: 24 faces (group record)', ru: 'Кристалл COD 7223002: 24 грани (рекорд группы)', es: 'Cristal COD 7223002: 24 caras (récord del grupo)' },
+    about: {
+      en: 'The Voronoi cell of the orbit of one carbon atom (C10 of a phenanthroline ligand) in an iodoargentate framework with [Cd(phen)₃]²⁺ cations, C₇₂H₇₈Ag₁₄Cd₂I₁₇N₁₂O₁₅ (CrystEngComm 17 (2015) 8752). Cubic group I2₁3. It has 24 faces, 43 vertices and 65 edges. That equals the largest face count known for this group (Schmitt 2016), certified in exact arithmetic. Only about 1 random point in 3000 gives 24 faces, but COD has about 2200 atom sites in this group, so one such hit is roughly what chance predicts.',
+      ru: 'Ячейка Вороного орбиты одного атома углерода (C10 фенантролинового лиганда) в йодоаргентатном каркасе с катионами [Cd(phen)₃]²⁺, C₇₂H₇₈Ag₁₄Cd₂I₁₇N₁₂O₁₅ (CrystEngComm 17 (2015) 8752). Кубическая группа I2₁3. У ячейки 24 грани, 43 вершины и 65 рёбер. Это равно наибольшему известному числу граней для этой группы (Шмитт, 2016) и подтверждено точной арифметикой. 24 грани даёт лишь примерно одна случайная точка из 3000, но в COD в этой группе около 2200 позиций атомов, так что одно такое попадание примерно и ожидается случайно.',
+      es: 'La celda de Voronói de la órbita de un átomo de carbono (C10 de un ligando fenantrolina) en un armazón de yodoargentato con cationes [Cd(phen)₃]²⁺, C₇₂H₇₈Ag₁₄Cd₂I₁₇N₁₂O₁₅ (CrystEngComm 17 (2015) 8752). Grupo cúbico I2₁3. Tiene 24 caras, 43 vértices y 65 aristas. Eso iguala el mayor número de caras conocido para este grupo (Schmitt, 2016), certificado con aritmética exacta. Solo alrededor de 1 punto aleatorio de cada 3000 da 24 caras, pero COD tiene unas 2200 posiciones atómicas en este grupo, así que un acierto así es más o menos lo que predice el azar.',
     },
   },
 ];

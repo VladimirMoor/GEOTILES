@@ -24,6 +24,8 @@ for n, key in ((122, "ours33"), (88, "ours29")):
 for key, tag, pid in (("pdb4ux6", "P6122", "4UX6"), ("pdb8s97", "I4122", "8S97"), ("pdb1jky", "I4132", "1JKY")):
     r = next(r for r in json.loads(pathlib.Path(f"../bio/data/dv_{tag}.json").read_text()) if r["id"] == pid)
     ITEMS.append((key, r["sg"], tuple(Fr(str(v)) for v in r["x"]), Fr(str(r["c_over_a"]))))
+# атом C10 в кристалле COD 7223002 (I2₁3): координаты из CIF, 24 грани — максимум Шмитта для группы
+ITEMS.append(("cod7223002", "I 21 3", (Fr("0.7904"), Fr("0.9156"), Fr("0.9215")), Fr(1)))
 
 out = {}
 for key, hm, x, c in ITEMS:
