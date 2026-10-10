@@ -1,35 +1,39 @@
 # GEOTILES
 
-Open research on tilings, starting with one question: **which convex polyhedra with all edges equal fill space?**
+Open research on tilings. We work through a list of open problems about shapes that fill space. For each problem we first check the literature, then compute, preferably in exact arithmetic, and publish everything here.
 
-**Site: https://geotiles-nine.vercel.app**
+**Site: https://geotiles-nine.vercel.app** (EN · RU · ES)
 
-The site has three languages (EN, RU, ES) and these parts:
+## Problems and results
 
-- **Catalog.** Equilateral space-fillers and, for comparison, solids that do not tile. Each comes with a 3D model, a tiling fragment, an explode slider, a slice view and automatic checks.
-- **Lab.** A zonohedron builder that applies McMullen's criterion and constructs the translation tiling. An analyzer that takes arbitrary vertices and runs the dihedral angle filter.
-- **Research.** Literature review, plan and log.
+| # | Problem | Status | Main results | Details |
+|---|---|---|---|---|
+| 1 | Equilateral convex polyhedra that tile space | in progress | **Theorem A**: every Minkowski sum of triangles and segments with total dimension ≤ 4 tiles. **Theorem B**: with total dimension ≥ 5 the tiling ones have measure zero. Two new equilateral space-fillers (9 and 10 faces). Classification of ≤ 8 faces, with 170 of 301 types rigorous. | [RESULTS](research/p1/RESULTS.md), [preprint](docs/paper/geotiles-minkowski-preprint.pdf) |
+| 2 | New space-filling tetrahedra | in progress | The list 𝒜 of Chentouf–Sun (2023) has a misprint, and two of its "undecided" members are Sommerville tilers. None of the remaining 38 tiles face-to-face (12 of these exclusions are new). A golden box splits into 4 × #36 + #7. | [RESULTS](research/p2/RESULTS.md), [note](docs/paper/sporadic-tetrahedra-note.pdf) |
+| 3 | A polygon with Heesch number 7 | paused | First Heesch census of polydrafters: 9.7 M shapes with ≤ 20 cells, maximum 3. Bašić's record tile reconstructed in exact coordinates (285 cells). Verifying it needs 32–64 GB of RAM. | [RESULTS](research/p3/RESULTS.md) |
+| 4 | A space-filler with more than 38 faces | in progress | The bound 38 is not proved (Schmitt 2016 is a numerical search). Exact search over all groups 75–230 finds nothing above 38. New certified lower bounds for 10 groups. Engel's 38-hedron is provably rigid. | [RESULTS](research/p4/RESULTS.md), [note](docs/paper/dirichlet-stereohedra-note.pdf) |
+| 5 | Periodic tiling conjecture in dimension 3 | resolved (preprint) | Counterexample by OpenAI (Sept 2026, not yet verified by people). Demaine–Langerman (Oct 2026) proved translational monotiling of ℝ³ undecidable. | — |
+| 6–9 | Voronoi conjecture; full classification; decidability; boundedness of Heesch numbers | open | — | — |
 
-## Verification built into the site
+Side project: Dirichlet cells of protein molecules in PDB crystals (`research/bio/`).
 
-- **Dihedral angle filter.** This is a necessary condition for a monotiling: every dihedral angle must be part of a sum Σ kᵢαᵢ = 360° or 180°.
-- **Volume check.** V(tile) / V(fundamental domain) must equal 1.
-- **Coverage check.** 1500 random points in a ball covered by the fragment must each lie in exactly one tile.
+## The site
+
+- **Catalog.** Equilateral space-fillers, record stereohedra (up to Engel's 38-hedron, with full space-group tilings) and, for comparison, solids that do not tile. Each comes with a 3D model, a tiling fragment, an explode slider, a slice view and automatic checks.
+- **Lab.** A zonohedron builder with McMullen's criterion, and a polyhedron analyzer that runs the dihedral angle filter.
+- **Research.** All problems with their status, results, preprints and notes.
 
 ## Structure
 
 ```
-docs/            static site (deployed as is, no build step)
-  js/geom.js     convex hull, dihedral angles, zonohedra, McMullen criterion, angle filter
-  js/tiling.js   tiling fragments and coverage check
-  js/viewer.js   three.js viewer
-  js/i18n.js     translations
-  js/catalog-data.js  catalog entries
-  vendor/three/  three.js r170 (MIT)
-research/p1/     problem 1 pipeline: enumerate_types → realize → analyze → families/identities → search_tiling
-  RESULTS.md     first-pass results for equilateral polyhedra with ≤ 8 faces
-scripts/serve.py local no-cache dev server
-problem1_literature.md  literature review for problem 1 (RU)
+docs/                 static site (no build step)
+  js/                 geometry, tiling, three.js viewer, i18n, catalog data
+  paper/              compiled preprints and notes
+research/p1/ … p4/    pipelines and RESULTS.md for problems 1–4
+research/bio/         protein crystals from the PDB
+research/paper*/      LaTeX sources of the preprint and notes
+scripts/serve.py      local no-cache dev server
+tools/                external tools (plantri, heesch-sat), git-ignored
 ```
 
 ## Run locally
@@ -40,17 +44,18 @@ python3 scripts/serve.py 8766
 
 Then open http://localhost:8766.
 
-## Reproduce the research pipeline
+## Reproduce
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install numpy scipy mpmath
-mkdir -p tools && curl -L https://users.cecs.anu.edu.au/~bdm/plantri/plantri55.tar.gz | tar xz -C tools && make -C tools/plantri55 plantri
-cd research/p1
-../../.venv/bin/python enumerate_types.py
-../../.venv/bin/python realize.py --starts 2000
-../../.venv/bin/python analyze.py
+python3 -m venv .venv && .venv/bin/pip install numpy scipy mpmath sympy matplotlib gemmi
+```
+
+Each `research/pN/RESULTS.md` lists the scripts and commands for that problem. For example, the certified stereohedron bounds of problem 4 can be rechecked with:
+
+```bash
+cd research/p4 && ../../.venv/bin/python verify_certificates.py
 ```
 
 ## Deploy
 
-The site is static. `vercel.json` sets `docs/` as the output directory, so a Vercel project imported from this repository needs no further settings.
+`vercel.json` sets `docs/` as the output directory. Every push to `main` deploys.

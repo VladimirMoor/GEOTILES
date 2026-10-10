@@ -1,0 +1,14 @@
+I 41 3 2: 156 entries
+  25/156
+  50/156
+  75/156
+  100/156
+/Users/vladimirmuravev/Projects2026/GEOTILES/research/bio/pdb_dv.py:75: RuntimeWarning: Mean of empty slice
+  return xyz.mean(axis=0), len(xyz)
+/Users/vladimirmuravev/Projects2026/GEOTILES/.venv/lib/python3.14/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+  125/156
+  150/156
+facet histogram: [(15, 9), (16, 31), (17, 86), (18, 10), (19, 8), (20, 2)]
+top: [('1JKY', 20), ('4PPI', 20), ('1A87', 19), ('3LJE', 19), ('5A9W', 19), ('5A9X', 19), ('5A9Y', 19), ('5OID', 19)]
+errors: 10

@@ -18,3 +18,7 @@ research/p3/data/drafter[0-9][0-9].txt
 research/p3/data/drafter*_out.txt
 research/p4/lit/
 research/p4/data/batch/
+
+# PDB download cache
+research/bio/data/cache/
+research/bio/data/sg_facets.json

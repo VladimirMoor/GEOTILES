@@ -15,13 +15,14 @@
 <body>
 <section><div class="wrap doc">
 <nav class="ptabs" id="ptabs"></nav>
-<article data-lang="en"><div class="eyebrow">problem 03 · <span class="chip info">in progress</span></div>
+<article data-lang="en"><div class="eyebrow">problem 03 · <span class="chip warn">paused</span></div>
 <h1>A polygon with Heesch number 7</h1>
 <p class="muted">The Heesch number of a shape that does not tile the plane is the largest number of complete layers (coronas) of copies that can surround it. The record is <b>6</b>, held by Bašić's tile from 2021 and by tiles of Dave Smith. Nobody has found a 7.</p>
 <h2>What we did</h2>
 <ul><li>We built Craig Kaplan's SAT-based tool <code>heesch-sat</code> and checked it against the published example (free 6-hexes): it matches exactly.</li>
 <li>We ran the <b>first Heesch census of polydrafters</b> (shapes made of 30-60-90 triangles, the grid on which all known Heesch-6 tiles live): all 9.7 million free polydrafters with up to 20 cells. Every inconclusive case was re-checked one by one.</li>
 <li><b>Result: the maximum is 3</b> (one shape for each of 13, 14, 17, 19 and 20 cells). Small shapes come nowhere near the record; the known Heesch-6 tiles have about 140 cells.</li></ul>
+<h2>Bašić’s tile, reconstructed</h2><p>We rebuilt the record tile in exact grid coordinates: 285 drafter cells, whose outline has exactly 75 edges, matching the published 75-edge polygon. The coordinates are in our repository in heesch-sat format. Running heesch-sat on it needs more than 4.4 GB of memory before the first corona, so checking Heesch number 6 (and searching its modifications) requires a machine with 32–64 GB of RAM. The problem is paused.</p><figure style="margin:18px 0"><img src="img/basic6-drafters.svg" alt="Bašić tile" style="width:100%;max-width:640px;background:#fff;border-radius:12px;padding:10px"><figcaption class="small muted">Bašić’s tile (Heesch number 6) as 285 drafters, reconstructed from the Wikimedia drawing; drawn from our coordinates.</figcaption></figure>
 <h2>Next</h2><p>Targeted families built from the known Heesch-6 tiles: stretching them, inserting repeated segments, moving notches.</p>
 <table><tr><th>n</th><th>shapes</th><th>Hc=1</th><th>Hc=2</th><th>Hc=3</th></tr>
 <tr><td>≤ 12</td><td>8 917</td><td>99</td><td>8</td><td>0</td></tr>
@@ -33,13 +34,14 @@
 <tr><td>18</td><td>972 551</td><td>516</td><td>0</td><td>0</td></tr>
 <tr><td>19</td><td>2 343 836</td><td>294</td><td>3</td><td>1</td></tr>
 <tr><td>20</td><td>5 658 732</td><td>2 183</td><td>21</td><td>1</td></tr></table><p class="small muted">Details: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p3/RESULTS.md">research/p3/RESULTS.md</a>.</p></article>
-<article data-lang="ru" hidden><div class="eyebrow">задача 03 · <span class="chip info">в работе</span></div>
+<article data-lang="ru" hidden><div class="eyebrow">задача 03 · <span class="chip warn">на паузе</span></div>
 <h1>Многоугольник с числом Хееша 7</h1>
 <p class="muted">Число Хееша фигуры, которая не замощает плоскость, — наибольшее число полных слоёв (корон) её копий, которыми её можно окружить. Рекорд — <b>6</b>: плитка Башича (2021) и плитки Дэйва Смита. Семёрку никто не нашёл.</p>
 <h2>Что сделано</h2>
 <ul><li>Собрали SAT-инструмент Крейга Каплана <code>heesch-sat</code> и проверили на опубликованном примере (свободные 6-гексы): совпадает в точности.</li>
 <li>Провели <b>первую перепись чисел Хееша для полидрафтеров</b> (фигуры из треугольников 30-60-90 — на этой сетке живут все известные плитки с числом 6): все 9,7 млн свободных полидрафтеров до 20 клеток. Все неопределённые случаи перепроверены по одному.</li>
 <li><b>Итог: максимум — 3</b> (по одной фигуре для 13, 14, 17, 19 и 20 клеток). Маленькие фигуры до рекорда не дотягивают; известные плитки с числом 6 содержат около 140 клеток.</li></ul>
+<h2>Плитка Башича, восстановленная</h2><p>Мы восстановили рекордную плитку в точных координатах сетки: 285 клеток-драфтеров, контур ровно из 75 рёбер — как у опубликованного 75-угольника. Координаты лежат в репозитории в формате heesch-sat. Запуску heesch-sat на ней нужно больше 4,4 ГБ памяти ещё до первой короны, поэтому проверка числа Хееша 6 (и поиск её модификаций) требует машины с 32–64 ГБ. Задача на паузе.</p><figure style="margin:18px 0"><img src="img/basic6-drafters.svg" alt="Bašić tile" style="width:100%;max-width:640px;background:#fff;border-radius:12px;padding:10px"><figcaption class="small muted">Плитка Башича (число Хееша 6) из 285 драфтеров, восстановленная по рисунку с Wikimedia; нарисована по нашим координатам.</figcaption></figure>
 <h2>Дальше</h2><p>Целевые семейства на основе известных плиток с числом 6: удлинения, вставки повторяющихся кусков, сдвиги вырезов.</p>
 <table><tr><th>n</th><th>shapes</th><th>Hc=1</th><th>Hc=2</th><th>Hc=3</th></tr>
 <tr><td>≤ 12</td><td>8 917</td><td>99</td><td>8</td><td>0</td></tr>
@@ -51,13 +53,14 @@
 <tr><td>18</td><td>972 551</td><td>516</td><td>0</td><td>0</td></tr>
 <tr><td>19</td><td>2 343 836</td><td>294</td><td>3</td><td>1</td></tr>
 <tr><td>20</td><td>5 658 732</td><td>2 183</td><td>21</td><td>1</td></tr></table><p class="small muted">Подробности: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p3/RESULTS.md">research/p3/RESULTS.md</a>.</p></article>
-<article data-lang="es" hidden><div class="eyebrow">problema 03 · <span class="chip info">en curso</span></div>
+<article data-lang="es" hidden><div class="eyebrow">problema 03 · <span class="chip warn">en pausa</span></div>
 <h1>Un polígono con número de Heesch 7</h1>
 <p class="muted">El número de Heesch de una figura que no tesela el plano es el mayor número de capas completas (coronas) de copias que pueden rodearla. El récord es <b>6</b>: la tesela de Bašić (2021) y las de Dave Smith. Nadie ha encontrado un 7.</p>
 <h2>Lo que hicimos</h2>
 <ul><li>Compilamos la herramienta SAT de Craig Kaplan <code>heesch-sat</code> y la comprobamos con el ejemplo publicado (6-hexes libres): coincide exactamente.</li>
 <li>Hicimos el <b>primer censo de números de Heesch de polidrafters</b> (figuras de triángulos 30-60-90, la malla de todas las teselas conocidas con número 6): los 9,7 millones de polidrafters libres de hasta 20 celdas. Cada caso no concluyente se volvió a comprobar uno por uno.</li>
 <li><b>Resultado: el máximo es 3</b> (una figura para 13, 14, 17, 19 y 20 celdas). Las figuras pequeñas quedan lejos del récord; las teselas conocidas con número 6 tienen unas 140 celdas.</li></ul>
+<h2>La tesela de Bašić, reconstruida</h2><p>Reconstruimos la tesela récord en coordenadas exactas de la malla: 285 celdas drafter, cuyo contorno tiene exactamente 75 aristas, como el polígono de 75 aristas publicado. Las coordenadas están en nuestro repositorio en formato heesch-sat. Ejecutar heesch-sat sobre ella requiere más de 4,4 GB de memoria antes de la primera corona, así que verificar el número de Heesch 6 (y buscar sus modificaciones) exige una máquina con 32–64 GB de RAM. El problema está en pausa.</p><figure style="margin:18px 0"><img src="img/basic6-drafters.svg" alt="Bašić tile" style="width:100%;max-width:640px;background:#fff;border-radius:12px;padding:10px"><figcaption class="small muted">La tesela de Bašić (número de Heesch 6) como 285 drafters, reconstruida a partir del dibujo de Wikimedia; dibujada con nuestras coordenadas.</figcaption></figure>
 <h2>Siguiente</h2><p>Familias dirigidas a partir de las teselas conocidas con número 6: alargarlas, insertar segmentos repetidos, mover muescas.</p>
 <table><tr><th>n</th><th>shapes</th><th>Hc=1</th><th>Hc=2</th><th>Hc=3</th></tr>
 <tr><td>≤ 12</td><td>8 917</td><td>99</td><td>8</td><td>0</td></tr>
