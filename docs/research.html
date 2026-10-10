@@ -26,14 +26,14 @@
 <footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
 <script type="module">
 import { setupPage, problemTabs } from './js/ui.js';
-import { PROBLEMS, STATUS, PAGES } from './js/problems.js';
+import { PROBLEMS, STATUS, PAGES, SIDE } from './js/problems.js';
 import { L } from './js/i18n.js';
 setupPage('research'); problemTabs(0);
 document.getElementById('pcards').innerHTML = PROBLEMS.map(([title, desc, s, c], i) => {
   const tag = PAGES[i] ? 'a' : 'div';
   return `<${tag} class="pcard ${PAGES[i] ? '' : 'dim'}" ${PAGES[i] ? `href="${PAGES[i]}"` : ''}><div class="n">${String(i + 1).padStart(2, '0')}</div>
     <div><h3>${L(title)}</h3><p>${L(desc)}</p></div><span class="chip ${c}">${L(STATUS[s])}</span></${tag}>`;
-}).join('');
+}).join('') + `<a class="pcard" href="proteins.html"><div class="n">+</div><div><h3>${L(SIDE.title)}</h3><p>${L(SIDE.desc)}</p></div><span class="chip ok">${L(SIDE.chip)}</span></a>`;
 </script>
 </body>
 </html>

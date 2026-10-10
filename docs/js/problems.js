@@ -31,3 +31,10 @@ export const PROBLEMS = [
 
 
 export const PAGES = ['problem1.html', 'tetrahedra.html', 'heesch.html', 'faces.html'];
+
+// Побочный проект (не из списка задач): ячейки молекул в белковых кристаллах.
+export const SIDE = {
+  title: { en: 'Protein crystals', ru: 'Белковые кристаллы', es: 'Cristales de proteínas' },
+  chip: { en: 'side project', ru: 'побочный проект', es: 'proyecto paralelo' },
+  desc: { en: 'How many faces do Voronoi cells of protein molecules have in real crystals? We computed 4500 PDB structures in three space groups: typically 15–18 faces, at most 31. In elongated or flattened lattices a few come within 83–91% of the record stereohedra.', ru: 'Сколько граней у ячеек Вороного белковых молекул в настоящих кристаллах? Посчитали 4500 структур PDB в трёх пространственных группах: обычно 15–18 граней, максимум 31. В вытянутых и сплюснутых решётках отдельные кристаллы доходят до 83–91% рекордных стереоэдров.', es: '¿Cuántas caras tienen las celdas de Voronói de las moléculas de proteína en cristales reales? Calculamos 4500 estructuras del PDB en tres grupos espaciales: normalmente 15–18 caras, como máximo 31. En redes alargadas o aplastadas, algunos cristales llegan al 83–91% de los estereoedros récord.' },
+};

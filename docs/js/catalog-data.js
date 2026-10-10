@@ -25,6 +25,8 @@ export const GROUPS = [
     note: { en: 'Continuous families of equilateral space-fillers with ≤ 8 faces; every member tiles', ru: 'Непрерывные семейства равносторонних тел с ≤ 8 гранями; замощает каждый член', es: 'Familias continuas de poliedros equiláteros con ≤ 8 caras; todos sus miembros teselan' } },
   { id: 'records', title: { en: 'Record stereohedra', ru: 'Рекордные стереоэдры', es: 'Estereoedros récord' },
     note: { en: 'Voronoi cells of symmetric point sets with the most faces; not equilateral. Facet counts certified in exact arithmetic', ru: 'Ячейки Вороного симметричных наборов точек с наибольшим числом граней; не равносторонние. Число граней подтверждено точной арифметикой', es: 'Celdas de Voronói de conjuntos simétricos de puntos con más caras; no equiláteras. Número de caras certificado con aritmética exacta' } },
+  { id: 'proteins', title: { en: 'Protein crystals', ru: 'Белковые кристаллы', es: 'Cristales de proteínas' },
+    note: { en: 'Voronoi cells of protein molecules in real crystals from the PDB; face counts certified exactly', ru: 'Ячейки Вороного белковых молекул в реальных кристаллах из PDB; число граней подтверждено точно', es: 'Celdas de Voronói de moléculas de proteína en cristales reales del PDB; número de caras certificado exactamente' } },
   { id: 'no', title: { en: 'Do not tile', ru: 'Не замощают', es: 'No teselan' },
     note: { en: 'For comparison: ruled out by the dihedral angle filter', ru: 'Для сравнения: исключены фильтром двугранных углов', es: 'Para comparar: descartados por el filtro de ángulos diedros' } },
 ];
@@ -318,6 +320,33 @@ export const CATALOG = [
       en: 'Found by our search: a Voronoi cell with 29 faces in the group I4₁/a; the previous best for this group was 23 (Schmitt 2016). Certified in exact rational arithmetic.',
       ru: 'Найден нашим поиском: ячейка Вороного с 29 гранями в группе I4₁/a; прежний лучший результат для этой группы — 23 (Шмитт, 2016). Подтверждён точной рациональной арифметикой.',
       es: 'Encontrado por nuestra búsqueda: una celda de Voronói con 29 caras en el grupo I4₁/a; el mejor anterior para este grupo era 23 (Schmitt, 2016). Certificado con aritmética racional exacta.',
+    },
+  },
+  {
+    id: 'pdb4ux6', group: 'proteins', status: 'tiles', ...stereo('pdb4ux6'),
+    name: { en: 'Protein 4UX6: 31 faces', ru: 'Белок 4UX6: 31 грань', es: 'Proteína 4UX6: 31 caras' },
+    about: {
+      en: 'The Voronoi cell of a protein molecule (PDB 4UX6) in its crystal: space group P6₁22, c/a = 0.543. 31 faces means 31 neighbouring molecules share a face with it. It has the most faces among 3235 crystals in this group; the record stereohedron of this group has 34.',
+      ru: 'Ячейка Вороного белковой молекулы (PDB 4UX6) в её кристалле: группа P6₁22, c/a = 0,543. 31 грань — значит, 31 соседняя молекула граничит с ней по грани. Больше всех граней среди 3235 кристаллов этой группы; рекордный стереоэдр этой группы имеет 34.',
+      es: 'La celda de Voronói de una molécula de proteína (PDB 4UX6) en su cristal: grupo P6₁22, c/a = 0,543. 31 caras significa que 31 moléculas vecinas comparten una cara con ella. Es la que más caras tiene entre 3235 cristales de este grupo; el estereoedro récord de este grupo tiene 34.',
+    },
+  },
+  {
+    id: 'pdb8s97', group: 'proteins', status: 'tiles', ...stereo('pdb8s97'),
+    name: { en: 'Protein 8S97: 29 faces', ru: 'Белок 8S97: 29 граней', es: 'Proteína 8S97: 29 caras' },
+    about: {
+      en: 'The Voronoi cell of the molecule in PDB 8S97: space group I4₁22, c/a = 1.552. 29 faces is the maximum among 1117 crystals in this group, shared with 7ZC0 and 8S9D. Schmitt’s record cell in the same group has 35 faces at a similar c/a = 1.454.',
+      ru: 'Ячейка Вороного молекулы из PDB 8S97: группа I4₁22, c/a = 1,552. 29 граней — максимум среди 1117 кристаллов этой группы (так же у 7ZC0 и 8S9D). Рекордная ячейка Шмитта в той же группе имеет 35 граней при близком c/a = 1,454.',
+      es: 'La celda de Voronói de la molécula de PDB 8S97: grupo I4₁22, c/a = 1,552. 29 caras es el máximo entre 1117 cristales de este grupo, igual que 7ZC0 y 8S9D. La celda récord de Schmitt en el mismo grupo tiene 35 caras con un c/a parecido = 1,454.',
+    },
+  },
+  {
+    id: 'pdb1jky', group: 'proteins', status: 'tiles', ...stereo('pdb1jky'),
+    name: { en: 'Protein 1JKY: 20 faces', ru: 'Белок 1JKY: 20 граней', es: 'Proteína 1JKY: 20 caras' },
+    about: {
+      en: 'The Voronoi cell of the molecule in PDB 1JKY, in the cubic group I4₁32: the same group as Engel’s 38-hedron. Among 146 protein crystals in this group no cell has more than 20 faces; nature stays far from the record here.',
+      ru: 'Ячейка Вороного молекулы из PDB 1JKY в кубической группе I4₁32 — той же, что у 38-гранника Энгеля. Среди 146 белковых кристаллов этой группы ни у одной ячейки нет больше 20 граней: здесь природа далека от рекорда.',
+      es: 'La celda de Voronói de la molécula de PDB 1JKY, en el grupo cúbico I4₁32: el mismo que el 38-edro de Engel. Entre 146 cristales de proteínas de este grupo ninguna celda tiene más de 20 caras; aquí la naturaleza queda lejos del récord.',
     },
   },
 ];

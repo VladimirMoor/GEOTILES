@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protein crystals · GEOTILES</title>
+<meta name="description" content="Voronoi cells of protein molecules in 4500 PDB crystals: how many faces, compared with the record stereohedra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<section><div class="wrap doc">
+<nav class="ptabs" id="ptabs"></nav>
+<article data-lang="en"><div class="eyebrow">side project · <span class="chip ok">done: 3 groups</span></div>
+<h1>Protein crystals: how many neighbours does a molecule have?</h1>
+<p class="muted">In a crystal, the protein molecules are copies of one another, placed by a space group: exactly the setting of <a href="faces.html">problem 4</a>. Take each molecule’s Voronoi cell, the points closer to it than to any other molecule. These cells are congruent convex polyhedra that fill space (stereohedra). Each face is a neighbouring molecule. The record stereohedra are cells of hand-picked points. Here the points are picked by nature.</p>
+<h2>How we computed it</h2>
+<ul><li>For every X-ray structure in the <a href="https://www.rcsb.org">Protein Data Bank</a> in a given space group we take the unit cell, the group and the Cα atoms.</li>
+<li>The molecule is represented by the centre of the asymmetric unit. We build the Voronoi cell of its orbit with the same code as in problem 4.</li>
+<li>The 12 cells with the most faces in each group were re-checked in exact rational arithmetic. All counts were confirmed.</li></ul>
+<h2>Results</h2>
+<table><thead><tr><th>Space group</th><th>Structures</th><th>Typical</th><th>Max in proteins</th><th>Record stereohedron</th></tr></thead><tbody>
+<tr><td>I4<sub>1</sub>32 (cubic)</td><td>146</td><td>17</td><td>20 (1JKY, 4PPI)</td><td>38 (Engel)</td></tr>
+<tr><td>I4<sub>1</sub>22</td><td>1117</td><td>15–21</td><td>29 (7ZC0, 8S97, 8S9D)</td><td>35 (Schmitt)</td></tr>
+<tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Schmitt)</td></tr></tbody></table></article>
+<article data-lang="ru" hidden><div class="eyebrow">побочный проект · <span class="chip ok">готово: 3 группы</span></div>
+<h1>Белковые кристаллы: сколько соседей у молекулы?</h1>
+<p class="muted">В кристалле белковые молекулы — копии друг друга, расставленные пространственной группой: ровно постановка <a href="faces.html">задачи 4</a>. Возьмём для каждой молекулы ячейку Вороного — точки, которые ближе к ней, чем к любой другой молекуле. Эти ячейки — одинаковые выпуклые многогранники, заполняющие пространство (стереоэдры). Каждая грань — соседняя молекула. Рекордные стереоэдры — ячейки специально подобранных точек. Здесь точки подобрала природа.</p>
+<h2>Как считали</h2>
+<ul><li>Для каждой рентгеновской структуры из <a href="https://www.rcsb.org">Protein Data Bank</a> в данной группе берём ячейку, группу и атомы Cα.</li>
+<li>Молекулу представляет центр асимметричной единицы. Ячейку Вороного его орбиты строим тем же кодом, что в задаче 4.</li>
+<li>12 ячеек с наибольшим числом граней в каждой группе перепроверены точной рациональной арифметикой. Все числа подтвердились.</li></ul>
+<h2>Результаты</h2>
+<table><thead><tr><th>Группа</th><th>Структур</th><th>Обычно</th><th>Максимум у белков</th><th>Рекордный стереоэдр</th></tr></thead><tbody>
+<tr><td>I4<sub>1</sub>32 (кубическая)</td><td>146</td><td>17</td><td>20 (1JKY, 4PPI)</td><td>38 (Энгель)</td></tr>
+<tr><td>I4<sub>1</sub>22</td><td>1117</td><td>15–21</td><td>29 (7ZC0, 8S97, 8S9D)</td><td>35 (Шмитт)</td></tr>
+<tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Шмитт)</td></tr></tbody></table></article>
+<article data-lang="es" hidden><div class="eyebrow">proyecto paralelo · <span class="chip ok">hecho: 3 grupos</span></div>
+<h1>Cristales de proteínas: ¿cuántos vecinos tiene una molécula?</h1>
+<p class="muted">En un cristal, las moléculas de proteína son copias unas de otras colocadas por un grupo espacial: justo el planteamiento del <a href="faces.html">problema 4</a>. Tomemos la celda de Voronói de cada molécula: los puntos más cercanos a ella que a cualquier otra molécula. Estas celdas son poliedros convexos congruentes que llenan el espacio (estereoedros). Cada cara es una molécula vecina. Los estereoedros récord son celdas de puntos elegidos a mano. Aquí los puntos los elige la naturaleza.</p>
+<h2>Cómo lo calculamos</h2>
+<ul><li>Para cada estructura de rayos X del <a href="https://www.rcsb.org">Protein Data Bank</a> en un grupo dado tomamos la celda, el grupo y los átomos Cα.</li>
+<li>La molécula se representa por el centro de la unidad asimétrica. Construimos la celda de Voronói de su órbita con el mismo código que en el problema 4.</li>
+<li>Las 12 celdas con más caras de cada grupo se recomprobaron con aritmética racional exacta. Todos los números se confirmaron.</li></ul>
+<h2>Resultados</h2>
+<table><thead><tr><th>Grupo</th><th>Estructuras</th><th>Típico</th><th>Máximo en proteínas</th><th>Estereoedro récord</th></tr></thead><tbody>
+<tr><td>I4<sub>1</sub>32 (cúbico)</td><td>146</td><td>17</td><td>20 (1JKY, 4PPI)</td><td>38 (Engel)</td></tr>
+<tr><td>I4<sub>1</sub>22</td><td>1117</td><td>15–21</td><td>29 (7ZC0, 8S97, 8S9D)</td><td>35 (Schmitt)</td></tr>
+<tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Schmitt)</td></tr></tbody></table></article>
+
+<div class="hists" id="hists"></div>
+
+<article data-lang="en"><h2>What we see</h2>
+<ul><li>Most molecules have <b>15–18 face neighbours</b>.</li>
+<li>In the non-cubic groups a few crystals come within <b>83–91% of the record</b>. They always have strongly elongated or flattened lattices (c/a ≈ 0.3–0.55 or ≈ 1.55). That is the same regime where the record stereohedra live.</li>
+<li>In the cubic group I4<sub>1</sub>32 nature stays far away: 20 faces against Engel’s 38.</li></ul>
+<p>See the cells in 3D, with their full crystal packings, in the <a href="catalog.html#pdb4ux6">catalog</a>: 4UX6 (31 faces), 8S97 (29) and 1JKY (20).</p>
+<h2>Caveats</h2>
+<ul><li>The “centre of a molecule” is the centre of the deposited asymmetric unit. That unit can contain several chains, or only part of a biological assembly. Splitting it into chains would change the counts.</li>
+<li>A Voronoi cell of centres is a geometric idealisation. Real molecular contacts depend on shape, not only on the position of the centre.</li></ul>
+<p class="small muted">Data: RCSB PDB (Berman et al., Nucleic Acids Res. 28 (2000) 235–242). Code and full tables: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/bio/RESULTS.md">research/bio/RESULTS.md</a>.</p></article>
+<article data-lang="ru" hidden><h2>Что видно</h2>
+<ul><li>У большинства молекул <b>15–18 соседей по граням</b>.</li>
+<li>В некубических группах отдельные кристаллы доходят до <b>83–91% рекорда</b>. Это всегда сильно вытянутые или сплюснутые решётки (c/a ≈ 0,3–0,55 или ≈ 1,55) — те же условия, в которых живут рекордные стереоэдры.</li>
+<li>В кубической группе I4<sub>1</sub>32 природа далеко: 20 граней против 38 у Энгеля.</li></ul>
+<p>Ячейки в 3D, с полной упаковкой кристалла, есть в <a href="catalog.html#pdb4ux6">каталоге</a>: 4UX6 (31 грань), 8S97 (29) и 1JKY (20).</p>
+<h2>Оговорки</h2>
+<ul><li>«Центр молекулы» — центр депонированной асимметричной единицы. В ней бывает несколько цепей или только часть биологического комплекса. Разбиение на цепи изменило бы числа.</li>
+<li>Ячейка Вороного центров — геометрическая идеализация. Реальные контакты молекул зависят от формы, а не только от положения центра.</li></ul>
+<p class="small muted">Данные: RCSB PDB (Berman et al., Nucleic Acids Res. 28 (2000) 235–242). Код и полные таблицы: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/bio/RESULTS.md">research/bio/RESULTS.md</a>.</p></article>
+<article data-lang="es" hidden><h2>Lo que se ve</h2>
+<ul><li>La mayoría de las moléculas tienen <b>15–18 vecinos por cara</b>.</li>
+<li>En los grupos no cúbicos algunos cristales llegan al <b>83–91% del récord</b>. Siempre tienen redes muy alargadas o aplastadas (c/a ≈ 0,3–0,55 o ≈ 1,55): el mismo régimen en el que viven los estereoedros récord.</li>
+<li>En el grupo cúbico I4<sub>1</sub>32 la naturaleza queda lejos: 20 caras frente a las 38 de Engel.</li></ul>
+<p>Las celdas en 3D, con el empaquetamiento completo del cristal, están en el <a href="catalog.html#pdb4ux6">catálogo</a>: 4UX6 (31 caras), 8S97 (29) y 1JKY (20).</p>
+<h2>Advertencias</h2>
+<ul><li>El «centro de la molécula» es el centro de la unidad asimétrica depositada. Esa unidad puede contener varias cadenas o solo parte de un complejo biológico. Separarla en cadenas cambiaría los números.</li>
+<li>Una celda de Voronói de centros es una idealización geométrica. Los contactos reales dependen de la forma, no solo de la posición del centro.</li></ul>
+<p class="small muted">Datos: RCSB PDB (Berman et al., Nucleic Acids Res. 28 (2000) 235–242). Código y tablas completas: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/bio/RESULTS.md">research/bio/RESULTS.md</a>.</p></article>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">
+import { setupPage, problemTabs } from './js/ui.js';
+import { L } from './js/i18n.js';
+setupPage('research'); problemTabs('bio');
+// гистограммы числа граней (research/bio/data/dv_*.json); пунктир — рекордный стереоэдр группы
+const H = [
+  ['I4₁32', 38, { 15: 9, 16: 31, 17: 86, 18: 10, 19: 8, 20: 2 }],
+  ['I4₁22', 35, { 14: 111, 15: 219, 16: 189, 17: 70, 18: 79, 19: 158, 20: 81, 21: 149, 22: 14, 23: 31, 24: 5, 25: 3, 26: 3, 28: 2, 29: 3 }],
+  ['P6₁22', 34, { 13: 92, 14: 178, 15: 318, 16: 868, 17: 970, 18: 406, 19: 223, 20: 84, 21: 56, 22: 36, 24: 1, 30: 1, 31: 2 }],
+];
+const T = {
+  head: { en: 'Number of structures by face count', ru: 'Число структур по числу граней', es: 'Número de estructuras por número de caras' },
+  rec: { en: 'dashed: record', ru: 'пунктир — рекорд', es: 'discontinua: récord' },
+  n: { en: 'structures', ru: 'структур', es: 'estructuras' },
+  f: { en: 'faces', ru: 'граней', es: 'caras' },
+};
+const lo = 13, hi = 38;
+document.getElementById('hists').innerHTML = `<h2 style="margin-bottom:0">${L(T.head)}</h2>` + H.map(([g, rec, h]) => {
+  const total = Object.values(h).reduce((a, b) => a + b, 0), mx = Math.max(...Object.values(h));
+  let bars = '', axis = '';
+  for (let k = lo; k <= hi; k++) {
+    const c = h[k] || 0;
+    const tip = `${k} ${L(T.f)}: ${c} ${L(T.n)}`;
+    bars += k === rec ? `<i class="rec" title="${tip}"></i>` : `<i title="${tip}" style="height:${c ? Math.max(3, 100 * c / mx) : 0}%"></i>`;
+    axis += `<span>${k % 5 === 0 || k === rec ? k : ''}</span>`;
+  }
+  return `<div class="hist"><h3>${g} <span>· ${total} ${L(T.n)} · ${L(T.rec)} ${rec}</span></h3><div class="hbars">${bars}</div><div class="haxis">${axis}</div></div>`;
+}).join('');
+</script>
+</body>
+</html>

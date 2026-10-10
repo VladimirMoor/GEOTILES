@@ -222,3 +222,12 @@ a.pcard:hover { text-decoration: none; border-color: var(--ink-3); }
 .pcard p { margin: 0; color: var(--ink-2); font-size: .92rem; }
 .pcard.dim { opacity: .62; }
 @media (max-width: 640px) { .pcard { grid-template-columns: 32px 1fr; } .pcard .chip { grid-column: 2; justify-self: start; } }
+/* гистограммы числа граней (страница про белки) */
+.hists { display: grid; gap: 22px; margin: 14px 0 26px; }
+.hist h3 { margin: 0 0 8px; font-size: .98rem; }
+.hist h3 span { font-weight: 400; color: var(--ink-2); font-size: .88rem; }
+.hbars { display: flex; align-items: flex-end; gap: 2px; height: 110px; border-bottom: 1px solid var(--line); }
+.hbars i { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-width: 0; }
+.hbars i.rec { background: none; border: 2px dashed var(--warn); border-bottom: 0; height: 100%; }
+.haxis { display: flex; gap: 2px; font-family: var(--mono); font-size: .7rem; color: var(--ink-3); margin-top: 4px; }
+.haxis span { flex: 1; text-align: center; min-width: 0; overflow: visible; white-space: nowrap; }

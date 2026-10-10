@@ -20,6 +20,10 @@ cert = json.loads(pathlib.Path("certificates.json").read_text())
 for n, key in ((122, "ours33"), (88, "ours29")):
     r = cert[str(n)]
     ITEMS.append((key, r["group"], tuple(Fr(v) for v in r["x"]), Fr(r["c_over_a"])))
+# ячейки белковых молекул из PDB (research/bio): точка — центр асимметричной единицы, округлённый как в данных
+for key, tag, pid in (("pdb4ux6", "P6122", "4UX6"), ("pdb8s97", "I4122", "8S97"), ("pdb1jky", "I4132", "1JKY")):
+    r = next(r for r in json.loads(pathlib.Path(f"../bio/data/dv_{tag}.json").read_text()) if r["id"] == pid)
+    ITEMS.append((key, r["sg"], tuple(Fr(str(v)) for v in r["x"]), Fr(str(r["c_over_a"]))))
 
 out = {}
 for key, hm, x, c in ITEMS:

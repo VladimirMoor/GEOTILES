@@ -30,7 +30,7 @@ docs/                 static site (no build step)
   js/                 geometry, tiling, three.js viewer, i18n, catalog data
   paper/              compiled preprints and notes
 research/p1/ … p4/    pipelines and RESULTS.md for problems 1–4
-research/bio/         protein crystals from the PDB
+research/bio/         protein crystals from the PDB (site page: proteins.html)
 research/paper*/      LaTeX sources of the preprint and notes
 scripts/serve.py      local no-cache dev server
 tools/                external tools (plantri, heesch-sat), git-ignored
