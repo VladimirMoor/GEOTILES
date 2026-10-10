@@ -44,7 +44,7 @@ function build() {
   const e = entry;
   let poly, inf;
   try {
-    poly = e.zonohedron ? zonohedron(e.zonohedron(state.params)) : convexHull(e.solid(state.params));
+    poly = e.poly ? e.poly() : e.zonohedron ? zonohedron(e.zonohedron(state.params)) : convexHull(e.solid(state.params));
     inf = analyze(poly);
   } catch (err) {
     viewer.clear();

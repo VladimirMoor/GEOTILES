@@ -1,6 +1,7 @@
 // Каталог равносторонних выпуклых многогранников (длина ребра 1). Тексты на трёх языках.
 // zonohedron(p) → образующие, или solid(p) → вершины; tiling(p) → 'parallelohedron' | { lattice, motifs } | нет.
 import * as THREE from 'three';
+import { STEREO } from './stereo-data.js';
 
 const h = Math.sqrt(3) / 2;
 const phi = (1 + Math.sqrt(5)) / 2;
@@ -9,6 +10,9 @@ const unit = (a) => { const l = Math.hypot(...a); return a.map((x) => x / l); };
 const prism = (base, H = 1) => [...base.map(([x, y]) => [x, y, 0]), ...base.map(([x, y]) => [x, y, H])];
 const rotZ = (a, t = [0, 0, 0]) => new THREE.Matrix4().makeRotationZ(a).setPosition(...t);
 const I = () => new THREE.Matrix4();
+
+const opMatrix = ([R, t]) => new THREE.Matrix4().set(R[0][0], R[0][1], R[0][2], t[0], R[1][0], R[1][1], R[1][2], t[1], R[2][0], R[2][1], R[2][2], t[2], 0, 0, 0, 1);
+const stereo = (key) => ({ poly: () => ({ V: STEREO[key].points, F: STEREO[key].faces, N: STEREO[key].normals, D: STEREO[key].offsets }), solid: () => STEREO[key].points, tiling: () => ({ lattice: STEREO[key].lattice, motifs: STEREO[key].ops.map(opMatrix) }) });
 
 export const GROUPS = [
   { id: 'par', title: { en: 'Parallelohedra', ru: 'Параллелоэдры', es: 'Paraleloedros' },
@@ -19,6 +23,8 @@ export const GROUPS = [
     note: { en: 'Rotations are needed', ru: 'Нужны повороты', es: 'Se necesitan rotaciones' } },
   { id: 'found', title: { en: 'Found by our search', ru: 'Найдены нашим перебором', es: 'Encontrados por nuestra búsqueda' },
     note: { en: 'Continuous families of equilateral space-fillers with ≤ 8 faces; every member tiles', ru: 'Непрерывные семейства равносторонних тел с ≤ 8 гранями; замощает каждый член', es: 'Familias continuas de poliedros equiláteros con ≤ 8 caras; todos sus miembros teselan' } },
+  { id: 'records', title: { en: 'Record stereohedra', ru: 'Рекордные стереоэдры', es: 'Estereoedros récord' },
+    note: { en: 'Voronoi cells of symmetric point sets with the most faces; not equilateral. Facet counts certified in exact arithmetic', ru: 'Ячейки Вороного симметричных наборов точек с наибольшим числом граней; не равносторонние. Число граней подтверждено точной арифметикой', es: 'Celdas de Voronói de conjuntos simétricos de puntos con más caras; no equiláteras. Número de caras certificado con aritmética exacta' } },
   { id: 'no', title: { en: 'Do not tile', ru: 'Не замощают', es: 'No teselan' },
     note: { en: 'For comparison: ruled out by the dihedral angle filter', ru: 'Для сравнения: исключены фильтром двугранных углов', es: 'Para comparar: descartados por el filtro de ángulos diedros' } },
 ];
@@ -276,6 +282,42 @@ export const CATALOG = [
       en: '30 golden rhombi. All dihedral angles equal 144°, which divides neither 360° nor 180°.',
       ru: '30 золотых ромбов. Все двугранные углы равны 144°, а 144° не делит ни 360°, ни 180°.',
       es: '30 rombos áureos. Todos los ángulos diedros miden 144°, que no divide ni 360° ni 180°.',
+    },
+  },
+  {
+    id: 'engel38', group: 'records', status: 'tiles', ...stereo('engel38'),
+    name: { en: 'Engel’s 38-hedron (record)', ru: '38-гранник Энгеля (рекорд)', es: 'El 38-edro de Engel (récord)' },
+    about: {
+      en: 'The convex space-filler with the most faces known: 38 faces, 70 vertices, 106 edges (P. Engel, 1981). It is the Voronoi cell of a point in the cubic space group I4₁32; its 48 symmetric copies per unit cell fill space. We reproduced it exactly (rational certificate) and proved that it is rigid: no nearby non-Voronoi tile with the same structure exists. Whether 38 can be beaten is open.',
+      ru: 'Выпуклый многогранник, заполняющий пространство, с наибольшим известным числом граней: 38 граней, 70 вершин, 106 рёбер (П. Энгель, 1981). Это ячейка Вороного точки в кубической группе I4₁32; её 48 симметричных копий на ячейку решётки заполняют пространство. Мы точно воспроизвели его (рациональный сертификат) и доказали жёсткость: близкой не-вороновской плитки с той же структурой нет. Можно ли превзойти 38 — открытый вопрос.',
+      es: 'El poliedro convexo que llena el espacio con más caras conocido: 38 caras, 70 vértices, 106 aristas (P. Engel, 1981). Es la celda de Voronói de un punto en el grupo cúbico I4₁32; sus 48 copias simétricas por celda llenan el espacio. Lo reprodujimos exactamente (certificado racional) y probamos que es rígido: no existe una tesela no Voronói cercana con la misma estructura. Si 38 puede superarse sigue abierto.',
+    },
+  },
+  {
+    id: 'schmitt35', group: 'records', status: 'tiles', ...stereo('schmitt35'),
+    name: { en: '35-hedron in I4₁22', ru: '35-гранник в I4₁22', es: '35-edro en I4₁22' },
+    about: {
+      en: 'The best tetragonal example (M. Schmitt, 2016): a Voronoi cell with 35 faces in the space group I4₁22 at c/a = 1.454. Reproduced exactly by our code.',
+      ru: 'Лучший тетрагональный пример (М. Шмитт, 2016): ячейка Вороного с 35 гранями в группе I4₁22 при c/a = 1,454. Точно воспроизведён нашим кодом.',
+      es: 'El mejor ejemplo tetragonal (M. Schmitt, 2016): una celda de Voronói con 35 caras en el grupo I4₁22 con c/a = 1,454. Reproducido exactamente por nuestro código.',
+    },
+  },
+  {
+    id: 'ours33', group: 'records', status: 'tiles', ...stereo('ours33'),
+    name: { en: '33-hedron in I-42d (new)', ru: '33-гранник в I-42d (новый)', es: '33-edro en I-42d (nuevo)' },
+    about: {
+      en: 'Found by our search: a Voronoi cell with 33 faces in the group I-42d; the previous best for this group was 31 (Schmitt 2016). Certified in exact rational arithmetic.',
+      ru: 'Найден нашим поиском: ячейка Вороного с 33 гранями в группе I-42d; прежний лучший результат для этой группы — 31 (Шмитт, 2016). Подтверждён точной рациональной арифметикой.',
+      es: 'Encontrado por nuestra búsqueda: una celda de Voronói con 33 caras en el grupo I-42d; el mejor anterior para este grupo era 31 (Schmitt, 2016). Certificado con aritmética racional exacta.',
+    },
+  },
+  {
+    id: 'ours29', group: 'records', status: 'tiles', ...stereo('ours29'),
+    name: { en: '29-hedron in I4₁/a (new)', ru: '29-гранник в I4₁/a (новый)', es: '29-edro en I4₁/a (nuevo)' },
+    about: {
+      en: 'Found by our search: a Voronoi cell with 29 faces in the group I4₁/a; the previous best for this group was 23 (Schmitt 2016). Certified in exact rational arithmetic.',
+      ru: 'Найден нашим поиском: ячейка Вороного с 29 гранями в группе I4₁/a; прежний лучший результат для этой группы — 23 (Шмитт, 2016). Подтверждён точной рациональной арифметикой.',
+      es: 'Encontrado por nuestra búsqueda: una celda de Voronói con 29 caras en el grupo I4₁/a; el mejor anterior para este grupo era 23 (Schmitt, 2016). Certificado con aritmética racional exacta.',
     },
   },
 ];
