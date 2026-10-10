@@ -1,0 +1,14 @@
+I 41 3 2   rec 38 | entries   46 gen   374 | max 28 (exact [28, 28, 26]) | obs≥max   2 exp   1.25 | mean COD 17.25 random 17.19
+I 41 2 2   rec 35 | entries  133 gen  2425 | max 30 (exact [30, 29, 29]) | obs≥max   1 exp   0.81 | mean COD 17.39 random 17.51
+P 61 2 2   rec 34 | entries  157 gen  4370 | max 30 (exact [30, 30, 30]) | obs≥max   3 exp   5.83 | mean COD 16.69 random 16.63
+P 65 2 2   rec 34 | entries  145 gen  4078 | max 31 (exact [31, 31, 31]) | obs≥max   3 exp   4.08 | mean COD 16.82 random 16.72
+I -4 2 d   rec 33 | entries  501 gen  9101 | max 28 (exact [28, 28, 27]) | obs≥max   2 exp   0.00 | mean COD 16.76 random 16.92
+P 43 3 2   rec 29 | entries   92 gen  1275 | max 26 (exact [26, 25, 25]) | obs≥max   1 exp   1.28 | mean COD 15.39 random 15.69
+P 41 3 2   rec 29 | entries   91 gen   804 | max 25 (exact [25, 24, 24]) | obs≥max   1 exp   2.14 | mean COD 15.32 random 15.62
+I 41 c d   rec 24 | entries  188 gen  5679 | max 22 (exact [22, 21, 20]) | obs≥max   1 exp   3.79 | mean COD 15.48 random 15.50
+I 21 3     rec 24 | entries  107 gen  1905 | max 24 (exact [24, 22, 20]) | obs≥max   1 exp   1.91 | mean COD 14.39 random 14.84
+P 21 3     rec 24 | entries  596 gen 10283 | max 24 (exact [24, 24, 24]) | obs≥max   6 exp  13.71 | mean COD 12.79 random 12.86
+P 41 21 2  rec 29 | entries  964 gen 33477 | max 26 (exact [26, 26, 26]) | obs≥max   4 exp   0.00 | mean COD 16.16 random 16.13
+P 43 21 2  rec 29 | entries  852 gen 30083 | max 26 (exact [26, 26, 26]) | obs≥max   4 exp   0.00 | mean COD 16.07 random 16.06
+I 41       rec 26 | entries  135 gen  7085 | max 26 (exact [26, 26, 26]) | obs≥max  38 exp  70.85 | mean COD 18.08 random 17.96
+P 31 2 1   rec 25 | entries  546 gen 14104 | max 24 (exact [24, 24, 24]) | obs≥max   6 exp   4.70 | mean COD 15.55 random 15.66

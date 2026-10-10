@@ -7,7 +7,7 @@ Ideas for later. For every item, the first step is to check the literature for e
 - **Problem 5 (3D periodic tiling conjecture).** Independently verify the OpenAI counterexample (Sept 2026) before putting it in the catalog.
 
 ## Outside pure geometry (Voronoi cells and tilings in real data)
-1. **Crystallography Open Database (COD).** Dirichlet cells of atoms and molecules in all space groups, compared with the record stereohedra of problem 4. *In progress (Oct 2026).*
+1. **Crystallography Open Database (COD).** Dirichlet cells of atoms and molecules in all space groups, compared with the record stereohedra of problem 4. *Done (11 Oct 2026): see `research/cod/RESULTS.md`.*
 2. **3D cell tissues.** Use segmented 3D images of tissues (PlantSeg datasets, Arabidopsis ovule and meristem, Drosophila epithelia).
    - Measure the face-count distribution and the combinatorial types of cells.
    - Compare with Poisson–Voronoi (mean 15.54 faces), Kelvin (14) and proteins (~17).
