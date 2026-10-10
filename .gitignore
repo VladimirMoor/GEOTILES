@@ -22,3 +22,6 @@ research/p4/data/batch/
 # PDB download cache
 research/bio/data/cache/
 research/bio/data/sg_facets.json
+
+# COD download cache
+research/cod/data/cache/
