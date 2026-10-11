@@ -1,0 +1,187 @@
+[ovules] N_534_ds2x.h5  (614 s, peak 1538 MB)
+N_534_ds2x.h5 cells 1704 inner 1021
+  frac 0.0  : faces 14.77  voronoi 14.58  jaccard 0.676  identical sets 0.59%
+  frac 0.01 : faces 12.54  voronoi 11.86  jaccard 0.678  identical sets 1.27%
+  frac 0.02 : faces 11.30  voronoi 10.48  jaccard 0.673  identical sets 1.47%
+  frac 0.05 : faces 7.87  voronoi 7.67  jaccard 0.623  identical sets 2.06%
+[ovules] N_536_ds2x.h5  (704 s, peak 1548 MB)
+N_536_ds2x.h5 cells 1580 inner 1033
+  frac 0.0  : faces 15.09  voronoi 14.48  jaccard 0.680  identical sets 0.48%
+  frac 0.01 : faces 12.48  voronoi 11.79  jaccard 0.681  identical sets 1.74%
+  frac 0.02 : faces 11.22  voronoi 10.53  jaccard 0.673  identical sets 1.94%
+  frac 0.05 : faces 7.80  voronoi 7.63  jaccard 0.628  identical sets 2.03%
+[ovules] N_535_ds2x.h5  (722 s, peak 1699 MB)
+N_535_ds2x.h5 cells 1768 inner 1219
+  frac 0.0  : faces 14.75  voronoi 14.64  jaccard 0.694  identical sets 0.90%
+  frac 0.01 : faces 12.52  voronoi 11.88  jaccard 0.696  identical sets 1.89%
+  frac 0.02 : faces 11.30  voronoi 10.51  jaccard 0.686  identical sets 2.30%
+  frac 0.05 : faces 7.90  voronoi 7.62  jaccard 0.646  identical sets 3.45%
+[ovules] N_517_ds2x.h5  (86 s, peak 1719 MB)
+N_517_ds2x.h5 cells 1357 inner 877
+  frac 0.0  : faces 14.81  voronoi 14.64  jaccard 0.696  identical sets 0.91%
+  frac 0.01 : faces 12.75  voronoi 11.95  jaccard 0.694  identical sets 2.39%
+  frac 0.02 : faces 11.51  voronoi 10.64  jaccard 0.686  identical sets 2.28%
+  frac 0.05 : faces 8.00  voronoi 7.65  jaccard 0.653  identical sets 3.76%
+[ovules] N_509_ds2x.h5  (202 s, peak 1189 MB)
+N_509_ds2x.h5 cells 1229 inner 687
+  frac 0.0  : faces 15.32  voronoi 14.78  jaccard 0.701  identical sets 0.29%
+  frac 0.01 : faces 12.78  voronoi 12.06  jaccard 0.696  identical sets 1.60%
+  frac 0.02 : faces 11.50  voronoi 10.68  jaccard 0.685  identical sets 2.33%
+  frac 0.05 : faces 7.91  voronoi 7.67  jaccard 0.650  identical sets 2.77%
+[ovules] N_512_ds2x.h5  (562 s, peak 1815 MB)
+N_512_ds2x.h5 cells 1295 inner 808
+  frac 0.0  : faces 15.27  voronoi 14.58  jaccard 0.679  identical sets 1.36%
+  frac 0.01 : faces 12.60  voronoi 11.92  jaccard 0.669  identical sets 1.11%
+  frac 0.02 : faces 11.31  voronoi 10.60  jaccard 0.666  identical sets 2.35%
+  frac 0.05 : faces 7.81  voronoi 7.64  jaccard 0.638  identical sets 3.22%
+[ovules] N_487_ds2x.h5  (171 s, peak 2837 MB)
+N_487_ds2x.h5 cells 1281 inner 682
+  frac 0.0  : faces 15.25  voronoi 14.56  jaccard 0.652  identical sets 0.29%
+  frac 0.01 : faces 12.70  voronoi 11.73  jaccard 0.644  identical sets 1.47%
+  frac 0.02 : faces 11.43  voronoi 10.43  jaccard 0.643  identical sets 0.88%
+  frac 0.05 : faces 7.77  voronoi 7.65  jaccard 0.625  identical sets 2.35%
+[ovules] N_458_ds2x.h5  (24 s, peak 597 MB)
+N_458_ds2x.h5 cells 454 inner 126
+  frac 0.0  : faces 15.67  voronoi 15.05  jaccard 0.752  identical sets 2.38%
+  frac 0.01 : faces 12.92  voronoi 12.47  jaccard 0.751  identical sets 3.17%
+  frac 0.02 : faces 11.63  voronoi 11.05  jaccard 0.731  identical sets 1.59%
+  frac 0.05 : faces 8.16  voronoi 7.91  jaccard 0.690  identical sets 5.56%
+[ovules] N_457_ds2x.h5  (45 s, peak 985 MB)
+N_457_ds2x.h5 cells 648 inner 202
+  frac 0.0  : faces 15.56  voronoi 14.88  jaccard 0.741  identical sets 0.50%
+  frac 0.01 : faces 12.91  voronoi 12.25  jaccard 0.748  identical sets 1.49%
+  frac 0.02 : faces 11.55  voronoi 10.96  jaccard 0.739  identical sets 3.47%
+  frac 0.05 : faces 8.22  voronoi 8.18  jaccard 0.719  identical sets 5.45%
+[ovules] N_454_ds2x.h5  (185 s, peak 2650 MB)
+N_454_ds2x.h5 cells 1810 inner 394
+  frac 0.0  : faces 15.15  voronoi 14.82  jaccard 0.768  identical sets 0.51%
+  frac 0.01 : faces 12.74  voronoi 12.21  jaccard 0.773  identical sets 4.82%
+  frac 0.02 : faces 11.57  voronoi 10.87  jaccard 0.760  identical sets 2.54%
+  frac 0.05 : faces 8.19  voronoi 7.93  jaccard 0.712  identical sets 7.11%
+[ovules] N_451_ds2x.h5  (55 s, peak 1222 MB)
+N_451_ds2x.h5 cells 853 inner 424
+  frac 0.0  : faces 14.70  voronoi 14.67  jaccard 0.722  identical sets 2.12%
+  frac 0.01 : faces 12.60  voronoi 12.07  jaccard 0.722  identical sets 2.59%
+  frac 0.02 : faces 11.46  voronoi 10.79  jaccard 0.719  identical sets 1.65%
+  frac 0.05 : faces 7.92  voronoi 7.88  jaccard 0.686  identical sets 6.13%
+[ovules] N_449_ds2x.h5  (80 s, peak 680 MB)
+N_449_ds2x.h5 cells 498 inner 174
+  frac 0.0  : faces 15.95  voronoi 15.04  jaccard 0.737  identical sets 1.15%
+  frac 0.01 : faces 12.53  voronoi 12.13  jaccard 0.736  identical sets 1.15%
+  frac 0.02 : faces 11.12  voronoi 10.74  jaccard 0.724  identical sets 1.72%
+  frac 0.05 : faces 7.62  voronoi 7.74  jaccard 0.696  identical sets 4.02%
+[ovules] N_450_ds2x.h5  (55 s, peak 1221 MB)
+N_450_ds2x.h5 cells 451 inner 190
+  frac 0.0  : faces 15.20  voronoi 14.49  jaccard 0.744  identical sets 2.11%
+  frac 0.01 : faces 12.43  voronoi 12.04  jaccard 0.753  identical sets 3.68%
+  frac 0.02 : faces 11.27  voronoi 10.82  jaccard 0.738  identical sets 5.26%
+  frac 0.05 : faces 7.81  voronoi 7.86  jaccard 0.688  identical sets 8.42%
+[ovules] N_445_ds2x.h5  (96 s, peak 1498 MB)
+N_445_ds2x.h5 cells 1183 inner 657
+  frac 0.0  : faces 14.90  voronoi 14.66  jaccard 0.659  identical sets 1.07%
+  frac 0.01 : faces 12.35  voronoi 11.89  jaccard 0.674  identical sets 2.13%
+  frac 0.02 : faces 11.09  voronoi 10.66  jaccard 0.663  identical sets 2.28%
+  frac 0.05 : faces 7.66  voronoi 7.67  jaccard 0.625  identical sets 3.04%
+[ovules] N_440_ds2x.h5  (92 s, peak 1249 MB)
+N_440_ds2x.h5 cells 1278 inner 690
+  frac 0.0  : faces 15.53  voronoi 14.80  jaccard 0.717  identical sets 1.45%
+  frac 0.01 : faces 12.61  voronoi 12.09  jaccard 0.716  identical sets 2.17%
+  frac 0.02 : faces 11.28  voronoi 10.77  jaccard 0.708  identical sets 2.46%
+  frac 0.05 : faces 7.88  voronoi 7.79  jaccard 0.671  identical sets 4.20%
+[ovules] N_428_ds2x.h5  (161 s, peak 2051 MB)
+N_428_ds2x.h5 cells 1499 inner 852
+  frac 0.0  : faces 15.62  voronoi 14.71  jaccard 0.698  identical sets 0.70%
+  frac 0.01 : faces 12.53  voronoi 12.01  jaccard 0.703  identical sets 1.88%
+  frac 0.02 : faces 11.26  voronoi 10.68  jaccard 0.697  identical sets 2.58%
+  frac 0.05 : faces 7.92  voronoi 7.70  jaccard 0.669  identical sets 4.34%
+[ovules] N_422_ds2x.h5  (58 s, peak 1087 MB)
+N_422_ds2x.h5 cells 880 inner 424
+  frac 0.0  : faces 15.35  voronoi 14.81  jaccard 0.694  identical sets 1.42%
+  frac 0.01 : faces 12.96  voronoi 12.03  jaccard 0.682  identical sets 1.42%
+  frac 0.02 : faces 11.66  voronoi 10.68  jaccard 0.682  identical sets 2.12%
+  frac 0.05 : faces 7.71  voronoi 7.59  jaccard 0.654  identical sets 3.07%
+[ovules] N_425_ds2x.h5  (78 s, peak 1337 MB)
+N_425_ds2x.h5 cells 1326 inner 587
+  frac 0.0  : faces 15.17  voronoi 14.85  jaccard 0.696  identical sets 1.53%
+  frac 0.01 : faces 12.63  voronoi 12.10  jaccard 0.700  identical sets 3.75%
+  frac 0.02 : faces 11.36  voronoi 10.78  jaccard 0.695  identical sets 4.43%
+  frac 0.05 : faces 7.84  voronoi 7.79  jaccard 0.673  identical sets 5.45%
+[ovules] N_405_B_ds2x.h5  (15 s, peak 540 MB)
+N_405_B_ds2x.h5 cells 460 inner 171
+  frac 0.0  : faces 15.19  voronoi 14.87  jaccard 0.695  identical sets 1.17%
+  frac 0.01 : faces 12.95  voronoi 12.11  jaccard 0.697  identical sets 0.58%
+  frac 0.02 : faces 11.83  voronoi 10.89  jaccard 0.694  identical sets 0.58%
+  frac 0.05 : faces 8.12  voronoi 7.82  jaccard 0.632  identical sets 2.34%
+[ovules] N_405_A_ds2x.h5  (12 s, peak 502 MB)
+N_405_A_ds2x.h5 cells 447 inner 151
+  frac 0.0  : faces 15.11  voronoi 14.80  jaccard 0.714  identical sets 0.00%
+  frac 0.01 : faces 12.97  voronoi 12.21  jaccard 0.709  identical sets 1.32%
+  frac 0.02 : faces 11.83  voronoi 11.01  jaccard 0.710  identical sets 0.66%
+  frac 0.05 : faces 8.39  voronoi 8.03  jaccard 0.648  identical sets 0.66%
+[ovules] N_404_ds2x.h5  (96 s, peak 915 MB)
+N_404_ds2x.h5 cells 507 inner 185
+  frac 0.0  : faces 15.47  voronoi 14.80  jaccard 0.740  identical sets 0.54%
+  frac 0.01 : faces 12.81  voronoi 12.12  jaccard 0.755  identical sets 2.16%
+  frac 0.02 : faces 11.58  voronoi 10.91  jaccard 0.739  identical sets 3.24%
+  frac 0.05 : faces 7.76  voronoi 7.94  jaccard 0.711  identical sets 4.86%
+[ovules] N_416_ds2x.h5  (177 s, peak 1985 MB)
+N_416_ds2x.h5 cells 1388 inner 422
+  frac 0.0  : faces 14.70  voronoi 14.73  jaccard 0.762  identical sets 2.61%
+  frac 0.01 : faces 12.51  voronoi 12.17  jaccard 0.762  identical sets 3.08%
+  frac 0.02 : faces 11.32  voronoi 11.03  jaccard 0.755  identical sets 3.79%
+  frac 0.05 : faces 7.85  voronoi 8.06  jaccard 0.714  identical sets 5.92%
+[ovules] N_464_ds2x.h5  (123 s, peak 1823 MB)
+N_464_ds2x.h5 cells 1686 inner 1049
+  frac 0.0  : faces 15.24  voronoi 14.66  jaccard 0.702  identical sets 1.33%
+  frac 0.01 : faces 12.58  voronoi 11.90  jaccard 0.697  identical sets 3.24%
+  frac 0.02 : faces 11.33  voronoi 10.62  jaccard 0.688  identical sets 3.05%
+  frac 0.05 : faces 7.91  voronoi 7.66  jaccard 0.650  identical sets 3.24%
+[ovules] N_420_ds2x.h5  (135 s, peak 2198 MB)
+N_420_ds2x.h5 cells 1155 inner 546
+  frac 0.0  : faces 15.36  voronoi 14.74  jaccard 0.690  identical sets 0.55%
+  frac 0.01 : faces 12.52  voronoi 11.94  jaccard 0.697  identical sets 2.20%
+  frac 0.02 : faces 11.25  voronoi 10.62  jaccard 0.692  identical sets 2.01%
+  frac 0.05 : faces 7.78  voronoi 7.72  jaccard 0.643  identical sets 1.47%
+[ovules] N_590_final_crop_ds2.h5  (28 s, peak 467 MB)
+N_590_final_crop_ds2.h5 cells 936 inner 241
+  frac 0.0  : faces 15.10  voronoi 14.99  jaccard 0.750  identical sets 1.24%
+  frac 0.01 : faces 12.97  voronoi 12.36  jaccard 0.743  identical sets 3.73%
+  frac 0.02 : faces 11.80  voronoi 11.05  jaccard 0.738  identical sets 5.81%
+  frac 0.05 : faces 8.22  voronoi 7.97  jaccard 0.696  identical sets 4.56%
+[ovules] N_511_final_crop_ds2.h5  (45 s, peak 835 MB)
+N_511_final_crop_ds2.h5 cells 1063 inner 660
+  frac 0.0  : faces 14.84  voronoi 14.54  jaccard 0.680  identical sets 0.91%
+  frac 0.01 : faces 12.39  voronoi 11.91  jaccard 0.679  identical sets 1.21%
+  frac 0.02 : faces 11.15  voronoi 10.59  jaccard 0.668  identical sets 2.12%
+  frac 0.05 : faces 7.79  voronoi 7.67  jaccard 0.632  identical sets 2.58%
+[ovules] N_593_final_crop_ds2.h5  (30 s, peak 593 MB)
+N_593_final_crop_ds2.h5 cells 1572 inner 337
+  frac 0.0  : faces 14.99  voronoi 15.00  jaccard 0.778  identical sets 2.08%
+  frac 0.01 : faces 12.96  voronoi 12.47  jaccard 0.780  identical sets 3.26%
+  frac 0.02 : faces 11.80  voronoi 11.18  jaccard 0.778  identical sets 2.97%
+  frac 0.05 : faces 8.28  voronoi 8.26  jaccard 0.727  identical sets 7.12%
+[ovules] N_522_final_crop_ds2.h5  (101 s, peak 1391 MB)
+N_522_final_crop_ds2.h5 cells 1069 inner 611
+  frac 0.0  : faces 15.58  voronoi 14.78  jaccard 0.691  identical sets 0.82%
+  frac 0.01 : faces 12.57  voronoi 11.93  jaccard 0.695  identical sets 1.31%
+  frac 0.02 : faces 11.25  voronoi 10.55  jaccard 0.689  identical sets 2.62%
+  frac 0.05 : faces 7.81  voronoi 7.59  jaccard 0.645  identical sets 2.45%
+[ovules] N_435_final_crop_ds2.h5  (144 s, peak 2220 MB)
+N_435_final_crop_ds2.h5 cells 1211 inner 687
+  frac 0.0  : faces 15.77  voronoi 14.74  jaccard 0.700  identical sets 0.73%
+  frac 0.01 : faces 12.44  voronoi 11.95  jaccard 0.704  identical sets 1.31%
+  frac 0.02 : faces 11.15  voronoi 10.57  jaccard 0.697  identical sets 1.16%
+  frac 0.05 : faces 7.94  voronoi 7.64  jaccard 0.652  identical sets 2.77%
+[ovules] N_294_final_crop_ds2.h5  (122 s, peak 1572 MB)
+N_294_final_crop_ds2.h5 cells 3438 inner 1134
+  frac 0.0  : faces 15.06  voronoi 14.99  jaccard 0.702  identical sets 0.88%
+  frac 0.01 : faces 12.55  voronoi 12.36  jaccard 0.708  identical sets 1.76%
+  frac 0.02 : faces 11.24  voronoi 11.09  jaccard 0.701  identical sets 2.38%
+  frac 0.05 : faces 7.62  voronoi 8.00  jaccard 0.638  identical sets 2.20%
+[ovules] N_441_final_crop_ds2.h5  (207 s, peak 2214 MB)
+N_441_final_crop_ds2.h5 cells 1124 inner 586
+  frac 0.0  : faces 15.18  voronoi 14.69  jaccard 0.679  identical sets 0.51%
+  frac 0.01 : faces 12.68  voronoi 11.97  jaccard 0.675  identical sets 1.71%
+  frac 0.02 : faces 11.31  voronoi 10.63  jaccard 0.670  identical sets 1.88%
+  frac 0.05 : faces 7.74  voronoi 7.73  jaccard 0.642  identical sets 2.22%
+ALL DONE

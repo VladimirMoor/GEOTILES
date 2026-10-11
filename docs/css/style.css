@@ -256,3 +256,17 @@ figure.fig figcaption { margin-top: 8px; color: var(--ink-2); font-size: .86rem;
 .cmp-bar.hit { background: var(--ok); }
 .cmp-rec { position: absolute; top: -3px; bottom: -3px; border-left: 2px dashed var(--warn); }
 .cmp-mu { position: absolute; top: 2px; bottom: 2px; border-left: 3px solid var(--ink); opacity: .55; }
+/* графики на странице про ткани */
+.lchart svg { width: 100%; height: auto; display: block; }
+.lchart text { font-family: var(--mono); font-size: 11px; fill: var(--ink-3); }
+.lchart .grid { stroke: var(--line); stroke-width: 1; }
+.lchart polyline { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+.lchart .c1, .lg.c1::before { stroke: var(--accent); background: var(--accent); }
+.lchart .c2, .lg.c2::before { stroke: var(--warn); background: var(--warn); }
+.lchart .c3, .lg.c3::before { stroke: var(--ink-3); background: var(--ink-3); }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .84rem; color: var(--ink-2); margin: 4px 0 6px; }
+.lg::before { content: ''; display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.lewis { display: flex; align-items: flex-end; gap: 3px; height: 150px; margin: 8px 0 26px; border-bottom: 1px solid var(--line); }
+.lewis .lw { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; position: relative; }
+.lewis .lw i { background: var(--accent); border-radius: 3px 3px 0 0; display: block; }
+.lewis .lw span { position: absolute; bottom: -18px; left: 0; right: 0; text-align: center; font-family: var(--mono); font-size: .7rem; color: var(--ink-3); }

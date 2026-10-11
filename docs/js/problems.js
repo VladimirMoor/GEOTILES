@@ -32,9 +32,18 @@ export const PROBLEMS = [
 
 export const PAGES = ['problem1.html', 'tetrahedra.html', 'heesch.html', 'faces.html'];
 
-// Побочный проект (не из списка задач): ячейки молекул в белковых кристаллах.
+// Побочные проекты (не из списка задач): реальные кристаллы и ткани.
 export const SIDE = {
+  href: 'crystals.html', key: 'bio',
   title: { en: 'Real crystals', ru: 'Реальные кристаллы', es: 'Cristales reales' },
   chip: { en: 'side project', ru: 'побочный проект', es: 'proyecto paralelo' },
   desc: { en: 'How many faces do Voronoi cells have in real crystals? We computed 4500 protein crystals from the PDB and 4800 crystals from the COD in 14 space groups. Typically 15–18 faces; the group record is reached in three groups. By this measure, atom positions behave like random points.', ru: 'Сколько граней у ячеек Вороного в настоящих кристаллах? Посчитали 4500 белковых кристаллов из PDB и 4800 кристаллов из COD в 14 пространственных группах. Обычно 15–18 граней; рекорд группы достигнут в трёх группах. По этой мере положения атомов ведут себя как случайные точки.', es: '¿Cuántas caras tienen las celdas de Voronói en cristales reales? Calculamos 4500 cristales de proteínas del PDB y 4800 cristales de la COD en 14 grupos espaciales. Normalmente 15–18 caras; el récord del grupo se alcanza en tres grupos. Según esta medida, las posiciones de los átomos se comportan como puntos aleatorios.' },
 };
+
+export const SIDE2 = {
+  href: 'tissues.html', key: 'tissue',
+  title: { en: 'Cells in tissues', ru: 'Клетки в тканях', es: 'Células en tejidos' },
+  chip: { en: 'side project', ru: 'побочный проект', es: 'proyecto paralelo' },
+  desc: { en: 'Cells in 3D plant tissues are polyhedra that fill space. In 18 000 cells from segmented Arabidopsis ovules the mean face count (15.2) is close to random Voronoi cells, but the spread is much wider, and only 70% of neighbours agree with the Voronoi cells of the same centres.', ru: 'Клетки трёхмерной растительной ткани — многогранники, заполняющие пространство. У 18 000 клеток из сегментированных семязачатков Arabidopsis среднее число граней (15,2) близко к случайным ячейкам Вороного, но разброс гораздо шире, а с ячейками Вороного тех же центров совпадает только 70% соседей.', es: 'Las células de un tejido vegetal en 3D son poliedros que llenan el espacio. En 18 000 células de óvulos segmentados de Arabidopsis la media de caras (15,2) es cercana a celdas de Voronói aleatorias, pero la dispersión es mucho mayor, y solo el 70% de los vecinos coincide con las celdas de Voronói de los mismos centros.' },
+};
+export const SIDES = [SIDE, SIDE2];

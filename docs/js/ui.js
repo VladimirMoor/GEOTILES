@@ -95,13 +95,14 @@ export async function problemTabs(active) {
   const el = document.getElementById('ptabs');
   if (!el) return;
   if (active === 0) { el.remove(); return; }
-  const { PROBLEMS, PAGES, SIDE } = await import('./problems.js');
+  const { PROBLEMS, PAGES, SIDES } = await import('./problems.js');
   const { L } = await import('./i18n.js');
   const all = { en: 'All problems', ru: 'Все задачи', es: 'Todos los problemas' };
-  if (active === 'bio') document.title = `${L(SIDE.title)} · GEOTILES`;
+  const side = SIDES.find((x) => x.key === active);
+  if (side) document.title = `${L(side.title)} · GEOTILES`;
   else document.title = `${String(active).padStart(2, '0')} · ${L(PROBLEMS[active - 1][0])} · GEOTILES`;
   const pill = (href, on, num, label, title) => `<a href="${href}" class="${on ? 'on' : ''}" title="${esc(title)}"><b>${num}</b>${label}</a>`;
   el.innerHTML = `<a class="back" href="research.html">← ${L(all)}</a><span class="pills">` +
     PAGES.map((href, i) => pill(href, active === i + 1, String(i + 1).padStart(2, '0'), L(SHORT[i]), L(PROBLEMS[i][0]))).join('') +
-    pill('crystals.html', active === 'bio', '+', L(SIDE.title), L(SIDE.title)) + '</span>';
+    SIDES.map((x) => pill(x.href, active === x.key, '+', L(x.title), L(x.title))).join('') + '</span>';
 }

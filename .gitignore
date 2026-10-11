@@ -25,3 +25,6 @@ research/bio/data/sg_facets.json
 
 # COD download cache
 research/cod/data/cache/
+
+# tissue datasets (PlantSeg, OSF)
+research/tissue/data/raw/
