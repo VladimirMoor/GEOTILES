@@ -208,12 +208,15 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--i
 }
 
 /* вкладки задач на страницах исследований */
-.ptabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
-.ptabs a { padding: 7px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink-2); font-size: .86rem; line-height: 1.25; max-width: 260px; }
-.ptabs a b { font-family: var(--mono); color: var(--ink-3); margin-right: 4px; }
-.ptabs a:hover { text-decoration: none; border-color: var(--ink-3); }
-.ptabs a.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.ptabs a.on b { color: var(--bg); }
+.ptabs { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin: 0 0 30px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.ptabs .back { color: var(--ink-2); font-size: .9rem; white-space: nowrap; }
+.ptabs .back:hover { color: var(--ink); text-decoration: none; }
+.ptabs .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.ptabs .pills a { display: inline-flex; gap: 6px; align-items: baseline; padding: 4px 11px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); font-size: .84rem; white-space: nowrap; }
+.ptabs .pills a b { font-family: var(--mono); font-weight: 600; color: var(--ink-3); font-size: .78rem; }
+.ptabs .pills a:hover { text-decoration: none; border-color: var(--ink-3); color: var(--ink); }
+.ptabs .pills a.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.ptabs .pills a.on b { color: var(--bg); opacity: .7; }
 .pcards { display: grid; gap: 12px; margin: 18px 0 30px; }
 .pcard { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: start; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; color: var(--ink); }
 a.pcard:hover { text-decoration: none; border-color: var(--ink-3); }

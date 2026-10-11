@@ -84,16 +84,24 @@ export function mcmullenHTML(mc, merged) {
     <p class="small muted" style="margin-top:8px">${t('m.merged', { n: merged })} ${mc.ok ? '' : t('m.rot')}</p>`;
 }
 
-/** Полоска вкладок задач на страницах исследований: «Все задачи · 01 · 02 · 03 · 04». */
+/** Навигация по страницам исследований: «← Все задачи» и короткие метки задач. На обзоре (active = 0) не нужна. */
+const SHORT = [
+  { en: 'Equilateral', ru: 'Равносторонние', es: 'Equiláteros' },
+  { en: 'Tetrahedra', ru: 'Тетраэдры', es: 'Tetraedros' },
+  { en: 'Heesch', ru: 'Хееш', es: 'Heesch' },
+  { en: '38 faces', ru: '38 граней', es: '38 caras' },
+];
 export async function problemTabs(active) {
   const el = document.getElementById('ptabs');
   if (!el) return;
+  if (active === 0) { el.remove(); return; }
   const { PROBLEMS, PAGES, SIDE } = await import('./problems.js');
   const { L } = await import('./i18n.js');
   const all = { en: 'All problems', ru: 'Все задачи', es: 'Todos los problemas' };
   if (active === 'bio') document.title = `${L(SIDE.title)} · GEOTILES`;
-  else if (active > 0) document.title = `${String(active).padStart(2, '0')} · ${L(PROBLEMS[active - 1][0])} · GEOTILES`;
-  el.innerHTML = `<a href="research.html" class="${active === 0 ? 'on' : ''}">${L(all)}</a>` +
-    PAGES.map((href, i) => `<a href="${href}" class="${active === i + 1 ? 'on' : ''}"><b>${String(i + 1).padStart(2, '0')}</b> ${L(PROBLEMS[i][0])}</a>`).join('') +
-    `<a href="crystals.html" class="${active === 'bio' ? 'on' : ''}"><b>+</b> ${L(SIDE.title)}</a>`;
+  else document.title = `${String(active).padStart(2, '0')} · ${L(PROBLEMS[active - 1][0])} · GEOTILES`;
+  const pill = (href, on, num, label, title) => `<a href="${href}" class="${on ? 'on' : ''}" title="${esc(title)}"><b>${num}</b>${label}</a>`;
+  el.innerHTML = `<a class="back" href="research.html">← ${L(all)}</a><span class="pills">` +
+    PAGES.map((href, i) => pill(href, active === i + 1, String(i + 1).padStart(2, '0'), L(SHORT[i]), L(PROBLEMS[i][0]))).join('') +
+    pill('crystals.html', active === 'bio', '+', L(SIDE.title), L(SIDE.title)) + '</span>';
 }
