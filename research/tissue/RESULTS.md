@@ -46,3 +46,56 @@
 Next steps (see BACKLOG):
 - classify the combinatorial types of cells with Weinberg vectors (Lazar et al.) and compare them with foams and grains;
 - look for scutoids in curved epithelia.
+
+## Complete topology of cells (Lazar et al. method), 2026-10-11
+
+**Literature.** Lazar, Mason, MacPherson and Srolovitz (PRL 2012) classified grains and foam bubbles by Weinberg vectors. Grain growth gives symmetric cells "orders of magnitude" more often than Poisson–Voronoi. Lazar's research page lists biological tissue among the targets, but we found no published census of cell types in tissues.
+
+**Method** (`topology.py`, `run_topo.py`, `topo_poisson.py`, `topo_summary.py`, `topo_byF.py`; check: `test_weinberg.py`).
+- **Face graph from the voxels.** Faces are the neighbouring cells. Edges are triple lines: triples of labels in 2×2×2 blocks, seen in at least 2 blocks. Quadruple points add all four triples meeting at a vertex.
+- **Slivers.** Faces with fewer than 3 edges are contracted onto an edge.
+- **Accepted graphs.** Only 3-connected planar triangulations (the duals of simple polyhedra).
+- **"Repaired" variant.** We additionally drop the weakest extra edges at nearly degenerate vertices.
+- **Code.** For each accepted graph we compute the canonical Weinberg code, the symmetry order (reflections included) and the p-vector.
+- **Validation.** The code gives the known symmetry orders for the tetrahedron (24), cube (48), triangular prism (12), truncated octahedron (48) and dodecahedron (120).
+- **Comparisons:**
+  - the Voronoi tessellation of the same centres, using the face graphs from the Delaunay triangulation;
+  - Poisson–Voronoi, 21 149 inner cells.
+
+**Coverage.**
+- 31 ovules, 17 778 inner cells.
+- Topology resolved for 8 989 cells (51%) in the strict variant and 10 963 (62%) with repair.
+- Resolved cells have slightly fewer faces than all inner cells: 13.8 against 14.8. So all comparisons below are made **at a fixed number of faces F**.
+
+**Overall numbers.** These raw shares mislead, because tissue has more small cells.
+
+| | tissue | tissue (repaired) | Voronoi of same centres | Poisson–Voronoi |
+|---|---|---|---|---|
+| cells with non-trivial symmetry | 19.9% | 18.4% | 10.5% | 8.5% |
+| same, reweighted to the tissue's F distribution | 19.9% | 19.4% | 19.2% | 16.6% |
+
+**At fixed F** (share with non-trivial symmetry; number of distinct types among 150 random cells):
+
+| F | tissue | Voronoi of same centres | Poisson–Voronoi |
+|---|---|---|---|
+| 10 | 0.58; 66 | 0.65; 47 | 0.50; 70 |
+| 11 | 0.35; 91 | 0.39; 80 | 0.30; 111 |
+| 12 | 0.24; 121 | 0.27; 112 | 0.19; 140 |
+| 13 | 0.15; 142 | 0.15; 135 | 0.10; 149 |
+| 14 | 0.08; 147 | 0.08; 145 | 0.06; 149 |
+| 15 | 0.05; 149 | 0.04; 149 | 0.03; 149 |
+
+**Most frequent types in tissue.** All of them are small cells, almost absent in both Voronoi models:
+
+| F | p-vector (triangles, quads, pentagons, …) | symmetry | tissue | Voronoi of centres | Poisson |
+|---|---|---|---|---|---|
+| 6 | 2, 2, 2 | 4 | 1.1% | 0% | 0.03% |
+| 5 | 2, 3 (triangular prism) | 12 | 0.8% | 0% | 0% |
+| 7 | 1, 3, 3 | 6 | 0.6% | 0.02% | 0.08% |
+| 4 | 4 (tetrahedron) | 24 | 0.3% | 0% | 0% |
+
+**Conclusions.**
+1. **At a fixed number of faces, tissue cells are as symmetric and as diverse as the Voronoi cells of the same centres.** Both are slightly more symmetric than Poisson–Voronoi. The raw excess of symmetric cells (20% against 10%) comes entirely from the many small cells in the tissue.
+2. **Tissue does not behave like grain growth.** Lazar et al. found highly symmetric grains orders of magnitude more often than in Poisson–Voronoi; in tissue, at fixed F, the excess over Poisson is at most 1.5×, and it is the same for the Voronoi of the centres.
+3. **The distinctive feature of tissue is a population of small cells with few faces:** tetrahedra, triangular prisms, 6- and 7-faced cells. By the Lewis-law data, cells with 4–6 faces have 7–16% of the mean volume. They are almost absent in both Voronoi models. They are present in the manually proofread ground truth, but we cannot exclude segmentation artefacts.
+4. **The repaired and strict variants agree in every measure,** so the conclusions do not depend on the repair step.

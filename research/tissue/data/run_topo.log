@@ -1,0 +1,71 @@
+[ovules] N_534_ds2x.h5  (107 s, peak 1576 MB)
+N_534_ds2x.h5 inner 1016 resolved 596 repaired 686 voronoi resolved 1016 sym>1: 145 / 596  voronoi sym>1: 114
+[ovules] N_536_ds2x.h5  (139 s, peak 1522 MB)
+N_536_ds2x.h5 inner 1031 resolved 494 repaired 616 voronoi resolved 1031 sym>1: 117 / 494  voronoi sym>1: 138
+Traceback (most recent call last):
+  File "/Users/vladimirmuravev/Projects2026/GEOTILES/research/tissue/run_topo.py", line 16, in <module>
+    download(url, dst)
+    ~~~~~~~~^^^^^^^^^^
+  File "/Users/vladimirmuravev/Projects2026/GEOTILES/research/tissue/run_all.py", line 44, in download
+    raise RuntimeError(f"download failed: {dst.name}")
+RuntimeError: download failed: N_535_ds2x.h5
+[ovules] N_535_ds2x.h5  (146 s, peak 1651 MB)
+N_535_ds2x.h5 inner 1218 resolved 688 repaired 832 voronoi resolved 1218 sym>1: 178 / 688  voronoi sym>1: 125
+[ovules] N_517_ds2x.h5  (118 s, peak 1643 MB)
+N_517_ds2x.h5 inner 877 resolved 545 repaired 643 voronoi resolved 877 sym>1: 108 / 545  voronoi sym>1: 98
+[ovules] N_509_ds2x.h5  (53 s, peak 1253 MB)
+N_509_ds2x.h5 inner 685 resolved 316 repaired 396 voronoi resolved 685 sym>1: 66 / 316  voronoi sym>1: 60
+[ovules] N_512_ds2x.h5  (163 s, peak 1820 MB)
+N_512_ds2x.h5 inner 804 resolved 421 repaired 504 voronoi resolved 804 sym>1: 82 / 421  voronoi sym>1: 99
+[ovules] N_487_ds2x.h5  (154 s, peak 2983 MB)
+N_487_ds2x.h5 inner 681 resolved 336 repaired 426 voronoi resolved 681 sym>1: 63 / 336  voronoi sym>1: 67
+[ovules] N_458_ds2x.h5  (45 s, peak 643 MB)
+N_458_ds2x.h5 inner 126 resolved 62 repaired 75 voronoi resolved 126 sym>1: 6 / 62  voronoi sym>1: 15
+[ovules] N_457_ds2x.h5  (59 s, peak 1174 MB)
+N_457_ds2x.h5 inner 202 resolved 94 repaired 122 voronoi resolved 202 sym>1: 12 / 94  voronoi sym>1: 18
+[ovules] N_454_ds2x.h5  (188 s, peak 2647 MB)
+N_454_ds2x.h5 inner 392 resolved 232 repaired 272 voronoi resolved 392 sym>1: 31 / 232  voronoi sym>1: 35
+[ovules] N_451_ds2x.h5  (75 s, peak 1388 MB)
+N_451_ds2x.h5 inner 423 resolved 264 repaired 302 voronoi resolved 423 sym>1: 55 / 264  voronoi sym>1: 47
+[ovules] N_449_ds2x.h5  (38 s, peak 769 MB)
+N_449_ds2x.h5 inner 172 resolved 55 repaired 70 voronoi resolved 172 sym>1: 6 / 55  voronoi sym>1: 14
+[ovules] N_450_ds2x.h5  (72 s, peak 1187 MB)
+N_450_ds2x.h5 inner 189 resolved 87 repaired 108 voronoi resolved 189 sym>1: 7 / 87  voronoi sym>1: 19
+[ovules] N_445_ds2x.h5  (113 s, peak 1555 MB)
+N_445_ds2x.h5 inner 657 resolved 333 repaired 400 voronoi resolved 657 sym>1: 91 / 333  voronoi sym>1: 68
+[ovules] N_440_ds2x.h5  (138 s, peak 1318 MB)
+N_440_ds2x.h5 inner 689 resolved 308 repaired 373 voronoi resolved 689 sym>1: 46 / 308  voronoi sym>1: 65
+[ovules] N_428_ds2x.h5  (221 s, peak 1646 MB)
+N_428_ds2x.h5 inner 849 resolved 362 repaired 473 voronoi resolved 849 sym>1: 48 / 362  voronoi sym>1: 102
+[ovules] N_422_ds2x.h5  (50 s, peak 1140 MB)
+N_422_ds2x.h5 inner 422 resolved 243 repaired 285 voronoi resolved 422 sym>1: 33 / 243  voronoi sym>1: 38
+[ovules] N_425_ds2x.h5  (101 s, peak 1405 MB)
+N_425_ds2x.h5 inner 587 resolved 302 repaired 370 voronoi resolved 587 sym>1: 57 / 302  voronoi sym>1: 65
+[ovules] N_405_B_ds2x.h5  (21 s, peak 533 MB)
+N_405_B_ds2x.h5 inner 171 resolved 89 repaired 107 voronoi resolved 171 sym>1: 8 / 89  voronoi sym>1: 16
+[ovules] N_405_A_ds2x.h5  (27 s, peak 498 MB)
+N_405_A_ds2x.h5 inner 151 resolved 90 repaired 106 voronoi resolved 151 sym>1: 18 / 90  voronoi sym>1: 22
+[ovules] N_404_ds2x.h5  (62 s, peak 915 MB)
+N_404_ds2x.h5 inner 182 resolved 100 repaired 117 voronoi resolved 182 sym>1: 16 / 100  voronoi sym>1: 20
+[ovules] N_416_ds2x.h5  (232 s, peak 2090 MB)
+N_416_ds2x.h5 inner 420 resolved 237 repaired 276 voronoi resolved 420 sym>1: 52 / 237  voronoi sym>1: 53
+[ovules] N_464_ds2x.h5  (141 s, peak 1810 MB)
+N_464_ds2x.h5 inner 1047 resolved 464 repaired 610 voronoi resolved 1047 sym>1: 75 / 464  voronoi sym>1: 102
+[ovules] N_420_ds2x.h5  (171 s, peak 2006 MB)
+N_420_ds2x.h5 inner 540 resolved 235 repaired 288 voronoi resolved 540 sym>1: 35 / 235  voronoi sym>1: 48
+[ovules] N_590_final_crop_ds2.h5  (35 s, peak 594 MB)
+N_590_final_crop_ds2.h5 inner 241 resolved 130 repaired 157 voronoi resolved 241 sym>1: 23 / 130  voronoi sym>1: 16
+[ovules] N_511_final_crop_ds2.h5  (56 s, peak 928 MB)
+N_511_final_crop_ds2.h5 inner 660 resolved 379 repaired 439 voronoi resolved 660 sym>1: 90 / 379  voronoi sym>1: 74
+[ovules] N_593_final_crop_ds2.h5  (49 s, peak 725 MB)
+N_593_final_crop_ds2.h5 inner 337 resolved 196 repaired 233 voronoi resolved 337 sym>1: 24 / 196  voronoi sym>1: 39
+[ovules] N_522_final_crop_ds2.h5  (153 s, peak 1298 MB)
+N_522_final_crop_ds2.h5 inner 609 resolved 246 repaired 309 voronoi resolved 609 sym>1: 36 / 246  voronoi sym>1: 68
+[ovules] N_435_final_crop_ds2.h5  (148 s, peak 2063 MB)
+N_435_final_crop_ds2.h5 inner 683 resolved 237 repaired 320 voronoi resolved 683 sym>1: 44 / 237  voronoi sym>1: 52
+[ovules] N_294_final_crop_ds2.h5  (120 s, peak 1551 MB)
+N_294_final_crop_ds2.h5 inner 1131 resolved 585 repaired 719 voronoi resolved 1131 sym>1: 156 / 585  voronoi sym>1: 116
+[ovules] N_441_final_crop_ds2.h5  (182 s, peak 2002 MB)
+N_441_final_crop_ds2.h5 inner 586 resolved 263 repaired 329 voronoi resolved 586 sym>1: 61 / 263  voronoi sym>1: 56
+pass 1: failed 0
+ALL DONE
