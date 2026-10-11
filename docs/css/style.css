@@ -235,3 +235,24 @@ a.pcard:hover { text-decoration: none; border-color: var(--ink-3); }
 .haxis { display: flex; gap: 2px; font-family: var(--mono); font-size: .7rem; color: var(--ink-3); margin-top: 4px; }
 .haxis span { flex: 1; text-align: center; min-width: 0; overflow: visible; white-space: nowrap; }
 @media (max-width: 640px) { .doc table { display: block; overflow-x: auto; } }
+/* галереи вращающихся моделей на текстовых страницах */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 12px; margin: 16px 0 26px; }
+.gallery .mini { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; color: var(--ink); background: var(--panel); }
+.gallery .mini:hover { text-decoration: none; border-color: var(--ink-3); }
+.gallery .mini-stage { aspect-ratio: 1 / 1; background: var(--stage); }
+.gallery .mini-stage canvas { display: block; width: 100%; height: 100%; }
+.gallery .mini-cap { padding: 9px 12px 11px; font-size: .84rem; line-height: 1.35; display: grid; gap: 2px; }
+.gallery .mini-cap span { color: var(--ink-2); font-size: .8rem; }
+figure.fig { margin: 18px 0 26px; }
+figure.fig img, figure.fig svg { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+figure.fig figcaption { margin-top: 8px; color: var(--ink-2); font-size: .86rem; }
+/* сравнение «максимум в COD / рекорд группы» */
+.cmp { display: grid; gap: 6px; margin: 12px 0 8px; }
+.cmp-row { display: grid; grid-template-columns: 64px 1fr 64px; gap: 10px; align-items: center; font-size: .84rem; }
+.cmp-g { font-family: var(--mono); color: var(--ink-2); }
+.cmp-v { font-family: var(--mono); color: var(--ink-2); text-align: right; white-space: nowrap; }
+.cmp-track { position: relative; height: 16px; background: var(--bg-2); border-radius: 4px; }
+.cmp-bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 4px; }
+.cmp-bar.hit { background: var(--ok); }
+.cmp-rec { position: absolute; top: -3px; bottom: -3px; border-left: 2px dashed var(--warn); }
+.cmp-mu { position: absolute; top: 2px; bottom: 2px; border-left: 3px solid var(--ink); opacity: .55; }

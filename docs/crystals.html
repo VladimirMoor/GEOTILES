@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -17,6 +18,7 @@
 <article data-lang="en"><div class="eyebrow">side project · <span class="chip ok">done: PDB + COD</span></div>
 <h1>Real crystals: how close does nature come to the record tiles?</h1>
 <p class="muted">In a crystal, the protein molecules are copies of one another, placed by a space group: exactly the setting of <a href="faces.html">problem 4</a>. Take each molecule’s Voronoi cell, the points closer to it than to any other molecule. These cells are congruent convex polyhedra that fill space (stereohedra). Each face is a neighbouring molecule. The record stereohedra are cells of hand-picked points. Here the points are picked by nature. We looked at two kinds of points: centres of protein molecules (PDB) and individual atoms (COD).</p>
+<figure class="fig"><img src="img/orbit-voronoi.svg" alt="Voronoi cells of a symmetric orbit"><figcaption>A 2D analogue. Copies of one “molecule” (arrows) are placed by the symmetry group p3: rotations by 120° plus lattice translations. Their Voronoi cells are congruent and tile the plane. The highlighted cell borders 6 neighbours (orange); in the plane a tile like this has at most 6 sides, in space up to 38.</figcaption></figure>
 <h2>Part 1. Protein molecules (PDB)</h2>
 <h3>How we computed it</h3>
 <ul><li>For every X-ray structure in the <a href="https://www.rcsb.org">Protein Data Bank</a> in a given space group we take the unit cell, the group and the Cα atoms.</li>
@@ -30,6 +32,7 @@
 <article data-lang="ru" hidden><div class="eyebrow">побочный проект · <span class="chip ok">готово: PDB + COD</span></div>
 <h1>Реальные кристаллы: насколько природа близка к рекордным плиткам?</h1>
 <p class="muted">В кристалле белковые молекулы — копии друг друга, расставленные пространственной группой: ровно постановка <a href="faces.html">задачи 4</a>. Возьмём для каждой молекулы ячейку Вороного — точки, которые ближе к ней, чем к любой другой молекуле. Эти ячейки — одинаковые выпуклые многогранники, заполняющие пространство (стереоэдры). Каждая грань — соседняя молекула. Рекордные стереоэдры — ячейки специально подобранных точек. Здесь точки подобрала природа. Мы смотрели на два вида точек: центры белковых молекул (PDB) и отдельные атомы (COD).</p>
+<figure class="fig"><img src="img/orbit-voronoi.svg" alt="Voronoi cells of a symmetric orbit"><figcaption>Двумерный аналог. Копии одной «молекулы» (стрелки) расставлены группой симметрии p3: повороты на 120° и сдвиги решётки. Их ячейки Вороного конгруэнтны и замощают плоскость. Выделенная ячейка граничит с 6 соседями (оранжевые); на плоскости у такой плитки не больше 6 сторон, в пространстве — до 38.</figcaption></figure>
 <h2>Часть 1. Белковые молекулы (PDB)</h2>
 <h3>Как считали</h3>
 <ul><li>Для каждой рентгеновской структуры из <a href="https://www.rcsb.org">Protein Data Bank</a> в данной группе берём ячейку, группу и атомы Cα.</li>
@@ -43,6 +46,7 @@
 <article data-lang="es" hidden><div class="eyebrow">proyecto paralelo · <span class="chip ok">hecho: PDB + COD</span></div>
 <h1>Cristales reales: ¿cuánto se acerca la naturaleza a las teselas récord?</h1>
 <p class="muted">En un cristal, las moléculas de proteína son copias unas de otras colocadas por un grupo espacial: justo el planteamiento del <a href="faces.html">problema 4</a>. Tomemos la celda de Voronói de cada molécula: los puntos más cercanos a ella que a cualquier otra molécula. Estas celdas son poliedros convexos congruentes que llenan el espacio (estereoedros). Cada cara es una molécula vecina. Los estereoedros récord son celdas de puntos elegidos a mano. Aquí los puntos los elige la naturaleza. Miramos dos tipos de puntos: centros de moléculas de proteína (PDB) y átomos individuales (COD).</p>
+<figure class="fig"><img src="img/orbit-voronoi.svg" alt="Voronoi cells of a symmetric orbit"><figcaption>Un análogo en 2D. Las copias de una «molécula» (flechas) se colocan con el grupo de simetría p3: giros de 120° y traslaciones de la red. Sus celdas de Voronói son congruentes y teselan el plano. La celda resaltada tiene 6 vecinas (naranja); en el plano una tesela así tiene como mucho 6 lados, en el espacio hasta 38.</figcaption></figure>
 <h2>Parte 1. Moléculas de proteína (PDB)</h2>
 <h3>Cómo lo calculamos</h3>
 <ul><li>Para cada estructura de rayos X del <a href="https://www.rcsb.org">Protein Data Bank</a> en un grupo dado tomamos la celda, el grupo y los átomos Cα.</li>
@@ -55,6 +59,10 @@
 <tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Schmitt)</td></tr></tbody></table></article>
 
 <div class="hists" id="hists"></div>
+<h2><span data-lang="en">The cells in 3D</span><span data-lang="ru" hidden>Ячейки в 3D</span><span data-lang="es" hidden>Las celdas en 3D</span></h2>
+<p class="muted"><span data-lang="en">Click a cell to open it in the catalog with its full crystal packing.</span><span data-lang="ru" hidden>Нажмите на ячейку, чтобы открыть её в каталоге вместе с полной упаковкой кристалла.</span><span data-lang="es" hidden>Pulse una celda para abrirla en el catálogo con el empaquetamiento completo del cristal.</span></p>
+<div class="gallery"><a class="mini" data-id="pdb4ux6"></a><a class="mini" data-id="pdb8s97"></a><a class="mini" data-id="pdb1jky"></a><a class="mini" data-id="cod7223002"></a><a class="mini" data-id="engel38" data-note='{"en":"for comparison: the record","ru":"для сравнения: рекорд","es":"para comparar: el récord"}'></a></div>
+
 
 <article data-lang="en"><h3>What we see</h3>
 <ul><li>Most molecules have <b>15–18 face neighbours</b>.</li>
@@ -116,12 +124,25 @@
 <li>En P2<sub>1</sub>3 todo átomo en posición general tiene un número par de caras. Los vecinos g·x y g<sup>−1</sup>·x siempre van en pareja, y el grupo no tiene involuciones que puedan fundir una pareja. Es elemental, pero explica los histogramas en los que una de cada dos barras está vacía.</li></ul>
 <p>Trabajos anteriores (Blatov, Serezhkin y coautores) reunieron grandes estadísticas de celdas de Voronói de átomos construidas con <i>todos</i> los átomos de la estructura, donde lo más frecuente son 14 caras. No encontramos ninguna comparación de celdas de una sola órbita con el récord de cada grupo.</p>
 <p class="small muted">Datos: COD (Gražulis et al., Nucleic Acids Res. 40 (2012) D420–D427). Código y tablas completas: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/cod/RESULTS.md">research/cod/RESULTS.md</a>.</p></article>
+
+<h2><span data-lang="en">COD: how close to the record</span><span data-lang="ru" hidden>COD: насколько близко к рекорду</span><span data-lang="es" hidden>COD: cuánto se acerca al récord</span></h2>
+<div class="cmp" id="cmp"></div>
+<p class="small muted"><span data-lang="en">Bar: the most faces of an atom-orbit cell in COD. Dashed line: the record for the group. Grey tick: the mean for random points.</span><span data-lang="ru" hidden>Полоса — наибольшее число граней ячейки орбиты атома в COD. Пунктир — рекорд группы. Серая отметка — среднее у случайных точек.</span><span data-lang="es" hidden>Barra: el máximo de caras de una celda de órbita atómica en COD. Línea discontinua: el récord del grupo. Marca gris: la media de puntos aleatorios.</span></p>
 </div></section>
 <footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
 <script type="module">
 import { setupPage, problemTabs } from './js/ui.js';
 import { L } from './js/i18n.js';
-setupPage('research'); problemTabs('bio');
+import { setupGalleries } from './js/mini3d.js';
+setupPage('research'); problemTabs('bio'); setupGalleries();
+// COD: максимум в COD, рекорд группы, среднее у случайных точек (research/cod/RESULTS.md)
+const CMP = [['I4₁32', 28, 38, 17.19], ['I4₁22', 29, 35, 17.51], ['P6₁22', 30, 34, 16.63], ['P6₅22', 31, 34, 16.72], ['I-42d', 28, 33, 16.92],
+  ['P4₃32', 25, 29, 15.69], ['P4₁32', 25, 29, 15.62], ['P4₁2₁2', 26, 29, 16.13], ['P4₃2₁2', 26, 29, 16.06], ['I4₁', 26, 26, 17.96],
+  ['P3₁21', 24, 25, 15.66], ['I4₁cd', 22, 24, 15.50], ['I2₁3', 24, 24, 14.84], ['P2₁3', 24, 24, 12.86]];
+const X = 40;
+document.getElementById('cmp').innerHTML = CMP.map(([g, m, r, mu]) => `<div class="cmp-row"><span class="cmp-g">${g}</span>
+  <span class="cmp-track"><i class="cmp-bar${m === r ? ' hit' : ''}" style="width:${100 * m / X}%"></i><i class="cmp-rec" style="left:${100 * r / X}%"></i><i class="cmp-mu" style="left:${100 * mu / X}%"></i></span>
+  <span class="cmp-v">${m} / ${r}</span></div>`).join('');
 // гистограммы числа граней (research/bio/data/dv_*.json); пунктир — рекордный стереоэдр группы
 const H = [
   ['I4₁32', 38, { 15: 9, 16: 31, 17: 86, 18: 10, 19: 8, 20: 2 }],

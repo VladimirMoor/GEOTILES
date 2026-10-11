@@ -54,6 +54,9 @@
 <p>Nota (PDF, en inglés): <a href="paper/dirichlet-stereohedra-note.pdf">Dirichlet stereohedra: certified lower bounds and local rigidity</a>.</p>
 <p>Los estereoedros récord están en el <a href="catalog.html#engel38">catálogo</a>: el 38-edro de Engel, el 35-edro de Schmitt y nuestros nuevos de 33 y 29 caras, cada uno con su teselación completa en 3D.</p>
 <p class="small muted">Detalles: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/p4/RESULTS.md">research/p4/RESULTS.md</a>.</p></article>
+
+<h2 id="gallery"><span data-lang="en">Record stereohedra in 3D</span><span data-lang="ru" hidden>Рекордные стереоэдры в 3D</span><span data-lang="es" hidden>Estereoedros récord en 3D</span></h2>
+<div class="gallery"><a class="mini" data-id="engel38"></a><a class="mini" data-id="schmitt35"></a><a class="mini" data-id="ours33"></a><a class="mini" data-id="ours29"></a></div>
 <h2 id="refs">References · Литература · Referencias</h2><ul class="small">
 <li>P. Engel, Über Wirkungsbereichsteilungen von kubischer Symmetrie, Z. Kristallogr. 154 (1981) 199–215.</li>
 <li>M. Schmitt, On Space Groups and Dirichlet–Voronoi Stereohedra, PhD thesis, FU Berlin, 2016. <a href="https://refubium.fu-berlin.de/handle/fub188/10176">link</a></li>
@@ -62,6 +65,6 @@
 <li><a href="https://en.wikipedia.org/wiki/Plesiohedron">Plesiohedron</a> · <a href="https://mathworld.wolfram.com/EngelPolyhedra.html">Engel polyhedra</a></li></ul>
 </div></section>
 <footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
-<script type="module">import { setupPage, problemTabs } from './js/ui.js'; setupPage('research'); problemTabs(4);</script>
+<script type="module">import { setupPage, problemTabs } from './js/ui.js'; import { setupGalleries } from './js/mini3d.js'; setupPage('research'); problemTabs(4); setupGalleries();</script>
 </body>
 </html>

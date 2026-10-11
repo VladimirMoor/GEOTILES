@@ -217,6 +217,10 @@
   </div>
 </article>
 
+
+<h2 id="gallery"><span data-lang="en">Families found by our search, in 3D</span><span data-lang="ru" hidden>Семейства, найденные нашим перебором, в 3D</span><span data-lang="es" hidden>Familias encontradas por nuestra búsqueda, en 3D</span></h2>
+<p class="muted"><span data-lang="en">Every member of these families is equilateral and tiles space. Click to open in the catalog and move the parameters.</span><span data-lang="ru" hidden>Каждый член этих семейств равносторонний и замощает пространство. Нажмите, чтобы открыть в каталоге и подвигать параметры.</span><span data-lang="es" hidden>Cada miembro de estas familias es equilátero y tesela el espacio. Pulse para abrirlo en el catálogo y mover los parámetros.</span></p>
+<div class="gallery"><a class="mini" data-id="tri-tri"></a><a class="mini" data-id="rhombus-triangle"></a><a class="mini" data-id="rhomb-tri"></a><a class="mini" data-id="gen-gyro"></a><a class="mini" data-id="gen-elongated"></a></div>
 <h2 id="refs">References · Литература · Referencias</h2>
 <ul class="small">
   <li>B. Klaassen, Old problem revisited: Which equilateral convex polygons tile the plane? 2025. <a href="https://arxiv.org/abs/2506.18473">arXiv:2506.18473</a></li>
@@ -232,6 +236,6 @@
 </ul>
 </div></section>
 <footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
-<script type="module">import { setupPage, problemTabs } from './js/ui.js'; setupPage('research'); problemTabs(1);</script>
+<script type="module">import { setupPage, problemTabs } from './js/ui.js'; import { setupGalleries } from './js/mini3d.js'; setupPage('research'); problemTabs(1); setupGalleries();</script>
 </body>
 </html>
