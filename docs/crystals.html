@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real crystals · GEOTILES</title>
+<meta name="description" content="Voronoi cells in real crystals (4500 protein crystals from the PDB, 4800 crystals from the COD): how many faces, compared with the record stereohedra and with random points.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<section><div class="wrap doc">
+<nav class="ptabs" id="ptabs"></nav>
+<article data-lang="en"><div class="eyebrow">side project · <span class="chip ok">done: PDB + COD</span></div>
+<h1>Real crystals: how close does nature come to the record tiles?</h1>
+<p class="muted">In a crystal, the protein molecules are copies of one another, placed by a space group: exactly the setting of <a href="faces.html">problem 4</a>. Take each molecule’s Voronoi cell, the points closer to it than to any other molecule. These cells are congruent convex polyhedra that fill space (stereohedra). Each face is a neighbouring molecule. The record stereohedra are cells of hand-picked points. Here the points are picked by nature. We looked at two kinds of points: centres of protein molecules (PDB) and individual atoms (COD).</p>
+<h2>Part 1. Protein molecules (PDB)</h2>
+<h3>How we computed it</h3>
+<ul><li>For every X-ray structure in the <a href="https://www.rcsb.org">Protein Data Bank</a> in a given space group we take the unit cell, the group and the Cα atoms.</li>
+<li>The molecule is represented by the centre of the asymmetric unit. We build the Voronoi cell of its orbit with the same code as in problem 4.</li>
+<li>The 12 cells with the most faces in each group were re-checked in exact rational arithmetic. All counts were confirmed.</li></ul>
+<h3>Results</h3>
+<table><thead><tr><th>Space group</th><th>Structures</th><th>Typical</th><th>Max in proteins</th><th>Record stereohedron</th></tr></thead><tbody>
+<tr><td>I4<sub>1</sub>32 (cubic)</td><td>146</td><td>17</td><td>20 (1JKY, 4PPI)</td><td>38 (Engel)</td></tr>
+<tr><td>I4<sub>1</sub>22</td><td>1117</td><td>15–21</td><td>29 (7ZC0, 8S97, 8S9D)</td><td>35 (Schmitt)</td></tr>
+<tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Schmitt)</td></tr></tbody></table></article>
+<article data-lang="ru" hidden><div class="eyebrow">побочный проект · <span class="chip ok">готово: PDB + COD</span></div>
+<h1>Реальные кристаллы: насколько природа близка к рекордным плиткам?</h1>
+<p class="muted">В кристалле белковые молекулы — копии друг друга, расставленные пространственной группой: ровно постановка <a href="faces.html">задачи 4</a>. Возьмём для каждой молекулы ячейку Вороного — точки, которые ближе к ней, чем к любой другой молекуле. Эти ячейки — одинаковые выпуклые многогранники, заполняющие пространство (стереоэдры). Каждая грань — соседняя молекула. Рекордные стереоэдры — ячейки специально подобранных точек. Здесь точки подобрала природа. Мы смотрели на два вида точек: центры белковых молекул (PDB) и отдельные атомы (COD).</p>
+<h2>Часть 1. Белковые молекулы (PDB)</h2>
+<h3>Как считали</h3>
+<ul><li>Для каждой рентгеновской структуры из <a href="https://www.rcsb.org">Protein Data Bank</a> в данной группе берём ячейку, группу и атомы Cα.</li>
+<li>Молекулу представляет центр асимметричной единицы. Ячейку Вороного его орбиты строим тем же кодом, что в задаче 4.</li>
+<li>12 ячеек с наибольшим числом граней в каждой группе перепроверены точной рациональной арифметикой. Все числа подтвердились.</li></ul>
+<h3>Результаты</h3>
+<table><thead><tr><th>Группа</th><th>Структур</th><th>Обычно</th><th>Максимум у белков</th><th>Рекордный стереоэдр</th></tr></thead><tbody>
+<tr><td>I4<sub>1</sub>32 (кубическая)</td><td>146</td><td>17</td><td>20 (1JKY, 4PPI)</td><td>38 (Энгель)</td></tr>
+<tr><td>I4<sub>1</sub>22</td><td>1117</td><td>15–21</td><td>29 (7ZC0, 8S97, 8S9D)</td><td>35 (Шмитт)</td></tr>
+<tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Шмитт)</td></tr></tbody></table></article>
+<article data-lang="es" hidden><div class="eyebrow">proyecto paralelo · <span class="chip ok">hecho: PDB + COD</span></div>
+<h1>Cristales reales: ¿cuánto se acerca la naturaleza a las teselas récord?</h1>
+<p class="muted">En un cristal, las moléculas de proteína son copias unas de otras colocadas por un grupo espacial: justo el planteamiento del <a href="faces.html">problema 4</a>. Tomemos la celda de Voronói de cada molécula: los puntos más cercanos a ella que a cualquier otra molécula. Estas celdas son poliedros convexos congruentes que llenan el espacio (estereoedros). Cada cara es una molécula vecina. Los estereoedros récord son celdas de puntos elegidos a mano. Aquí los puntos los elige la naturaleza. Miramos dos tipos de puntos: centros de moléculas de proteína (PDB) y átomos individuales (COD).</p>
+<h2>Parte 1. Moléculas de proteína (PDB)</h2>
+<h3>Cómo lo calculamos</h3>
+<ul><li>Para cada estructura de rayos X del <a href="https://www.rcsb.org">Protein Data Bank</a> en un grupo dado tomamos la celda, el grupo y los átomos Cα.</li>
+<li>La molécula se representa por el centro de la unidad asimétrica. Construimos la celda de Voronói de su órbita con el mismo código que en el problema 4.</li>
+<li>Las 12 celdas con más caras de cada grupo se recomprobaron con aritmética racional exacta. Todos los números se confirmaron.</li></ul>
+<h3>Resultados</h3>
+<table><thead><tr><th>Grupo</th><th>Estructuras</th><th>Típico</th><th>Máximo en proteínas</th><th>Estereoedro récord</th></tr></thead><tbody>
+<tr><td>I4<sub>1</sub>32 (cúbico)</td><td>146</td><td>17</td><td>20 (1JKY, 4PPI)</td><td>38 (Engel)</td></tr>
+<tr><td>I4<sub>1</sub>22</td><td>1117</td><td>15–21</td><td>29 (7ZC0, 8S97, 8S9D)</td><td>35 (Schmitt)</td></tr>
+<tr><td>P6<sub>1</sub>22</td><td>3235</td><td>16–17</td><td>31 (4UX6, 8GS1)</td><td>34 (Schmitt)</td></tr></tbody></table></article>
+
+<div class="hists" id="hists"></div>
+
+<article data-lang="en"><h3>What we see</h3>
+<ul><li>Most molecules have <b>15–18 face neighbours</b>.</li>
+<li>In the non-cubic groups a few crystals come within <b>83–91% of the record</b>. They always have strongly elongated or flattened lattices (c/a ≈ 0.3–0.55 or ≈ 1.55). That is the same regime where the record stereohedra live.</li>
+<li>In the cubic group I4<sub>1</sub>32 nature stays far away: 20 faces against Engel’s 38.</li></ul>
+<p>See the cells in 3D, with their full crystal packings, in the <a href="catalog.html#pdb4ux6">catalog</a>: 4UX6 (31 faces), 8S97 (29) and 1JKY (20).</p>
+<h3>Caveats</h3>
+<ul><li>The “centre of a molecule” is the centre of the deposited asymmetric unit. That unit can contain several chains, or only part of a biological assembly. Splitting it into chains would change the counts.</li>
+<li>A Voronoi cell of centres is a geometric idealisation. Real molecular contacts depend on shape, not only on the position of the centre.</li></ul>
+<p class="small muted">Data: RCSB PDB (Berman et al., Nucleic Acids Res. 28 (2000) 235–242). Code and full tables: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/bio/RESULTS.md">research/bio/RESULTS.md</a>.</p></article>
+<article data-lang="ru" hidden><h3>Что видно</h3>
+<ul><li>У большинства молекул <b>15–18 соседей по граням</b>.</li>
+<li>В некубических группах отдельные кристаллы доходят до <b>83–91% рекорда</b>. Это всегда сильно вытянутые или сплюснутые решётки (c/a ≈ 0,3–0,55 или ≈ 1,55) — те же условия, в которых живут рекордные стереоэдры.</li>
+<li>В кубической группе I4<sub>1</sub>32 природа далеко: 20 граней против 38 у Энгеля.</li></ul>
+<p>Ячейки в 3D, с полной упаковкой кристалла, есть в <a href="catalog.html#pdb4ux6">каталоге</a>: 4UX6 (31 грань), 8S97 (29) и 1JKY (20).</p>
+<h3>Оговорки</h3>
+<ul><li>«Центр молекулы» — центр депонированной асимметричной единицы. В ней бывает несколько цепей или только часть биологического комплекса. Разбиение на цепи изменило бы числа.</li>
+<li>Ячейка Вороного центров — геометрическая идеализация. Реальные контакты молекул зависят от формы, а не только от положения центра.</li></ul>
+<p class="small muted">Данные: RCSB PDB (Berman et al., Nucleic Acids Res. 28 (2000) 235–242). Код и полные таблицы: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/bio/RESULTS.md">research/bio/RESULTS.md</a>.</p></article>
+<article data-lang="es" hidden><h3>Lo que se ve</h3>
+<ul><li>La mayoría de las moléculas tienen <b>15–18 vecinos por cara</b>.</li>
+<li>En los grupos no cúbicos algunos cristales llegan al <b>83–91% del récord</b>. Siempre tienen redes muy alargadas o aplastadas (c/a ≈ 0,3–0,55 o ≈ 1,55): el mismo régimen en el que viven los estereoedros récord.</li>
+<li>En el grupo cúbico I4<sub>1</sub>32 la naturaleza queda lejos: 20 caras frente a las 38 de Engel.</li></ul>
+<p>Las celdas en 3D, con el empaquetamiento completo del cristal, están en el <a href="catalog.html#pdb4ux6">catálogo</a>: 4UX6 (31 caras), 8S97 (29) y 1JKY (20).</p>
+<h3>Advertencias</h3>
+<ul><li>El «centro de la molécula» es el centro de la unidad asimétrica depositada. Esa unidad puede contener varias cadenas o solo parte de un complejo biológico. Separarla en cadenas cambiaría los números.</li>
+<li>Una celda de Voronói de centros es una idealización geométrica. Los contactos reales dependen de la forma, no solo de la posición del centro.</li></ul>
+<p class="small muted">Datos: RCSB PDB (Berman et al., Nucleic Acids Res. 28 (2000) 235–242). Código y tablas completas: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/bio/RESULTS.md">research/bio/RESULTS.md</a>.</p></article>
+<article data-lang="en"><h2>Part 2. Atoms in crystals (COD)</h2>
+<p>Every atom position has an orbit under the space group, and the Voronoi cell of that orbit is again a stereohedron. We took all crystals from the <a href="https://www.crystallography.net">Crystallography Open Database</a> in 14 space groups with large records: 4800 crystals, about 125 000 atom positions (hydrogen excluded). As a baseline we used random points at the same lattice proportions. The 42 most-faceted cells were re-checked in exact arithmetic, and all were confirmed.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Group</th><th>Record</th><th>Crystals</th><th>Max in COD</th><th>≥ max: found / expected at random</th><th>Mean faces: COD / random</th></tr></thead><tbody><tr><td>I4<sub>1</sub>32</td><td>38</td><td>46</td><td>28</td><td>2 / 1.3</td><td>17.25 / 17.19</td></tr><tr><td>I4<sub>1</sub>22</td><td>35</td><td>133</td><td>29</td><td>1 / 0.8</td><td>17.39 / 17.51</td></tr><tr><td>P6<sub>1</sub>22</td><td>34</td><td>157</td><td>30</td><td>3 / 5.8</td><td>16.69 / 16.63</td></tr><tr><td>P6<sub>5</sub>22</td><td>34</td><td>145</td><td>31</td><td>3 / 4.1</td><td>16.82 / 16.72</td></tr><tr><td>I-42d</td><td>33</td><td>501</td><td>28</td><td>2 / –</td><td>16.76 / 16.92</td></tr><tr><td>P4<sub>3</sub>32</td><td>29</td><td>92</td><td>25</td><td>1 / 1.3</td><td>15.39 / 15.69</td></tr><tr><td>P4<sub>1</sub>32</td><td>29</td><td>91</td><td>25</td><td>1 / 2.1</td><td>15.32 / 15.62</td></tr><tr><td>I4<sub>1</sub>cd</td><td>24</td><td>188</td><td>22</td><td>1 / 3.8</td><td>15.48 / 15.50</td></tr><tr><td>I2<sub>1</sub>3</td><td>24</td><td>107</td><td><b>24</b></td><td>1 / 1.9</td><td>14.39 / 14.84</td></tr><tr><td>P2<sub>1</sub>3</td><td>24</td><td>596</td><td><b>24</b></td><td>6 / 13.7</td><td>12.79 / 12.86</td></tr><tr><td>P4<sub>1</sub>2<sub>1</sub>2</td><td>29</td><td>964</td><td>26</td><td>4 / –</td><td>16.16 / 16.13</td></tr><tr><td>P4<sub>3</sub>2<sub>1</sub>2</td><td>29</td><td>852</td><td>26</td><td>4 / –</td><td>16.07 / 16.06</td></tr><tr><td>I4<sub>1</sub></td><td>26</td><td>135</td><td><b>26</b></td><td>38 / 71</td><td>18.08 / 17.96</td></tr><tr><td>P3<sub>1</sub>21</td><td>25</td><td>546</td><td>24</td><td>6 / 4.7</td><td>15.55 / 15.66</td></tr></tbody></table></div>
+<p class="small muted">Max: atoms in general position with full occupancy. A dash: random points reach this value less often than 1 in 3000.</p>
+<h3>What we see</h3>
+<ul><li><b>By this measure, atom positions behave like random points.</b> In every group the mean face count matches the random baseline to within 0.3, and the number of many-faced cells matches what chance predicts.</li>
+<li><b>The group record is reached in three groups</b>: I2<sub>1</sub>3, P2<sub>1</sub>3 and I4<sub>1</sub>. In each of them the record region is large enough that such hits are expected; in I4<sub>1</sub> about 1% of random points reach 26 faces. One example is in the <a href="catalog.html#cod7223002">catalog</a>: the carbon atom C10 in COD 7223002, with 24 faces.</li>
+<li>In groups with high records (38, 35, 34) the record cells are very rare for random points, and crystals stop at 74–91% of the record.</li>
+<li>In P2<sub>1</sub>3 every atom in general position has an even number of faces. Neighbours g·x and g<sup>−1</sup>·x always come in pairs, and the group has no involutions that could merge a pair. This is elementary, but it explains histograms where every other bar is empty.</li></ul>
+<p>Earlier work (Blatov, Serezhkin and coauthors) collected large statistics of Voronoi cells of atoms built from <i>all</i> atoms of a structure, where 14 faces is the most common. We found no comparison of single-orbit cells with the record of each group.</p>
+<p class="small muted">Data: COD (Gražulis et al., Nucleic Acids Res. 40 (2012) D420–D427). Code and full tables: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/cod/RESULTS.md">research/cod/RESULTS.md</a>.</p></article>
+<article data-lang="ru" hidden><h2>Часть 2. Атомы в кристаллах (COD)</h2>
+<p>У каждой позиции атома есть орбита под пространственной группой, и ячейка Вороного этой орбиты — тоже стереоэдр. Мы взяли все кристаллы из <a href="https://www.crystallography.net">Crystallography Open Database</a> в 14 пространственных группах с большими рекордами: 4800 кристаллов, около 125 000 позиций атомов (водород исключён). Для сравнения брали случайные точки при тех же пропорциях решётки. 42 самые многогранные ячейки перепроверены точной арифметикой, все подтвердились.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Группа</th><th>Рекорд</th><th>Кристаллов</th><th>Максимум в COD</th><th>≥ максимума: найдено / ожидалось случайно</th><th>Среднее граней: COD / случайные</th></tr></thead><tbody><tr><td>I4<sub>1</sub>32</td><td>38</td><td>46</td><td>28</td><td>2 / 1,3</td><td>17,25 / 17,19</td></tr><tr><td>I4<sub>1</sub>22</td><td>35</td><td>133</td><td>29</td><td>1 / 0,8</td><td>17,39 / 17,51</td></tr><tr><td>P6<sub>1</sub>22</td><td>34</td><td>157</td><td>30</td><td>3 / 5,8</td><td>16,69 / 16,63</td></tr><tr><td>P6<sub>5</sub>22</td><td>34</td><td>145</td><td>31</td><td>3 / 4,1</td><td>16,82 / 16,72</td></tr><tr><td>I-42d</td><td>33</td><td>501</td><td>28</td><td>2 / –</td><td>16,76 / 16,92</td></tr><tr><td>P4<sub>3</sub>32</td><td>29</td><td>92</td><td>25</td><td>1 / 1,3</td><td>15,39 / 15,69</td></tr><tr><td>P4<sub>1</sub>32</td><td>29</td><td>91</td><td>25</td><td>1 / 2,1</td><td>15,32 / 15,62</td></tr><tr><td>I4<sub>1</sub>cd</td><td>24</td><td>188</td><td>22</td><td>1 / 3,8</td><td>15,48 / 15,50</td></tr><tr><td>I2<sub>1</sub>3</td><td>24</td><td>107</td><td><b>24</b></td><td>1 / 1,9</td><td>14,39 / 14,84</td></tr><tr><td>P2<sub>1</sub>3</td><td>24</td><td>596</td><td><b>24</b></td><td>6 / 13,7</td><td>12,79 / 12,86</td></tr><tr><td>P4<sub>1</sub>2<sub>1</sub>2</td><td>29</td><td>964</td><td>26</td><td>4 / –</td><td>16,16 / 16,13</td></tr><tr><td>P4<sub>3</sub>2<sub>1</sub>2</td><td>29</td><td>852</td><td>26</td><td>4 / –</td><td>16,07 / 16,06</td></tr><tr><td>I4<sub>1</sub></td><td>26</td><td>135</td><td><b>26</b></td><td>38 / 71</td><td>18,08 / 17,96</td></tr><tr><td>P3<sub>1</sub>21</td><td>25</td><td>546</td><td>24</td><td>6 / 4,7</td><td>15,55 / 15,66</td></tr></tbody></table></div>
+<p class="small muted">Максимум — по атомам в общей позиции с полной заселённостью. Прочерк: случайные точки дают это значение реже, чем 1 из 3000.</p>
+<h3>Что видно</h3>
+<ul><li><b>По этой мере положения атомов ведут себя как случайные точки.</b> В каждой группе среднее число граней совпадает со случайными точками с точностью до 0,3, а число очень многогранных ячеек — с тем, что предсказывает случай.</li>
+<li><b>Рекорд группы достигнут в трёх группах</b>: I2<sub>1</sub>3, P2<sub>1</sub>3 и I4<sub>1</sub>. В каждой из них рекордная область достаточно велика, чтобы такие попадания были ожидаемы; в I4<sub>1</sub> 26 граней даёт около 1% случайных точек. Пример есть в <a href="catalog.html#cod7223002">каталоге</a>: атом углерода C10 в COD 7223002, 24 грани.</li>
+<li>В группах с высокими рекордами (38, 35, 34) рекордные ячейки у случайных точек крайне редки, и кристаллы останавливаются на 74–91% рекорда.</li>
+<li>В P2<sub>1</sub>3 у каждого атома в общей позиции чётное число граней. Соседи g·x и g<sup>−1</sup>·x всегда идут парами, а инволюций, которые могли бы слить пару в одну грань, в группе нет. Это элементарно, но объясняет гистограммы, где пуст каждый второй столбец.</li></ul>
+<p>В прежних работах (Блатов, Сережкин и соавторы) собрана большая статистика ячеек Вороного атомов, построенных по <i>всем</i> атомам структуры; там чаще всего 14 граней. Сравнения ячеек одной орбиты с рекордом каждой группы мы не нашли.</p>
+<p class="small muted">Данные: COD (Gražulis et al., Nucleic Acids Res. 40 (2012) D420–D427). Код и полные таблицы: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/cod/RESULTS.md">research/cod/RESULTS.md</a>.</p></article>
+<article data-lang="es" hidden><h2>Parte 2. Átomos en cristales (COD)</h2>
+<p>Cada posición atómica tiene una órbita bajo el grupo espacial, y la celda de Voronói de esa órbita vuelve a ser un estereoedro. Tomamos todos los cristales de la <a href="https://www.crystallography.net">Crystallography Open Database</a> en 14 grupos espaciales con récords altos: 4800 cristales, unas 125 000 posiciones atómicas (sin hidrógeno). Como referencia usamos puntos aleatorios con las mismas proporciones de red. Las 42 celdas con más caras se recomprobaron con aritmética exacta, y todas se confirmaron.</p>
+<div style="overflow-x:auto"><table><thead><tr><th>Grupo</th><th>Récord</th><th>Cristales</th><th>Máximo en COD</th><th>≥ máximo: encontrados / esperados al azar</th><th>Media de caras: COD / aleatorios</th></tr></thead><tbody><tr><td>I4<sub>1</sub>32</td><td>38</td><td>46</td><td>28</td><td>2 / 1,3</td><td>17,25 / 17,19</td></tr><tr><td>I4<sub>1</sub>22</td><td>35</td><td>133</td><td>29</td><td>1 / 0,8</td><td>17,39 / 17,51</td></tr><tr><td>P6<sub>1</sub>22</td><td>34</td><td>157</td><td>30</td><td>3 / 5,8</td><td>16,69 / 16,63</td></tr><tr><td>P6<sub>5</sub>22</td><td>34</td><td>145</td><td>31</td><td>3 / 4,1</td><td>16,82 / 16,72</td></tr><tr><td>I-42d</td><td>33</td><td>501</td><td>28</td><td>2 / –</td><td>16,76 / 16,92</td></tr><tr><td>P4<sub>3</sub>32</td><td>29</td><td>92</td><td>25</td><td>1 / 1,3</td><td>15,39 / 15,69</td></tr><tr><td>P4<sub>1</sub>32</td><td>29</td><td>91</td><td>25</td><td>1 / 2,1</td><td>15,32 / 15,62</td></tr><tr><td>I4<sub>1</sub>cd</td><td>24</td><td>188</td><td>22</td><td>1 / 3,8</td><td>15,48 / 15,50</td></tr><tr><td>I2<sub>1</sub>3</td><td>24</td><td>107</td><td><b>24</b></td><td>1 / 1,9</td><td>14,39 / 14,84</td></tr><tr><td>P2<sub>1</sub>3</td><td>24</td><td>596</td><td><b>24</b></td><td>6 / 13,7</td><td>12,79 / 12,86</td></tr><tr><td>P4<sub>1</sub>2<sub>1</sub>2</td><td>29</td><td>964</td><td>26</td><td>4 / –</td><td>16,16 / 16,13</td></tr><tr><td>P4<sub>3</sub>2<sub>1</sub>2</td><td>29</td><td>852</td><td>26</td><td>4 / –</td><td>16,07 / 16,06</td></tr><tr><td>I4<sub>1</sub></td><td>26</td><td>135</td><td><b>26</b></td><td>38 / 71</td><td>18,08 / 17,96</td></tr><tr><td>P3<sub>1</sub>21</td><td>25</td><td>546</td><td>24</td><td>6 / 4,7</td><td>15,55 / 15,66</td></tr></tbody></table></div>
+<p class="small muted">Máximo: átomos en posición general con ocupación completa. Guion: los puntos aleatorios alcanzan este valor menos de 1 vez en 3000.</p>
+<h3>Lo que se ve</h3>
+<ul><li><b>Según esta medida, las posiciones atómicas se comportan como puntos aleatorios.</b> En cada grupo la media de caras coincide con la de los puntos aleatorios con un margen de 0,3, y el número de celdas con muchas caras coincide con lo que predice el azar.</li>
+<li><b>El récord del grupo se alcanza en tres grupos</b>: I2<sub>1</sub>3, P2<sub>1</sub>3 e I4<sub>1</sub>. En todos ellos la región del récord es lo bastante grande como para que estos aciertos sean esperables; en I4<sub>1</sub> alrededor del 1% de los puntos aleatorios llega a 26 caras. Hay un ejemplo en el <a href="catalog.html#cod7223002">catálogo</a>: el átomo de carbono C10 de COD 7223002, con 24 caras.</li>
+<li>En los grupos con récords altos (38, 35, 34) las celdas récord son muy raras para puntos aleatorios, y los cristales se quedan en el 74–91% del récord.</li>
+<li>En P2<sub>1</sub>3 todo átomo en posición general tiene un número par de caras. Los vecinos g·x y g<sup>−1</sup>·x siempre van en pareja, y el grupo no tiene involuciones que puedan fundir una pareja. Es elemental, pero explica los histogramas en los que una de cada dos barras está vacía.</li></ul>
+<p>Trabajos anteriores (Blatov, Serezhkin y coautores) reunieron grandes estadísticas de celdas de Voronói de átomos construidas con <i>todos</i> los átomos de la estructura, donde lo más frecuente son 14 caras. No encontramos ninguna comparación de celdas de una sola órbita con el récord de cada grupo.</p>
+<p class="small muted">Datos: COD (Gražulis et al., Nucleic Acids Res. 40 (2012) D420–D427). Código y tablas completas: <a href="https://github.com/VladimirMoor/GEOTILES/blob/main/research/cod/RESULTS.md">research/cod/RESULTS.md</a>.</p></article>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">
+import { setupPage, problemTabs } from './js/ui.js';
+import { L } from './js/i18n.js';
+setupPage('research'); problemTabs('bio');
+// гистограммы числа граней (research/bio/data/dv_*.json); пунктир — рекордный стереоэдр группы
+const H = [
+  ['I4₁32', 38, { 15: 9, 16: 31, 17: 86, 18: 10, 19: 8, 20: 2 }],
+  ['I4₁22', 35, { 14: 111, 15: 219, 16: 189, 17: 70, 18: 79, 19: 158, 20: 81, 21: 149, 22: 14, 23: 31, 24: 5, 25: 3, 26: 3, 28: 2, 29: 3 }],
+  ['P6₁22', 34, { 13: 92, 14: 178, 15: 318, 16: 868, 17: 970, 18: 406, 19: 223, 20: 84, 21: 56, 22: 36, 24: 1, 30: 1, 31: 2 }],
+];
+const T = {
+  head: { en: 'Protein crystals: number of structures by face count', ru: 'Белки: число структур по числу граней', es: 'Proteínas: número de estructuras por número de caras' },
+  rec: { en: 'dashed: record', ru: 'пунктир — рекорд', es: 'discontinua: récord' },
+  n: { en: 'structures', ru: 'структур', es: 'estructuras' },
+  f: { en: 'faces', ru: 'граней', es: 'caras' },
+};
+const lo = 13, hi = 38;
+document.getElementById('hists').innerHTML = `<h2 style="margin-bottom:0">${L(T.head)}</h2>` + H.map(([g, rec, h]) => {
+  const total = Object.values(h).reduce((a, b) => a + b, 0), mx = Math.max(...Object.values(h));
+  let bars = '', axis = '';
+  for (let k = lo; k <= hi; k++) {
+    const c = h[k] || 0;
+    const tip = `${k} ${L(T.f)}: ${c} ${L(T.n)}`;
+    bars += k === rec ? `<i class="rec" title="${tip}"></i>` : `<i title="${tip}" style="height:${c ? Math.max(3, 100 * c / mx) : 0}%"></i>`;
+    axis += `<span>${k % 5 === 0 || k === rec ? k : ''}</span>`;
+  }
+  return `<div class="hist"><h3>${g} <span>· ${total} ${L(T.n)} · ${L(T.rec)} ${rec}</span></h3><div class="hbars">${bars}</div><div class="haxis">${axis}</div></div>`;
+}).join('');
+</script>
+</body>
+</html>

@@ -95,5 +95,5 @@ export async function problemTabs(active) {
   else if (active > 0) document.title = `${String(active).padStart(2, '0')} · ${L(PROBLEMS[active - 1][0])} · GEOTILES`;
   el.innerHTML = `<a href="research.html" class="${active === 0 ? 'on' : ''}">${L(all)}</a>` +
     PAGES.map((href, i) => `<a href="${href}" class="${active === i + 1 ? 'on' : ''}"><b>${String(i + 1).padStart(2, '0')}</b> ${L(PROBLEMS[i][0])}</a>`).join('') +
-    `<a href="proteins.html" class="${active === 'bio' ? 'on' : ''}"><b>+</b> ${L(SIDE.title)}</a>`;
+    `<a href="crystals.html" class="${active === 'bio' ? 'on' : ''}"><b>+</b> ${L(SIDE.title)}</a>`;
 }

@@ -15,7 +15,7 @@ Open research on tilings. We work through a list of open problems about shapes t
 | 5 | Periodic tiling conjecture in dimension 3 | resolved (preprint) | Counterexample by OpenAI (Sept 2026, not yet verified by people). Demaine–Langerman (Oct 2026) proved translational monotiling of ℝ³ undecidable. | — |
 | 6–9 | Voronoi conjecture; full classification; decidability; boundedness of Heesch numbers | open | — | — |
 
-Side project: Dirichlet cells of protein molecules in PDB crystals (`research/bio/`).
+Side project: Dirichlet cells in real crystals: protein molecules from the PDB (`research/bio/`) and atoms from the COD (`research/cod/`).
 
 ## The site
 
@@ -30,7 +30,8 @@ docs/                 static site (no build step)
   js/                 geometry, tiling, three.js viewer, i18n, catalog data
   paper/              compiled preprints and notes
 research/p1/ … p4/    pipelines and RESULTS.md for problems 1–4
-research/bio/         protein crystals from the PDB (site page: proteins.html)
+research/bio/         protein crystals from the PDB (site page: crystals.html)
+research/cod/         atom orbits in COD crystals (site page: crystals.html)
 research/paper*/      LaTeX sources of the preprint and notes
 scripts/serve.py      local no-cache dev server
 tools/                external tools (plantri, heesch-sat), git-ignored

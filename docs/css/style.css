@@ -231,3 +231,4 @@ a.pcard:hover { text-decoration: none; border-color: var(--ink-3); }
 .hbars i.rec { background: none; border: 2px dashed var(--warn); border-bottom: 0; height: 100%; }
 .haxis { display: flex; gap: 2px; font-family: var(--mono); font-size: .7rem; color: var(--ink-3); margin-top: 4px; }
 .haxis span { flex: 1; text-align: center; min-width: 0; overflow: visible; white-space: nowrap; }
+@media (max-width: 640px) { .doc table { display: block; overflow-x: auto; } }

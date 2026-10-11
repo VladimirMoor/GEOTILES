@@ -33,7 +33,7 @@ document.getElementById('pcards').innerHTML = PROBLEMS.map(([title, desc, s, c],
   const tag = PAGES[i] ? 'a' : 'div';
   return `<${tag} class="pcard ${PAGES[i] ? '' : 'dim'}" ${PAGES[i] ? `href="${PAGES[i]}"` : ''}><div class="n">${String(i + 1).padStart(2, '0')}</div>
     <div><h3>${L(title)}</h3><p>${L(desc)}</p></div><span class="chip ${c}">${L(STATUS[s])}</span></${tag}>`;
-}).join('') + `<a class="pcard" href="proteins.html"><div class="n">+</div><div><h3>${L(SIDE.title)}</h3><p>${L(SIDE.desc)}</p></div><span class="chip ok">${L(SIDE.chip)}</span></a>`;
+}).join('') + `<a class="pcard" href="crystals.html"><div class="n">+</div><div><h3>${L(SIDE.title)}</h3><p>${L(SIDE.desc)}</p></div><span class="chip ok">${L(SIDE.chip)}</span></a>`;
 </script>
 </body>
 </html>
