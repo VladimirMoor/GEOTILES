@@ -7,7 +7,7 @@ Ideas for later. For every item, the first step is to check the literature for e
 - **Problem 5 (3D periodic tiling conjecture).** Independently verify the OpenAI counterexample (Sept 2026) before putting it in the catalog.
 
 ## Next up
-- **Complete cell topology: tissue against foam against grains or random Voronoi** (requested 12 Oct 2026; to do in one of the next steps).
+- **Complete cell topology: tissue against foam against grains or random Voronoi.** *Done 12 Oct 2026 (Potts coarsening as the foam model): tissue is much closer to random than to foam; see `research/tissue/RESULTS.md`. Still open: real foam tomography (Zenodo 15564270, 40 GB, would need segmentation) and the SrTiO₃ grains (Globus login).*
   - Compare Weinberg codes, symmetry orders and p-vectors, with the same machinery as `research/tissue/topology.py`, across three systems:
     - our tissues (PlantSeg ovules, 31 volumes, already done);
     - real foams (open X-ray tomography data, if any exists);

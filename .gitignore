@@ -30,3 +30,4 @@ research/cod/data/cache/
 research/tissue/data/raw/
 research/tissue/data/topo_poisson.json
 research/p4/data/nondv/*.npy
+research/tissue/data/potts/

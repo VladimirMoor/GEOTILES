@@ -1,0 +1,5 @@
+step 100: grains 12311, 54 s
+step 200: grains 4988, 111 s
+step 400: grains 1723, 226 s
+step 700: grains 681, 392 s
+step 1000: grains 413, 558 s

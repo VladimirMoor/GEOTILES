@@ -99,3 +99,55 @@ Next steps (see BACKLOG):
 2. **Tissue does not behave like grain growth.** Lazar et al. found highly symmetric grains orders of magnitude more often than in Poisson–Voronoi; in tissue, at fixed F, the excess over Poisson is at most 1.5×, and it is the same for the Voronoi of the centres.
 3. **The distinctive feature of tissue is a population of small cells with few faces:** tetrahedra, triangular prisms, 6- and 7-faced cells. By the Lewis-law data, cells with 4–6 faces have 7–16% of the mean volume. They are almost absent in both Voronoi models. They are present in the manually proofread ground truth, but we cannot exclude segmentation artefacts.
 4. **The repaired and strict variants agree in every measure,** so the conclusions do not depend on the repair step.
+
+## Tissue vs coarsening foam vs random cells: complete topology (2026-10-12)
+
+**Question.** Is a plant tissue topologically like a foam, or like a random tessellation? Matzke compared tissue cells and foam bubbles by hand, using face counts and face types. Lazar et al. (PRL 2012) showed with Weinberg codes that coarsened grains are far more often symmetric than Poisson–Voronoi cells. Kraynik–Reinelt–van Swol (2003) compared simulated foam with Matzke's data. **We found no comparison of tissue and foam by complete cell topology.**
+
+**Systems.** All four are processed by the same voxel pipeline (`topology.py`):
+- tissue: 31 PlantSeg ovules;
+- coarsening foam or grains: a 3D Potts model (`potts.py`), periodic box, 26-neighbour energy, kT = 0.5. It starts from a Voronoi tessellation of 40 000 seeds, and grains grow by curvature-driven coarsening, as in grain growth and foam ageing. Two runs:
+  - 180³ box, snapshots at 400, 700 and 1000 steps;
+  - 300³ box at tissue resolution, snapshots at 1400, 1800 and 2200 steps, i.e. 1027 → 489 grains of 26–55 thousand voxels;
+- Poisson–Voronoi drawn in voxels at tissue resolution: 6 boxes of 300³ with 900 seeds each, about 30 000 voxels per cell;
+- exact Poisson–Voronoi (Delaunay), for reference.
+
+**Calibration of the pipeline** (voxelised Poisson–Voronoi against exact values: 15.5 faces, 8.5% symmetric):
+
+| cell diameter (voxels) | resolved | mean F | symmetric |
+|---|---|---|---|
+| 12 | 31% | 13.4 | 17.3% |
+| 17 | 48% | 14.1 | 15.4% |
+| 24 | 60% | 14.6 | 12.4% |
+| 31 (≈ tissue, which has a median of 31 000 voxels, ≈ 39 across) | 73% | 14.9 | 10.7% |
+
+The pipeline loses small faces at coarse resolution, so cells look simpler and more symmetric. **This also biased our earlier tissue-vs-exact-Voronoi comparison.** Systems must be compared at equal resolution through the same pipeline, which is what the table below does.
+
+**Result: share of cells with non-trivial symmetry at fixed F** (in brackets, distinct types among 100 random cells with that F):
+
+| F | tissue | foam (Potts, 300³) | foam (Potts, 180³) | random, voxels | random, exact |
+|---|---|---|---|---|---|
+| 10 | 0.58 (47) | 0.82 (32) | 0.76 (25) | – | 0.50 (54) |
+| 11 | 0.35 (76) | 0.55 (54) | 0.59 (35) | 0.20 (80) | 0.30 (75) |
+| 12 | 0.24 (81) | 0.35 (74) | 0.41 (70) | 0.21 (97) | 0.19 (92) |
+| 13 | 0.15 (94) | 0.18 (85) | 0.27 (79) | 0.11 (96) | 0.10 (96) |
+| 14 | 0.08 (100) | – | 0.19 (99) | 0.06 (100) | 0.06 (100) |
+| all cells | 0.199 | 0.448 | 0.470 | 0.115 | 0.085 |
+| mean F ± sd | 13.8 ± 3.4 | 12.6 ± 4.9 | 12.5 ± 4.7 | 14.7 ± 3.2 | 15.5 ± 3.3 |
+
+**Checks.**
+- Potts at kT = 0.9 gives the same picture: 47% symmetric overall; at F = 11, 12 and 13: 0.60, 0.46 and 0.25. So it is not a temperature or roughening artefact.
+- Perfect cubes, a possible lattice artefact, make up only 1–2% of the cells.
+
+**Conclusions.**
+1. **The coarsening foam (grain growth) is strongly ordered.** At fixed F it has 1.5–3 times more symmetric cells and fewer distinct types than random cells. Its face-count distribution is broad (sd 4.9). This agrees with Lazar et al.
+2. **Plant tissue is much closer to the random tessellation than to the coarsening foam.**
+   - At F ≥ 12 its symmetric share (0.24, 0.15, 0.08) lies between the voxel-random and foam values, but nearer to random.
+   - Its type diversity is close to random.
+   - Its face-count spread (3.4) is like random (3.2), not like foam (4.9).
+3. Tissue is somewhat more ordered than random at small F, for example F = 11: 0.35 against 0.20. Cell division and wall mechanics leave a weaker imprint than surface-tension-driven coarsening.
+
+**Caveats.**
+- Only one tissue type (ovules).
+- A Potts model stands in for foam; no real foam data was used. An open 40 GB raw foam tomography exists (Zenodo 15564270) but needs our own bubble segmentation.
+- Topology is resolved for 51% of tissue cells against 73% of voxel-random cells at the same resolution. The tissue sample may be biased toward cleaner cells.
