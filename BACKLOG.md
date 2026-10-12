@@ -13,7 +13,7 @@ Ideas for later. For every item, the first step is to check the literature for e
    - Compare with Poisson–Voronoi (mean 15.54 faces), Kelvin (14) and proteins (~17).
    - Look for scutoids (Gómez-Gálvez et al. 2018).
 3. **Virus capsids (VIPERdb).** *Checked 12 Oct 2026: thoroughly studied (Caspar–Klug, Mannige–Brooks, Twarock–Luque 2019). Covered as a review on the page `docs/nature.html`; a census of spherical Voronoi tilings of all PDB capsids would add little.* Tilings of the sphere: Caspar–Klug and Twarock's viral tiling theory. Classify the tilings that occur.
-4. **Zeolites (IZA plus hypothetical databases).** Natural tilings of frameworks into cages (Blatov, ToposPro). Add tiles to the catalog and look for records.
+4. **Zeolites (IZA plus hypothetical databases).** *Checked 12 Oct 2026: done by others. Natural tilings of all frameworks: Anurova et al. 2010 (194), review 2018 (239), TTT tile collection. Isohedral simple tilings: Delgado-Friedrichs & O'Keeffe 2005. Covered as a short section on `docs/nature.html`.* Natural tilings of frameworks into cages (Blatov, ToposPro). Add tiles to the catalog and look for records.
 5. **Foams and the Kelvin problem.** Is Weaire–Phelan optimal? Heavily studied (Kusner–Sullivan, Gabbrielli 2009). Low priority.
 6. **Insect wings (dragonfly venation).** Test whether the wing cells are exactly Voronoi cells, using inverse-Voronoi recognition. 2D and already studied.
 7. **Cosmic web (SDSS galaxies).** Voronoi face statistics against Poisson. Cosmology already uses Voronoi (ZOBOV, VIDE), so this is more a visual page than research.
