@@ -110,7 +110,46 @@ The point search is complete only for relations with Σaⱼ ≤ 7.
 
 ### Hexagonal prisms: a simplification
 
-**Lemma (numerical, to be proved).** An equilateral convex hexagon with alternating angle sum A + C + E = 360° is centrally symmetric. In 300 random samples, opposite angles were equal to 1e-6.
+**Lemma (proved 2026-10-12).** An equilateral convex hexagon V₁…V₆ with B + D + F = 360° (the angles at V₂, V₄, V₆) is centrally symmetric. It is in fact a zonogon: the union of three unit rhombi with a common vertex.
+
+*Proof.*
+- The ears V₁V₂V₃, V₃V₄V₅, V₅V₆V₁ are isosceles triangles with legs 1. Their apex angles sum to 360°, and each is below 180°.
+- Glue the three ears around a common apex O. Their bases form a triangle P₁P₂P₃ with O inside it. Its sides equal those of V₁V₃V₅, so the two triangles are congruent.
+- Let O′ be the image of O under this congruence. Then |O′V₁| = |O′V₃| = |O′V₅| = 1, and O′ lies inside V₁V₃V₅.
+- V₂ is at distance 1 from V₁ and V₃, and lies outside the triangle (the hexagon is convex). So V₂ is the reflection of O′ in V₁V₃: V₂ = V₁ + V₃ − O′. Likewise V₄ = V₃ + V₅ − O′ and V₆ = V₅ + V₁ − O′.
+- Hence V₂ + V₅ = V₄ + V₁ = V₆ + V₃ = V₁ + V₃ + V₅ − O′, which is central symmetry. ∎
+
+(The earlier numerical check was 300 random samples with opposite angles equal to 10⁻⁶.)
+
+**Codimension-1 strata all tile.** For a hexagon, a single relation covers all vertices together with its complement only if it is a triple summing to 360° (the complement is then also 360°). Up to symmetry there are three kinds of triples, and every equilateral hexagon of each kind tiles the plane:
+- adjacent, A + B + C = 360°: Reinhardt type 1, whose side conditions hold automatically for equilateral hexagons;
+- A + B + D = 360°: Reinhardt type 2, likewise;
+- alternating: centrally symmetric by the lemma, so a parallelohedron base.
+
+So every right equilateral hexagonal prism on a codimension-1 stratum tiles, by stacking layers. Any open case has dimension ≤ 1.
+
+**No one-parameter families: the residual is 0-dimensional (proved).**
+- Suppose relations Σ_j a_{r,j}γ_j = T_r, with T_r ∈ {360, 270, 180, 90}, together cover all vertices. Write c_v = Σ_r a_{r,v} ≥ 1 for the total coefficient of vertex v. Then
+  (n − 2)·180° + Σ_v (c_v − 1)γ_v = Σ_r T_r.
+- **Hexagons, two relations.** 720 + (extra) = T₁ + T₂ ≤ 720, so the extra term vanishes: the supports are disjoint, the coefficients are 1, and T₁ = T₂ = 360°. That is a split into two triples, which always tile (see above). A single relation cannot cover all vertices. **So every open right equilateral hexagonal prism is an isolated point**, where at least three relations hold.
+- **Pentagons, two relations.** T₁ + T₂ = 540 + (extra) ∈ {540, 630, 720}.
+  - Extra = 0 gives exactly the two known families: a pair summing to 180° (tiles) and a pair summing to 270° (open).
+  - Extra > 0 forces an additional equation, such as γ_v = 90°, so the solutions are isolated points.
+  - This rigorously confirms the earlier grid-based curve classification.
+
+**Isolated open hexagons** (`hexpoints.py`, `data/hexprisms_points_K*.json`). Grid 60³ in shape space; a cell is kept if ≥ 3 relations change sign in it; then a 3×3 Levenberg–Marquardt solve and the full filter, discarding the good triples.
+
+| relations with Σa ≤ | 3 | 4 | 5 |
+|---|---|---|---|
+| isolated open hexagons | 9 | 79 | 123 |
+
+Each list contains the previous one. The count grows with the coefficient bound: angles of equilateral hexagons can be small, so relations with large coefficients keep producing new points. **The residual is therefore apparently a countably infinite set of isolated points**, not a finite list. The same is likely true for the pentagons (5 points found with Σa ≤ 7).
+
+**Status of right equilateral prisms.** A prism tiles whenever its base tiles the plane. What remains open is:
+- one curve of pentagons (two non-adjacent angles summing to 270°);
+- countably many isolated pentagons and hexagons.
+
+All of these pass the dihedral-angle filter while their bases do not tile the plane, so each is a special case of Kuperberg's question (1993, still open). Closing them needs either a proof that such prisms do not tile (an obstruction stronger than the angle filter) or a tiling with mixed orientations.
 
 So the codimension-1 filter strata of right equilateral hexagonal prisms are:
 - adjacent triples summing to 360°, which tile the plane (Klaassen);
