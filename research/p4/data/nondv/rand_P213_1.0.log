@@ -1,0 +1,8 @@
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 41, "f_flow": 0.17690546110231964, "pairs": 10, "sec": 111.5}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 1041, "f_flow": 0.045600423849798566, "pairs": 21, "sec": 102.2}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 2041, "f_flow": 0.006911570668357722, "pairs": 50, "sec": 147.2}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 3041, "f_flow": 0.00986924163290993, "pairs": 29, "sec": 247.6}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 4041, "f_flow": 0.00021463574078195435, "pairs": 31, "dv_distance": 0.040112553968943976, "sec": 113.9}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 5041, "f_flow": 0.031022586438408606, "pairs": 30, "sec": 175.1}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 6041, "f_flow": 0.05887402965819469, "pairs": 33, "sec": 173.5}
+{"group": "P 21 3", "mode": "rand", "sigma": 1.0, "seed": 7041, "f_flow": 0.07514474544292898, "pairs": 18, "sec": 102.2}

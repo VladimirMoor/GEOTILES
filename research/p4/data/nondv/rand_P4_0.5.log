@@ -1,0 +1,4 @@
+{"group": "P 4", "mode": "rand", "sigma": 0.5, "seed": 71, "f_flow": 0.0012646797083443184, "pairs": 23, "sec": 184.0}
+{"group": "P 4", "mode": "rand", "sigma": 0.5, "seed": 1071, "f_flow": 0.15681685904903137, "pairs": 24, "sec": 188.6}
+{"group": "P 4", "mode": "rand", "sigma": 0.5, "seed": 2071, "f_flow": 0.002927410872030616, "pairs": 24, "sec": 142.2}
+{"group": "P 4", "mode": "rand", "sigma": 0.5, "seed": 3071, "f_flow": 0.00048508030330263185, "pairs": 26, "dv_distance": 0.05080793601647415, "sec": 157.3}

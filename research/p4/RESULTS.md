@@ -165,3 +165,32 @@ Near a DV tiling, every solution is again a tiling. Neighbouring copies meet alo
 **Status of route 1.**
 - Non-DV stereohedra cannot be reached from the DV records, either by deformation (exactly rigid) or by single flips (not realizable).
 - Finding them would need a global search over combinatorial types. That is open-ended, with low odds of success.
+
+## Route 2: global search by free facet planes, the "coverage flow" (2026-10-12)
+
+**Literature.** Bochiş and Santos remark that only Dirichlet stereohedra have been studied for facet counts, because no practical method for constructing non-Dirichlet ones is known. Schmitt (2016) lists as open whether every combinatorial type of stereohedron is realisable as a DV stereohedron. Known non-DV examples (gyrobifastigium and similar) are small and have non-trivial stabilisers.
+
+**Formulation** (`nondv.py`).
+- The tile P is a polyhedron with free facet planes. For each pair {γ, γ⁻¹} from a candidate set we choose a plane H_γ, and the plane of γ⁻¹ is γ⁻¹(H_γ). DV cells are the 3-parameter special case where H_γ is the bisector of x and γx.
+- **Objective.** J = Σ_{γ≠e} vol(P ∩ γP) + (V₀ − vol P). This equals, up to |Γ:L|, the variance per period of the number of copies covering a point. So J ≥ 0, and J = 0 exactly when P is a fundamental domain, i.e. a stereohedron with trivial stabiliser.
+- **Gradient** (`nondv_flow.py`). Moving a facet outwards by s(y) changes J by ∫ s (2N − 1) dA, where N is the number of other copies covering the point just outside the facet. This gives an exact gradient in the plane parameters: a facet is pushed outwards over holes and inwards over overlaps. Paired facets move consistently, by construction.
+- **Endgame.** A least-squares polish matches the vertices of γ(F_b) to those of F_a with a count-robust (chamfer) residual, and contracts sliver facets to zero area.
+- **Classification.** The nearest DV cell is fitted from the true facet neighbours. A near-solution counts as a candidate if vol(P Δ DV)/V₀ > 0.1.
+- **Independent check** (`nondv_verify.py`), applied to every candidate:
+  - random points must lie in exactly one copy;
+  - the true neighbours of each facet are determined by probing;
+  - face-to-face or not;
+  - a DV test against the true neighbours.
+
+**Bug found and fixed.** The first optimiser (Powell) reported several "non-DV fundamental domains". The independent check rejected all of them: 45–70% of the points were covered wrongly. The cause was that the overlap set was attached to the starting point while the tile drifted away. The overlap set now follows the current tile.
+
+**Results.**
+- Speed: 0.04 s per gradient step and 1–2 min per run. Powell took about 7 min per run and did not converge.
+- From perturbed DV cells, the flow returns to the DV family. Volume difference 2–4%, the remainder being unpolished slivers. This is consistent with the exact rigidity of route 1.
+- **P2₁3, 24 random starts** not tied to any DV cell: 3 reach near-tilings (J < 10⁻³), and all 3 lie within 2–4% of a DV cell. The other 21 stop in non-tiling local minima, J = 5·10⁻³ … 0.18.
+- **Control, P4, 12 runs.** Non-DV fundamental domains certainly exist here, but all 4 near-tilings found are again within 2–5% of DV cells.
+
+**Conclusion.**
+- The coverage flow is a working, verified way to reach fundamental domains from arbitrary starts.
+- Its attractors are DV cells, even in a group where non-DV fundamental domains are abundant. So the absence of non-DV hits says nothing about their existence.
+- A non-DV search needs an explicit bias away from the DV family, for example a repulsion term in the distance to the nearest DV cell, or prescribed non-DV combinatorics. We stop here. The method and the code remain for later.

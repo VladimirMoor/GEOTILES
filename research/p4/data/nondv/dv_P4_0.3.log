@@ -1,0 +1,4 @@
+{"group": "P 4", "mode": "dv", "sigma": 0.3, "seed": 81, "f_flow": 0.00044797297920421385, "pairs": 25, "dv_distance": 0.021627139920937566, "sec": 97.4}
+{"group": "P 4", "mode": "dv", "sigma": 0.3, "seed": 1081, "f_flow": 0.004391251530796336, "pairs": 23, "sec": 93.8}
+{"group": "P 4", "mode": "dv", "sigma": 0.3, "seed": 2081, "f_flow": Infinity, "pairs": 25, "sec": 0.0}
+{"group": "P 4", "mode": "dv", "sigma": 0.3, "seed": 3081, "f_flow": Infinity, "pairs": 23, "sec": 0.0}

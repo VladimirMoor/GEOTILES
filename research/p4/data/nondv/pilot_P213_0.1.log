@@ -1,0 +1,2 @@
+{"group": "P 21 3", "sigma": 0.1, "seed": 11, "f": 3.83026943495679e-15, "nfev": 6000, "sec": 414.5, "pairs": 29, "facets": 12, "vol_ratio": 1.0000000000000038, "dv_residual": 0.19489585509430357}
+{"group": "P 21 3", "sigma": 0.1, "seed": 1011, "f": 0.0, "nfev": 6000, "sec": 432.5, "pairs": 33, "facets": 11, "vol_ratio": 1.0, "dv_residual": 0.5155761423052306}

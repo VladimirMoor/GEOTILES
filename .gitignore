@@ -29,3 +29,4 @@ research/cod/data/cache/
 # tissue datasets (PlantSeg, OSF)
 research/tissue/data/raw/
 research/tissue/data/topo_poisson.json
+research/p4/data/nondv/*.npy
