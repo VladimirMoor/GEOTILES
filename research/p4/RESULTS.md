@@ -194,3 +194,27 @@ Near a DV tiling, every solution is again a tiling. Neighbouring copies meet alo
 - The coverage flow is a working, verified way to reach fundamental domains from arbitrary starts.
 - Its attractors are DV cells, even in a group where non-DV fundamental domains are abundant. So the absence of non-DV hits says nothing about their existence.
 - A non-DV search needs an explicit bias away from the DV family, for example a repulsion term in the distance to the nearest DV cell, or prescribed non-DV combinatorics. We stop here. The method and the code remain for later.
+
+## Side question: the most compact stereohedron (2026-10-12)
+
+**Question.** Among convex polyhedra that tile space by translations alone (parallelohedra), the regular truncated octahedron has the least surface area at fixed volume. In units of area/volume^(2/3) the minimum is 3(1+2√3)/4^(2/3) ≈ 5.31474.
+- This is Bezdek's conjecture (2006), proved in September 2026 by Hales–Song (arXiv:2609.00997) and by Cesaroni–Novaga (arXiv:2609.02384).
+- What happens when rotations are allowed, i.e. for stereohedra? We found no discussion of this in the literature.
+
+**Computation** (`iq_search.py`, logs in `data/iq/`).
+- **Class.** DV stereohedra of all 156 space groups 75–230, with any Wyckoff position (special positions included, so stabilisers may be non-trivial) and c/a ∈ [0.3, 3].
+- **Search.** For each group:
+  - 200 random generic points;
+  - points on every affine subspace fixed by a group element, and on intersections of pairs of them;
+  - Nelder–Mead refinement of the 6 best candidates of each kind.
+- **Sanity checks.** Im-3m and I4₁32 give exactly the truncated octahedron (5.31474). Fm-3m gives the rhombic dodecahedron (5.3454). A first version that sampled only generic points missed the truncated octahedron, because the DV cell jumps at special positions.
+
+**Result.**
+- **The minimum over all 156 groups is 5.31474, the truncated octahedron. No DV stereohedron below it was found.**
+- It is attained in 80 groups, each time as the Voronoi cell of a bcc-type orbit.
+- Other group optima include 5.3349 (several hexagonal groups at c/a ≈ 2.40 or 4.80), 5.3454 (rhombic dodecahedron) and 6.0 (cube, in P4/mmm and other groups with mirrors).
+- 99 of the 156 optimal cells are centrally symmetric, i.e. lattice Voronoi cells. In some tetragonal and trigonal groups the optimum is not a lattice cell, for example 5.86 in P4, but there it is clearly worse than the truncated octahedron.
+
+**Status.** This is numerical evidence (local optimisation, not a certificate) that the truncated-octahedron bound extends from parallelohedra to DV stereohedra in groups 75–230. Not covered:
+- groups 1–74, which our DV code does not handle (non-orthogonal metrics);
+- non-DV stereohedra.
