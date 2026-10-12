@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tilings in nature · GEOTILES</title>
+<meta name="description" content="Honeycombs, wasp nests and virus capsids as tilings: what is known, with our own computation of the bee cell against Fejes Tóth's cell.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<section><div class="wrap doc">
+<nav class="ptabs" id="ptabs"></nav>
+<article data-lang="en"><div class="eyebrow">review · <span class="chip info">what is known + our computation</span></div>
+<h1>Tilings in nature: combs, nests and viruses</h1>
+<p class="muted">Insects and viruses solve tiling problems too. This page is mostly a review of what is known, with links; the one thing we computed ourselves is the bee cell against Fejes Tóth’s cell, and both are now in our catalog.</p>
+<h2>Honeycombs</h2>
+<p><b>In the plane the question is closed.</b> Regular hexagons divide the plane into equal cells with the least total wall length: L. Fejes Tóth proved it for convex cells (1943), T. Hales in general (2001).</p><p><b>In space it is not.</b> A comb has two layers of cells back to back, and the bottom between them is the interesting part. Bees close each cell with three rhombi. In 1964 Fejes Tóth showed that bees are not optimal: a bottom of two hexagons and two rhombi uses a little less wax. Real bees occasionally build such cells (up to 18% of cells in natural combs, Yang et al. 2022), and Dauter and Jaskolski (2025) optimized Tóth’s geometry further.</p><p><b>Our computation.</b> For a fixed cell volume and hexagon, the wax that depends on the bottom shape reduces to one number F (in units of the squared hexagon side). We minimized F over all bottoms of each type:</p>
+<table><thead><tr><th>Bottom</th><th>F</th><th>vs flat</th></tr></thead><tbody><tr><td>flat</td><td>2.5981</td><td>—</td></tr><tr><td>bees: 3 rhombi</td><td>2.1213</td><td>−18.4%</td></tr><tr><td>Fejes Tóth: 2 hexagons + 2 rhombi</td><td>2.1084</td><td>−18.8%</td></tr></tbody></table>
+<p>The bee optimum is exactly 3/√2 with the angles of the rhombic dodecahedron, the classical answer, which checks the method. Tóth’s bottom saves another 0.61% of F, about 0.05% of all wax for a worker cell (5.2 mm wide, 11 mm deep): the gain is real but tiny, and with thick wax walls the bees’ design may win back (Weaire and Phelan 1994).</p><p><b>A nice detail.</b> Continue the comb layer by layer and every cell becomes a translate of one solid. The bees’ cell is then combinatorially a rhombic dodecahedron (Kepler’s cell), Tóth’s cell a truncated octahedron (Kelvin’s cell). Tóth beats the bees the same way Kelvin’s foam beats Kepler’s.</p>
+<div class="gallery"><a class="mini" data-id="bee-cell" data-note='{"en":"bees"}'></a><a class="mini" data-id="toth-cell" data-note='{"en":"Fejes Tóth"}'></a><a class="mini" data-id="rhombic-dodecahedron" data-note='{"en":"Kepler’s cell"}'></a><a class="mini" data-id="truncated-octahedron" data-note='{"en":"Kelvin’s cell"}'></a></div>
+<h2>Defects: where five and seven meet</h2>
+<p>A comb is not a perfect crystal. Where small worker cells meet large drone cells, bees and wasps insert a pentagon next to a heptagon, exactly the dislocation of a crystal lattice. Smith et al. (PLoS Biology 2023) measured 22 745 cells of 5 bee and 5 wasp species: all of them use intermediate cells and such pairs, more often the larger the size difference; a simple geometric model predicts how often. In paper wasp nests (<i>Polistes</i>), Krishna, Gopinath and Bhattacharjee (2022) found only short-range order, like an amorphous solid, while the orientation of the hexagons is kept across the whole nest; the defects are 5–7 pairs and Stone–Wales quadrupoles.</p>
+<figure class="fig"><img src="img/comb-defect.svg" alt="comb dislocation"><figcaption>A comb with one dislocation, drawn by us: cell centres on a triangular lattice, displaced by the elastic field of an edge dislocation, and their Voronoi cells. Exactly one pentagon (red) and one heptagon (blue) appear; everything else stays hexagonal.</figcaption></figure>
+<h2>Hornet nests</h2>
+<p>Hornets (<i>Vespa</i>) build several horizontal combs stacked like floors and wrapped in a paper envelope; in <i>V. affinis</i> the combs rise in a spiral staircase and cell diameters are roughly bimodal (Sengupta and Ghorai 2023). Apart from such descriptions we found no geometric study of hornet combs and no open 3D data, so there is nothing to compute yet.</p>
+<h2>Virus capsids: tilings of a sphere</h2>
+<p>The protein shell of many viruses is an icosahedral tiling of a sphere. In the Caspar–Klug theory (1962) the proteins form 12 pentamers and 10(T − 1) hexamers, T = h² + hk + k². Twarock and Luque (2019) generalized this to eight families built from Archimedean tilings of the plane, which explains many viruses that did not fit; Mannige and Brooks (2008–2010) showed that most capsid families can be drawn as tilings of the sphere by one tile per protein, and arranged them into a “periodic table”.</p>
+<figure class="fig"><img src="img/capsids.svg" alt="Caspar-Klug tilings"><figcaption>Caspar–Klug tilings drawn by us: Voronoi cells of the capsomer centres on the sphere for T = 1, 3, 4, 7 and 13. There are always exactly 12 pentagons (red); the rest are hexagons.</figcaption></figure>
+<h2>Further reading</h2>
+<ul class="small">
+<li>L. Fejes Tóth, What the bees know and what they do not know, Bull. AMS 70 (1964) 468–481. <a href="https://projecteuclid.org/download/pdf_1/euclid.bams/1183526078">pdf</a></li>
+<li>T. C. Hales, The honeycomb conjecture, Discrete Comput. Geom. 25 (2001) 1–22. <a href="https://arxiv.org/abs/math/9906042">arXiv</a></li>
+<li>D. Weaire, R. Phelan, Optimal design of honeycombs, Nature 367 (1994) 123.</li>
+<li>Z. Dauter, M. Jaskolski, Honeycombs – their variety, topology and symmetry, Acta Cryst. A 81 (2025). <a href="https://journals.iucr.org/a/issues/2025/02/00/uv5034/index.html">link</a></li>
+<li>S. Yang et al., Structure of Fejes Tóth cells in natural honey bee combs, Apidologie (2022). <a href="https://link.springer.com/article/10.1007/s13592-022-00915-8">doi</a></li>
+<li>M. L. Smith et al., Honey bees and social wasps reach convergent architectural solutions to nest-building problems, PLoS Biol. 21 (2023) e3002211. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10374112/">PMC</a></li>
+<li>S. Krishna, A. Gopinath, S. M. Bhattacharjee, Ordering and topological defects in social wasps’ nests, Sci. Rep. (2022). <a href="https://arxiv.org/abs/2310.02042">arXiv</a></li>
+<li>D. L. D. Caspar, A. Klug, Physical principles in the construction of regular viruses, Cold Spring Harb. Symp. Quant. Biol. 27 (1962) 1–24.</li>
+<li>R. Twarock, A. Luque, Structural puzzles in virology solved with an overarching icosahedral design principle, Nat. Commun. 10 (2019) 4414. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6765026">PMC</a></li>
+<li>R. V. Mannige, C. L. Brooks, Periodic table of virus capsids, PLoS ONE 5 (2010) e9423. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2831995/">PMC</a></li></ul>
+<p class="small muted">Code: <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/nature">research/nature</a>.</p></article>
+<article data-lang="ru" hidden><div class="eyebrow">обзор · <span class="chip info">что известно + наш расчёт</span></div>
+<h1>Замощения в природе: соты, гнёзда и вирусы</h1>
+<p class="muted">Насекомые и вирусы тоже решают задачи о замощениях. Эта страница — в основном обзор известного, со ссылками; сами мы посчитали одно: пчелиную ячейку против ячейки Фейеша Тота, и обе теперь есть в нашем каталоге.</p>
+<h2>Пчелиные соты</h2>
+<p><b>На плоскости вопрос закрыт.</b> Правильные шестиугольники делят плоскость на равные ячейки с наименьшей общей длиной стенок: Л. Фейеш Тот доказал это для выпуклых ячеек (1943), Т. Хейлс — в общем случае (2001).</p><p><b>В пространстве — нет.</b> Соты — два слоя ячеек, сложенных донышками, и самое интересное — дно между ними. Пчёлы закрывают каждую ячейку тремя ромбами. В 1964 году Фейеш Тот показал, что пчёлы не оптимальны: дно из двух шестиугольников и двух ромбов требует чуть меньше воска. Настоящие пчёлы иногда строят такие ячейки (до 18% ячеек в естественных сотах, Yang et al. 2022), а Даутер и Ясколски (2025) ещё улучшили геометрию Тота.</p><p><b>Наш расчёт.</b> При фиксированном объёме ячейки и шестиугольнике воск, зависящий от формы дна, сводится к одному числу F (в единицах квадрата стороны шестиугольника). Мы минимизировали F по всем доньям каждого типа:</p>
+<table><thead><tr><th>Дно</th><th>F</th><th>к плоскому</th></tr></thead><tbody><tr><td>плоское</td><td>2,5981</td><td>—</td></tr><tr><td>пчёлы: 3 ромба</td><td>2,1213</td><td>−18,4%</td></tr><tr><td>Фейеш Тот: 2 шестиугольника + 2 ромба</td><td>2,1084</td><td>−18,8%</td></tr></tbody></table>
+<p>У пчёл оптимум ровно 3/√2 с углами ромбододекаэдра — классический ответ, это проверка метода. Дно Тота экономит ещё 0,61% F, около 0,05% всего воска рабочей ячейки (ширина 5,2 мм, глубина 11 мм): выигрыш настоящий, но крошечный, а при толстых восковых стенках пчелиный вариант может отыграть своё (Weaire и Phelan 1994).</p><p><b>Красивая деталь.</b> Если продолжить соты слоями, каждая ячейка — параллельная копия одного тела. Пчелиная ячейка тогда комбинаторно ромбододекаэдр (ячейка Кеплера), ячейка Тота — усечённый октаэдр (ячейка Кельвина). Тот обыгрывает пчёл так же, как пена Кельвина обыгрывает Кеплера.</p>
+<div class="gallery"><a class="mini" data-id="bee-cell" data-note='{"ru":"пчёлы"}'></a><a class="mini" data-id="toth-cell" data-note='{"ru":"Фейеш Тот"}'></a><a class="mini" data-id="rhombic-dodecahedron" data-note='{"ru":"ячейка Кеплера"}'></a><a class="mini" data-id="truncated-octahedron" data-note='{"ru":"ячейка Кельвина"}'></a></div>
+<h2>Дефекты: где встречаются пять и семь</h2>
+<p>Соты — не идеальный кристалл. Где мелкие рабочие ячейки встречаются с крупными трутневыми, пчёлы и осы ставят пятиугольник рядом с семиугольником — ровно дислокацию кристаллической решётки. Smith et al. (PLoS Biology 2023) измерили 22 745 ячеек у 5 видов пчёл и 5 видов ос: все используют промежуточные ячейки и такие пары, тем чаще, чем больше разница размеров; простая геометрическая модель предсказывает, как часто. В гнёздах бумажных ос (<i>Polistes</i>) Кришна, Гопинатх и Бхаттачарджи (2022) нашли только ближний порядок, как в аморфном веществе, при этом ориентация шестиугольников сохраняется по всему гнезду; дефекты — пары 5–7 и квадруполи Стоуна–Уэйлса.</p>
+<figure class="fig"><img src="img/comb-defect.svg" alt="comb dislocation"><figcaption>Соты с одной дислокацией, нарисованные нами: центры ячеек на треугольной решётке, сдвинутые упругим полем краевой дислокации, и их ячейки Вороного. Появляются ровно один пятиугольник (красный) и один семиугольник (синий); остальное остаётся шестиугольным.</figcaption></figure>
+<h2>Гнёзда шершней</h2>
+<p>Шершни (<i>Vespa</i>) строят несколько горизонтальных сот, уложенных этажами в бумажной оболочке; у <i>V. affinis</i> соты поднимаются винтовой лестницей, а диаметры ячеек примерно двугорбые (Sengupta, Ghorai 2023). Кроме таких описаний, геометрических работ о сотах шершней и открытых 3D-данных мы не нашли — считать пока не на чем.</p>
+<h2>Вирусные капсиды: замощения сферы</h2>
+<p>Белковая оболочка многих вирусов — икосаэдрическое замощение сферы. В теории Каспара–Клуга (1962) белки образуют 12 пентамеров и 10(T − 1) гексамеров, T = h² + hk + k². Тварок и Луке (2019) обобщили её до восьми семейств, построенных из архимедовых замощений плоскости, что объяснило многие «неправильные» вирусы; Маннидж и Брукс (2008–2010) показали, что большинство семейств капсидов можно нарисовать как замощение сферы одной плиткой на белок, и собрали их в «периодическую таблицу».</p>
+<figure class="fig"><img src="img/capsids.svg" alt="Caspar-Klug tilings"><figcaption>Замощения Каспара–Клуга, нарисованные нами: ячейки Вороного центров капсомеров на сфере для T = 1, 3, 4, 7 и 13. Всегда ровно 12 пятиугольников (красные), остальные — шестиугольники.</figcaption></figure>
+<h2>Что почитать</h2>
+<ul class="small">
+<li>L. Fejes Tóth, What the bees know and what they do not know, Bull. AMS 70 (1964) 468–481. <a href="https://projecteuclid.org/download/pdf_1/euclid.bams/1183526078">pdf</a></li>
+<li>T. C. Hales, The honeycomb conjecture, Discrete Comput. Geom. 25 (2001) 1–22. <a href="https://arxiv.org/abs/math/9906042">arXiv</a></li>
+<li>D. Weaire, R. Phelan, Optimal design of honeycombs, Nature 367 (1994) 123.</li>
+<li>Z. Dauter, M. Jaskolski, Honeycombs – their variety, topology and symmetry, Acta Cryst. A 81 (2025). <a href="https://journals.iucr.org/a/issues/2025/02/00/uv5034/index.html">link</a></li>
+<li>S. Yang et al., Structure of Fejes Tóth cells in natural honey bee combs, Apidologie (2022). <a href="https://link.springer.com/article/10.1007/s13592-022-00915-8">doi</a></li>
+<li>M. L. Smith et al., Honey bees and social wasps reach convergent architectural solutions to nest-building problems, PLoS Biol. 21 (2023) e3002211. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10374112/">PMC</a></li>
+<li>S. Krishna, A. Gopinath, S. M. Bhattacharjee, Ordering and topological defects in social wasps’ nests, Sci. Rep. (2022). <a href="https://arxiv.org/abs/2310.02042">arXiv</a></li>
+<li>D. L. D. Caspar, A. Klug, Physical principles in the construction of regular viruses, Cold Spring Harb. Symp. Quant. Biol. 27 (1962) 1–24.</li>
+<li>R. Twarock, A. Luque, Structural puzzles in virology solved with an overarching icosahedral design principle, Nat. Commun. 10 (2019) 4414. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6765026">PMC</a></li>
+<li>R. V. Mannige, C. L. Brooks, Periodic table of virus capsids, PLoS ONE 5 (2010) e9423. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2831995/">PMC</a></li></ul>
+<p class="small muted">Code: <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/nature">research/nature</a>.</p></article>
+<article data-lang="es" hidden><div class="eyebrow">reseña · <span class="chip info">lo conocido + nuestro cálculo</span></div>
+<h1>Teselaciones en la naturaleza: panales, nidos y virus</h1>
+<p class="muted">Los insectos y los virus también resuelven problemas de teselación. Esta página es sobre todo una reseña de lo conocido, con enlaces; lo único que calculamos nosotros es la celda de abeja frente a la de Fejes Tóth, y ambas están ya en nuestro catálogo.</p>
+<h2>Panales</h2>
+<p><b>En el plano la cuestión está cerrada.</b> Los hexágonos regulares dividen el plano en celdas iguales con la menor longitud total de paredes: L. Fejes Tóth lo probó para celdas convexas (1943) y T. Hales en general (2001).</p><p><b>En el espacio, no.</b> Un panal tiene dos capas de celdas espalda con espalda, y lo interesante es el fondo entre ellas. Las abejas cierran cada celda con tres rombos. En 1964 Fejes Tóth mostró que las abejas no son óptimas: un fondo de dos hexágonos y dos rombos gasta algo menos de cera. Las abejas reales construyen a veces esas celdas (hasta el 18% en panales naturales, Yang et al. 2022), y Dauter y Jaskolski (2025) optimizaron aún más la geometría de Tóth.</p><p><b>Nuestro cálculo.</b> Con volumen y hexágono fijos, la cera que depende de la forma del fondo se reduce a un número F (en unidades del lado del hexágono al cuadrado). Minimizamos F sobre todos los fondos de cada tipo:</p>
+<table><thead><tr><th>Fondo</th><th>F</th><th>frente al plano</th></tr></thead><tbody><tr><td>plano</td><td>2,5981</td><td>—</td></tr><tr><td>abejas: 3 rombos</td><td>2,1213</td><td>−18,4%</td></tr><tr><td>Fejes Tóth: 2 hexágonos + 2 rombos</td><td>2,1084</td><td>−18,8%</td></tr></tbody></table>
+<p>El óptimo de las abejas es exactamente 3/√2 con los ángulos del dodecaedro rómbico, la respuesta clásica, lo que comprueba el método. El fondo de Tóth ahorra otro 0,61% de F, alrededor del 0,05% de toda la cera de una celda de obrera (5,2 mm de ancho, 11 mm de profundidad): la ganancia es real pero diminuta, y con paredes de cera gruesas el diseño de las abejas puede recuperarse (Weaire y Phelan 1994).</p><p><b>Un detalle bonito.</b> Si el panal continúa capa a capa, cada celda es una traslación de un mismo sólido. La celda de las abejas es entonces combinatoriamente un dodecaedro rómbico (la celda de Kepler) y la de Tóth un octaedro truncado (la celda de Kelvin). Tóth supera a las abejas igual que la espuma de Kelvin supera a la de Kepler.</p>
+<div class="gallery"><a class="mini" data-id="bee-cell" data-note='{"es":"abejas"}'></a><a class="mini" data-id="toth-cell" data-note='{"es":"Fejes Tóth"}'></a><a class="mini" data-id="rhombic-dodecahedron" data-note='{"es":"celda de Kepler"}'></a><a class="mini" data-id="truncated-octahedron" data-note='{"es":"celda de Kelvin"}'></a></div>
+<h2>Defectos: donde se juntan cinco y siete</h2>
+<p>Un panal no es un cristal perfecto. Donde las celdas pequeñas de obrera se encuentran con las grandes de zángano, abejas y avispas colocan un pentágono junto a un heptágono: exactamente la dislocación de una red cristalina. Smith et al. (PLoS Biology 2023) midieron 22 745 celdas de 5 especies de abejas y 5 de avispas: todas usan celdas intermedias y esos pares, con más frecuencia cuanto mayor es la diferencia de tamaño; un modelo geométrico sencillo predice con qué frecuencia. En los nidos de avispas papeleras (<i>Polistes</i>), Krishna, Gopinath y Bhattacharjee (2022) encontraron solo orden de corto alcance, como en un sólido amorfo, mientras que la orientación de los hexágonos se conserva en todo el nido; los defectos son pares 5–7 y cuadrupolos de Stone–Wales.</p>
+<figure class="fig"><img src="img/comb-defect.svg" alt="comb dislocation"><figcaption>Un panal con una dislocación, dibujado por nosotros: centros de celdas en una red triangular, desplazados por el campo elástico de una dislocación de borde, y sus celdas de Voronói. Aparecen exactamente un pentágono (rojo) y un heptágono (azul); todo lo demás sigue siendo hexagonal.</figcaption></figure>
+<h2>Nidos de avispón</h2>
+<p>Los avispones (<i>Vespa</i>) construyen varios panales horizontales apilados como pisos dentro de una envoltura de papel; en <i>V. affinis</i> los panales suben como una escalera de caracol y los diámetros de las celdas son aproximadamente bimodales (Sengupta y Ghorai 2023). Aparte de estas descripciones no encontramos estudios geométricos de panales de avispón ni datos 3D abiertos, así que aún no hay nada que calcular.</p>
+<h2>Cápsides de virus: teselaciones de la esfera</h2>
+<p>La cubierta proteica de muchos virus es una teselación icosaédrica de la esfera. En la teoría de Caspar–Klug (1962) las proteínas forman 12 pentámeros y 10(T − 1) hexámeros, T = h² + hk + k². Twarock y Luque (2019) la generalizaron a ocho familias construidas a partir de teselaciones arquimedianas del plano, lo que explica muchos virus que no encajaban; Mannige y Brooks (2008–2010) mostraron que la mayoría de las familias de cápsides se pueden dibujar como teselaciones de la esfera con una tesela por proteína, y las ordenaron en una «tabla periódica».</p>
+<figure class="fig"><img src="img/capsids.svg" alt="Caspar-Klug tilings"><figcaption>Teselaciones de Caspar–Klug dibujadas por nosotros: celdas de Voronói de los centros de los capsómeros en la esfera para T = 1, 3, 4, 7 y 13. Siempre hay exactamente 12 pentágonos (rojos); el resto son hexágonos.</figcaption></figure>
+<h2>Para leer más</h2>
+<ul class="small">
+<li>L. Fejes Tóth, What the bees know and what they do not know, Bull. AMS 70 (1964) 468–481. <a href="https://projecteuclid.org/download/pdf_1/euclid.bams/1183526078">pdf</a></li>
+<li>T. C. Hales, The honeycomb conjecture, Discrete Comput. Geom. 25 (2001) 1–22. <a href="https://arxiv.org/abs/math/9906042">arXiv</a></li>
+<li>D. Weaire, R. Phelan, Optimal design of honeycombs, Nature 367 (1994) 123.</li>
+<li>Z. Dauter, M. Jaskolski, Honeycombs – their variety, topology and symmetry, Acta Cryst. A 81 (2025). <a href="https://journals.iucr.org/a/issues/2025/02/00/uv5034/index.html">link</a></li>
+<li>S. Yang et al., Structure of Fejes Tóth cells in natural honey bee combs, Apidologie (2022). <a href="https://link.springer.com/article/10.1007/s13592-022-00915-8">doi</a></li>
+<li>M. L. Smith et al., Honey bees and social wasps reach convergent architectural solutions to nest-building problems, PLoS Biol. 21 (2023) e3002211. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10374112/">PMC</a></li>
+<li>S. Krishna, A. Gopinath, S. M. Bhattacharjee, Ordering and topological defects in social wasps’ nests, Sci. Rep. (2022). <a href="https://arxiv.org/abs/2310.02042">arXiv</a></li>
+<li>D. L. D. Caspar, A. Klug, Physical principles in the construction of regular viruses, Cold Spring Harb. Symp. Quant. Biol. 27 (1962) 1–24.</li>
+<li>R. Twarock, A. Luque, Structural puzzles in virology solved with an overarching icosahedral design principle, Nat. Commun. 10 (2019) 4414. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6765026">PMC</a></li>
+<li>R. V. Mannige, C. L. Brooks, Periodic table of virus capsids, PLoS ONE 5 (2010) e9423. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2831995/">PMC</a></li></ul>
+<p class="small muted">Code: <a href="https://github.com/VladimirMoor/GEOTILES/tree/main/research/nature">research/nature</a>.</p></article>
+</div></section>
+<footer><div class="wrap"><span data-i18n="footer"></span> <a href="https://github.com/VladimirMoor/GEOTILES">GitHub</a> · three.js</div></footer>
+<script type="module">
+import { setupPage, problemTabs } from './js/ui.js';
+import { setupGalleries } from './js/mini3d.js';
+setupPage('research'); problemTabs('nature'); setupGalleries();
+</script>
+</body>
+</html>

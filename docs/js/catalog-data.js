@@ -2,6 +2,7 @@
 // zonohedron(p) → образующие, или solid(p) → вершины; tiling(p) → 'parallelohedron' | { lattice, motifs } | нет.
 import * as THREE from 'three';
 import { STEREO } from './stereo-data.js';
+import { NATURE } from './nature-data.js';
 
 const h = Math.sqrt(3) / 2;
 const phi = (1 + Math.sqrt(5)) / 2;
@@ -25,6 +26,8 @@ export const GROUPS = [
     note: { en: 'Continuous families of equilateral space-fillers with ≤ 8 faces; every member tiles', ru: 'Непрерывные семейства равносторонних тел с ≤ 8 гранями; замощает каждый член', es: 'Familias continuas de poliedros equiláteros con ≤ 8 caras; todos sus miembros teselan' } },
   { id: 'records', title: { en: 'Record stereohedra', ru: 'Рекордные стереоэдры', es: 'Estereoedros récord' },
     note: { en: 'Voronoi cells of symmetric point sets with the most faces; not equilateral. Facet counts certified in exact arithmetic', ru: 'Ячейки Вороного симметричных наборов точек с наибольшим числом граней; не равносторонние. Число граней подтверждено точной арифметикой', es: 'Celdas de Voronói de conjuntos simétricos de puntos con más caras; no equiláteras. Número de caras certificado con aritmética exacta' } },
+  { id: 'nature', title: { en: 'Built by insects', ru: 'Построено насекомыми', es: 'Construido por insectos' },
+    note: { en: 'Honeycomb cells continued layer by layer: every cell is a translate of one parallelohedron', ru: 'Ячейки сот, продолженные слоями: все ячейки — параллельные копии одного параллелоэдра', es: 'Celdas de panal continuadas capa a capa: todas son traslaciones de un mismo paraleloedro' } },
   { id: 'proteins', title: { en: 'Protein crystals', ru: 'Белковые кристаллы', es: 'Cristales de proteínas' },
     note: { en: 'Voronoi cells of protein molecules in real crystals from the PDB; face counts certified exactly', ru: 'Ячейки Вороного белковых молекул в реальных кристаллах из PDB; число граней подтверждено точно', es: 'Celdas de Voronói de moléculas de proteína en cristales reales del PDB; número de caras certificado exactamente' } },
   { id: 'crystals', title: { en: 'Crystals from COD', ru: 'Кристаллы из COD', es: 'Cristales de COD' },
@@ -322,6 +325,26 @@ export const CATALOG = [
       en: 'Found by our search: a Voronoi cell with 29 faces in the group I4₁/a; the previous best for this group was 23 (Schmitt 2016). Certified in exact rational arithmetic.',
       ru: 'Найден нашим поиском: ячейка Вороного с 29 гранями в группе I4₁/a; прежний лучший результат для этой группы — 23 (Шмитт, 2016). Подтверждён точной рациональной арифметикой.',
       es: 'Encontrado por nuestra búsqueda: una celda de Voronói con 29 caras en el grupo I4₁/a; el mejor anterior para este grupo era 23 (Schmitt, 2016). Certificado con aritmética racional exacta.',
+    },
+  },
+  {
+    id: 'bee-cell', group: 'nature', status: 'tiles',
+    solid: () => NATURE.bee.points, tiling: () => ({ lattice: NATURE.bee.lattice, motifs: [I()] }),
+    name: { en: 'Honeybee cell', ru: 'Пчелиная ячейка', es: 'Celda de abeja' },
+    about: {
+      en: 'A hexagonal prism closed by three rhombi, as bees build it. If the comb is continued layer by layer, every cell is a translate of this solid, combinatorially a rhombic dodecahedron (12 faces, Kepler’s cell). Among bottoms made of three planar pieces, the rhombi with the angles of the rhombic dodecahedron use the least wax (we recomputed: exactly 3/√2 in units of the hexagon side).',
+      ru: 'Шестиугольная призма, закрытая тремя ромбами, — так строят пчёлы. Если продолжить соты слоями, все ячейки — параллельные копии этого тела, комбинаторно — ромбододекаэдра (12 граней, ячейка Кеплера). Среди доньев из трёх плоских кусков меньше всего воска уходит на ромбы с углами ромбододекаэдра (мы пересчитали: ровно 3/√2 в единицах стороны шестиугольника).',
+      es: 'Un prisma hexagonal cerrado por tres rombos, como lo construyen las abejas. Si el panal continúa capa a capa, todas las celdas son traslaciones de este sólido, combinatoriamente un dodecaedro rómbico (12 caras, la celda de Kepler). Entre los fondos de tres piezas planas, los rombos con los ángulos del dodecaedro rómbico gastan menos cera (lo recalculamos: exactamente 3/√2 en unidades del lado del hexágono).',
+    },
+  },
+  {
+    id: 'toth-cell', group: 'nature', status: 'tiles',
+    solid: () => NATURE.toth.points, tiling: () => ({ lattice: NATURE.toth.lattice, motifs: [I()] }),
+    name: { en: 'Fejes Tóth’s cell (better than the bees’)', ru: 'Ячейка Фейеша Тота (лучше пчелиной)', es: 'Celda de Fejes Tóth (mejor que la de las abejas)' },
+    about: {
+      en: 'L. Fejes Tóth (1964) showed that bees are not optimal: a bottom of two hexagons and two rhombi uses less wax. Continued layer by layer, the cell is combinatorially a truncated octahedron (14 faces, Kelvin’s cell), so Tóth beats the bees the way Kelvin’s foam beats Kepler’s. Our optimisation gives a saving of 0.61% of the bottom term, about 0.05% of all wax for worker-cell proportions.',
+      ru: 'Л. Фейеш Тот (1964) показал, что пчёлы не оптимальны: дно из двух шестиугольников и двух ромбов требует меньше воска. Если продолжить соты слоями, ячейка комбинаторно — усечённый октаэдр (14 граней, ячейка Кельвина) — Тот обыгрывает пчёл так же, как пена Кельвина обыгрывает Кеплера. Наша оптимизация даёт экономию 0,61% от «донной» части, около 0,05% всего воска для пропорций рабочей ячейки.',
+      es: 'L. Fejes Tóth (1964) mostró que las abejas no son óptimas: un fondo de dos hexágonos y dos rombos gasta menos cera. Continuada capa a capa, la celda es combinatoriamente un octaedro truncado (14 caras, la celda de Kelvin), así que Tóth supera a las abejas como la espuma de Kelvin supera a la de Kepler. Nuestra optimización da un ahorro del 0,61% del término del fondo, alrededor del 0,05% de toda la cera para las proporciones de una celda de obrera.',
     },
   },
   {

@@ -33,6 +33,7 @@ research/p1/ … p4/    pipelines and RESULTS.md for problems 1–4
 research/bio/         protein crystals from the PDB (site page: crystals.html)
 research/cod/         atom orbits in COD crystals (site page: crystals.html)
 research/tissue/      cells in 3D plant tissues, PlantSeg data (site page: tissues.html)
+research/nature/      bee cell vs Fejes Tóth cell, figures for the review page nature.html
 research/paper*/      LaTeX sources of the preprint and notes
 scripts/serve.py      local no-cache dev server
 tools/                external tools (plantri, heesch-sat), git-ignored

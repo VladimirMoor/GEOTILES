@@ -46,4 +46,10 @@ export const SIDE2 = {
   chip: { en: 'side project', ru: 'побочный проект', es: 'proyecto paralelo' },
   desc: { en: 'Cells in 3D plant tissues are polyhedra that fill space. In 18 000 cells from segmented Arabidopsis ovules the mean face count (15.2) is close to random Voronoi cells, but the spread is much wider, and only 70% of neighbours agree with the Voronoi cells of the same centres.', ru: 'Клетки трёхмерной растительной ткани — многогранники, заполняющие пространство. У 18 000 клеток из сегментированных семязачатков Arabidopsis среднее число граней (15,2) близко к случайным ячейкам Вороного, но разброс гораздо шире, а с ячейками Вороного тех же центров совпадает только 70% соседей.', es: 'Las células de un tejido vegetal en 3D son poliedros que llenan el espacio. En 18 000 células de óvulos segmentados de Arabidopsis la media de caras (15,2) es cercana a celdas de Voronói aleatorias, pero la dispersión es mucho mayor, y solo el 70% de los vecinos coincide con las celdas de Voronói de los mismos centros.' },
 };
-export const SIDES = [SIDE, SIDE2];
+export const SIDE3 = {
+  href: 'nature.html', key: 'nature',
+  title: { en: 'Tilings in nature', ru: 'Замощения в природе', es: 'Teselaciones en la naturaleza' },
+  chip: { en: 'review', ru: 'обзор', es: 'reseña' },
+  desc: { en: 'Honeycombs, wasp nests and virus capsids: what is known, with links. Our own computation: the bee cell against Fejes Tóth’s better cell; continued layer by layer they become Kepler’s and Kelvin’s cells.', ru: 'Пчелиные соты, осиные гнёзда и вирусные капсиды: что известно, со ссылками. Наш расчёт: пчелиная ячейка против более экономной ячейки Фейеша Тота; продолженные слоями, они становятся ячейками Кеплера и Кельвина.', es: 'Panales, nidos de avispa y cápsides de virus: lo que se sabe, con enlaces. Nuestro cálculo: la celda de abeja frente a la celda más económica de Fejes Tóth; continuadas capa a capa se convierten en las celdas de Kepler y de Kelvin.' },
+};
+export const SIDES = [SIDE, SIDE2, SIDE3];
