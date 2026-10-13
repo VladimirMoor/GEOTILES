@@ -186,3 +186,31 @@ Searching all tetrahedral clusters of up to 6 copies finds no other relations in
 **Results.**
 - Controls: #1 and #3 give many tilings, each with a clean coverage check.
 - **The 38 open tetrahedra: no tilings.**
+
+## Rods: constructive search for non-face-to-face tilings (2026-10-13)
+
+**Idea.** Suppose copies of T, each glued to the next along a whole face by one repeated isometry g, fill an infinite convex prism (a *rod*). Then rods laid along any tiling of the plane by the cross-section polygon, and slid along their axes at will, tile space. Such tilings are generically **non-face-to-face**, which is exactly the kind of tiling still open for the 38 tetrahedra.
+
+These are invisible to the finite-cluster searches above, because a finite piece of a rod has non-planar ends. The motif repeated by g can also be a cluster of several copies glued face to face.
+
+**Test** (`rods.py`). For each tetrahedron:
+- enumerate g over all pairs of boundary faces of the motif and all congruent vertex matchings, mirror images allowed;
+- discard g whose image overlaps the motif;
+- the orbit is a rod if and only if area(projection ⊥ screw axis) × axial step = (copies per step) × vol T. For an improper g we use g², with twice as many copies per step.
+
+**Validation.** A Hill-type tetrahedron cut from a triangular prism along a helix (vertices at heights 0, h/3, 2h/3, h on the three lateral edges):
+- found with single-copy motifs, with a triangular cross-section;
+- found 8 times with 2-copy motifs.
+
+**Results.**
+
+| motif | 38 open tetrahedra | #1 (classical tiler) | #3 (classical tiler) |
+|---|---|---|---|
+| 1 copy | no rods | no rods | no rods |
+| 2 copies | no rods | **16 rods** (proper screws) | no rods |
+| 3 copies | no rods | 16 (the same) | no rods |
+
+**Conclusion.**
+- None of the 38 open tetrahedra tiles a rod with a motif of ≤ 3 copies glued face to face. So no tiling of this rod type exists for them.
+- The search does find rods where they should exist (the control and #1).
+- This rules out the most natural source of non-face-to-face tilings. It does not exclude other non-face-to-face tilings, such as those with fault planes not organised in rods.
