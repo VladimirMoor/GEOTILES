@@ -214,3 +214,17 @@ These are invisible to the finite-cluster searches above, because a finite piece
 - None of the 38 open tetrahedra tiles a rod with a motif of ≤ 3 copies glued face to face. So no tiling of this rod type exists for them.
 - The search does find rods where they should exist (the control and #1).
 - This rules out the most natural source of non-face-to-face tilings. It does not exclude other non-face-to-face tilings, such as those with fault planes not organised in rods.
+
+## Slabs: layers that can slide over each other (2026-10-13)
+
+**Idea.** A cluster M of k copies glued face to face, together with a lattice of translations ⟨t1, t2⟩, may fill a slab between two parallel planes. Slabs stacked with arbitrary in-plane offsets then tile space, generically not face to face.
+
+**Search** (`slabs.py`).
+- All clusters with k ≤ 6, mirror copies allowed.
+- Candidate translations t are those that glue M to M + t along a pair of opposite free faces.
+- A pair (t1, t2) gives a slab if and only if k·vol(T) = (thickness of M along t1 × t2)·|t1 × t2| and M does not overlap its lattice neighbours.
+- Layer groups with rotations or glides are covered through their translation sublattice, as long as its motif has ≤ 6 copies.
+
+**Validation.** The cube orthoscheme, a path in the cube, gives slabs with k = 6 (layers of cubes).
+
+**Result.** **No slabs for any of the 42 tetrahedra with a motif of ≤ 6 copies.** This includes the 38 open ones, and also the classical tilers #1 and #3. So their known tilings need larger motifs or are not layered with small periods. This search is therefore weaker than the rod search: it is bounded by the motif size.
