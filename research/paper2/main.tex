@@ -16,23 +16,29 @@
 \newcommand{\cA}{\mathscr{A}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
 
 \title{Remarks on the sporadic rational tetrahedra that might tile space}
 \author{Vladimir Muravev}
-\date{October 9, 2026}
+\date{October 9, 2026; revised October 16, 2026}
 
 \begin{document}
 \begin{abstract}
 Chentouf and Sun showed that at most $40$ of the $59$ sporadic rational tetrahedra of Kedlaya, Kolpakov, Poonen and
-Rubinstein can tile $\R^3$, and they left these $40$ undecided. We make four remarks.
+Rubinstein can tile $\R^3$, and they left these $40$ undecided. We make six remarks.
 \begin{enumerate}[leftmargin=1.5em]
 \item The printed list contains $42$ tuples, two of which are excluded in the body of their paper.
 \item Two members of the list are classical space-fillers, namely Sommerville's tetrahedra No.~2 and No.~3.
 \item None of the remaining $38$ tetrahedra admits a face-to-face tiling. For $12$ of them this is new.
-\item In any tiling by one of the $38$, faults are forced along every copy of certain edges, and convex clusters of at
-most $7$ copies never tile isohedrally.
+\item In any tiling by one of the $38$, faults are forced along every copy of certain edges.
+\item Three members are unions of two mirror copies of a fourth member, $\#36$, which is the corner of a golden box. A
+golden box splits into four copies of $\#36$ and one copy of $\#7$.
+\item Constructive searches for non-face-to-face tilings find nothing for the $38$. The searches cover clusters of up to
+$7$ copies, rods (infinite prisms filled by a screw orbit of a motif of up to $3$ copies) and slabs (layers with a motif
+of up to $6$ copies). They do find tilings for the controls.
 \end{enumerate}
-We also explain why purely local arguments cannot settle the icosahedral members of the list.
+We also explain why purely local arguments cannot settle the icosahedral members of the list, and we record the local
+structure of $\#36$ at its only bad edge.
 \end{abstract}
 \maketitle
 
@@ -207,6 +213,76 @@ non-negative integer combination of dihedral angles across each interior edge;
 An obstruction, if one exists, must therefore be global and metric. The distinct edge lengths are linearly independent
 over $\Q$ numerically (PSLQ finds no relation with coefficients up to $10^6$). This suggests counting edge lengths along
 lines that carry faults.
+
+\section{The golden box}\label{sec:golden}
+Tetrahedra $\#25$, $\#27$ and $\#42$ have a mirror symmetry exchanging vertices $1$ and $4$. In each case the mirror cuts
+the tetrahedron into two congruent halves, and every half is
+\[\#36=(\tfrac15,\tfrac12,\tfrac12,\tfrac13,\tfrac25,\tfrac12).\]
+So if $\#36$ does not tile, then neither do $\#25$, $\#27$, $\#42$.
+
+The three dihedral angles at vertex $3$ of $\#36$ are right angles. The edges $34,31,32$ are therefore mutually
+perpendicular, with lengths in the ratio $1:\varphi:\varphi^2$, where $\varphi$ is the golden ratio. Hence $\#36$ is the
+trirectangular corner of the box $[0,1]\times[0,\varphi]\times[0,\varphi^2]$.
+
+\begin{proposition}
+The golden box is the union of four copies of $\#36$ (up to mirror image), cut off at alternate vertices, and one copy of
+$\#7=(\frac15,\frac15,\frac13,\frac13,\frac35,\frac35)$. In particular, $\#36$ and $\#7$ together tile $\R^3$
+periodically.
+\end{proposition}
+This was verified to $50$ digits. $\#7$ is not a union of copies of $\#36$: its faces are acute, while every cluster of
+copies of $\#36$ exposes right triangles. Whether either tetrahedron tiles alone is open. A search over all clusters of
+up to $6$ copies finds no other dissection relation within $\cA$.
+
+\section{Searches for non-face-to-face tilings}\label{sec:search}
+Every tiling by one of the $38$ is non-face-to-face. We searched for the most natural constructions of such tilings. In
+each case, controls with known tilings are found.
+
+\paragraph{Non-convex clusters.} We enumerated all clusters of at most $5$ copies glued face-to-face, convex or not. We
+kept those in which every bad edge of every copy lies on an edge of the cluster. For each we tested the Poincar\'e
+conditions over all pairings of the polygonal faces, computing the dihedral angles exactly, and checked every hit by
+covering random points. For $\#1$ and $\#3$ many tilings are found. For the $38$ there are none.
+
+\paragraph{Rods.} Let $g$ be an isometry that glues a motif $M$ (a cluster of copies) to $g(M)$ along a whole face.
+Suppose the orbit $\{g^k M\}$ fills an infinite convex prism. Then such prisms, placed along any tiling of the plane by
+the cross-section and slid along their axes at will, tile $\R^3$, generically not face-to-face. The orbit fills a prism
+if and only if
+\[\text{area of the projection along the screw axis}\times\text{axial step}=(\text{copies per step})\cdot\mathrm{vol}(T).\]
+For an improper $g$ we use $g^2$. We tested all such $g$ for motifs of $1$, $2$ and $3$ copies.
+\begin{itemize}[leftmargin=1.5em]
+\item A Hill-type tetrahedron cut from a triangular prism along a helix gives rods, as it should.
+\item $\#1$ gives $16$ rods with $2$-copy motifs.
+\item None of the $38$ gives a rod.
+\end{itemize}
+
+\paragraph{Slabs.} Let a motif of $k\le 6$ copies, with a lattice of translations $\langle t_1,t_2\rangle$, fill a slab
+between two parallel planes. Then slabs stacked with arbitrary offsets tile $\R^3$. Candidate translations glue the motif
+to a translate along a pair of opposite free faces. The criterion is
+\[k\cdot\mathrm{vol}(T)=\text{thickness}\cdot|t_1\times t_2|,\]
+together with non-overlap. The cube orthoscheme gives slabs of cubes with $k=6$. None of the $42$ tetrahedra gives a
+slab with $k\le6$, including $\#1$ and $\#3$. So this search is limited by the size of the motif.
+
+\section{The local structure of $\#36$}\label{sec:36}
+Place $\#36$ in the golden box inside the standard icosahedral frame. Then every edge lies on a rotation axis of the
+icosahedral group:
+\begin{itemize}[leftmargin=1.5em]
+\item the legs $31,32,34$ lie on $2$-fold axes, with dihedral angle $\pi/2$;
+\item edge $24$ lies on a $3$-fold axis, with $\pi/3$;
+\item edges $12$ and $14$ lie on $5$-fold axes, with $\pi/5$ and $2\pi/5$.
+\end{itemize}
+The six edge lengths are distinct. The only parallel pair is $12$ and $14$, with $|12|=\varphi\,|14|$.
+
+The only bad edge is $14$. Its two faces, $134$ (a right triangle with legs $1$ and $\varphi$) and the slanted face $124$,
+are not congruent. So consecutive wedges in a face-to-face cycle alternate between the two face types, and the cycle
+length must be even. But $2\pi/(2\pi/5)=5$ is odd.
+
+Measure angles in units of $\pi/30$. Around a point of a copy of edge $14$, the other tiles must contribute $48$ in total,
+using $6$ (edge $12$), $10$ (edge $24$), $12$ (edge $14$), $15$ (a leg) and $30$ (a face). There are exactly $11$ ways.
+The pure five-fold cycle forces a mismatched half-plane.
+
+Dehn-type invariants vanish identically for rational tetrahedra: they take values in $\R\otimes\Q/\Z=0$. Counting lengths
+along the $5$-fold lines involves chords of faces of arbitrary length. A proof that $\#36$ does not tile would therefore
+have to control the global arrangement. One possible route is to show that the tiles use only the $120$ icosahedral
+orientations unless a whole fault plane exists.
 
 \begin{table}[p]
 \small\renewcommand{\arraystretch}{1.12}
