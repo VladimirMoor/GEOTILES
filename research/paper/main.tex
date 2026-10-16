@@ -474,8 +474,17 @@ irrationality of $\arccos(1/3)/\pi$ force $a=b$ around every edge. Counting edge
 The ratios $7:4$ and $1:1$ of the two solids violate this, so neither tiles.
 
 \subsection{Families}
-Eleven of the $19$ families have $\sum_e\theta_e\notin\Q\pi$ (identified by PSLQ, constant along each family),
-so they do not tile by Lemma~\ref{lem:dehn}. These are oblique prisms with a regular-faced cap. The remaining
+Eleven of the $19$ families have $\sum_e\theta_e\notin\Q\pi$, so they do not tile by Lemma~\ref{lem:dehn}. These are
+oblique prisms with a regular-faced cap. The sum is constant along each family and was identified by PSLQ.
+\begin{itemize}[leftmargin=2em]
+\item For ten families it equals $m\pi\pm k\arccos\frac13$ with $k\in\{6,12\}$. This is not in $\Q\pi$, because
+$\arccos(1/3)/\pi$ is irrational.
+\item For F8-178 (one heptagon, two rhombi, five triangles; a $J_2$ cap) it equals $3\pi+5\delta+15\gamma$, where
+$\delta=\arccos(1/\sqrt5)$ and $\gamma$ is the triangle--pentagon dihedral angle of $J_2$,
+$\cos\gamma=\sqrt{(5+2\sqrt5)/15}$. This identity was checked to $60$ digits on two members of the family, refined by
+Newton's method. If the sum were in $\Q\pi$, then $w=e^{i(5\delta+15\gamma)}$ would be a root of unity. But the minimal
+polynomial of $w$ over $\Q$ has degree $8$ and non-integral coefficients, so $w$ is not even an algebraic integer.
+\end{itemize} The remaining
 families are:
 \begin{itemize}[leftmargin=2em]
 \item triangular prisms and rhombic parallelepipeds, which always tile;
@@ -494,6 +503,29 @@ the dihedral filter without satisfying it remain open. For right pentagonal pris
 (two non-adjacent base angles summing to $3\pi/2$) and five isolated pentagons that pass the filter but whose base does
 not tile the plane. These are special cases of Kuperberg's question whether the base of a right prism that tiles space must
 tile the plane~\cite{Epp}.
+
+For hexagons the picture is cleaner.
+
+\begin{lemma}
+An equilateral convex hexagon whose angles at alternate vertices sum to $2\pi$ is centrally symmetric. In fact it is a
+union of three unit rhombi.
+\end{lemma}
+\begin{proof}
+Let the hexagon be $V_1\dots V_6$, with the angles at $V_2,V_4,V_6$ summing to $2\pi$. The ears $V_1V_2V_3$,
+$V_3V_4V_5$, $V_5V_6V_1$ are isosceles with legs $1$, and their apex angles sum to $2\pi$. Glued around a common apex,
+they form a triangle congruent to $V_1V_3V_5$. So there is a point $O'$ at distance $1$ from $V_1,V_3,V_5$, and
+$V_2=V_1+V_3-O'$, $V_4=V_3+V_5-O'$, $V_6=V_5+V_1-O'$. Hence $V_k+V_{k+3}$ is constant.
+\end{proof}
+
+Suppose relations $\sum_j a_{rj}\gamma_j=T_r$ with $T_r\in\{2\pi,\frac32\pi,\pi,\frac\pi2\}$ cover all vertices of an
+$n$-gon. Then
+\[(n-2)\pi+\sum_v(c_v-1)\gamma_v=\sum_r T_r,\qquad c_v=\sum_r a_{rv}\ge1.\]
+For hexagons, two relations force $T_1=T_2=2\pi$ with disjoint supports. That is a split of the angles into two
+triples summing to $2\pi$. Such hexagons tile the plane: Reinhardt types~1 and~2 for adjacent and mixed triples, and the
+lemma for alternate triples. So \emph{every open right equilateral hexagonal prism is an isolated point}, where at least
+three relations hold. A search finds $9$, $79$ and $123$ such hexagons for relations with coefficient sums at most $3$,
+$4$ and $5$. Apparently there are infinitely many. For pentagons the same identity shows that the two curves above are
+the only one-parameter strata.
 
 \subsection{Summary}
 Modulo the numerical completeness of the enumeration for $131$ types and the open prism cases, the equilateral

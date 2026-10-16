@@ -49,7 +49,7 @@ Along every family Σθ is constant (spread < 1e-11). Integer relation detection
 | F7-009 | RRRTTTT | 2 | 4π + 6·arccos(1/3) | does not tile |
 | F7-016 | 6RRTTTT | 1 | 9π − 6·arccos(1/3) | does not tile |
 | F8-057 | 5RRTTTTT | 1 | 3π + 12·arccos(1/3) | does not tile |
-| F8-178 | 7RRTTTTT | 1 | 3π + 5·arccos(1/√5) + 15·θ(J2) | does not tile* |
+| F8-178 | 7RRTTTTT | 1 | 3π + 5·arccos(1/√5) + 15·γ(J2) | does not tile (proved 2026-10-16) |
 | F8-204 | 6RRRTTTT | 1 | 6π + 6·arccos(1/3) | does not tile |
 | F8-206 | RRTTTTTT | 1 | 10π − 6·arccos(1/3) | does not tile |
 | F8-235 | 5RRRRTTT | 1 | 11π − 6·arccos(1/3) | does not tile |
@@ -57,7 +57,15 @@ Along every family Σθ is constant (spread < 1e-11). Integer relation detection
 | F8-250 | 5RRRRTTT | 1 | 11π − 6·arccos(1/3) | does not tile |
 | F8-252 | RRRRTTTT | 2 | 6π + 6·arccos(1/3) | does not tile |
 
-Here R = rhombus, T = equilateral triangle, and a digit is an n-gon. These families are "regular-faced cap + oblique prism". Prisms have Dehn invariant 0, so D(family) = D(cap) ≠ 0. *The irrationality for the J2 cap still needs a written proof.
+Here R = rhombus, T = equilateral triangle, and a digit is an n-gon. These families are "regular-faced cap + oblique prism". Prisms have Dehn invariant 0, so D(family) = D(cap) ≠ 0.
+
+**Irrationality, now proved for all 11** (`j2_irrational.py`, 2026-10-16).
+- Ten sums are mπ ± k·arccos(1/3) with k ∈ {6, 12}. Since arccos(1/3)/π is irrational, none of them is in ℚπ.
+- For F8-178:
+  - The cap angle is γ, with cos γ = √((5+2√5)/15), the triangle–pentagon dihedral angle of J2.
+  - The identity S = 3π + 5δ + 15γ, with δ = arccos(1/√5), holds to 60 digits on two members. These were refined by Newton's method; the dropped dependent planarity equation also holds to 10⁻⁶⁰.
+  - If S ∈ ℚπ, then w = e^{i(5δ+15γ)} would be a root of unity.
+  - The exact minimal polynomial of w (sympy) has degree 8 and non-integral coefficients, e.g. −10447948/71744535. So w is not an algebraic integer, hence not a root of unity.
 
 ### Families with D = 0
 
