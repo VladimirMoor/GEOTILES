@@ -228,3 +228,45 @@ These are invisible to the finite-cluster searches above, because a finite piece
 **Validation.** The cube orthoscheme, a path in the cube, gives slabs with k = 6 (layers of cubes).
 
 **Result.** **No slabs for any of the 42 tetrahedra with a motif of ≤ 6 copies.** This includes the 38 open ones, and also the classical tilers #1 and #3. So their known tilings need larger motifs or are not layered with small periods. This search is therefore weaker than the rod search: it is bounded by the motif size.
+
+## Attempt: #36 alone (2026-10-16)
+
+**Why #36.** #25, #27 and #42 are each two mirror copies of #36. A proof that #36 does not tile would therefore settle four tetrahedra at once.
+
+**Geometry.**
+- #36 is the trirectangular corner of the golden box, with legs |34| : |31| : |32| = 1 : φ : φ².
+- Placed in the icosahedral frame, every edge lies on an H₃ rotation axis:
+  - legs 31, 32, 34: 2-fold axes, dihedral angle π/2;
+  - 24: 3-fold axis, π/3;
+  - 12 and 14: 5-fold axes, π/5 and 2π/5.
+- All six edge lengths are distinct. The only parallel pair is 12 and 14 (both on 5-fold axes), with |12| = φ·|14|.
+
+**The bad edge is 14.**
+- Its faces are 134 (a right triangle with legs 1 and φ) and 124 (the slanted face). They are not congruent.
+- In a face-to-face cycle around the edge, consecutive wedges must alternate between the two face types, so the cycle length must be even. But 2π/(2π/5) = 5 is odd.
+- Hence every copy of edge 14 needs a fault, another 5-fold edge, a right-angle leg, or a face across it.
+
+**Possible angle sets around a point of edge 14**, besides its own 2π/5. There are 11:
+- 4 × (14);
+- (12) + (14) + face;
+- (12) + (14) + 2 × (leg π/2);
+- (12) + (14) + 3 × (24);
+- 2 × (12) + 3 × (14);
+- 3 × (12) + face;
+- 3 × (12) + 2 × (leg);
+- 3 × (12) + 3 × (24);
+- 4 × (12) + 2 × (14);
+- 6 × (12) + (14);
+- 8 × (12).
+
+The pure 5-cycle (4 more copies of edge 14) forces a mismatched half-plane, since the cycle is odd.
+
+**Why it stays open.**
+- Dehn-type invariants vanish identically for rational tetrahedra: they take values in R ⊗ Q/Z = 0.
+- Counting lengths along 5-fold lines involves face chords of arbitrary length, so it gives no contradiction by itself.
+- A proof needs a global argument, for example:
+  - show that tiles are confined to the 120 icosahedral orientations unless a whole fault plane exists;
+  - then run a configuration LP per axis class.
+- Constructive searches all came up empty for #36: convex clusters ≤ 7, non-convex ≤ 5, rods ≤ 3, slabs ≤ 6.
+
+**Status.** Open. The data above is the starting point for a future proof.
