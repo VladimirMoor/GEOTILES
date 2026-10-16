@@ -88,7 +88,18 @@ The families marked "every member" are backed by explicit tilings checked numeri
 1. Completeness of step 2: confirmed by an independent 6000-start rerun; a certified method (homotopy continuation or interval arithmetic) is still needed for a proof.
 2. A rigorous structural identification of each family, replacing the numerical one.
 3. Pentagonal and hexagonal prisms: which members tile. Is the sufficient condition also necessary?
-4. Check the literature for the three "generalized" families.
+4. Check the literature for the three "generalized" families. **Checked 2026-10-16.**
+   - Goldberg catalogued convex space-fillers by combinatorial type:
+     - octahedra (Geom. Dedicata 10, 1981): at least 49 types;
+     - enneahedra (Geom. Dedicata 12, 1982, 297–306): at least 40 types;
+     - decahedra (1982): at least 26 types.
+   - Our 8-face families are almost certainly among Goldberg's octahedra. The elongated gyrobifastigium, for instance, is his 8-VI ("gabled rhombohedron").
+   - Goldberg's work is about combinatorial types and particular metric models. We found no source on:
+     - the equilateral 3- and 4-parameter families;
+     - their description as Minkowski sums of unit triangles and segments;
+     - the explicit lattice + point-reflection tilings for every member;
+     - the 9-face (4 triangles + 5 rhombi) and 10-face (2 triangles + 8 rhombi) equilateral tilers.
+   - The full type tables of the 9- and 10-face papers are paywalled (Springer) and were not checked. It is possible that the combinatorial types of our 9- and 10-face tilers appear there.
 
 ## Prisms (second pass, 2026-10-08)
 
@@ -215,6 +226,12 @@ For these 131 types we rely on two independent numerical searches (2000 and 6000
 - longer msolve runs: still unfinished after 2 h.
 
 A complete proof would need a certified method suited to these sizes. Candidates are certified homotopy continuation (e.g. alpha-certified monodromy with a trace test) or interval branch-and-bound on a reduced parametrization.
+
+**Homotopy continuation tried (2026-10-16).** Setup: HomotopyContinuation.jl 2.22.4 on Julia 1.13 (`hc_export.py`, `hc_paths.jl`), plain system without Rabinowitsch variables. The number of polyhedral-homotopy paths, i.e. the mixed volume:
+- F7-002 (29 variables, 31 equations): **4 296 704** paths. Feasible, a few hours.
+- The next 8-face type: the mixed volume overflows Int32, at more than **3.7·10¹⁴** paths. Infeasible.
+
+So complete homotopy solving, and with it certification of the 131 hard types, is out of reach in this formulation. A much smaller formulation would be needed, for example face-normal or edge-direction coordinates that eliminate the rhombus constraints. Until then the two agreeing numerical searches remain the evidence for these types.
 
 The rigorous **1-dimensional sweep** (`curve1d.py`) works correctly. On F6-002 it finds the convex family members, but it is too slow for routine use: about 50 minutes per sample fibre.
 

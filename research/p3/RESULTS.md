@@ -114,3 +114,6 @@ Started 2026-10-09.
 - A first unguarded attempt was killed by the OS at more than 2 GB after 85 s.
 
 **Conclusion.** Reproducing H = 6 for Bašić's tile with heesch-sat needs a machine with substantially more RAM, probably 32–64 GB, or a memory-lean reimplementation of the neighbour-placement step. That rules it out on this 16 GB laptop. Bakker reports similar resource limits (CryptoMiniSat clause ceilings) for tiles of this size.
+
+
+**Storage (2026-10-16).** The raw census files `data/drafterN.txt` and `data/drafterN_out.txt` are gzip-compressed (1.8 GB → 88 MB). Use `gunzip -k` before reprocessing. `census.sh` regenerates missing inputs automatically.
