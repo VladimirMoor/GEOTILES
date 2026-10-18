@@ -6,7 +6,7 @@
 - 3D face and neighbour counts and the Euler, Lewis and Aboav–Weaire relations in a pseudostratified epithelium: Gómez, Iber et al., eLife 2021 (mouse lung).
 - 3D connectivity networks of the shoot apical meristem: Jackson et al., Cell Systems 2019.
 - Voronoi of nuclei as a model of epithelia: studied in **2D** (Sánchez-Gutiérrez et al., EMBO J 2015; fly and beetle embryos).
-- Complete topology of 3D cells (Weinberg vectors): Lazar et al., PRL 2012, for grains and foams.
+- Complete topology of 3D cells (Weinberg vectors): Lazar et al., PRL 2012, for simulated grain growth (the model of coarsening grains and foams) and Poisson–Voronoi; no real foam.
 - We found no 3D test of "tissue vs Voronoi tessellation of the cell centres" on large segmented plant data.
 
 **Data.** PlantSeg ground truth (Wolny et al., eLife 2020; OSF uzq3w).
@@ -49,7 +49,7 @@ Next steps (see BACKLOG):
 
 ## Complete topology of cells (Lazar et al. method), 2026-10-11
 
-**Literature.** Lazar, Mason, MacPherson and Srolovitz (PRL 2012) classified grains and foam bubbles by Weinberg vectors. Grain growth gives symmetric cells "orders of magnitude" more often than Poisson–Voronoi. Lazar's research page lists biological tissue among the targets, but we found no published census of cell types in tissues.
+**Literature.** Lazar, Mason, MacPherson and Srolovitz (PRL 2012) introduced Weinberg-vector classification for grains, bubbles and cells and applied it to simulated grain growth and to Poisson–Voronoi. Grain growth gives symmetric cells "orders of magnitude" more often than Poisson–Voronoi. Lazar's research page lists biological tissue among the targets, but we found no published census of cell types in tissues.
 
 **Method** (`topology.py`, `run_topo.py`, `topo_poisson.py`, `topo_summary.py`, `topo_byF.py`; check: `test_weinberg.py`).
 - **Face graph from the voxels.** Faces are the neighbouring cells. Edges are triple lines: triples of labels in 2×2×2 blocks, seen in at least 2 blocks. Quadruple points add all four triples meeting at a vertex.
@@ -149,5 +149,92 @@ The pipeline loses small faces at coarse resolution, so cells look simpler and m
 
 **Caveats.**
 - Only one tissue type (ovules).
-- A Potts model stands in for foam; no real foam data was used. An open 40 GB raw foam tomography exists (Zenodo 15564270) but needs our own bubble segmentation.
+- A Potts model stands in for a coarsening foam. Real foam was added on 18 Oct 2026 (next section).
 - Topology is resolved for 51% of tissue cells against 73% of voxel-random cells at the same resolution. The tissue sample may be biased toward cleaner cells.
+
+## Real foam from X-ray tomography: complete bubble topology (2026-10-18)
+
+**Question.** The comparison above used a simulated coarsening foam. What does the complete topology of real bubbles look like, and how far is tissue from it?
+
+**Literature.**
+- Matzke (1946) classified ~600 bubbles of a monodisperse soap foam by hand by face counts and face types (4-, 5-, 6-gons). The 13-faced 1-10-2 bubble was the most common.
+- Real foams by optical tomography: Monnereau & Vignes-Adler (1998); Monnereau, Prunet-Foch & Vignes-Adler (2001). Mean face and edge counts are close to Matzke's; no complete topology.
+- Simulated monodisperse foams: Kraynik, Reinelt & van Swol (PRE 2003, PRL 2004), mean F = 13.70. Sabik, Lutz & Evans (Soft Matter 2024) follow cell types during coarsening; in annealed monodisperse foam the 1-10-2 cell is ≈ 20% and the ten most common types ≈ 80%.
+- Lazar et al. (PRL 2012) used no real foam, and **we found no Weinberg-type census of real foam bubbles from tomography.**
+
+**Data.**
+- Schott, Dollet, Santucci, Raufaste, Mokso, Nature Communications 2025 (tomo-rheoscopy), raw tomogram of series 2, step 102, Zenodo 15564270.
+- Imaging: TOMCAT (Swiss Light Source), voxel 2.75 µm, 610 × 2016 × 2016 voxels.
+- Foam: nearly monodisperse liquid foam (R ≈ 58 µm), liquid fraction ≈ 8%, between two rough plates (gap 1.5 mm) under very slow steady shear (shear rate ≤ 0.011 s⁻¹).
+- We downloaded only slices z = 100–509 (13 GB, by HTTP range requests, `foam_fetch.py`) and stored them as uint8.
+
+**Method.**
+- `foam_seg.py`, as in FoamQuant:
+  - Gaussian smoothing (σ = 1) and Otsu threshold for the liquid; liquid fraction found 9.6–10.2% per block.
+  - Markers are maxima of the distance to the liquid (separation ≥ 12 voxels).
+  - Watershed on −distance inside the sample disk (radius 940 voxels). The growth also fills the liquid, so the result is a space-filling tessellation whose triple lines are the Plateau borders.
+- `foam_topo.py`: full resolution (bubble diameter ≈ 42 voxels, close to the tissue's ≈ 39), in 27 overlapping blocks. Each bubble is counted once, from the block whose core holds its centroid. Then the same pipeline as for tissue (`topology.py`). We also compute the exact Voronoi tessellation of all bubble centroids, for bubbles at least two diameters away from the ends of the range and from the sample edge.
+- **Checks:**
+  - Equivalent radius 59.1 µm, against 57.8 ± 1.0 µm in the paper.
+  - Volume CV 0.18, including segmentation noise; the paper reports σ_R/R < 0.1.
+  - Full resolution vs 2× binning on a 128 × 800 × 800 test block: mean F 13.80 vs 13.76, symmetric share 0.71 vs 0.76.
+  - Visual check of label boundaries: `foam_test.py`, `docs/img/foam-real.png`.
+- Commands: `foam_fetch.py 100 510`, `foam_topo.py 100 510`, `compare_systems.py`, `foam_summary.py` (→ `data/topo_foam/summary.json`), `foam_figure.py`.
+
+**Result.** 23 047 inner bubbles; topology resolved for 18 093 (79%, against 51% for tissue).
+
+| | real foam | Voronoi of its bubble centres | tissue | coarsening foam (Potts) | random (exact PV) |
+|---|---|---|---|---|---|
+| mean F ± sd | 13.88 ± 1.25 | 14.00 ± 1.31 | 13.84 ± 3.37 | 12.53 ± 4.69 | 15.53 ± 3.34 |
+| symmetric, all cells | 0.68 | 0.56 | 0.20 | 0.47 | 0.085 |
+| F = 11 | 0.71 (31) | 0.60 (32) | 0.35 (76) | 0.59 (46) | 0.30 (80) |
+| F = 12 | **0.90 (13)** | 0.78 (38) | 0.24 (81) | 0.41 (66) | 0.19 (96) |
+| F = 13 | **0.77 (21)** | 0.67 (43) | 0.15 (94) | 0.27 (79) | 0.10 (99) |
+| F = 14 | **0.72 (40)** | 0.61 (48) | 0.08 (100) | 0.19 (94) | 0.06 (99) |
+| F = 15 | 0.58 (50) | 0.47 (66) | 0.05 (100) | 0.11 (100) | 0.03 (100) |
+| F = 16 | 0.30 (64) | 0.20 (77) | 0.04 (100) | 0.06 (99) | 0.01 (100) |
+
+Each cell gives the share of cells with a non-trivial symmetry; in brackets, the number of distinct types among 100 random cells with that F.
+
+**Real bubbles.**
+- **Face counts:** F = 12: 8.7%, 13: 26.1%, 14: 34.3%, 15: 21.5%, 16: 6.4%. Cells with F ≤ 10 or F ≥ 18 make up 0.9%, mostly segmentation errors.
+- **Most common types:**
+  - 1-10-2 (the Matzke cell, symmetry order 4): 11.6%;
+  - 1-10-3: 6.6%;
+  - 2-8-4: 4.5%;
+  - pentagonal dodecahedron 0-12-0 (order 120): 3.6%;
+  - the 14-hedron 0-12-2 of the Weaire–Phelan foam (order 24): 3.5%;
+  - 1-10-4: 3.5%.
+- **Absent or nearly absent:**
+  - Kelvin's truncated octahedron: 7 bubbles (0.04%);
+  - cubes: 1 bubble.
+- **Diversity:**
+  - the ten most common types cover 43%;
+  - 75% of bubbles have only 4-, 5- and 6-gonal faces.
+- **Lewis law is flat:** the median volume of a bubble with F faces is 0.93 of the median at F = 11 and 1.03 at F = 17. In tissue it is 0.16 at F = 6 and 2.3 at F = 20.
+
+**Bubbles vs the Voronoi cells of their own centres** (10 991 deep bubbles resolved in both):
+- the same Weinberg type for 56% of bubbles, the same F for 73%;
+- symmetric share 0.69 vs 0.60;
+- at least one triangle 12.5% vs 21.9%, a heptagon or larger 21.1% vs 32.9%;
+- the ten most common types cover 43% vs 31%.
+
+**By distance from the axis** (shear rate grows linearly with radius): the symmetric share is 0.73, 0.71 and 0.65, and the ten most common types cover 50%, 47% and 40% in the inner, middle and outer thirds of the radius.
+
+**Conclusions.**
+1. **Real monodisperse foam is by far the most ordered system we have measured.**
+   - At F = 12–14, 72–90% of bubbles have a symmetry, and only 13–40 distinct types occur among 100 bubbles.
+   - That is 4–9 times more symmetric cells than in tissue, 5–12 times more than in random cells, and 2–4 times more than in the coarsening (polydisperse) Potts foam.
+   - Matzke's 1-10-2 bubble is the most common type, as he found by hand in 1946.
+2. **Most of this order is already in the packing of equal bubbles, and surface tension adds the rest.**
+   - The Voronoi tessellation of the bubble centres is itself highly ordered (56% symmetric).
+   - The real films remove a large part of the triangles and heptagons (Plateau's laws favour pentagons) and raise the symmetric share by 0.1 at every F.
+   - A tissue, by contrast, is barely more ordered than random cells even though it is also a space-filling packing: its cells vary much more in size (Lewis law), and size disorder destroys topological order.
+3. **Real foam is less ideal than simulated annealed foam:** the Matzke cell is 11.6% (≈ 20% in simulations), and the top ten types cover 43% (≈ 80%). Possible reasons are slow shear, segmentation noise and the 10% liquid fraction. Order decreases towards the rim, where the shear rate is highest, but image quality also drops there, so we do not attribute this to shear.
+4. **For tissues, Matzke's analogy fails at the level of complete topology.** Plant cells are not "bubbles": topologically they are much closer to random Voronoi cells than to a real foam.
+
+**Caveats.**
+- **One foam:** one sample, one time step; a wet (≈ 10%), sheared, nearly monodisperse foam.
+- **Liquid assigned to bubbles:** the tessellation splits the liquid between bubbles, and faces are bubble adjacencies in that tessellation. Near-contacts across a thick Plateau border can add or remove small faces.
+- **Unresolved bubbles:** 21% of bubbles fail the 3-connected planarity test, mostly near-degenerate vertices; the repaired variant is stored as `cells_repaired`.
+- **Resolution bias:** at this resolution voxelised cells look slightly more symmetric than they are (calibration above). The bias is of the order of +0.02 to +0.05 and does not affect the comparison, since the bubbles and tissue cells span the same number of voxels.

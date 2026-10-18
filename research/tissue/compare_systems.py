@@ -1,5 +1,5 @@
 """Сравнение полной топологии клеток трёх систем одним конвейером и при одинаковой детализации:
-ткань (семязачатки PlantSeg), рост зёрен (модель Поттса — модель огрубления пены и зёрен металла),
+ткань (семязачатки PlantSeg), реальная пена (томография, foam_topo.py) и Вороной центров её пузырей, рост зёрен (модель Поттса — модель огрубления пены и зёрен металла),
 воксельный Вороной случайных точек; плюс точный Вороной случайных точек для справки.
 
 Для каждой системы: доля восстановленных клеток, среднее и разброс числа граней F; при фиксированном F —
@@ -27,6 +27,8 @@ def load(pattern, key="cells"):
 
 SETS = {
     "tissue": load("topo/N_*.json"),
+    "foam_real": load("topo_foam/foam_step102.json"),
+    "foam_real_PV": [c for c in load("topo_foam/foam_step102.json", "voronoi") if c],
     "potts_small": load("topo_potts/potts_N180_*_t700.json") + load("topo_potts/potts_N180_*_t1000.json") + load("topo_potts/potts_N180_*_t400.json"),
     "potts_big": load("topo_potts/potts_N300_*_t1400.json") + load("topo_potts/potts_N300_*_t1800.json") + load("topo_potts/potts_N300_*_t2200.json"),
     "voxel_PV": load("topo_potts/pv_N300_n900_*.json"),

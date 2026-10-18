@@ -39,3 +39,6 @@ research/p5/lean_check/.lake/
 research/p5/lean_check/OAI/
 research/p5/lean_check/lc_err.txt
 research/p5/lean_check/setup.log
+
+# Real foam tomography (Zenodo 15564270): downloaded slices and label volumes
+research/tissue/data/foam/
