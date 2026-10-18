@@ -1,5 +1,5 @@
 """Сравнение полной топологии клеток трёх систем одним конвейером и при одинаковой детализации:
-ткань (семязачатки PlantSeg), реальная пена (томография, foam_topo.py) и Вороной центров её пузырей, рост зёрен (модель Поттса — модель огрубления пены и зёрен металла),
+ткань (семязачатки PlantSeg), реальная пена (томография, foam_topo.py) и Вороной центров её пузырей, открытоячеистый полиуретан (pur_topo.py), рост зёрен (модель Поттса — модель огрубления пены и зёрен металла),
 воксельный Вороной случайных точек; плюс точный Вороной случайных точек для справки.
 
 Для каждой системы: доля восстановленных клеток, среднее и разброс числа граней F; при фиксированном F —
@@ -25,10 +25,18 @@ def load(pattern, key="cells"):
     return cells
 
 
+def pur_cells(r_max=290.0):
+    """Open-cell PUR foam cells away from the cut surface of the sample (struts damaged there, see RESULTS.md)."""
+    d = json.load(open(D / "topo_pur" / "pur_t0_h1.json"))
+    return [c for c, q in zip(d["cells"], d["centroids_inner"]) if np.hypot(q[1] - 375, q[2] - 375) < r_max]
+
+
 SETS = {
     "tissue": load("topo/N_*.json"),
     "foam_real": load("topo_foam/foam_step102.json"),
     "foam_real_PV": [c for c in load("topo_foam/foam_step102.json", "voronoi") if c],
+    "pur": pur_cells(),
+    "pur_PV": [c for c in load("topo_pur/pur_t0_h1.json", "voronoi") if c],
     "potts_small": load("topo_potts/potts_N180_*_t700.json") + load("topo_potts/potts_N180_*_t1000.json") + load("topo_potts/potts_N180_*_t400.json"),
     "potts_big": load("topo_potts/potts_N300_*_t1400.json") + load("topo_potts/potts_N300_*_t1800.json") + load("topo_potts/potts_N300_*_t2200.json"),
     "voxel_PV": load("topo_potts/pv_N300_n900_*.json"),

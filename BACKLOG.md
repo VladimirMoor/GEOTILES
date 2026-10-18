@@ -7,7 +7,7 @@ Ideas for later. For every item, the first step is to check the literature for e
 - **Problem 5 (3D periodic tiling conjecture).** *Done 18 Oct 2026: we compiled OpenAI's Lean proof, checked axioms and the exact statement; see `research/p5/RESULTS.md`.* Optional: delete the Lean/Mathlib install (~10 GB) when no longer needed.
 
 ## Next up
-- **Complete cell topology: tissue against foam against grains or random Voronoi.** *Done 12 Oct 2026 (Potts coarsening as the foam model): tissue is much closer to random than to foam; see `research/tissue/RESULTS.md`. Real foam done 18 Oct 2026 (Zenodo 15564270, 18 093 bubbles): by far the most ordered system, and tissue is nowhere near it; see `research/tissue/RESULTS.md`. Still open: real metal grains (SrTiO₃, Globus login) and a second, polydisperse or coarsened real foam.*
+- **Complete cell topology: tissue against foam against grains or random Voronoi.** *Done 12 Oct 2026 (Potts coarsening as the foam model): tissue is much closer to random than to foam; see `research/tissue/RESULTS.md`. Real foam done 18 Oct 2026 (Zenodo 15564270, 18 093 bubbles): by far the most ordered system, and tissue is nowhere near it; see `research/tissue/RESULTS.md`. Second real foam (open-cell polyurethane, DaRUS darus-3010, 1 103 cells) done the same day: polydisperse foam is also ordered, and there the order comes from the films, not the packing. Still open: real metal grains (SrTiO₃, Globus login); a larger polydisperse foam sample.*
   - Compare Weinberg codes, symmetry orders and p-vectors, with the same machinery as `research/tissue/topology.py`, across three systems:
     - our tissues (PlantSeg ovules, 31 volumes, already done);
     - real foams (open X-ray tomography data, if any exists);

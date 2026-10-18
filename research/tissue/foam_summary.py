@@ -7,13 +7,16 @@ Output: console and data/topo_foam/summary.json
 """
 import json
 import pathlib
+import sys
 from collections import Counter
 
 import numpy as np
 
 HERE = pathlib.Path(__file__).resolve().parent
-D = json.load(open(HERE / "data" / "topo_foam" / "foam_step102.json"))
-N, R_MASK = 2016, 940.0
+# usage: python foam_summary.py [topology json] [axis centre, voxels] [sample radius, voxels] [voxel, µm]
+SRC = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "data" / "topo_foam" / "foam_step102.json"
+D = json.load(open(SRC))
+CEN, R_MASK, VOX = (float(x) for x in sys.argv[2:5]) if len(sys.argv) > 4 else (1008.0, 940.0, 2.75)
 
 
 def stats(cells):
@@ -44,7 +47,7 @@ out = {"real_all": real, "real_deep": stats(deep), "voronoi_deep": stats([v for 
        "same_type_as_voronoi": float(np.mean([c["code"] == v["code"] for c, v in pairs])) if pairs else None,
        "same_F_as_voronoi": float(np.mean([c["F"] == v["F"] for c, v in pairs])) if pairs else None}
 Q = np.array(D["centroids_inner"])
-rad = np.hypot(Q[:, 1] - N / 2, Q[:, 2] - N / 2) / R_MASK
+rad = np.hypot(Q[:, 1] - CEN, Q[:, 2] - CEN) / R_MASK
 out["by_radius"] = {}
 for lo, hi in ((0, .33), (.33, .66), (.66, 1.0)):
     sel = [c for c, r in zip(D["cells"], rad) if lo <= r < hi]
@@ -52,10 +55,10 @@ for lo, hi in ((0, .33), (.33, .66), (.66, 1.0)):
     out["by_radius"][f"{lo}-{hi}"] = {k: s.get(k) for k in ("n", "mean_F", "sd_F", "sym", "top10_share")}
 V = np.array(D["volumes_inner"])
 out["volume_cv"] = float(V.std() / V.mean())
-out["R_eq_um"] = float((3 * np.median(V) / 4 / np.pi) ** (1 / 3) * 2.75)
+out["R_eq_um"] = float((3 * np.median(V) / 4 / np.pi) ** (1 / 3) * VOX)
 F_all = np.array([c["F"] if c else np.nan for c in D["cells"]])
 out["volume_by_F"] = {int(f): round(float(np.median(V[F_all == f]) / np.median(V)), 3) for f in range(11, 18) if (F_all == f).sum() >= 30}
-(HERE / "data" / "topo_foam" / "summary.json").write_text(json.dumps(out, indent=1))
+(SRC.parent / (SRC.stem + "_summary.json")).write_text(json.dumps(out, indent=1))
 for k in ("real_all", "real_deep", "voronoi_deep"):
     s = out[k]
     if not s["n"]:

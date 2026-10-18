@@ -238,3 +238,72 @@ Each cell gives the share of cells with a non-trivial symmetry; in brackets, the
 - **Liquid assigned to bubbles:** the tessellation splits the liquid between bubbles, and faces are bubble adjacencies in that tessellation. Near-contacts across a thick Plateau border can add or remove small faces.
 - **Unresolved bubbles:** 21% of bubbles fail the 3-connected planarity test, mostly near-degenerate vertices; the repaired variant is stored as `cells_repaired`.
 - **Resolution bias:** at this resolution voxelised cells look slightly more symmetric than they are (calibration above). The bias is of the order of +0.02 to +0.05 and does not affect the comparison, since the bubbles and tissue cells span the same number of voxels.
+
+## A second real foam: open-cell polyurethane (2026-10-18)
+
+**Question.** The liquid foam above is nearly monodisperse, and most of its order is already in the packing of equal bubbles. Does a polydisperse real foam also show topological order, and where does it come from?
+
+**Literature.**
+- Montminy, Tannenbaum & Macosko (J. Colloid Interface Sci. 2004) reconstructed six polyurethane foams from tomography: ~8 000 struts, 4 000 windows, but only **376 cells**. They report window shapes (55% pentagons against ~70% in aqueous foams) and cell face counts, not complete cell types.
+- Jang, Kraynik & Kyriakides (IJSS 2008): micro-CT of open-cell PU and aluminium foams; cells are irregular polyhedra with 9–17 faces.
+- Kraynik, Reinelt & van Swol (PRL 2004), simulations: mean F decreases with polydispersity, and quadrilaterals take over from pentagons.
+- We found no Weinberg-type census of a solid foam either.
+
+**Data.**
+- DaRUS doi:10.18419/darus-3010 (CC BY 4.0, Univ. Stuttgart): micro-XRCT of an open-cell reticulated PUR foam, 10 pores per inch, cylinder 52.4 × 44.3 mm, undeformed state t0.
+- We used the authors' own segmented stack (strut skeleton against void, 593 slices of 751 × 751, voxel ≈ 0.07 mm, 6 MB).
+
+**Method.**
+- `pur_seg.py`: the cells have no membranes, only struts along the edges, so cells are separated where the void narrows at the windows. Distance to the struts (Gaussian σ = 1), markers at h-maxima, watershed inside the cylinder (radius 360 voxels). Struts are absorbed into cells, so they become triple lines.
+- **Choice of h** (`pur_check.py`, central block of 300 × 400 × 400):
+
+| h | triple-line voxels within 2 voxels of a strut | strut voxels within 3 voxels of a triple line | cells |
+|---|---|---|---|
+| 0.5 | 0.948 | 0.859 | 706 |
+| 1 | 0.966 | 0.843 | 630 |
+| 2 | 0.976 | 0.811 | 556 |
+| 4 | 0.985 | 0.737 | 444 |
+| 8 | 0.984 | 0.483 | 192 |
+
+  - In a real open-cell foam every cell edge is a strut. So the first column measures false edges (over-segmentation) and the second measures missed edges (merged cells).
+  - We use h = 1; h = 2 serves as a check.
+- `pur_topo.py`: 27 overlapping blocks, as for the liquid foam. Cell equivalent diameter ≈ 58 voxels (4.4 mm), which is finer than the tissue's resolution.
+- **Cut surface excluded.** Cells within ~1.2 cell diameters of the sample's cut surface (r > 290 voxels) have abnormally few faces: 9.7 against 13.5 inside, at normal volume. Struts there are cut or damaged, so we exclude them. Along the axis there is no such trend.
+
+**Result.** 1 641 inner cells, 1 396 resolved; 1 103 of them are away from the cut surface.
+
+| | PU foam | Voronoi of its cell centres | real liquid foam | coarsening foam (Potts) | tissue | random (exact PV) |
+|---|---|---|---|---|---|---|
+| mean F ± sd | 13.51 ± 3.03 | 14.83 ± 2.08 | 13.88 ± 1.25 | 12.53 ± 4.69 | 13.84 ± 3.37 | 15.53 ± 3.34 |
+| symmetric, all cells | 0.46 | 0.13 | 0.68 | 0.47 | 0.20 | 0.085 |
+| F = 12 | 0.61 (44) | – | 0.90 (13) | 0.41 (72) | 0.24 (81) | 0.19 (96) |
+| F = 13 | 0.46 (47) | – | 0.77 (21) | 0.27 (78) | 0.15 (94) | 0.10 (99) |
+| F = 14 | 0.38 (65) | 0.13 (96) | 0.72 (40) | 0.19 (94) | 0.08 (100) | 0.06 (99) |
+| F = 15 | 0.29 (78) | 0.07 (98) | 0.58 (50) | 0.11 (97) | 0.05 (100) | 0.03 (100) |
+| F = 16 | 0.18 (86) | 0.06 (99) | 0.30 (64) | 0.06 (100) | 0.04 (100) | 0.01 (100) |
+
+As before, each cell gives the share of cells with a non-trivial symmetry, and in brackets the number of distinct types among 100 random cells with that F. A dash means fewer than 100 cells.
+
+**Further measurements.**
+- **Check with h = 2:** 1 077 cells, mean F 13.53 ± 2.87. The symmetric share is higher by 0.04–0.07 at every F (F = 14: 0.44), so the comparison is unchanged.
+- **Polydispersity:**
+  - volume CV 0.48;
+  - Lewis law: the median volume at F = 11 is 0.61 of the overall median, at F = 17 it is 1.42 (liquid foam: 0.93–1.03; tissue: 0.16 at F = 6 and 2.3 at F = 20).
+- **Face shapes:** 27% of cells have a triangular face and 48% have a face with 7 or more sides (liquid foam: 12.5% and 21%). The most common types are 4-4-0 (symmetry order 8), 3-6-0 (order 12), 2-8-1 and 3-6-1, each 2–3%. The Matzke 1-10-2 cell is only 1.5–2%.
+
+**Conclusions.**
+1. **A polydisperse solid foam is also strongly ordered.**
+   - At F = 12–16 it has 1.5–3 times more symmetric cells than the coarsening Potts foam and 2.5–6 times more than tissue.
+   - It has far fewer distinct types than tissue or random cells.
+2. **Here the order comes from the films, not from the packing.**
+   - The Voronoi cells of the PU cell centres are almost as disordered as random cells (F = 14: 0.13 against 0.06).
+   - For the monodisperse liquid foam the Voronoi of centres was already ordered (0.61). Together the two foams separate the two sources of order.
+   - Equal sizes give an ordered packing. Surface tension (Plateau's laws, which the PU foam inherited from its liquid state) gives order on top of any packing.
+3. **Tissue has neither.** Its face-count spread is about the same as the PU foam's (sd 3.4 against 3.0), and its cells vary even more in size, but its symmetric shares are near random. Tissue walls are not shaped like soap films in topology.
+4. **Face statistics follow Kraynik et al. (2004).** Polydispersity lowers the share of pentagons and of the Matzke cell and raises quadrilateral-rich types (4-4-0, 3-6-x).
+
+**Caveats.**
+- **Small sample:** 1 103 cells, one sample. Shares at fixed F have a statistical error of about ±0.04.
+- **Segmentation:** the open-cell segmentation misses ~16% of strut length as edges, merging some faces.
+- **Rise anisotropy:** PU cells are elongated along the rise direction. This does not change topology, but the Voronoi of centroids is computed without correcting for it.
+- **Different system:** the foam is a solid replica of a liquid foam, reticulated (membranes removed), so it is a different system from the liquid foam.

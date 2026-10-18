@@ -1,5 +1,6 @@
 """Figure for the site: a slice of the real foam with segmented bubbles, and the share of symmetric cells by
-number of faces for real foam, Voronoi of the foam's bubble centres, coarsening foam (Potts), tissue, random cells.
+number of faces for real liquid foam and open-cell polyurethane foam (and the Voronoi cells of their centres),
+coarsening foam (Potts), tissue, random cells.
 Inputs: downloaded slices (foam_fetch.py), data/compare_systems.json. Output: docs/img/foam-real.png
 """
 import json
@@ -25,6 +26,7 @@ lo, hi = np.percentile(raw, [1, 99.5])
 
 C = json.load(open(HERE / "data" / "compare_systems.json"))
 series = [("foam_real", "real foam (bubbles)", "#d62728", "-"), ("foam_real_PV", "Voronoi of bubble centres", "#d62728", "--"),
+          ("pur", "polyurethane foam (cells)", "#9467bd", "-"), ("pur_PV", "Voronoi of PU cell centres", "#9467bd", "--"),
           ("potts_small", "coarsening foam (Potts)", "#ff7f0e", "-"), ("tissue", "plant tissue (ovules)", "#2ca02c", "-"),
           ("exact_PV", "random cells (Poisson–Voronoi)", "#7f7f7f", "-")]
 
@@ -42,7 +44,7 @@ ax[1].set_ylabel("share of cells with a symmetry")
 ax[1].set_xlim(7.5, 20.5)
 ax[1].set_ylim(0, 1)
 ax[1].grid(alpha=0.3)
-ax[1].legend(frameon=False)
+ax[1].legend(frameon=False, fontsize=9)
 plt.tight_layout()
 plt.savefig(OUT, dpi=90)
 print(OUT)
