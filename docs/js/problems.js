@@ -5,7 +5,7 @@ export const STATUS = {
   far: { en: 'out of reach now', ru: 'пока недостижимо', es: 'fuera de alcance' },
   fund: { en: 'fundamental', ru: 'фундаментальная', es: 'fundamental' },
   pause: { en: 'paused', ru: 'на паузе', es: 'en pausa' },
-  solved: { en: 'resolved (preprint)', ru: 'решена (препринт)', es: 'resuelto (preprint)' },
+  solved: { en: 'resolved (formally verified)', ru: 'решена (проверено формально)', es: 'resuelto (verificado formalmente)' },
 };
 
 export const PROBLEMS = [
