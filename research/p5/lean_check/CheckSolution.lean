@@ -1,0 +1,5 @@
+import OAI.Geometry.PeriodicTiling.Main
+import LeanCheck.Dump
+
+#dump_statement OAI.PeriodicTilingThree.periodic_tiling_counterexample_and_minimality "dump_solution.txt"
+#print axioms OAI.PeriodicTilingThree.periodic_tiling_counterexample_and_minimality

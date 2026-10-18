@@ -1,0 +1,4 @@
+import ComparatorChallenges.PeriodicTilingThree
+import LeanCheck.Dump
+
+#dump_statement OAI.PeriodicTilingThree.periodic_tiling_counterexample_and_minimality "dump_challenge.txt"

@@ -32,3 +32,10 @@ research/tissue/data/topo_poisson.json
 research/p4/data/nondv/*.npy
 research/tissue/data/potts/
 research/cosmic/data/sdss_mgs.csv
+research/p5/lit/
+
+# Lean check of the OpenAI p5 proof: keep our small files, not Mathlib/build outputs or OpenAI's sources
+research/p5/lean_check/.lake/
+research/p5/lean_check/OAI/
+research/p5/lean_check/lc_err.txt
+research/p5/lean_check/setup.log

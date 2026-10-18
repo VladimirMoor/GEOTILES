@@ -4,7 +4,7 @@ Ideas for later. For every item, the first step is to check the literature for e
 
 ## Paused problems
 - **Problem 3 (Heesch 7).** Verify Bašić's tile (`research/p3/tiles/basic6.txt`) with heesch-sat on a machine with 32–64 GB of RAM. Then look at families of Heesch-6 candidates.
-- **Problem 5 (3D periodic tiling conjecture).** Independently verify the OpenAI counterexample (Sept 2026) before putting it in the catalog.
+- **Problem 5 (3D periodic tiling conjecture).** *Done 18 Oct 2026: we compiled OpenAI's Lean proof, checked axioms and the exact statement; see `research/p5/RESULTS.md`.* Optional: delete the Lean/Mathlib install (~10 GB) when no longer needed.
 
 ## Next up
 - **Complete cell topology: tissue against foam against grains or random Voronoi.** *Done 12 Oct 2026 (Potts coarsening as the foam model): tissue is much closer to random than to foam; see `research/tissue/RESULTS.md`. Still open: real foam tomography (Zenodo 15564270, 40 GB, would need segmentation) and the SrTiO₃ grains (Globus login).*
