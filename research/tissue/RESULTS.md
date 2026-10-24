@@ -307,3 +307,62 @@ As before, each cell gives the share of cells with a non-trivial symmetry, and i
 - **Segmentation:** the open-cell segmentation misses ~16% of strut length as edges, merging some faces.
 - **Rise anisotropy:** PU cells are elongated along the rise direction. This does not change topology, but the Voronoi of centroids is computed without correcting for it.
 - **Different system:** the foam is a solid replica of a liquid foam, reticulated (membranes removed), so it is a different system from the liquid foam.
+
+## Real metal grains: pure iron from diffraction contrast tomography (2026-10-24)
+
+**Question.** Lazar et al. (PRL 2012) found that simulated grain growth (mean curvature flow) produces highly symmetric grains far more often than random cells, and our Potts model agrees. Do real grains show this?
+
+**Literature.**
+- Complete-topology censuses of grains exist only for simulations: Lazar et al. 2012, and later grain-growth simulation studies. We found none for a measured 3D polycrystal.
+- Experiments: Bhattacharya et al. (Science 2021) showed with HEDM that real grain-boundary velocities in Ni are not correlated with curvature, i.e. real grain growth is not simple curvature flow.
+
+**Data.**
+- Ånes, Heinig, Wang, Oddershede, … Zhang, Lauridsen, Zenodo 20323210 (CC BY 4.0): laboratory DCT of pure α-iron during grain growth (sample AGG100), state T0, GrainMapper3D HDF5.
+- 3292 × 371 × 370 voxels of 3 µm, a rod of 1.1 × 1.1 × 9.9 mm.
+- The grain map fills the sample: 60 135 grains, median equivalent diameter 15.9 voxels (48 µm), volume CV 1.9.
+- The archive was fetched in 16 parallel range requests, because a single stream ran at ≈ 35 kB/s.
+
+**Method.** `fe_topo.py`.
+- GrainId is used directly as the label volume, with 0 outside the sample mask, and the same pipeline as for tissue (`topology.py`). Grains touching the mask or the ends of the volume are excluded.
+- Exact Voronoi of all grain centroids, for grains deeper than 32 voxels.
+- **Resolution matters** (calibration above): grains here are ≈ 16 voxels across. We therefore compare with systems drawn at the same resolution:
+  - the Potts snapshot at 400 steps (180³ box, ≈ 2 000 grains, ≈ 18 voxels);
+  - voxelised Poisson–Voronoi with cell diameter ≈ 14 voxels (`pv_N180_n4000`).
+
+**Result.** 41 647 inner grains; topology resolved for 23 037 (55%; voxelised random cells at the same resolution: 31%).
+
+| F | iron grains | Voronoi of iron grain centres | grain growth, Potts t400 (same res.) | Potts t400–1000 | random, voxels D ≈ 14 | tissue | random (exact) |
+|---|---|---|---|---|---|---|---|
+| mean F ± sd | 11.38 ± 4.64 | 14.83 ± 3.25 | 12.58 ± 4.78 | 12.53 ± 4.69 | 13.44 ± 2.90 | 13.84 ± 3.37 | 15.53 ± 3.34 |
+| 10 | 0.53 | 0.71 | 0.75 | 0.76 | 0.62 | 0.58 | 0.50 |
+| 11 | **0.31** | 0.47 | 0.54 | 0.59 | 0.29 | 0.35 | 0.30 |
+| 12 | **0.21** | 0.32 | 0.35 | 0.41 | 0.18 | 0.24 | 0.19 |
+| 13 | **0.12** | 0.16 | 0.28 | 0.27 | 0.04 | 0.15 | 0.10 |
+| 14 | **0.06** | 0.10 | 0.18 | 0.19 | 0.04 | 0.08 | 0.06 |
+| 15 | **0.03** | 0.07 | 0.17 | 0.11 | 0.02 | 0.05 | 0.03 |
+
+Each cell gives the share of cells with a non-trivial symmetry. Distinct types among 100 iron grains: 75, 88, 98 and 99 at F = 11–14, against 43, 69, 85 and 97 in the Potts model.
+
+**Further measurements.**
+- **Face counts are grain-growth-like:** mean 11.4, sd 4.6. That is broad, like the Potts model (12.5 ± 4.7) and unlike random cells (15.5 ± 3.3). 17% of grains have ≤ 7 faces, and 1.7% are tetrahedra.
+- **Lewis law:** median volume relative to the overall median is 0.82 at F = 11 and 2.34 at F = 17.
+- **Most common types:** small cells such as the 6-faced 2-2-2 (4.5%), the triangular prism (3.4%), 1-3-3-1 and 1-3-3 (2.5% each).
+- **Bubble types are absent:** grains with only 4-, 5- and 6-gonal faces are 11%, against 75% in the liquid foam.
+- **Robustness to reconstruction quality** (`fe_check.py`, z = 1000–1600, 3 936 resolved grains):
+  - grains in the top and bottom halves of mean LabDCT completeness have the same symmetric shares at F = 12: 0.24 and 0.25 (F = 11: 0.37 and 0.30);
+  - large and small grains also agree;
+  - a stricter triple-line threshold cannot be used: at 16 voxels per grain real edges are only a few voxels long, and MIN_TRIPLE = 6 drops mean F to 6.
+
+**Conclusions.**
+1. **Real iron grains are topologically as disordered as random cells at fixed F.** Their symmetric shares lie on the voxel-random and tissue curves and are 1.7–6 times below simulated grain growth at the same resolution. They are even below the Voronoi cells of their own centres.
+2. **Face counts follow grain growth, but grain shapes do not.** The size-related statistics (broad F distribution, Lewis law, many small few-faced grains) look like grain growth. The topological order that mean curvature flow produces (Lazar et al.) is absent.
+3. **This is consistent with Bhattacharya et al. (2021):** real boundaries do not move by curvature alone. Anisotropic boundary energy and mobility, solute drag and pinning plausibly break the order that isotropic curvature flow creates.
+4. **Overall order of systems at fixed F:** monodisperse liquid foam > polydisperse PU foam > simulated grain growth (Potts) > real iron grains ≈ plant tissue ≈ random cells.
+   - Surface-tension-dominated cells are ordered.
+   - Real solids and living tissue are not.
+
+**Caveats.**
+- **One sample, one state:** T0 of a series prepared for abnormal grain growth.
+- **Resolution:** coarse, ≈ 16 voxels per grain, though compared at matched resolution.
+- **Reconstruction:** LabDCT reconstruction may miss grains below a few voxels and smooths boundaries. A bias common to all grains cannot be excluded from one dataset.
+- **Next steps:** later states T1–T4 of the same sample, and a higher-resolution grain map (HEDM, 3D EBSD).

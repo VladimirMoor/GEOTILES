@@ -1,6 +1,6 @@
 """Figure for the site: a slice of the real foam with segmented bubbles, and the share of symmetric cells by
 number of faces for real liquid foam and open-cell polyurethane foam (and the Voronoi cells of their centres),
-coarsening foam (Potts), tissue, random cells.
+real iron grains, coarsening (Potts), tissue, random cells.
 Inputs: downloaded slices (foam_fetch.py), data/compare_systems.json. Output: docs/img/foam-real.png
 """
 import json
@@ -27,7 +27,7 @@ lo, hi = np.percentile(raw, [1, 99.5])
 C = json.load(open(HERE / "data" / "compare_systems.json"))
 series = [("foam_real", "real foam (bubbles)", "#d62728", "-"), ("foam_real_PV", "Voronoi of bubble centres", "#d62728", "--"),
           ("pur", "polyurethane foam (cells)", "#9467bd", "-"), ("pur_PV", "Voronoi of PU cell centres", "#9467bd", "--"),
-          ("potts_small", "coarsening foam (Potts)", "#ff7f0e", "-"), ("tissue", "plant tissue (ovules)", "#2ca02c", "-"),
+          ("iron", "iron grains (real)", "#1f77b4", "-"), ("potts_small", "grain growth / coarsening (Potts model)", "#ff7f0e", "-"), ("tissue", "plant tissue (ovules)", "#2ca02c", "-"),
           ("exact_PV", "random cells (Poisson–Voronoi)", "#7f7f7f", "-")]
 
 fig, ax = plt.subplots(1, 2, figsize=(13, 6), gridspec_kw={"width_ratios": [1, 1.15]})
