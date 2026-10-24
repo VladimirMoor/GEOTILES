@@ -17,7 +17,7 @@ Ideas for later. For every item, the first step is to check the literature for e
 
 ## Outside pure geometry (Voronoi cells and tilings in real data)
 1. **Crystallography Open Database (COD).** Dirichlet cells of atoms and molecules in all space groups, compared with the record stereohedra of problem 4. *Done (11 Oct 2026): see `research/cod/RESULTS.md`.*
-2. **3D cell tissues.** *Done (11 Oct 2026): see `research/tissue/RESULTS.md`; Weinberg types done (same symmetry and diversity as Voronoi of the centres at fixed F; excess of small cells). Still open: scutoids.* Use segmented 3D images of tissues (PlantSeg datasets, Arabidopsis ovule and meristem, Drosophila epithelia).
+2. **3D cell tissues.** *Done (11 Oct 2026): see `research/tissue/RESULTS.md`; Weinberg types done (same symmetry and diversity as Voronoi of the centres at fixed F; excess of small cells). Scutoids done 25 Oct 2026: they exist in the ovule epidermis (≈ 9% of 3 317 cells) but are 2.5–2.8 times rarer than in Voronoi column models of the same layer; see `research/tissue/RESULTS.md`. Still open: scutoids in a true plant monolayer with strong curvature (shoot meristem L1, sepal), and lateral roots.* Use segmented 3D images of tissues (PlantSeg datasets, Arabidopsis ovule and meristem, Drosophila epithelia).
    - Measure the face-count distribution and the combinatorial types of cells.
    - Compare with Poisson–Voronoi (mean 15.54 faces), Kelvin (14) and proteins (~17).
    - Look for scutoids (Gómez-Gálvez et al. 2018).

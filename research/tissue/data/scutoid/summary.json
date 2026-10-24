@@ -1,0 +1,83 @@
+{
+ "volumes": 31,
+ "cells": 3317,
+ "pooled": {
+  "0.5": {
+   "by_threshold": {
+    "t1": 0.12752487187217365,
+    "strict": 0.3047934880916491,
+    "n": 3317
+   },
+   "model_real_axes": {
+    "t1": 0.3334340991535671,
+    "strict": 0.48125755743651755,
+    "n": 3308
+   },
+   "model": {
+    "t1": 0.31257557436517536,
+    "strict": 0.46946795646916567,
+    "n": 3308
+   }
+  },
+  "1.0": {
+   "by_threshold": {
+    "t1": 0.0898402170636117,
+    "strict": 0.2610792885137172,
+    "n": 3317
+   },
+   "model_real_axes": {
+    "t1": 0.2348851269649335,
+    "strict": 0.40598548972188636,
+    "n": 3308
+   },
+   "model": {
+    "t1": 0.2137243047158404,
+    "strict": 0.3984280532043531,
+    "n": 3308
+   }
+  },
+  "2.0": {
+   "by_threshold": {
+    "t1": 0.04492010853180585,
+    "strict": 0.2059089538739825,
+    "n": 3317
+   },
+   "model_real_axes": {
+    "t1": 0.12484885126964934,
+    "strict": 0.3022974607013301,
+    "n": 3308
+   },
+   "model": {
+    "t1": 0.11396614268440144,
+    "strict": 0.2968561064087062,
+    "n": 3308
+   }
+  }
+ },
+ "paired": {
+  "0.5": {
+   "real_below_real_axes": 28,
+   "real_above_real_axes": 1,
+   "real_below_normal": 28,
+   "real_above_normal": 1
+  },
+  "1.0": {
+   "real_below_real_axes": 26,
+   "real_above_real_axes": 1,
+   "real_below_normal": 27,
+   "real_above_normal": 1
+  },
+  "2.0": {
+   "real_below_real_axes": 26,
+   "real_above_real_axes": 3,
+   "real_below_normal": 25,
+   "real_above_normal": 3
+  }
+ },
+ "surface_ratio": {
+  "median": 1.1625998111101572,
+  "q25": 1.0118593258755575,
+  "q75": 1.267196618871912
+ },
+ "thickness_um_median": 5.592381000518799
+}

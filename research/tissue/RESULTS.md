@@ -366,3 +366,58 @@ Each cell gives the share of cells with a non-trivial symmetry. Distinct types a
 - **Resolution:** coarse, ≈ 16 voxels per grain, though compared at matched resolution.
 - **Reconstruction:** LabDCT reconstruction may miss grains below a few voxels and smooths boundaries. A bias common to all grains cannot be excluded from one dataset.
 - **Next steps:** later states T1–T4 of the same sample, and a higher-resolution grain map (HEDM, 3D EBSD).
+
+## Scutoids in the plant epidermis (2026-10-25)
+
+**Question.** In curved animal epithelia many cells are scutoids: their neighbours on the apical surface differ from those on the basal surface (Gómez-Gálvez et al., Nat Commun 2018). Plant cells are glued by shared walls and cannot slide past each other. Are there scutoids in a plant epidermis, and how many?
+
+**Literature.**
+- Gómez-Gálvez et al. 2018 report the share of scutoids by tissue:
+
+| tissue | scutoids | surface ratio |
+|---|---|---|
+| Drosophila salivary gland | 75 ± 17% | 7 ± 3 |
+| Drosophila embryo, folds | 50 ± 15% | 1.6 |
+| Drosophila embryo, outside folds | 15 ± 4% | 1.2 |
+| egg chamber, stage 4 / stage 8 | 20 ± 8% / 10 ± 3% | |
+| zebrafish epiboly | 2.9 ± 1.5% | |
+
+- In their Voronoi tube model the share grows with the surface ratio.
+- **We found no study of scutoids in plants.**
+
+**Data.** The same 31 PlantSeg ovule volumes, re-downloaded from OSF one at a time and deleted after processing. Four parallel downloads were needed, since OSF ran at about 200 kB/s per connection.
+
+**Method.** `scutoid.py`, `scutoid_all.py`, `scutoid_summary.py`, `scutoid_figure.py`.
+- **The epithelium.** Cells touching the background that also touch cells which never touch it, i.e. cells spanning the outer layer.
+  - A first version took every cell touching the background and found ~40% "scutoids". Slices showed this was an artefact: in ovules, cells are often stacked two deep near the surface, and the integuments are sheets with background on both sides.
+- **Relative depth** in the layer: t = d_out / (d_out + d_in), with distances in µm to the outside and to the tissue below the layer.
+- **Wall bands.** For each pair of layer cells, the wall area in the outer band (t < 0.2) and in the inner band (t > 0.8).
+- **Scutoid criterion.** A cell is a scutoid when it takes part in an apico-basal T1 exchange:
+  - a pair (a, b) has a wall ≥ A µm² in one band and no wall at all in the other;
+  - and a pair (c, d) of common neighbours of a and b does the opposite.
+  - A one-sided change without the compensating pair is reported separately; it is mostly a wall that thins out near a surface.
+- **Cells judged:** spanning cells with a basal surface, not touching the volume border or ignore regions. 3 317 cells in 31 ovules; median layer thickness 5.6 µm.
+- **Surface ratio** (outer area / inner area of the judged cells): median 1.16 (quartiles 1.01–1.27).
+- **Visual check:** a verified exchange in N_405_A, `docs/img/scutoid-ovule.png`. Cells A and B touch on the outer surface, C and D on the inner.
+- **Two null models on the same layer and the same cells** (`column_model`): each cell becomes a straight column, and at each depth level (20 levels) a layer voxel goes to the nearest column axis, i.e. a Voronoi tessellation at each depth, like the Voronoi tubes of Gómez-Gálvez et al.
+  - "normal": axis along the outward surface normal at the centre of the cell's outer face;
+  - "real axes": axis through the real centres of the cell's outer and inner faces, which keeps each cell's real tilt.
+
+**Result** (share of judged cells in at least one apico-basal T1 exchange):
+
+| wall threshold A | real epidermis | Voronoi columns, real axes | Voronoi columns, normals | ovules with real < model (real axes) |
+|---|---|---|---|---|
+| 0.5 µm² | 12.8% | 33.3% | 31.3% | 28 of 31 |
+| 1.0 µm² | **9.0%** | 23.5% | 21.4% | 26 of 31 |
+| 2.0 µm² | 4.5% | 12.5% | 11.4% | 26 of 31 |
+
+**Conclusions.**
+1. **Scutoids exist in plants.** A clean apico-basal neighbour exchange is seen in the ovule epidermis, and about 9% of epidermal cells (4.5–13% depending on the threshold) take part in one.
+2. **They are 2.5–2.8 times rarer than geometry alone predicts.** The same cells, as Voronoi columns with the same tilt, would exchange neighbours 2.5–2.8 times more often. This holds in 26–28 of 31 ovules.
+   - Plant cells cannot intercalate. Their walls are laid down by division and then only stretch, so it is plausible that they keep the same neighbours through the layer more than a free-boundary (Voronoi) packing would.
+3. **Comparison with animals.** At a similar surface ratio (1.16 against 1.2) the ovule epidermis has 9% scutoids against 15 ± 4% in the Drosophila embryo outside folds. The methods differ, so this is only indicative.
+
+**Caveats.**
+- **Few judged cells:** only spanning epidermal cells away from the borders and ignore regions count: 3 317 of 14 378 spanning cells. Some ovules have only a few dozen judged cells.
+- **Segmentation errors** can create or destroy T1 exchanges. The models have none, and errors more likely add exchanges to the real layer than remove them, so if anything the deficit of real scutoids is underestimated.
+- **Voronoi columns are a reference, not a mechanical model.** Walls in a Voronoi column model are planar, and part of the difference may come from the curved walls of real cells.
