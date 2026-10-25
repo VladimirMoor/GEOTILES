@@ -31,5 +31,4 @@ Ideas for later. For every item, the first step is to check the literature for e
 Not worth it as research: **honeycomb** and **wasp/hornet nests** (Hales 2001, Fejes Tóth 1964, Dauter–Jaskolski 2025; comb defects: Smith et al. 2023, Krishna et al. 2022). They are covered by the review page `docs/nature.html`, with our own bee-vs-Tóth computation (`research/nature/`). **Spider webs** are networks of threads, not tilings, and there is little data.
 
 ## Protein crystals (follow-ups)
-- Split the asymmetric unit into chains instead of using its centroid.
-- Other space groups: P2₁2₁2₁, P3₂21 and C2 are the most common.
+- *Done 25 Oct 2026: chains split and the common groups P2₁, C2, P2₁2₁2₁, P3₂21 added (`research/bio/pdb_chains.py`); geometric neighbours grow with symmetry, per chain every group gives 15–17.* Still open: compare Voronoi neighbours with actual atomic contacts (all atoms, symmetry mates) to see which faces are real contacts.

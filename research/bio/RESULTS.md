@@ -53,3 +53,45 @@ The maximum is **31** (4UX6 and 8GS1, c/a ≈ 0.55), followed by 30 (6P64, c/a 0
 | P6₁22 | 3235 | 16–17 | 31 | 34 (Schmitt) |
 
 In the non-cubic groups, a few natural crystals reach 83–91% of the record face count, and always in strongly anisotropic lattices. That is the same regime where the record stereohedra live. Most molecules have 15–18 contacting neighbours.
+
+## Common space groups and single chains (2026-10-25)
+
+**Questions.**
+1. How many neighbours does a molecule have in the most common protein space groups, which have fewer symmetry operations than the groups above?
+2. How does the count change when each protein chain gets its own point instead of the centroid of the whole asymmetric unit?
+
+**Literature.** Carugo & Djinović-Carugo (J. Struct. Biol. 2012) counted molecules in actual contact with a reference molecule in PDB crystals. They found 3–18 contacts, about 10 on average, and fewer at higher symmetry. A Voronoi face is a geometric neighbour, not necessarily a contact.
+
+**Method** (`pdb_chains.py`).
+- Works for any space group and cell. The centroids of all protein chains (≥ 20 Cα) are expanded by the group operators (gemmi, via `research/p4/dvfast.Group`) and by lattice translations −2..2.
+- The Voronoi tessellation of these points uses the real a, b, c, α, β, γ (scipy). Faces of each chain's cell = neighbouring chains.
+- "ASU" mode puts one point at the centroid of all chains, as in `pdb_dv.py`.
+- **Check:** for 35 single-chain P6₁22 entries the new code reproduces the old face counts exactly.
+- **Sampling:** a random sample of 1 500 X-ray entries per group (seed 1). For I4₁32, all 158 entries.
+
+**Result.**
+
+| group | operations | entries | single-chain entries | ASU point: mean faces (max) | per chain: mean ± sd (max) | ASU point: odd face counts |
+|---|---|---|---|---|---|---|
+| P2₁ | 2 | 1 488 | 25% | 13.6 (16) | 15.3 ± 2.3 (29) | 0% |
+| C2 | 4 | 1 476 | 33% | 13.5 (20) | 15.6 ± 2.6 (33) | 20% |
+| P2₁2₁2₁ | 4 | 1 478 | 36% | 14.4 (20) | 15.3 ± 2.7 (27) | 0% |
+| P3₂21 | 6 | 1 473 | 60% | 15.4 (23) | 15.9 ± 2.3 (26) | 41% |
+| P6₁22 | 12 | 1 458 | 66% | 16.8 (24) | 16.8 ± 2.6 (29) | 50% |
+| I4₁22 | 16 | 1 114 | 69% | 17.6 (29) | 17.1 ± 2.8 (31) | 57% |
+| I4₁32 | 48 | 145 | 63% | 16.9 (20) | 16.6 ± 2.0 (23) | 71% |
+
+The operations column counts the operations of the point group times the centring.
+
+**Further measurements.**
+- **Faces per chain grow with the number of chains in the ASU.** In P2₁: 13.6 for one chain, 14.7 for two, 15.2 for four, 15.9 for five or more. In P2₁2₁2₁: 14.5, 15.0, 15.6, 15.4.
+- **Parity.** In P2₁ and P2₁2₁2₁ every single-point cell has an even number of faces. These groups contain no involution: no 2-fold rotation, mirror or inversion, since a 2₁ screw squared is a translation. So the neighbours x·g and x·g⁻¹ are always distinct, and faces come in pairs. Groups with 2-fold rotations (C2, P3₂21, P6₁22, I4₁22, I4₁32) have odd counts too.
+
+**Conclusions.**
+1. **Geometric neighbours increase with symmetry.** One point per molecule gives 13–14 faces in the low-symmetry groups (P2₁, C2, P2₁2₁2₁) and 17–18 in the high-symmetry ones. Carugo & Djinović-Carugo found the opposite trend for actual contacts. With more symmetry, more of the Voronoi neighbours are not touching the molecule.
+2. **The difference between groups mostly disappears per chain.** With several chains in the ASU, the packing of chain centres is less regular, and every group gives 15–17 neighbours per chain. That is close to random packings (Poisson–Voronoi 15.5) and to the ~15 faces of a typical plant cell.
+3. **Single molecules in P2₁ never exceed 16 faces** in the sample, and in P2₁2₁2₁ never exceed 20.
+
+**Caveats.**
+- **Chain centroids** stand in for whole chains. Long or elongated chains can contact neighbours that are not Voronoi neighbours of their centroids, and the other way round.
+- **Sampling:** 1 500 random entries per group out of tens of thousands.
