@@ -7,7 +7,10 @@
   Poisson–Voronoi cell, each with its number of faces and symmetry order.
 Surfaces: marching cubes on a Gaussian-smoothed cell mask (voxel size respected), centred, scaled to radius 1.
 
-Usage: python meshes.py [scutoid|gallery]   (needs the ovule file, the foam slices, the PUR stack, the iron map)
+- cluster_foam.json, cluster_iron.json: a cell with all its neighbours, exploded; pur_struts.json: polyurethane
+  struts with one segmented cell inside.
+
+Usage: python meshes.py [scutoid|gallery|clusters|struts]   (needs the ovule file, the foam slices, the PUR stack, the iron map)
 """
 import json
 import pathlib
@@ -244,9 +247,74 @@ def gallery():
     print("gallery.json", [(m["name"]["en"], len(m["f"]) // 3) for m in items])
 
 
+HEX = ["#e45a54", "#4f8fd9", "#f2b233", "#4fb38a", "#8d78d8", "#3fb2c4", "#d983b0", "#9aaa45"]
+
+
+def cluster(L, lab, vox, explode=1.3, sigma=1.0, step=1, bg=(0,), centre_colour="#d62728"):
+    """A cell and all its face neighbours, each pushed away from the centre (exploded view)."""
+    zz, yy, xx = np.nonzero(L == lab)
+    c0 = np.array([zz.mean(), yy.mean(), xx.mean()])
+    ring = ndi.binary_dilation(L == lab, iterations=2) & (L != lab)
+    nbs = [int(x) for x in np.unique(L[ring]) if x not in bg]
+    parts, cols = [], []
+    for k, i in enumerate([lab] + nbs):
+        zz, yy, xx = np.nonzero(L == i)
+        box = (slice(max(zz.min() - 3, 0), zz.max() + 4), slice(max(yy.min() - 3, 0), yy.max() + 4), slice(max(xx.min() - 3, 0), xx.max() + 4))
+        v, f = surface(L[box] == i, vox, sigma, step)
+        v = v + np.array([b.start for b in box]) * np.array(vox)
+        ci = np.array([zz.mean(), yy.mean(), xx.mean()]) * np.array(vox)
+        if k:
+            v = v + (ci - c0 * np.array(vox)) * (explode - 1)
+        parts.append((to_xyz(v), f))
+        cols.append(centre_colour if k == 0 else HEX[k % len(HEX)])
+    parts = normalise(parts)
+    return [pack(np.round(v, 2), f, c, opacity=1 if k == 0 else 0.9) for k, ((v, f), c) in enumerate(zip(parts, cols))], len(nbs)
+
+
+def clusters():
+    from foam_seg import load as fload, segment as fseg
+    V, origin = fload(280, 380, (800, 1200, 800, 1200), 1)
+    Lf, _ = fseg(V, origin, 1, 940.0, 12, 1.0)
+    lab, c = pick(Lf, {0}, lambda c: c["p"][:4] == [0, 1, 10, 2] and sum(c["p"][4:]) == 0)
+    m, n = cluster(Lf, lab, (1, 1, 1), sigma=1.5, step=3)
+    (OUT / "cluster_foam.json").write_text(json.dumps({"meshes": m}))
+    print("cluster_foam.json", n, "neighbours")
+    import h5py
+    h = h5py.File(HERE / "data" / "fe" / "T0_AGG100_crop_gm3d.h5", "r")
+    Li = h["LabDCT/Data/GrainId"][1500:1620, 110:260, 110:260].astype(np.int32)
+    lab, c = pick(Li, {0}, lambda c: c["F"] == 14)
+    m, n = cluster(Li, lab, (1, 1, 1), sigma=1.2, step=2)
+    (OUT / "cluster_iron.json").write_text(json.dumps({"meshes": m}))
+    print("cluster_iron.json", n, "neighbours")
+
+
+def pur_struts():
+    """A block of the open-cell polyurethane foam: the strut skeleton and one segmented cell inside it."""
+    from pur_seg import load as pload, segment as pseg
+    S = pload(220, 380, (230, 520, 230, 520))
+    Lp, _ = pseg(S, (230, 230), 360.0, 1.0)
+    lab, c = pick(Lp, {0}, lambda c: c["F"] == 14)
+    zz, yy, xx = np.nonzero(Lp == lab)
+    ctr = np.array([zz.mean(), yy.mean(), xx.mean()]).astype(int)
+    h = 52
+    box = tuple(slice(max(a - h, 0), a + h) for a in ctr)
+    sv, sf = surface(S[box], (1, 1, 1), sigma=0.8, step=2)
+    Lb = Lp[box]
+    cv, cf = surface(Lb == lab, (1, 1, 1), sigma=1.5, step=3)
+    col = face_colours(Lb, lab, cv, (0,))
+    (sv, sf), (cv, cf) = normalise([(to_xyz(sv), sf), (to_xyz(cv), cf)])
+    meshes = [pack(np.round(sv, 2), sf, "#d9dee5"), pack(np.round(cv, 2), cf, "#8d78d8", c=col, opacity=0.55)]
+    (OUT / "pur_struts.json").write_text(json.dumps({"zoom": 1.5, "meshes": meshes}))
+    print("pur_struts.json", len(sf), "+", len(cf), "triangles; cell", c["F"], "faces")
+
+
 if __name__ == "__main__":
     what = sys.argv[1] if len(sys.argv) > 1 else "all"
     if what in ("scutoid", "all"):
         scutoid_scene()
     if what in ("gallery", "all"):
         gallery()
+    if what in ("clusters", "all"):
+        clusters()
+    if what in ("struts", "all"):
+        pur_struts()

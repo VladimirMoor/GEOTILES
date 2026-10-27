@@ -1,7 +1,7 @@
 // 3D-поверхности настоящих клеток (пузыри, зёрна, клетки тканей, скутоиды) из data/cells/*.json.
 // Разметка: <div class="cells3d" data-src="data/cells/scutoid.json"></div> — одна сцена с несколькими клетками;
 // <div class="gallery cellgal" data-src="data/cells/gallery.json"></div> — по карточке на каждую клетку.
-// JSON: {"meshes":[{"v":[x,y,z,…],"f":[i,j,k,…],"color":"#…","name":{en,ru,es},"note":{…},"opacity":1}]};
+// JSON: {"zoom":1, "meshes":[{"v":[x,y,z,…],"f":[i,j,k,…],"color":"#…","name":{en,ru,es},"note":{…},"opacity":1}]};
 // координаты уже отцентрированы и нормированы на радиус ≈ 1. Вьюер создаётся, когда блок становится видимым.
 import * as THREE from 'three';
 import { Viewer } from './viewer.js';
@@ -47,16 +47,16 @@ function textSprite(text, pos) {
 
 function radiusOf(meshes) {
   let r = 0;
-  const solid = meshes.filter((m) => (m.opacity ?? 1) >= 1);  // кадр по самим клеткам, без вспомогательных плоскостей
+  const solid = meshes.filter((m) => (m.opacity ?? 1) >= 0.3);  // кадр по клеткам, без почти прозрачных вспомогательных плоскостей
   for (const m of solid.length ? solid : meshes) for (let i = 0; i < m.v.length; i += 3) r = Math.max(r, Math.hypot(m.v[i], m.v[i + 1], m.v[i + 2]));
   return r || 1;
 }
 
-function scene(stage, meshes, { interactive = true, speed = 0.8 } = {}) {
+function scene(stage, meshes, { interactive = true, speed = 0.8, zoom = 1 } = {}) {
   const v = new Viewer(stage, { autoRotate: true, interactive });
   v.controls.autoRotateSpeed = speed;
   for (const m of meshes) v.root.add(meshObject(m));
-  v.frame(radiusOf(meshes) * 1.15);
+  v.frame(radiusOf(meshes) * 1.15 / zoom);
   return v;
 }
 
@@ -74,7 +74,7 @@ export function setupCells3d() {
       const stage = document.createElement('div');
       stage.className = 'cells3d-stage';
       el.prepend(stage);
-      scene(stage, d.meshes);
+      scene(stage, d.meshes, { zoom: d.zoom || 1 });
     });
   }
   for (const el of document.querySelectorAll('.cellgal[data-src]')) {
